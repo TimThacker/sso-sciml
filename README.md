@@ -6,7 +6,7 @@ The question it keeps asking: will this machine, at this operating point, on thi
 
 The project pairs a first-principles reference solver (network electromagnetic transients kept) with hand calculations of the mechanism and with several kinds of learned model: gradient-boosted trees, Gaussian processes, MLP ensembles, physics-informed networks, DeepONet, Fourier neural operators, neural ODEs and sequence models. Its central experiment compares where the physics goes: in the loss, in the input features, in the architecture, or nowhere.
 
-**Status:** Phases 0 and 1 complete; Phase 2 under way. The solver core is validated on the IEEE First Benchmark Model, the induction generator case (self-excitation boundary, energy accounting) is done, and the doubly-fed machine has its rotor current controller. No learned models yet.
+**Status:** Phases 0 and 1 complete; Phase 2 under way. The solver core is validated on the IEEE First Benchmark Model, the induction generator case (self-excitation boundary, energy accounting) is done, and the doubly-fed machine is modelled with its full control structure on radial and meshed networks, in two independent formulations. No learned models yet.
 
 | Document | What it is |
 |---|---|
@@ -14,6 +14,7 @@ The project pairs a first-principles reference solver (network electromagnetic t
 | [docs/steps/](docs/steps/) | Step log: what was run, the numbers, what disagreed |
 | [docs/EQUATIONS.md](docs/EQUATIONS.md) | Model equations and sign conventions |
 | [docs/ASSUMPTIONS.md](docs/ASSUMPTIONS.md) | Each modelling assumption, how it was tested, and the result |
+| [docs/VALIDATION.md](docs/VALIDATION.md) | What has been checked against what, and what is still open |
 
 ## Phase 1 in one figure
 
@@ -32,6 +33,18 @@ For an induction generator on the same line, the hand calculation (net resistanc
 ![Largest stable current-loop gain](docs/results/phase2/fig6_dfig_boundary.png)
 
 In a doubly-fed machine the rotor current controller's proportional gain behaves as added rotor resistance. The hand calculation built on that predicts the largest stable gain within 2 % of the solver at standard tuning, and fails as integral action is made stronger (right panel). The energy budget of the simulated oscillation shows the converter absorbing energy and the shaft supplying all of it. This stage has no phase-locked loop, outer loops or grid-side converter yet, and is less stable than plants in service; see [docs/steps/03-dfig-current-control.md](docs/steps/03-dfig-current-control.md).
+
+### Full controls
+
+![What each control addition does](docs/results/phase2/fig7_dfig_full_attribution.png)
+
+Adding the phase-locked loop, outer loops, grid-side converter and free rotor speed changes the sub-synchronous growth rate at rated speed by 0.1 1/s, provided the grid-side converter feeds the terminal voltage forward. Without that feed-forward its current controller acts as a resistor across the terminals and removes 5 to 10 1/s. The hand calculation stays within 4 points of compensation of the full solver in the first case and is up to 32 points pessimistic in the second. Details in [docs/steps/04-dfig-full-controls.md](docs/steps/04-dfig-full-controls.md).
+
+### The network
+
+![How much controller the network tolerates](docs/results/phase2/fig11_network_scenarios.png)
+
+A second formulation, loop impedance as polynomials with no state vector, reproduces the state-space modes to 2e-8. Varying the network with it shows that the radial connection studied so far is the worst case. Plant transformers and one parallel path as strong as the line raise the largest stable current-loop bandwidth at rated speed from 3.5 to 19.2 Hz. A partly loaded plant is worse than a full one. The time-domain model with full controls confirms the network results (20.3 Hz on that network). Details in [docs/steps/05-network-and-impedance.md](docs/steps/05-network-and-impedance.md).
 
 ## Setup
 
@@ -60,6 +73,9 @@ uv run pytest
 | Reproduce Phase 1 numbers and figures | `uv run scripts/phase1_validate.py` |
 | Reproduce the induction generator study | `uv run scripts/phase2_induction.py` |
 | Reproduce the doubly-fed machine study | `uv run scripts/phase2_dfig.py` |
+| Reproduce the full-control study | `uv run scripts/phase2_dfig_full.py` |
+| Reproduce the network study | `uv run scripts/phase2_network.py` |
+| Reproduce its time-domain confirmation | `uv run scripts/phase2_meshed.py` |
 
 ## Licence
 

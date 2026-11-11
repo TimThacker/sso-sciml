@@ -1,6 +1,6 @@
 # Equations and conventions
 
-Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 to 14 cover the induction generator, the energy accounting and the doubly-fed machine added in Phase 2. Code references are to `src/sso_sciml/`.
+Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 to 17 cover the induction generator, the energy accounting, the doubly-fed machine (current loop only, then full controls), the impedance formulation and the meshed network added in Phase 2. Code references are to `src/sso_sciml/`.
 
 ## 1. Per-unit system and time
 
@@ -354,3 +354,150 @@ from shaft + from converter = to network + copper + stored
 ```
 
 Each term is second order, a product of two deviations. The balance follows from the voltage equations because the inductance matrix is real and symmetric.
+
+## 15. Doubly-fed machine with full controls (System B2, second stage)
+
+Implemented in `physics/dfig_full.py`. Complex quantities are in the synchronous frame unless marked with a superscript `c`, which means the phase-locked-loop frame: `f^c = f · e^{−jθ}`.
+
+### Network with a grid-side converter
+
+Three inductive branches meet at the terminal: the stator, the grid-side filter (`R_f`, `X_f`, current `i_g` from converter to terminal) and the line, which carries `i_L = i + i_g`. The terminal voltage is eliminated by using two loop fluxes as states:
+
+```
+λ1 = ψ_s − X_E i_L                (stator plus line)
+λ2 = X_f i_g + X_E i_L            (grid-side filter plus line)
+
+(1/wb) dλ1/dt = v_b + v_c + R_s i + R_E i_L − j λ1
+(1/wb) dλ2/dt = v_g − v_b − v_c − R_f i_g − R_E i_L − j λ2
+(1/wb) dv_c/dt = X_C i_L − j v_c
+```
+
+With `a = X_E / (X_f + X_E)`, the combination `λ1 + a λ2` plays the part of `ψ'` in section 12 with `X_E` replaced by `X_E X_f / (X_f + X_E)`. That gives `i` and `i_r` in closed form, then `i_g = (λ2 − X_E i) / (X_f + X_E)`.
+
+Terminal voltage, from the grid-side branch:
+
+```
+v_t = v_g − R_f i_g − X_f ((1/wb) di_g/dt + j i_g)
+```
+
+The current derivatives come from the flux derivatives through the same linear map. Every controller acts on states, filtered quantities or currents, so the right-hand side has no algebraic loop.
+
+### Phase-locked loop
+
+```
+dθ/dt     = Kp_pll · v_tq^c + Ki_pll · x_pll
+dx_pll/dt = v_tq^c
+```
+
+`v_tq^c` is the q component of terminal voltage in the loop's own frame; it is zero when the frame is aligned. Gains from a natural frequency `ωn` and damping `ζ`: `Kp_pll = 2ζωn`, `Ki_pll = ωn²`.
+
+### Rotor-side converter
+
+```
+P_ref      = K_opt ω_r³
+dP_f/dt    = (P_t − P_f) / T_f                 (same for Q_f)
+i_rd,ref   =   Kp_o (P_ref − P_f) + Ki_o x_P       dx_P/dt = P_ref − P_f
+i_rq,ref   = −(Kp_o (Q_ref − Q_f) + Ki_o x_Q)      dx_Q/dt = Q_ref − Q_f
+v_r^c      = Kp (i_r,ref − i_r^c) + Ki x_r         dx_r/dt = i_r,ref − i_r^c
+```
+
+`P_t + jQ_t = v_t · conj(i_L)`. With the terminal voltage on the d axis, d-axis rotor current sets active power and q-axis rotor current sets reactive power; the minus sign is because more reactive power needs less q-axis rotor current.
+
+### Grid-side converter and DC link
+
+```
+i_gd,ref = −(Kp_dc (v_dc,ref − v_dc) + Ki_dc x_dc)      dx_dc/dt = v_dc,ref − v_dc
+i_gq,ref = 0
+v_g^c    = ff · v_f^c + Kp_g (i_g,ref − i_g^c) + Ki_g x_g
+dv_f^c/dt = (v_t^c − v_f^c) / T_ff
+C_dc v_dc dv_dc/dt = P_rsc − P_gsc
+P_rsc = −Re(v_r conj(i_r))        P_gsc = Re(v_g conj(i_g))
+```
+
+`ff` is 1 with terminal-voltage feed-forward and 0 without. Converter voltages are taken as ideal: the DC voltage does not limit or scale them.
+
+Without feed-forward, a perturbation sees `Δv_g^c = −(Kp_g + Ki_g/S) Δi_g^c`: the converter is a resistance `Kp_g` behind `X_f`, connected across the terminals. With fast feed-forward the terminal voltage perturbation is cancelled and the converter approaches a current source.
+
+### Motion
+
+```
+2H dω_r/dt = P_m / ω_r − T_e,      T_e = Im(conj(ψ_s) i),   ψ_s = λ1 + X_E i_L
+```
+
+### Steady state
+
+For a rotor speed `ω_0`: `P = K_opt ω_0³`. Solve `(v_b + (R_E + j(X_E − X_C)) i_L) conj(i_L) = P + jQ_ref` for `i_L`; then `v_t` and `θ = arg(v_t)`. The grid-side current is `i_g = i_gd e^{jθ}` with `i_gd` chosen so that `P_rsc = P_gsc`. The rest follows as in section 14, and `P_m = T_e ω_0`.
+
+### State vector
+
+`λ1 (2), ψ_r (2), v_c (2), λ2 (2), ω_r, θ, x_pll, x_r (2), P_f, Q_f, x_P, x_Q, x_g (2), v_dc, x_dc, v_f (2)`: 23 states.
+
+## 16. Impedance formulation
+
+Implemented in `physics/circuit.py`. It gives the modes of the current-loop model of section 14 without a state vector.
+
+Every element is a ratio of polynomials in the per-unit stator-frame frequency `s`:
+
+```
+series branch:   Z = R + sX + X_C / s
+parallel:        Z_a ∥ Z_b = Z_a Z_b / (Z_a + Z_b)
+machine:         Z_m(s) = R_s + sX_ls + (sX_m) ∥ (R_eff(s) · s / (s − jω_r) + sX_lr)
+                 R_eff(s) = R_r + Kp + (Ki / wb) / (s − j)
+```
+
+The modes are the zeros of the total impedance seen around the loop:
+
+```
+Z_m(s) / n + Z_net(s) = 0,        λ = wb (s − j)
+```
+
+`n` is the fraction of units online: `n` identical machines in parallel on a fixed base have impedance `Z_m / n`.
+
+Networks used:
+
+```
+radial:                Z_net = R_E + sX_E + X_C / s
+with plant impedance:  Z_net = (R_E + sX_E + X_C / s) + (R_plant + sX_plant)
+with a parallel path:  Z_net = (R_E + sX_E + X_C / s) ∥ (ρR_E + sρX_E)
+```
+
+Each root `s` gives one eigenvalue of the synchronous-frame model; the state-space model has that eigenvalue and its conjugate.
+
+Building the total impedance by cross-multiplication leaves common factors in numerator and denominator (at `s = 0`, `s = j` and `s = jω_r`). Each denominator root removes the numerator root nearest to it when the two are within 1e-5. A true mode can sit near a pole when the gain is low, so the test is on distance between roots and not on the size of the denominator.
+
+## 17. Full-control model on a meshed network
+
+Implemented in `physics/dfig_meshed.py`. Controls and machine as in section 15. Network:
+
+```
+terminals — (R_t, X_t) — plant bus —+— compensated line (R_E, X_E, X_C) —+— infinite bus
+                                    +— parallel path (R_p, X_p) ————————+
+```
+
+`i_L = i + i_g` flows through the plant impedance. `i_p` flows in the parallel path and `i_c = i_L − i_p` in the compensated line. The plant bus voltage is eliminated with a third loop flux:
+
+```
+λ1 = ψ_s − X_t i_L − X_E i_c
+λ2 = X_f i_g + X_t i_L + X_E i_c
+μ  = X_p i_p − X_E i_c
+
+(1/wb) dλ1/dt = v_b + v_c + R_s i + R_t i_L + R_E i_c − j λ1
+(1/wb) dλ2/dt = v_g − v_b − v_c − R_f i_g − R_t i_L − R_E i_c − j λ2
+(1/wb) dμ/dt  = v_c + R_E i_c − R_p i_p − j μ
+(1/wb) dv_c/dt = X_C i_c − j v_c
+```
+
+Fluxes and currents are related by
+
+```
+[λ1]   [−(X_s+X_t+X_E)   −(X_t+X_E)    X_m    X_E     ] [i  ]
+[λ2] = [  X_t+X_E         X_f+X_t+X_E   0     −X_E     ] [i_g]
+[ψ_r]  [ −X_m             0             X_r    0       ] [i_r]
+[μ ]   [ −X_E            −X_E           0      X_p+X_E ] [i_p]
+```
+
+solved numerically at each evaluation. Stator flux for the torque: `ψ_s = λ1 + X_t i_L + X_E i_c`.
+
+Steady state: both branches end at the infinite bus, so the network seen from the terminals is `v_b` behind `Z = R_t + jX_t + Z_c Z_p / (Z_c + Z_p)` with `Z_c = R_E + j(X_E − X_C)` and `Z_p = R_p + jX_p`. Then `i_c = i_L Z_p / (Z_c + Z_p)`, and the rest follows section 15.
+
+State vector: the 23 states of section 15 plus `μ_D, μ_Q`.

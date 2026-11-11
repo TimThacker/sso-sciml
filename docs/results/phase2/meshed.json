@@ -1,0 +1,123 @@
+{
+  "radial_limit_max_abs_diff": 1.036464642112378e-05,
+  "equilibrium_residual_max": 2.1958409773093534e-08,
+  "growth_k50": [
+    {
+      "network": "Plant impedance only",
+      "0.75": {
+        "impedance": 10.563757117260199,
+        "state_space_controls_off": 10.563273260987609,
+        "full_controls": 8.256697104750675,
+        "full_controls_no_feed_forward": 3.4427068830881478
+      },
+      "1.0": {
+        "impedance": 1.6430589369093138,
+        "state_space_controls_off": 1.6427711875881883,
+        "full_controls": 1.2787644400979339,
+        "full_controls_no_feed_forward": -2.6789621637867818
+      },
+      "1.2": {
+        "impedance": -1.236166498028111,
+        "state_space_controls_off": -1.2364429764575462,
+        "full_controls": -1.7587051249939805,
+        "full_controls_no_feed_forward": -5.388882261820456
+      }
+    },
+    {
+      "network": "Equal parallel path only",
+      "0.75": {
+        "impedance": 8.582273899943496,
+        "state_space_controls_off": 8.582071961580674,
+        "full_controls": 6.362061009931086,
+        "full_controls_no_feed_forward": 1.9440994504356794
+      },
+      "1.0": {
+        "impedance": 1.5244911983345857,
+        "state_space_controls_off": 1.5244664737700013,
+        "full_controls": 1.7225291771352076,
+        "full_controls_no_feed_forward": -1.6582872723674953
+      },
+      "1.2": {
+        "impedance": -1.4103346308047655,
+        "state_space_controls_off": -1.4103799711994647,
+        "full_controls": -1.2177316609710438,
+        "full_controls_no_feed_forward": -4.246928913900019
+      }
+    },
+    {
+      "network": "Plant impedance + equal parallel path",
+      "0.75": {
+        "impedance": 2.117690756055571,
+        "state_space_controls_off": 2.117430121121128,
+        "full_controls": 0.10972103081521922,
+        "full_controls_no_feed_forward": -2.509165019240342
+      },
+      "1.0": {
+        "impedance": -3.386409096343539,
+        "state_space_controls_off": -3.386503185864725,
+        "full_controls": -3.460438373276091,
+        "full_controls_no_feed_forward": -5.330387924376481
+      },
+      "1.2": {
+        "impedance": -4.919598944192941,
+        "state_space_controls_off": -4.919682342932223,
+        "full_controls": -4.994572068391005,
+        "full_controls_no_feed_forward": -6.653815631999365
+      }
+    },
+    {
+      "network": "Plant impedance + parallel path at half the line impedance",
+      "0.75": {
+        "impedance": -1.6299813746633105,
+        "state_space_controls_off": -1.6301543123877738,
+        "full_controls": -3.262006749885633,
+        "full_controls_no_feed_forward": -4.907300196938223
+      },
+      "1.0": {
+        "impedance": -5.29733432881608,
+        "state_space_controls_off": -5.297374878097614,
+        "full_controls": -5.312360070235527,
+        "full_controls_no_feed_forward": -6.390483112238577
+      },
+      "1.2": {
+        "impedance": -6.251914486623063,
+        "state_space_controls_off": -6.251948785122508,
+        "full_controls": -6.249833497308643,
+        "full_controls_no_feed_forward": -7.190880808085986
+      }
+    }
+  ],
+  "impedance_vs_state_space_max_abs_diff": 0.0004838562725897333,
+  "full_vs_impedance_max_abs_diff": 2.307060012509524,
+  "reference_network": {
+    "0.75": {
+      "boundary_k_full": 0.493776164768085,
+      "boundary_k_impedance": 0.4270076956024946,
+      "largest_stable_bw_full_hz": 9.801745488530468,
+      "largest_stable_bw_impedance_hz": 6.767555660961156
+    },
+    "1.0": {
+      "boundary_k_full": 0.7374718024227134,
+      "boundary_k_impedance": 0.7385997651899433,
+      "largest_stable_bw_full_hz": 20.265815589077047,
+      "largest_stable_bw_impedance_hz": 19.185410615067315
+    },
+    "1.2": {
+      "boundary_k_full": 0.9442169819236461,
+      "boundary_k_impedance": NaN,
+      "largest_stable_bw_full_hz": 32.0657650630739,
+      "largest_stable_bw_impedance_hz": 29.125549911032117
+    }
+  },
+  "compensation_step": {
+    "k_from": 0.45,
+    "k_to": 0.6,
+    "w_r": 0.75,
+    "sigma_eig_after": 1.615518859301016,
+    "f_eig_after_hz": 22.187011077590316,
+    "sigma_from_power_waveform": 1.6131438540403777,
+    "f_from_power_waveform_hz": 22.18705616939385,
+    "power_swing_first_0p1s_pu": 0.04667280307309987,
+    "power_swing_last_0p1s_pu": 0.11681964474383272
+  }
+}
