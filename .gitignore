@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Tooling / secrets
+.env
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Generated datasets, checkpoints, and experiment tracking (regenerate from configs)
+data/*
+!data/README.md
+!data/samples/
+runs/
+mlruns/
+checkpoints/
+*.pt
+*.ckpt
+*.zarr/
+*.h5

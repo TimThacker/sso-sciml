@@ -1,0 +1,58 @@
+[project]
+name = "sso-sciml"
+version = "0.1.0"
+description = "Scientific machine learning surrogates for sub-synchronous oscillation screening, validated against an electromagnetic-transient reference solver."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Tim", email = "tnt.thacker@gmail.com" }
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "matplotlib>=3.10",
+    "numpy>=2.1",
+    "scipy>=1.14",
+    "torch>=2.14",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+# On Windows, PyTorch comes from the CUDA 13.0 wheel index so training and inference run on the
+# local GPU. Elsewhere (CI) the CPU wheel is enough.
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu130", marker = "sys_platform == 'win32'" },
+    { index = "pytorch-cpu", marker = "sys_platform != 'win32'" },
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "NPY"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "gpu: needs a CUDA device (deselect with -m 'not gpu')",
+    "slow: long-running solver or training test",
+]
