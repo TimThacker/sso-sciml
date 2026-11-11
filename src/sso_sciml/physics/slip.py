@@ -13,6 +13,7 @@ dynamic model has to agree with.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
 
 import numpy as np
@@ -63,6 +64,65 @@ class SlipResult:
         return self.r_net < 0.0
 
 
+def induction_impedance(
+    s: complex, r_s: float, x_ls: float, x_m: float, r_r: float, x_lr: float, w_r: float = 1.0
+) -> complex:
+    """Stator impedance of a single-cage induction machine at complex frequency s.
+
+    The rotor branch is R_r / slip + s X_lr with slip = (s - j w_r) / s. For a round rotor
+    this is exact: no averaging of axes is involved.
+    """
+    slip = (s - 1j * w_r) / s
+    z_rotor = r_r / slip + s * x_lr
+    z_mag = s * x_m
+    return r_s + s * x_ls + z_mag * z_rotor / (z_mag + z_rotor)
+
+
+def analyse_loop(
+    z_machine: Callable[[complex], complex],
+    r_e: float,
+    x_e: float,
+    x_c: float,
+    f0: float = 60.0,
+    w_r: float = 1.0,
+    w_max: float | None = None,
+) -> SlipResult:
+    """Slip analysis of a series R-L-C loop closed through any machine impedance z_machine(s).
+
+    The resonance is searched below `w_max` (default: just below rotor speed, where slip
+    is negative). Raises ValueError if the loop reactance does not cross zero there.
+    """
+    wb = 2 * np.pi * f0
+
+    def z_loop(s: complex) -> complex:
+        return r_e + s * x_e + x_c / s + z_machine(s)
+
+    w_er = brentq(
+        lambda w: z_loop(1j * w).imag, 1e-3, (w_r - 1e-6) if w_max is None else w_max, xtol=1e-14
+    )
+    z_res = z_loop(1j * w_er)
+    h = 1e-6
+    dz_dw = (z_loop(1j * (w_er + h)) - z_loop(1j * (w_er - h))) / (2 * h)
+    sigma_hand = -wb * z_res.real / dz_dw.imag
+
+    # Complex root of Z(s) = 0 by Newton iteration, started on the imaginary axis.
+    s = 1j * w_er
+    for _ in range(50):
+        step = z_loop(s) / ((z_loop(s + h) - z_loop(s - h)) / (2 * h))
+        s = s - step
+        if abs(step) < 1e-13:
+            break
+    return SlipResult(
+        f_er=w_er * f0,
+        slip=(w_er - w_r) / w_er,
+        r_machine=z_machine(1j * w_er).real,
+        r_net=z_res.real,
+        sigma_hand=sigma_hand,
+        sigma_circuit=s.real * wb,
+        f_circuit=s.imag * f0,
+    )
+
+
 def analyse(
     d: AxisCircuit,
     q: AxisCircuit,
@@ -73,37 +133,30 @@ def analyse(
     w_r: float = 1.0,
     ra: float = 0.0,
 ) -> SlipResult:
-    """Resonant frequency, slip, equivalent resistances, and the growth-rate estimates."""
-    wb = 2 * np.pi * f0
+    """Slip analysis for a synchronous machine given by its two axis circuits."""
+    return analyse_loop(lambda s: machine_impedance(d, q, s, w_r, ra), r_e, x_e, x_c, f0, w_r)
 
-    def z(w: float) -> complex:
-        return total_impedance(d, q, 1j * w, r_e, x_e, x_c, w_r, ra)
 
-    w_er = brentq(lambda w: z(w).imag, 1e-3, w_r - 1e-6)
-    z_res = z(w_er)
-    h = 1e-6
-    dz_dw = (z(w_er + h) - z(w_er - h)) / (2 * h)
-    r_machine = machine_impedance(d, q, 1j * w_er, w_r, ra).real
-    sigma_hand = -wb * z_res.real / dz_dw.imag
-
-    # Complex root of Z(s) = 0 by Newton iteration, started on the imaginary axis.
-    s = 1j * w_er
-    for _ in range(50):
-        f = total_impedance(d, q, s, r_e, x_e, x_c, w_r, ra)
-        df = (
-            total_impedance(d, q, s + h, r_e, x_e, x_c, w_r, ra)
-            - total_impedance(d, q, s - h, r_e, x_e, x_c, w_r, ra)
-        ) / (2 * h)
-        step = f / df
-        s = s - step
-        if abs(step) < 1e-13:
-            break
-    return SlipResult(
-        f_er=w_er * f0,
-        slip=(w_er - w_r) / w_er,
-        r_machine=r_machine,
-        r_net=z_res.real,
-        sigma_hand=sigma_hand,
-        sigma_circuit=s.real * wb,
-        f_circuit=s.imag * f0,
+def analyse_induction(
+    r_s: float,
+    x_ls: float,
+    x_m: float,
+    r_r: float,
+    x_lr: float,
+    r_e: float,
+    x_e: float,
+    x_c: float,
+    f0: float = 60.0,
+    w_r: float = 1.0,
+    w_max: float | None = None,
+) -> SlipResult:
+    """Slip analysis for a single-cage induction machine."""
+    return analyse_loop(
+        lambda s: induction_impedance(s, r_s, x_ls, x_m, r_r, x_lr, w_r),
+        r_e,
+        x_e,
+        x_c,
+        f0,
+        w_r,
+        w_max,
     )

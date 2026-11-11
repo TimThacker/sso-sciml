@@ -85,7 +85,7 @@ These are computed for every case and are both inputs to and targets for the lea
 
 **System A: IEEE First Benchmark Model (done, Phase 1).** Synchronous generator, six-mass shaft, series-compensated line. Negative slip is always present but the negative resistance is five times too small to self-excite; the instability is torsional interaction.
 
-**System B1: fixed-speed induction generator on a series-compensated line (Phase 2).** The cleanest case of mechanism 1. Rotor resistance is much higher than in a synchronous machine and the slip calculation is exact for a round rotor, so the hand calculation and the solver should agree closely and self-excitation should appear at realistic compensation.
+**System B1: fixed-speed induction generator on a series-compensated line (Phase 2, done).** The cleanest case of mechanism 1. The slip calculation is exact for a round rotor, and the hand calculation and the solver agree on the boundary. The expectation that self-excitation would appear at realistic compensation did not hold for the base machine (boundary at 96.5 %); it needs more rotor resistance or a slower rotor.
 
 **System B2: doubly-fed induction generator with converter controls (Phase 2, main study).** Mechanism 3. About 24 states. Parameter space of about 14 dimensions:
 
@@ -232,8 +232,8 @@ Finding that shaped the plan: on System A the generator always sees negative sli
 
 ### Phase 2: Induction and doubly-fed machines, validation ladder (3.5 weeks)
 
-1. **System B1.** Induction generator model with stator transients, single-mass or two-mass drive train. Slip calculation for a round rotor. Map the self-excitation boundary in the plane of compensation level against rotor speed, from the hand calculation and from the solver, and overlay them.
-2. **Energy accounting.** From the time-domain run, compute the energy the machine delivers at the sub-synchronous frequency per cycle and confirm that it matches `I² · R_machine`. This ties the waveform to the mechanism.
+1. **System B1 (done, `docs/steps/02-induction-generator.md`).** Induction generator model with stator transients, single mass. Slip calculation for a round rotor. Self-excitation boundary mapped against rotor resistance and against rotor speed, from the hand calculation and from the solver. They agree within 0.9 points of compensation with the rotor free and to 2e-11 with the speed held.
+2. **Energy accounting (done, same step).** Energy the machine delivers through the oscillation, from the waveform, against `I² · R_machine`: 1.4 % for a sustained oscillation, at most 2.1 % for growing and decaying ones once the machine is evaluated at the complex frequency.
 3. **System B2.** Rotor-side and grid-side converter controls, DC link, PLL. Extend the slip calculation with the current-loop gain as an effective rotor resistance, and measure where that approximation fails.
 4. Validation ladder:
    1. Hand calculations (slip, negative resistance, energy balance).
@@ -244,7 +244,9 @@ Finding that shaped the plan: on System A the generator always sees negative sli
 5. Assumption studies: time step; trapezoidal against RK4; aggregation of N turbines into one machine; and the effect of dropping stator transients, which is what positive-sequence tools do.
 6. `docs/VALIDATION.md`.
 
-Exit check: hand calculation and solver agree on the System B1 self-excitation boundary within 2 % of compensation level; energy balance closes within 5 %; published System B2 trends reproduced; every larger disagreement has a written cause or is listed as open.
+Exit check: hand calculation and solver agree on the System B1 self-excitation boundary within 2 % of compensation level (met: 0.9 points); energy balance closes within 5 %, at the real frequency for a sustained oscillation and at the complex frequency otherwise (met: 1.4 % and 2.1 %); published System B2 trends reproduced; every larger disagreement has a written cause or is listed as open.
+
+Finding from System B1 that shapes the rest of the phase: the base single-cage machine self-excites only above 96.5 % compensation, not at realistic levels as this plan first assumed. The boundary drops to 73 % with rotor resistance of 0.010 pu and to 47 % with the rotor at 0.70 pu speed. Low speed and added effective rotor resistance are what the doubly-fed machine and its current controller bring, so System B2 is where the mechanism becomes a practical problem.
 
 Known weak point: rung 5. Public recordings come without plant parameters.
 

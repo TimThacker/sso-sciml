@@ -1,6 +1,6 @@
 # Equations and conventions
 
-Covers what Phase 1 implements: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Code references are to `src/sso_sciml/`.
+Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 and 13 cover the induction generator and the energy accounting added in Phase 2. Code references are to `src/sso_sciml/`.
 
 ## 1. Per-unit system and time
 
@@ -196,3 +196,97 @@ This holds when the electrical resonance and the torsional mode are weakly coupl
 - Eigenvalues and participation factors: SciPy on the CPU. Participation of state `k` in mode `i` is `|w_ki v_ki|`, normalised per mode.
 - Time integration: classical fourth-order Runge-Kutta, fixed step, batched. References: SciPy Radau and DOP853.
 - Mode estimation from a signal: matrix pencil.
+
+## 12. Induction generator (System B1)
+
+Implemented in `physics/induction.py`. Single-cage rotor, round, so the whole model is written in the synchronous frame as complex quantities `f = f_D + j f_Q`. No rotor angle is needed.
+
+Generator convention on the stator (current `i` positive out of the machine), rotor current `i_r` positive into the rotor. With `X_s = X_ls + X_m`, `X_r = X_lr + X_m`:
+
+```
+ψ_s = −X_s i + X_m i_r
+ψ_r = −X_m i + X_r i_r
+```
+
+Voltage equations, rotor shorted, rotor speed `ω_r`:
+
+```
+(1/wb) dψ_s/dt = v_s + R_s i − j ψ_s
+(1/wb) dψ_r/dt = −R_r i_r − j (1 − ω_r) ψ_r
+```
+
+The line is merged into the stator flux as in section 5: `ψ' = ψ_s − X_E i`, `R = R_s + R_E`, and the stator voltage becomes `v_b + v_c`:
+
+```
+(1/wb) dψ'/dt  = v_b + v_c + R i − j ψ'
+(1/wb) dv_c/dt = X_C i − j v_c
+```
+
+Currents from fluxes, in closed form, with `X_ss = X_s + X_E` and `Δ = X_m² − X_ss X_r`:
+
+```
+i   = (X_r ψ' − X_m ψ_r) / Δ
+i_r = (X_m ψ' − X_ss ψ_r) / Δ
+```
+
+Torque and motion (single mass, constant mechanical torque):
+
+```
+T_e = Im(conj(ψ') i) = ψ'_D i_Q − ψ'_Q i_D
+2H dω_r/dt = T_m − T_e
+```
+
+State vector: `ψ'_D, ψ'_Q, ψ_rD, ψ_rQ, v_cD, v_cQ, ω_r`.
+
+Terminal voltage, needed for the energy accounting, includes the inductive drop of the line:
+
+```
+v_s = v_b + v_c + R_E i + X_E ((1/wb) di/dt + j i)
+```
+
+with `di/dt` taken from the right-hand side through the flux map above.
+
+### Steady state
+
+At slip `s0 = 1 − ω_r` the loop is the usual equivalent circuit:
+
+```
+Z = R_E + R_s + j(X_E − X_C + X_ls) + jX_m ∥ (R_r/s0 + jX_lr)
+i = −v_b / Z,      i_r = (v_b / Z) · jX_m / (R_r/s0 + j(X_m + X_lr))
+```
+
+Fluxes follow from the flux map, `v_c = −jX_C i`, `T_m = T_e`. For a given power into the infinite bus, `s0` is found on the stable side of pull-out (`InductionGenerator.equilibrium`).
+
+### Slip calculation
+
+Stator impedance at stator-frame complex frequency `s` (per unit):
+
+```
+Z_m(s) = R_s + s X_ls + (s X_m) ∥ (R_r / slip + s X_lr),      slip = (s − jω_r) / s
+```
+
+At `s = jω` with `ω < ω_r` the slip is real and negative, so the rotor branch carries negative resistance. The loop analysis of section 9 is then applied unchanged (`slip.analyse_loop`).
+
+With `ω_r` held constant the electrical model is linear with complex coefficients, and its eigenvalues `λ` are exactly the roots of `Z(s) = 0` through `s = λ/wb + j`. The boundary `R_net = 0` is therefore exact for the electrical subsystem, where for the salient synchronous machine it was an approximation.
+
+## 13. Energy accounting
+
+Implemented in `physics/energy.py`.
+
+Let `Δi` and `Δv` be the deviations of stator current and terminal voltage from the steady state. The power the machine delivers through the oscillation itself is
+
+```
+p_osc = Re(Δv · conj(Δi))
+```
+
+This is second order in the perturbation. The first-order cross terms with the steady state average out over a cycle and are left out by construction.
+
+If the machine presents impedance `Z_m` to the oscillation then `Δv = −Z_m Δi` in generator convention, and
+
+```
+p_osc = −Re(Z_m) |Δi|²
+```
+
+so the resistance implied by a waveform is `R_eff = −∫ p_osc dt / ∫ |Δi|² dt`. Energy lost in the line over the same window is `R_E ∫ |Δi|² dt`. The oscillation is sustained when the two are equal.
+
+For an oscillation that grows or decays at rate `σ`, `Z_m` must be evaluated at the complex frequency `σ/wb + jω`, not at `jω`. The difference is the rate of change of stored magnetic energy. It was 13 % of the resistance at a decay rate of 2.4 1/s (`docs/steps/02-induction-generator.md`).
