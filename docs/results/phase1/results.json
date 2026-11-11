@@ -1,0 +1,240 @@
+{
+  "torsional_hz": {
+    "computed": [
+      15.7122,
+      20.2113,
+      25.5472,
+      32.2846,
+      47.4563
+    ],
+    "published": [
+      15.71,
+      20.21,
+      25.55,
+      32.28,
+      47.46
+    ],
+    "max_abs_error_hz": 0.004631400856219159,
+    "generator_entry_of_mode_shape": [
+      0.3731,
+      -0.0374,
+      -0.166,
+      0.6205,
+      -0.0045
+    ]
+  },
+  "equilibrium_max_residual": 2.9298095383272503e-13,
+  "induction_generator_effect": {
+    "x_c_range": [
+      0.02,
+      0.62
+    ],
+    "slip_range": [
+      -5.586576677270533,
+      -0.18517286454079007
+    ],
+    "r_machine_range_pu": [
+      -0.016256674365178914,
+      -0.0005949982245803667
+    ],
+    "r_net_min_pu": 0.013743325634821085,
+    "self_excited_anywhere": false,
+    "hand_vs_locked_eig_max_rel_err": 0.025826693743526828,
+    "circuit_root_vs_locked_eig_max_rel_err": 0.026249887049729536,
+    "resonance_freq_max_abs_err_hz": 0.0883786211858606
+  },
+  "self_excitation_threshold": {
+    "x_c": 0.371,
+    "benchmark_r_e_pu": 0.03,
+    "r_e_threshold_hand_pu": 0.0061348437663552476,
+    "r_e_threshold_locked_eig_pu": 0.006063930981116985,
+    "rel_diff": 0.011694193990512806
+  },
+  "torsional_interaction": {
+    "modes": [
+      {
+        "mode": 1,
+        "f_n_hz": 15.712,
+        "x_c_at_peak_eig": 0.4725,
+        "x_c_at_peak_damping_torque": 0.4725,
+        "x_c_where_f0_minus_fer_equals_fn": 0.4725,
+        "peak_sigma_eig": 3.9547,
+        "peak_sigma_damping_torque": 7.3422
+      },
+      {
+        "mode": 2,
+        "f_n_hz": 20.211,
+        "x_c_at_peak_eig": 0.3775,
+        "x_c_at_peak_damping_torque": 0.38,
+        "x_c_where_f0_minus_fer_equals_fn": 0.3825,
+        "peak_sigma_eig": 0.4159,
+        "peak_sigma_damping_torque": 0.4446
+      },
+      {
+        "mode": 3,
+        "f_n_hz": 25.547,
+        "x_c_at_peak_eig": 0.285,
+        "x_c_at_peak_damping_torque": 0.285,
+        "x_c_where_f0_minus_fer_equals_fn": 0.285,
+        "peak_sigma_eig": 0.9744,
+        "peak_sigma_damping_torque": 1.1382
+      },
+      {
+        "mode": 4,
+        "f_n_hz": 32.285,
+        "x_c_at_peak_eig": 0.185,
+        "x_c_at_peak_damping_torque": 0.185,
+        "x_c_where_f0_minus_fer_equals_fn": 0.185,
+        "peak_sigma_eig": 1.0302,
+        "peak_sigma_damping_torque": 1.2097
+      }
+    ],
+    "weak_coupling_max_abs_err_per_s": 0.03741110382993529,
+    "sign_agreement_fraction": 1.0
+  },
+  "time_domain_vs_eigenvalue": {
+    "dt_s": 0.0001,
+    "t_end_s": 2.0,
+    "perturbation": 1e-06,
+    "rk4_seconds_cpu": 31.287165599998843,
+    "cases": [
+      {
+        "x_c": 0.2,
+        "mode": "network",
+        "f_eig_hz": 31.2212,
+        "f_sim_hz": 31.2212,
+        "sigma_eig": -6.45717,
+        "sigma_sim": -6.45717,
+        "sigma_abs_err": 6.147952191781769e-08,
+        "sigma_rel_err": 9.521118935900368e-09
+      },
+      {
+        "x_c": 0.2,
+        "mode": "torsional",
+        "f_eig_hz": 32.1987,
+        "f_sim_hz": 32.1987,
+        "sigma_eig": 0.51681,
+        "sigma_sim": 0.51681,
+        "sigma_abs_err": 1.2101246449347514e-08,
+        "sigma_rel_err": 2.3415131729214513e-08
+      },
+      {
+        "x_c": 0.287,
+        "mode": "network",
+        "f_eig_hz": 25.4485,
+        "f_sim_hz": 25.4485,
+        "sigma_eig": -6.63559,
+        "sigma_sim": -6.63559,
+        "sigma_abs_err": 1.2056438514207457e-08,
+        "sigma_rel_err": 1.8169349711802698e-09
+      },
+      {
+        "x_c": 0.287,
+        "mode": "torsional",
+        "f_eig_hz": 25.5334,
+        "f_sim_hz": 25.5334,
+        "sigma_eig": 0.96485,
+        "sigma_sim": 0.96485,
+        "sigma_abs_err": 9.852581639435698e-09,
+        "sigma_rel_err": 1.0211566158508923e-08
+      },
+      {
+        "x_c": 0.371,
+        "mode": "network",
+        "f_eig_hz": 20.6109,
+        "f_sim_hz": 20.6109,
+        "sigma_eig": -5.82284,
+        "sigma_sim": -5.82284,
+        "sigma_abs_err": 1.2503420521170483e-09,
+        "sigma_rel_err": 2.1473065351829772e-10
+      },
+      {
+        "x_c": 0.371,
+        "mode": "torsional",
+        "f_eig_hz": 20.2364,
+        "f_sim_hz": 20.2364,
+        "sigma_eig": 0.35776,
+        "sigma_sim": 0.35776,
+        "sigma_abs_err": 4.094594885373226e-09,
+        "sigma_rel_err": 1.1445158964031388e-08
+      },
+      {
+        "x_c": 0.45,
+        "mode": "network",
+        "f_eig_hz": 16.5015,
+        "f_sim_hz": 16.5015,
+        "sigma_eig": -8.01303,
+        "sigma_sim": -8.01303,
+        "sigma_abs_err": 1.6433856586672846e-07,
+        "sigma_rel_err": 2.050892049939423e-08
+      },
+      {
+        "x_c": 0.45,
+        "mode": "torsional",
+        "f_eig_hz": 16.0423,
+        "f_sim_hz": 16.0423,
+        "sigma_eig": 3.16887,
+        "sigma_sim": 3.16887,
+        "sigma_abs_err": 1.8635403860045585e-06,
+        "sigma_rel_err": 5.880781154097426e-07
+      },
+      {
+        "x_c": 0.55,
+        "mode": "network",
+        "f_eig_hz": 12.3923,
+        "f_sim_hz": 12.3923,
+        "sigma_eig": -4.35033,
+        "sigma_sim": -4.35033,
+        "sigma_abs_err": 2.0484817397914412e-08,
+        "sigma_rel_err": 4.708793277603317e-09
+      },
+      {
+        "x_c": 0.55,
+        "mode": "torsional",
+        "f_eig_hz": 15.5046,
+        "f_sim_hz": 15.5046,
+        "sigma_eig": 0.29249,
+        "sigma_sim": 0.29249,
+        "sigma_abs_err": 1.887740130879223e-09,
+        "sigma_rel_err": 6.454018746116798e-09
+      }
+    ],
+    "max_sigma_rel_err": 5.880781154097426e-07,
+    "max_freq_abs_err_hz": 0.0
+  },
+  "integrator_check": {
+    "disturbance": "1 % generator speed step, x_c = 0.371, 0.5 s",
+    "radau_vs_dop853_max_abs": 1.2768786028516388e-11,
+    "rk4_max_abs_err_vs_dop853": {
+      "0.0005": 3.7450277010856597e-06,
+      "0.00025": 2.345006909765246e-07,
+      "0.000125": 1.4650161417328889e-08,
+      "6.25e-05": 9.143951151813212e-10
+    },
+    "observed_order": [
+      3.9973123111130704,
+      4.000603708128452,
+      4.001955053799221
+    ]
+  },
+  "batched_rk4_500_steps": {
+    "256": {
+      "cpu_s": 0.9370687000009639,
+      "cuda_s": 3.860536199998023,
+      "speedup": 0.2427301938009139,
+      "max_abs_diff": 2.6645352591003757e-15
+    },
+    "4096": {
+      "cpu_s": 3.219328299997869,
+      "cuda_s": 3.9952878000003693,
+      "speedup": 0.8057813256901222,
+      "max_abs_diff": 4.440892098500626e-15
+    },
+    "32768": {
+      "cpu_s": 16.295440900001267,
+      "cuda_s": 4.066964099998586,
+      "speedup": 4.006782577698911,
+      "max_abs_diff": 4.6629367034256575e-15
+    }
+  }
+}
