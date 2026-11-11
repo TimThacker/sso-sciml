@@ -78,6 +78,33 @@ def induction_impedance(
     return r_s + s * x_ls + z_mag * z_rotor / (z_mag + z_rotor)
 
 
+def dfig_impedance(
+    s: complex,
+    r_s: float,
+    x_ls: float,
+    x_m: float,
+    r_r: float,
+    x_lr: float,
+    w_r: float = 1.0,
+    kp: float = 0.0,
+    ki: float = 0.0,
+    f0: float = 60.0,
+) -> complex:
+    """Stator impedance of a doubly-fed machine whose rotor current is PI-controlled.
+
+    A controller acting on rotor current in the synchronous frame puts Kp + Ki / S in
+    series with the rotor resistance, where S = wb (s - j) is the synchronous-frame
+    frequency in 1/s. Kp is plain added rotor resistance. With Kp = Ki = 0 this is
+    `induction_impedance`.
+    """
+    wb = 2 * np.pi * f0
+    r_eff = r_r + kp + (ki / (wb * (s - 1j)) if ki else 0.0)
+    slip = (s - 1j * w_r) / s
+    z_rotor = r_eff / slip + s * x_lr
+    z_mag = s * x_m
+    return r_s + s * x_ls + z_mag * z_rotor / (z_mag + z_rotor)
+
+
 def analyse_loop(
     z_machine: Callable[[complex], complex],
     r_e: float,
@@ -97,9 +124,16 @@ def analyse_loop(
     def z_loop(s: complex) -> complex:
         return r_e + s * x_e + x_c / s + z_machine(s)
 
-    w_er = brentq(
-        lambda w: z_loop(1j * w).imag, 1e-3, (w_r - 1e-6) if w_max is None else w_max, xtol=1e-14
-    )
+    # The loop reactance can cross zero more than once (a controller with integral action
+    # adds crossings near synchronous frequency). The network resonance is the lowest
+    # crossing from capacitive to inductive.
+    hi = (w_r - 1e-6) if w_max is None else w_max
+    grid = np.linspace(1e-3, hi, 600)
+    x_grid = np.array([z_loop(1j * w).imag for w in grid])
+    up = np.where((x_grid[:-1] < 0) & (x_grid[1:] >= 0))[0]
+    if up.size == 0:
+        raise ValueError("loop reactance does not cross zero below the search limit")
+    w_er = brentq(lambda w: z_loop(1j * w).imag, grid[up[0]], grid[up[0] + 1], xtol=1e-14)
     z_res = z_loop(1j * w_er)
     h = 1e-6
     dz_dw = (z_loop(1j * (w_er + h)) - z_loop(1j * (w_er - h))) / (2 * h)

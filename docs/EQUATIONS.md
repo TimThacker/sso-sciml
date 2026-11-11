@@ -1,6 +1,6 @@
 # Equations and conventions
 
-Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 and 13 cover the induction generator and the energy accounting added in Phase 2. Code references are to `src/sso_sciml/`.
+Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 to 14 cover the induction generator, the energy accounting and the doubly-fed machine added in Phase 2. Code references are to `src/sso_sciml/`.
 
 ## 1. Per-unit system and time
 
@@ -290,3 +290,67 @@ p_osc = −Re(Z_m) |Δi|²
 so the resistance implied by a waveform is `R_eff = −∫ p_osc dt / ∫ |Δi|² dt`. Energy lost in the line over the same window is `R_E ∫ |Δi|² dt`. The oscillation is sustained when the two are equal.
 
 For an oscillation that grows or decays at rate `σ`, `Z_m` must be evaluated at the complex frequency `σ/wb + jω`, not at `jω`. The difference is the rate of change of stored magnetic energy. It was 13 % of the resistance at a decay rate of 2.4 1/s (`docs/steps/02-induction-generator.md`).
+
+## 14. Doubly-fed machine with rotor current control (System B2, first stage)
+
+Implemented in `physics/dfig.py`. The machine and line equations are those of section 12, with a rotor voltage `v_r` from the converter:
+
+```
+(1/wb) dψ_r/dt = v_r − R_r i_r − j (1 − ω_r) ψ_r
+```
+
+The controller acts on rotor current in the synchronous frame:
+
+```
+v_r   = v_ff + Kp (i_ref − i_r) + Ki x
+dx/dt = i_ref − i_r
+```
+
+`Kp` is in per unit, `Ki` in per unit per second, `x` in per unit seconds. `v_ff` is a constant feed-forward, used only to hold the steady state when `Ki = 0`.
+
+At this stage the frame is ideal, `i_ref` is constant, there is no grid-side converter, and `ω_r` is a parameter. State vector: `ψ'_D, ψ'_Q, ψ_rD, ψ_rQ, v_cD, v_cQ, x_D, x_Q`. The model is linear in the state.
+
+### Steady state
+
+For stator power `P + jQ` into the infinite bus: `i = (P − jQ) / v_b`, `v_c = −jX_C i`, `ψ' = −j (v_b + v_c + R i)`, `i_r = (ψ' + X_ss i) / X_m`, `ψ_r` from the flux map, `v_r = R_r i_r + j (1 − ω_r) ψ_r`. Then `i_ref = i_r` and `x = v_r / Ki`.
+
+### Tuning
+
+Pole cancellation on the rotor transient reactance `σX_r = X_r − X_m² / X_s`, for a closed-loop bandwidth `α` in rad/s:
+
+```
+Kp = α σX_r / wb        Ki = α R_r
+```
+
+so `Ki / Kp = R_r wb / σX_r`, 10.9 1/s for the base machine.
+
+### Slip calculation with the controller
+
+For a perturbation, `Δv_r = −(Kp + Ki / S) Δi_r` with `S = wb (s − j)` the synchronous-frame frequency in 1/s and `s` the per-unit stator-frame frequency. The rotor equation becomes that of a shorted rotor with resistance
+
+```
+R_eff(s) = R_r + Kp + Ki / (wb (s − j))
+```
+
+and the machine impedance is that of section 12 with `R_r → R_eff` (`slip.dfig_impedance`). This is exact for the model above.
+
+- `Kp` is added rotor resistance. At negative slip it adds negative resistance at the stator.
+- At `s = jω` the `Ki` term is `−j Ki / (wb (1 − ω))`: imaginary, so after division by slip it is reactive. It shifts the resonance and does not add resistance to first order. It grows without bound as `ω → 1`, which creates extra zeros of loop reactance near synchronous frequency. The resonance search therefore takes the lowest crossing from capacitive to inductive.
+
+The hand approximation "`Kp` as rotor resistance" drops the `Ki` term. Its error against the solver is 2 % at the tuned ratio and grows with `Ki / Kp` (`docs/steps/03-dfig-current-control.md`).
+
+### Energy budget
+
+Implemented in `energy.flows`. With `Δ` denoting deviations from the steady state and motor-convention stator current `−Δi`:
+
+```
+to network     = ∫ Re(Δv_s conj(Δi)) dt
+from shaft     = ω_r ∫ Im(conj(Δψ') Δi) dt
+from converter = ∫ Re(Δv_r conj(Δi_r)) dt
+copper         = R_s ∫ |Δi|² dt + R_r ∫ |Δi_r|² dt
+stored         = [ Re(−conj(Δi) Δψ_s + conj(Δi_r) Δψ_r) / (2 wb) ] end − start
+
+from shaft + from converter = to network + copper + stored
+```
+
+Each term is second order, a product of two deviations. The balance follows from the voltage equations because the inductance matrix is real and symmetric.
