@@ -1,0 +1,126 @@
+{
+  "cases": 512,
+  "unstable_cases": 52,
+  "offsets_pu": [
+    0.01,
+    0.05,
+    0.2,
+    0.5
+  ],
+  "window_s": 0.5,
+  "time_step_s": 0.00025,
+  "tolerance": 0.1,
+  "summary": {
+    "0.01/stable": {
+      "trajectories": 460,
+      "median_error_100ms": 0.000223149979712683,
+      "p95_error_100ms": 0.001053490069878104,
+      "median_other_states_error_100ms": 0.021892359396409412,
+      "median_error_500ms": 0.0002455402390571771,
+      "share_never_parted": 1.0,
+      "median_amplitude_when_parted": null,
+      "p10_amplitude_when_parted": null,
+      "median_largest_amplitude": 0.01
+    },
+    "0.01/unstable": {
+      "trajectories": 52,
+      "median_error_100ms": 0.0005264809282357583,
+      "p95_error_100ms": 0.002166162298779097,
+      "median_other_states_error_100ms": 0.03422857084792776,
+      "median_error_500ms": 0.0017835548929113416,
+      "share_never_parted": 0.9038461538461539,
+      "median_amplitude_when_parted": 1.1969247530000584,
+      "p10_amplitude_when_parted": 0.8104758582504819,
+      "median_largest_amplitude": 0.027612039163463963
+    },
+    "0.05/stable": {
+      "trajectories": 460,
+      "median_error_100ms": 0.0010919163667931784,
+      "p95_error_100ms": 0.005264454396679149,
+      "median_other_states_error_100ms": 0.10950548994897491,
+      "median_error_500ms": 0.00118111950286649,
+      "share_never_parted": 1.0,
+      "median_amplitude_when_parted": null,
+      "p10_amplitude_when_parted": null,
+      "median_largest_amplitude": 0.05
+    },
+    "0.05/unstable": {
+      "trajectories": 52,
+      "median_error_100ms": 0.0026144052058252086,
+      "p95_error_100ms": 0.010772265660519377,
+      "median_other_states_error_100ms": 0.17118634721311715,
+      "median_error_500ms": 0.008763323971093386,
+      "share_never_parted": 0.7884615384615384,
+      "median_amplitude_when_parted": 1.1107421721203534,
+      "p10_amplitude_when_parted": 0.5696235679672544,
+      "median_largest_amplitude": 0.13806019581731982
+    },
+    "0.2/stable": {
+      "trajectories": 460,
+      "median_error_100ms": 0.004361647964362281,
+      "p95_error_100ms": 0.020959355132205093,
+      "median_other_states_error_100ms": 0.43870111792603583,
+      "median_error_500ms": 0.004719785485687444,
+      "share_never_parted": 1.0,
+      "median_amplitude_when_parted": null,
+      "p10_amplitude_when_parted": null,
+      "median_largest_amplitude": 0.2
+    },
+    "0.2/unstable": {
+      "trajectories": 52,
+      "median_error_100ms": 0.010259903656530116,
+      "p95_error_100ms": 0.04282422149821068,
+      "median_other_states_error_100ms": 0.6852285814030759,
+      "median_error_500ms": 0.03948884994540378,
+      "share_never_parted": 0.5961538461538461,
+      "median_amplitude_when_parted": 1.1787403398088898,
+      "p10_amplitude_when_parted": 0.5797901710418092,
+      "median_largest_amplitude": 0.5522407832692793
+    },
+    "0.5/stable": {
+      "trajectories": 460,
+      "median_error_100ms": 0.010957425390403779,
+      "p95_error_100ms": 0.05148458731284115,
+      "median_other_states_error_100ms": 1.100121963923059,
+      "median_error_500ms": 0.011818483400283292,
+      "share_never_parted": 0.9891304347826086,
+      "median_amplitude_when_parted": 0.4999999999999999,
+      "p10_amplitude_when_parted": 0.4999999999999998,
+      "median_largest_amplitude": 0.5
+    },
+    "0.5/unstable": {
+      "trajectories": 52,
+      "median_error_100ms": 0.024903193436155668,
+      "p95_error_100ms": 0.11231280661679348,
+      "median_other_states_error_100ms": 1.713299262159501,
+      "median_error_500ms": 0.1260985034118765,
+      "share_never_parted": 0.38461538461538464,
+      "median_amplitude_when_parted": 1.1768228073094207,
+      "p10_amplitude_when_parted": 0.6074984454626604,
+      "median_largest_amplitude": 1.380601958173198
+    }
+  },
+  "amplitude_when_parted_all": {
+    "trajectories": 74,
+    "p10": 0.5507255790666932,
+    "median": 1.14433048972297,
+    "p90": 1.8737383791753377
+  },
+  "states_that_differ_most_at_0.2_pu": {
+    "x_dc": 1.6364014809160399,
+    "x_gq": 0.9350018107527085,
+    "x_gd": 0.839846955994789,
+    "x_p": 0.33170444570094787,
+    "v_dc": 0.2214995233992352,
+    "x_q": 0.16028699528528695
+  },
+  "cost": {
+    "device": "NVIDIA GeForce RTX 3070",
+    "steady_state_and_state_matrix_s_per_case": 0.013791106054696911,
+    "modal_response_s_per_case": 0.0007461669921724479,
+    "rk4_batch_s": 53.991173200003686,
+    "rk4_batch_s_per_trajectory": 0.0263628775390643,
+    "rk4_single_cpu_s": 9.242118199996185
+  },
+  "wall_s": 71.50863630000094
+}

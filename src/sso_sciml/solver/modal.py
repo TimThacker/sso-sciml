@@ -5,6 +5,17 @@ from __future__ import annotations
 import numpy as np
 
 
+def linear_response(a: np.ndarray, dx0: np.ndarray, t: np.ndarray) -> np.ndarray:
+    """Deviation from the steady state under dx/dt = A dx, from the modes of A.
+
+    dx(t) = V exp(Lambda t) V^-1 dx0, shape (n_t, n). No time stepping: the cost is one
+    eigen-decomposition whatever the length of t.
+    """
+    lam, v = np.linalg.eig(a)
+    c = np.linalg.solve(v, dx0.astype(complex))
+    return ((c * np.exp(np.outer(t, lam))) @ v.T).real
+
+
 def matrix_pencil(y: np.ndarray, dt: float, order: int) -> np.ndarray:
     """Complex poles s_k (real part 1/s, imaginary part rad/s) of `order` damped exponentials
     fitted to the uniformly sampled signal y."""

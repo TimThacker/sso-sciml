@@ -24,6 +24,7 @@ import json
 from dataclasses import dataclass, replace
 
 import numpy as np
+import torch
 from scipy.stats import qmc
 
 from ..physics import circuit, slip
@@ -185,20 +186,27 @@ def mechanism(theta: np.ndarray) -> np.ndarray:
 N_STATE = 25
 
 
-def state_matrix(theta: np.ndarray) -> np.ndarray:
-    """State matrix A(theta) of the full model at its steady state, shape (25, 25), in
-    1/s. NaN if the steady state is not found. This is the solver without its last step,
-    the eigenvalue decomposition."""
+def operating_point(theta: np.ndarray) -> tuple[DFIGMeshed, torch.Tensor, dict]:
+    """The full model of one case with its steady state and parameter dictionary.
+    Raises ValueError if the steady state is not found."""
     th = dict(zip(NAMES, map(float, theta), strict=True))
     data = replace(IGData(), r_r=th["r_r"])
     net = _network(th, data)
     ctl = Controls(rsc_hz=th["rsc_hz"], pll_hz=th["pll_hz"], ff=th["ff"],
                    outer_hz=th["outer_ratio"] * th["rsc_hz"])  # fmt: skip
     model = DFIGMeshed(data=data, controls=ctl)
+    x0, p = model.equilibrium(net.pop("x_c"), w_r=th["w_r"], **net)
+    if float(model.rhs(x0, p).abs().max()) > 1e-8:
+        raise ValueError("steady state not found")
+    return model, x0, p
+
+
+def state_matrix(theta: np.ndarray) -> np.ndarray:
+    """State matrix A(theta) of the full model at its steady state, shape (25, 25), in
+    1/s. NaN if the steady state is not found. This is the solver without its last step,
+    the eigenvalue decomposition."""
     try:
-        x0, p = model.equilibrium(net.pop("x_c"), w_r=th["w_r"], **net)
-        if float(model.rhs(x0, p).abs().max()) > 1e-8:
-            raise ValueError("steady state not found")
+        model, x0, p = operating_point(theta)
         return jacobian(model.rhs, x0, p).numpy()
     except (ValueError, RuntimeError, np.linalg.LinAlgError):
         return np.full((N_STATE, N_STATE), np.nan)
