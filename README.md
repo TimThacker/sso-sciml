@@ -143,6 +143,17 @@ Details in [docs/steps/20-noise-and-modes.md](docs/steps/20-noise-and-modes.md).
 
 Details in [docs/steps/21-slow-mode.md](docs/steps/21-slow-mode.md).
 
+### Error in the network data
+
+![Sensitivity to each network quantity](docs/results/network/fig57_network_sensitivity.png)
+
+- **A perfect plant model on a wrong network is not safe.** The growth rate of the resonance is off by about 0.08 1/s per percent of error in the network data, the same size as the effect of scan noise. With 5 % error and no margin, one unstable doubly-fed case in seven is cleared.
+- **Which number matters depends on the plant.** For the doubly-fed plant: the series capacitor (0.8 1/s for a 10 % error), then line resistance. For a converter: line reactance, and resistance not at all.
+- **Margins of several 1/s are needed,** and for 10 % error only a margin of 10 1/s clears no unstable case.
+- **The slow band is immune.** A 10 % error moves the slow mode by less than 0.001 1/s, so the phasor-domain screen stays safe.
+
+Details in [docs/steps/22-network-error.md](docs/steps/22-network-error.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -185,6 +196,7 @@ uv run pytest
 | Fit noisy scans by least squares (about 37 minutes) | `uv run scripts/phase3_noise_fits.py` |
 | Reproduce the noise study | `uv run scripts/noise_screens.py` |
 | Reproduce the slow-mode study (about 10 minutes) | `uv run scripts/slow_mode.py` |
+| Reproduce the network-error study (about 25 minutes) | `uv run scripts/network_error.py` |
 
 ## Licence
 

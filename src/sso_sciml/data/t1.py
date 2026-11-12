@@ -133,6 +133,34 @@ def _network(th: dict, base: IGData) -> dict:
     }  # fmt: skip
 
 
+def impedance_root(theta: np.ndarray, net: dict | None = None) -> tuple[float, float]:
+    """Growth rate (1/s) and frequency (Hz) of the least-damped root of the loop
+    impedance of machine, current loop and network, among those between 2 and 58 Hz in
+    the rotating frame. (0, 0) if there is none. This is the impedance model of step 05:
+    all roots as polynomials. `net` replaces the network of the case, for a screen that
+    is given network data with error.
+    """
+    th = dict(zip(NAMES, map(float, theta), strict=True))
+    data = replace(IGData(), r_r=th["r_r"])
+    net = _network(th, data) if net is None else net
+    kp, ki = gains_from_bandwidth(data, th["rsc_hz"])
+    z_poly = circuit.parallel(
+        circuit.branch(net["r_e"], net["x_e"], net["x_c"]), circuit.branch(net["r_p"], net["x_p"])
+    ) + circuit.branch(net["r_t"], net["x_t"])
+    lam = circuit.modes(
+        circuit.dfig_impedance(
+            data.r_s, data.x_ls, data.x_m, data.r_r, data.x_lr, th["w_r"], kp, ki
+        )
+        + z_poly
+    )
+    f_lam = np.abs(lam.imag) / (2 * np.pi)
+    band = np.where((f_lam > 2.0) & (f_lam < 58.0))[0]
+    if not band.size:
+        return 0.0, 0.0
+    top = band[np.argmax(lam.real[band])]
+    return float(lam.real[top]), float(f_lam[top])
+
+
 def mechanism(theta: np.ndarray) -> np.ndarray:
     """Hand-calculation quantities for one case, in the order of MECHANISM_COLUMNS."""
     th = dict(zip(NAMES, map(float, theta), strict=True))
@@ -150,25 +178,7 @@ def mechanism(theta: np.ndarray) -> np.ndarray:
             s, data.r_s, data.x_ls, data.x_m, data.r_r, data.x_lr, th["w_r"], kp, ki
         )
 
-    # Impedance model of step 05: all roots of the loop impedance as polynomials. Unlike
-    # the resonance search below it has an answer in every case. Of the modes between 2
-    # and 58 Hz in the rotating frame, the least damped is taken.
-    z_poly = circuit.parallel(
-        circuit.branch(net["r_e"], net["x_e"], net["x_c"]), circuit.branch(net["r_p"], net["x_p"])
-    ) + circuit.branch(net["r_t"], net["x_t"])
-    lam = circuit.modes(
-        circuit.dfig_impedance(
-            data.r_s, data.x_ls, data.x_m, data.r_r, data.x_lr, th["w_r"], kp, ki
-        )
-        + z_poly
-    )
-    f_lam = np.abs(lam.imag) / (2 * np.pi)
-    band = np.where((f_lam > 2.0) & (f_lam < 58.0))[0]
-    if band.size:
-        top = band[np.argmax(lam.real[band])]
-        imp = [float(lam.real[top]), float(f_lam[top])]
-    else:
-        imp = [0.0, 0.0]
+    imp = list(impedance_root(theta, net))
 
     try:
         # Stay clear of synchronous frequency, where integral action adds crossings.
@@ -187,12 +197,15 @@ def mechanism(theta: np.ndarray) -> np.ndarray:
 N_STATE = 25
 
 
-def operating_point(theta: np.ndarray) -> tuple[DFIGMeshed, torch.Tensor, dict]:
+def operating_point(
+    theta: np.ndarray, net: dict | None = None
+) -> tuple[DFIGMeshed, torch.Tensor, dict]:
     """The full model of one case with its steady state and parameter dictionary.
-    Raises ValueError if the steady state is not found."""
+    Raises ValueError if the steady state is not found. `net` replaces the network of
+    the case."""
     th = dict(zip(NAMES, map(float, theta), strict=True))
     data = replace(IGData(), r_r=th["r_r"])
-    net = _network(th, data)
+    net = _network(th, data) if net is None else dict(net)
     ctl = Controls(rsc_hz=th["rsc_hz"], pll_hz=th["pll_hz"], ff=th["ff"],
                    outer_hz=th["outer_ratio"] * th["rsc_hz"])  # fmt: skip
     model = DFIGMeshed(data=data, controls=ctl)
