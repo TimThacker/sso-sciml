@@ -52,7 +52,8 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 |---|---|---|
 | Impedance model (polynomial roots) against state-space eigenvalues, current-loop model, radial network | all four modes within 2.3e-8 on 27 cases | step 05, `test_impedance_roots_equal_state_space_eigenvalues` |
 | Impedance model against full controls | **Open.** The impedance model has no phase-locked loop or outer loops |
-| Second time-domain implementation in the abc frame, or an electromagnetic-transient tool | **Open** |
+| Second time-domain implementation in phase coordinates (NumPy, trapezoidal) against the D-Q model, current-loop model | growth rates within 0.00014 1/s on four cases; trajectories within 0.094 % of the largest excursion; order 2.00 | step 07, `test_growth_rate_from_phase_current_matches_the_eigenvalue` |
+| Second time-domain implementation of the full controls, or an electromagnetic-transient tool | **Open** |
 | Impedance model against the time-domain model on networks with plant impedance and a parallel path, added loops off | within 0.0005 1/s on four networks and three speeds | step 05, `test_controls_off_matches_the_impedance_model_on_the_meshed_network` |
 | Meshed-network model reduces to the radial model | 1e-5 1/s | step 05 |
 | Compensation step on the meshed network, growth against eigenvalue | 1.613 against 1.616 1/s | step 05 |
@@ -69,7 +70,7 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 | Rotor speed held against free | Done: at most 0.9 points of compensation (B1), +0.5 1/s (B2) |
 | Network resistance, plant impedance, parallel path, units online | Done with the impedance model; plant impedance and parallel path confirmed in the time-domain model (step 05) |
 | Voltage feed-forward on the grid-side converter | Done (step 04) |
-| Time step; trapezoidal against RK4 | Done on System B2 (step 06): RK4 within 0.01 1/s up to 2 ms, trapezoidal up to 1 ms, in the rotating frame. Order study on System A |
+| Time step; trapezoidal against RK4 | Done on System B2 (step 06): RK4 within 0.01 1/s up to 2 ms, trapezoidal up to 1 ms, in the rotating frame. Trapezoidal in phase coordinates: up to 0.2 ms (step 07). Order study on System A |
 | Dropping stator and network transients | Done on the linearised model (step 06): the sub-synchronous mode disappears; all 28 unstable cases in 54 are reported stable; slow modes kept within 0.41 1/s in stable cases |
 | Aggregation of unequal units into one machine | **Open.** Equal units scaled together is done (units online) |
 | Saturation, limits, switching | **Open**, out of scope for now |

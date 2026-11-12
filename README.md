@@ -48,6 +48,8 @@ A second formulation, loop impedance as polynomials with no state vector, reprod
 
 With stator and network transients dropped, as in a positive-sequence stability tool, the sub-synchronous mode does not exist in the model: of 54 cases, 28 are unstable and all 28 are reported stable, with growth rates up to 28 1/s missed. Keeping the inductances dynamic but fixing the capacitor at its 60 Hz reactance gives a mode 9 to 14 Hz off. Details in [docs/steps/06-assumption-studies.md](docs/steps/06-assumption-studies.md).
 
+A second time-domain implementation, in phase a, b, c quantities with the trapezoidal rule and no shared equations, gives the same growth rates within 0.00014 1/s and shows the oscillation at 60 Hz minus its rotating-frame frequency, as it should. Details in [docs/steps/07-phase-coordinates.md](docs/steps/07-phase-coordinates.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -79,6 +81,7 @@ uv run pytest
 | Reproduce the network study | `uv run scripts/phase2_network.py` |
 | Reproduce its time-domain confirmation | `uv run scripts/phase2_meshed.py` |
 | Reproduce the assumption studies | `uv run scripts/phase2_assumptions.py` |
+| Reproduce the phase-coordinate cross-check | `uv run scripts/phase2_abc.py` |
 
 ## Licence
 

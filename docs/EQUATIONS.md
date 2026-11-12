@@ -1,6 +1,6 @@
 # Equations and conventions
 
-Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 to 17 cover the induction generator, the energy accounting, the doubly-fed machine (current loop only, then full controls), the impedance formulation and the meshed network added in Phase 2. Code references are to `src/sso_sciml/`.
+Sections 1 to 11 cover Phase 1: the series-compensated line, the synchronous machine, the multi-mass shaft, and the two hand calculations (slip and damping torque) that the dynamic model is checked against. Sections 12 to 18 cover the induction generator, the energy accounting, the doubly-fed machine (current loop only, then full controls), the impedance formulation, the meshed network and the phase-coordinate model added in Phase 2. Code references are to `src/sso_sciml/`.
 
 ## 1. Per-unit system and time
 
@@ -501,3 +501,33 @@ solved numerically at each evaluation. Stator flux for the torque: `ψ_s = λ1 +
 Steady state: both branches end at the infinite bus, so the network seen from the terminals is `v_b` behind `Z = R_t + jX_t + Z_c Z_p / (Z_c + Z_p)` with `Z_c = R_E + j(X_E − X_C)` and `Z_p = R_p + jX_p`. Then `i_c = i_L Z_p / (Z_c + Z_p)`, and the rest follows section 15.
 
 State vector: the 23 states of section 15 plus `μ_D, μ_Q`.
+
+## 18. Current-loop model in phase coordinates
+
+Implemented in `physics/dfig_abc.py` as a check on section 14. Each quantity is a vector of phase a, b, c values in the stationary frame. With `θ = wb t` and phase offsets `φ = (0, 2π/3, −2π/3)`:
+
+```
+x_phase,k = x_D cos(θ − φ_k) − x_Q sin(θ − φ_k)
+x_D =  (2/3) Σ_k x_phase,k cos(θ − φ_k)
+x_Q = −(2/3) Σ_k x_phase,k sin(θ − φ_k)
+```
+
+The rotating-frame terms `−jψ` of section 14 disappear from the stator and capacitor equations. The rotor flux, referred to the stationary frame, keeps a speed term:
+
+```
+(1/wb) dψ_s/dt = v_b cos(θ − φ) + v_c + (R_s + R_E) i
+(1/wb) dψ_r/dt = v_r − R_r i_r + ω_r J ψ_r
+(1/wb) dv_c/dt = X_C i
+```
+
+`J = (1/√3) [[0, −1, 1], [1, 0, −1], [−1, 1, 0]]` is a 90° rotation of the space vector written in phase values. Currents follow from fluxes phase by phase with the same reactances as section 12.
+
+The controller works in the synchronous frame: it turns `i_r` into D and Q with the angle `θ`, applies `v_r = v_ff + Kp (i_ref − i_r) + Ki x` with `dx/dt = i_ref − i_r`, and turns `v_r` back into phase values. The system is therefore linear with periodic coefficients, `dx/dt = A(t) x + b(t)`.
+
+Integration is by the trapezoidal rule:
+
+```
+(I − h/2 A_{n+1}) x_{n+1} = (I + h/2 A_n) x_n + h/2 (b_n + b_{n+1})
+```
+
+A mode at frequency `f` in the rotating frame appears at `f0 − f` in a phase quantity.

@@ -1,0 +1,124 @@
+{
+  "event": {
+    "k_from": 0.4,
+    "k_to": 0.5,
+    "t_end_s": 0.6
+  },
+  "cases": [
+    {
+      "w_r": 0.75,
+      "loop_hz": 10.0,
+      "sigma_eigenvalue": 20.542886613064873,
+      "f_dq_hz": 26.979050399078382,
+      "f_phase_expected_hz": 33.02094960092162,
+      "sigma_phase_waveform": 20.542744610896804,
+      "f_phase_waveform_hz": 33.02087745119396,
+      "max_state_difference_pu": 9.22700563997796,
+      "largest_excursion_pu": 12080.771566776739,
+      "relative_state_difference": 0.0007637761867257797,
+      "zero_sequence_max": 1.445187081117183e-09
+    },
+    {
+      "w_r": 1.0,
+      "loop_hz": 10.0,
+      "sigma_eigenvalue": 8.636846288200317,
+      "f_dq_hz": 25.33476055048549,
+      "f_phase_expected_hz": 34.66523944951451,
+      "sigma_phase_waveform": 8.63678035531316,
+      "f_phase_waveform_hz": 34.665153623013175,
+      "max_state_difference_pu": 0.007836032503746981,
+      "largest_excursion_pu": 12.264178263483174,
+      "relative_state_difference": 0.0006389366116015224,
+      "zero_sequence_max": 3.3075764349632664e-12
+    },
+    {
+      "w_r": 1.2,
+      "loop_hz": 10.0,
+      "sigma_eigenvalue": 3.7517489590604427,
+      "f_dq_hz": 25.15042621858589,
+      "f_phase_expected_hz": 34.84957378141411,
+      "sigma_phase_waveform": 3.7517201383169554,
+      "f_phase_waveform_hz": 34.84948636833253,
+      "max_state_difference_pu": 0.00038574950356184967,
+      "largest_excursion_pu": 0.6609698721761361,
+      "relative_state_difference": 0.0005836113260228215,
+      "zero_sequence_max": 2.3780977187470853e-13
+    },
+    {
+      "w_r": 1.0,
+      "loop_hz": 3.0,
+      "sigma_eigenvalue": -0.6131797605955214,
+      "f_dq_hz": 25.121060149718247,
+      "f_phase_expected_hz": 34.87893985028175,
+      "sigma_phase_waveform": -0.6131752501516592,
+      "f_phase_waveform_hz": 34.87885239268764,
+      "max_state_difference_pu": 0.0001270006008732838,
+      "largest_excursion_pu": 0.135176740003489,
+      "relative_state_difference": 0.0009395151922587113,
+      "zero_sequence_max": 8.737455203799982e-14
+    }
+  ],
+  "max_relative_state_difference": 0.0009395151922587113,
+  "max_sigma_difference": 0.00014200216806870003,
+  "trapezoidal": {
+    "rows": [
+      {
+        "dt_s": 2.5e-05,
+        "max_state_difference_pu": 0.007836032503746981,
+        "relative_state_difference": 0.0006389366116015224,
+        "sigma_error": -6.59328871570608e-05,
+        "f_error_hz": -8.58265013334858e-05,
+        "sigma_error_predicted_phase_frame": -6.398710845800792e-05,
+        "sigma_error_predicted_rotating_frame": -3.41617829562324e-05,
+        "wall_s": 2.178402899997309
+      },
+      {
+        "dt_s": 5e-05,
+        "max_state_difference_pu": 0.031343398589342986,
+        "relative_state_difference": 0.0025556868072171258,
+        "sigma_error": -0.00026372551194953076,
+        "f_error_hz": -0.0003433014287637093,
+        "sigma_error_predicted_phase_frame": -0.0002559427446637841,
+        "sigma_error_predicted_rotating_frame": -0.00013664549621950073,
+        "wall_s": 1.0943155999993905
+      },
+      {
+        "dt_s": 0.0001,
+        "max_state_difference_pu": 0.12536121760765173,
+        "relative_state_difference": 0.010221738049985555,
+        "sigma_error": -0.001054805453328811,
+        "f_error_hz": -0.0013731325027137586,
+        "sigma_error_predicted_phase_frame": -0.0010236801614329494,
+        "sigma_error_predicted_rotating_frame": -0.0005465561564381716,
+        "wall_s": 0.5490529000016977
+      },
+      {
+        "dt_s": 0.0002,
+        "max_state_difference_pu": 0.5011975416495167,
+        "relative_state_difference": 0.040866785436562185,
+        "sigma_error": -0.004217677091444827,
+        "f_error_hz": -0.005491358988301442,
+        "sigma_error_predicted_phase_frame": -0.00409326824250833,
+        "sigma_error_predicted_rotating_frame": -0.0021858112924633133,
+        "wall_s": 0.28849340000306256
+      },
+      {
+        "dt_s": 0.0005,
+        "max_state_difference_pu": 3.1080770137178644,
+        "relative_state_difference": 0.25342725349746614,
+        "sigma_error": -0.026293099500115602,
+        "f_error_hz": -0.034269865150385215,
+        "sigma_error_predicted_phase_frame": -0.02551956313662096,
+        "sigma_error_predicted_rotating_frame": -0.013643264354675111,
+        "wall_s": 0.10843089999980293
+      }
+    ],
+    "observed_order_50_to_100_us": 1.9998575716286204,
+    "observed_order_100_to_200_us": 1.9992882407349093,
+    "largest_dt_within_0p01": 0.0002
+  },
+  "steady_state_departure_pu": {
+    "50_us": 0.0005348382528405082,
+    "25_us": 0.00013369676984598122
+  }
+}

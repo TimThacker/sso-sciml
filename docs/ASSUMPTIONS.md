@@ -4,7 +4,7 @@ One row per modelling assumption: what it affects, how it was tested, and what t
 
 | ID | Assumption | Affects | Test | Result |
 |---|---|---|---|---|
-| A1 | Balanced three-phase conditions; dq model with no zero sequence | Everything. Unbalanced faults cannot be studied | Not tested. Needs the abc-frame model planned for Phase 2 | Open |
+| A1 | Balanced three-phase conditions; dq model with no zero sequence | Everything. Unbalanced faults cannot be studied | Step 07 wrote the current-loop model in phase coordinates and ran a balanced event | The D-Q equations hold for balanced conditions: growth rates within 0.00014 1/s, zero sequence below 2e-9 pu. Unbalanced conditions still not studied |
 | A2 | Stator and network flux transients are kept | Existence of the sub-synchronous mode | `test_series_rlc_modes_appear_at_f0_minus_and_plus_fer`: the network block gives modes at `f0 ± f_er` with decay `R wb / 2X`. Step 06 removed the transients from the linearised System B2 | Holds to 0.02 Hz and 0.2 %. Without them the sub-synchronous mode does not exist: 28 unstable cases of 54 all reported stable, growth up to 28 1/s missed. Required |
 | A3 | Line is a lumped series R-L-C; no shunt capacitance, no frequency dependence of R | Resonant frequency and network damping | Not tested. A distributed-line comparison belongs in Phase 2 | Open |
 | A4 | Machine circuit parameters from the classical conversion of standard parameters | Rotor resistances, and through them the negative resistance and all damping | Reactances checked at the limits `X(0)` and `X(∞)`. Time constants not compared with the exact conversion | Reactances exact. Time-constant error not quantified |
