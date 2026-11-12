@@ -1,0 +1,707 @@
+{
+  "step": 0.1,
+  "range": {
+    "pll": [
+      -0.8,
+      0.2
+    ],
+    "follow": [
+      0.65,
+      1.0
+    ]
+  },
+  "plants": {
+    "converter with PLL": {
+      "cases": 11264,
+      "stable_intact": 10993,
+      "outages": {
+        "parallel path out": {
+          "cases": 10964,
+          "unstable_after": 553,
+          "u_move_quantiles": [
+            0.002804719473096122,
+            0.03275198504667734,
+            0.08303289712505704,
+            0.4311555408181921
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 4.7649273320349295e-05,
+              "near_boundary_error_p95": 0.06548109392030713,
+              "near_boundary_error_p99": 0.503634073511891,
+              "cleared": 0.9506566946369938,
+              "unstable_cleared": 14,
+              "stable_flagged": 2
+            },
+            "two": {
+              "near_boundary_error_median": 1.0092515891013676e-05,
+              "near_boundary_error_p95": 0.0022166888481708127,
+              "near_boundary_error_p99": 0.018586664160648504,
+              "cleared": 0.9495622035753375,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "three": {
+              "near_boundary_error_median": 1.4030230022221701e-07,
+              "near_boundary_error_p95": 0.00036962003294158704,
+              "near_boundary_error_p99": 0.003490633361454388,
+              "cleared": 0.9495622035753375,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib3": {
+              "near_boundary_error_median": 0.00018139122056659573,
+              "near_boundary_error_p95": 0.01925028448581792,
+              "near_boundary_error_p99": 0.1777837036285595,
+              "cleared": 0.9495622035753375,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib5": {
+              "near_boundary_error_median": 8.496585792072686e-05,
+              "near_boundary_error_p95": 0.008874736021552844,
+              "near_boundary_error_p99": 0.12707996639107905,
+              "cleared": 0.9495622035753375,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "exact": {
+              "near_boundary_error_median": 2.386468800352759e-11,
+              "near_boundary_error_p95": 8.873953660781826e-09,
+              "near_boundary_error_p99": 1.0201359976513673e-06,
+              "cleared": 0.9495622035753375,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          },
+          "error_p95_by_move": {
+            "reuse": [
+              0.020235590811513493,
+              0.13409977117266192,
+              0.44925958338857996,
+              1.6570502644974483,
+              4.3406351328359625,
+              null
+            ],
+            "two": [
+              0.002232389923527478,
+              0.002183019939699183,
+              0.0023631178067035075,
+              0.0007217556769580463,
+              0.0014518279621750004,
+              null
+            ],
+            "three": [
+              0.000396277808603962,
+              0.0004127512096711252,
+              0.0002760911851531489,
+              0.00012203749635894927,
+              8.357555698727888e-05,
+              null
+            ],
+            "lib3": [
+              0.020596898859667867,
+              0.014042605260127884,
+              0.01701867858305217,
+              0.006339896523450183,
+              0.008845516489709613,
+              null
+            ],
+            "lib5": [
+              0.009554097378029036,
+              0.008019081302688944,
+              0.005396502855309904,
+              0.003032179718575643,
+              0.0027288226277742073,
+              null
+            ],
+            "exact": [
+              1.0498393265834238e-08,
+              7.221737163831687e-09,
+              4.252949881156098e-09,
+              4.67903935597036e-09,
+              1.1693724855099672e-08,
+              null
+            ]
+          },
+          "move_edges": [
+            0.0,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.2,
+            1.0
+          ]
+        },
+        "one of two parallel circuits out": {
+          "cases": 10992,
+          "unstable_after": 136,
+          "u_move_quantiles": [
+            0.0012141850038616198,
+            0.012613543652008313,
+            0.0331763011633938,
+            0.31820472204421346
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 7.315533154583775e-06,
+              "near_boundary_error_p95": 0.009012842454433699,
+              "near_boundary_error_p99": 0.2355942381403035,
+              "cleared": 0.988264192139738,
+              "unstable_cleared": 9,
+              "stable_flagged": 2
+            },
+            "two": {
+              "near_boundary_error_median": 8.784726002075693e-06,
+              "near_boundary_error_p95": 0.002444899309090944,
+              "near_boundary_error_p99": 0.018525463437978826,
+              "cleared": 0.987627365356623,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "three": {
+              "near_boundary_error_median": 2.6097485528175923e-07,
+              "near_boundary_error_p95": 0.00028789534461854863,
+              "near_boundary_error_p99": 0.0029200379096134647,
+              "cleared": 0.987627365356623,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib3": {
+              "near_boundary_error_median": 0.00010768748273770612,
+              "near_boundary_error_p95": 0.012753333125114924,
+              "near_boundary_error_p99": 0.1890225709929639,
+              "cleared": 0.987627365356623,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib5": {
+              "near_boundary_error_median": 6.666423978174407e-05,
+              "near_boundary_error_p95": 0.010052005106398485,
+              "near_boundary_error_p99": 0.15304602034456574,
+              "cleared": 0.987627365356623,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "exact": {
+              "near_boundary_error_median": 8.389111627593593e-11,
+              "near_boundary_error_p95": 1.1794960030897454e-08,
+              "near_boundary_error_p99": 1.938873957305641e-06,
+              "cleared": 0.987627365356623,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          }
+        },
+        "half the capacitor out": {
+          "cases": 10993,
+          "unstable_after": 41,
+          "u_move_quantiles": [
+            0.004032012372136781,
+            0.04202225503947546,
+            0.0949264633466876,
+            0.30999857329823466
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 2.2468564232269728e-05,
+              "near_boundary_error_p95": 0.014607011473197352,
+              "near_boundary_error_p99": 0.19585857337390805,
+              "cleared": 0.9966342217774947,
+              "unstable_cleared": 5,
+              "stable_flagged": 1
+            },
+            "two": {
+              "near_boundary_error_median": 1.5271888741175133e-05,
+              "near_boundary_error_p95": 0.0030715752960972513,
+              "near_boundary_error_p99": 0.01820690310947842,
+              "cleared": 0.9962703538615483,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "three": {
+              "near_boundary_error_median": 8.08518067607622e-07,
+              "near_boundary_error_p95": 0.0007064042651155265,
+              "near_boundary_error_p99": 0.0056330636388536425,
+              "cleared": 0.9962703538615483,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib3": {
+              "near_boundary_error_median": 9.945335671446287e-05,
+              "near_boundary_error_p95": 0.009047890365132538,
+              "near_boundary_error_p99": 0.16682929514754077,
+              "cleared": 0.9962703538615483,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib5": {
+              "near_boundary_error_median": 5.133353809405605e-05,
+              "near_boundary_error_p95": 0.00812082263098937,
+              "near_boundary_error_p99": 0.20831582015368366,
+              "cleared": 0.9961793868825616,
+              "unstable_cleared": 0,
+              "stable_flagged": 1
+            },
+            "exact": {
+              "near_boundary_error_median": 7.410072555558145e-11,
+              "near_boundary_error_p95": 9.895234676093885e-09,
+              "near_boundary_error_p99": 2.4552851335002447e-06,
+              "cleared": 0.9962703538615483,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          }
+        },
+        "half the units out": {
+          "cases": 10993,
+          "unstable_after": 0,
+          "u_move_quantiles": [
+            0.010795159709259948,
+            0.046709509379784284,
+            0.10833784603226408,
+            0.24345669095609457
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 3.263721951896059e-05,
+              "near_boundary_error_p95": 0.001249124612246552,
+              "near_boundary_error_p99": 0.011301599687065147,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "two": {
+              "near_boundary_error_median": 3.4857086281370186e-05,
+              "near_boundary_error_p95": 0.0076064956111010435,
+              "near_boundary_error_p99": 0.1075661269849154,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "three": {
+              "near_boundary_error_median": 3.5925618719900854e-06,
+              "near_boundary_error_p95": 0.0026265954411354804,
+              "near_boundary_error_p99": 0.01406230721903348,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib3": {
+              "near_boundary_error_median": 6.02433732388441e-05,
+              "near_boundary_error_p95": 0.014793908574982105,
+              "near_boundary_error_p99": 0.203862674155747,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib5": {
+              "near_boundary_error_median": 5.8245699389725125e-05,
+              "near_boundary_error_p95": 0.015333308783825076,
+              "near_boundary_error_p99": 0.2770834307190724,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "exact": {
+              "near_boundary_error_median": 1.6302736938200724e-10,
+              "near_boundary_error_p95": 3.1331623340236023e-08,
+              "near_boundary_error_p99": 0.0003599436683684223,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          }
+        }
+      },
+      "u_before_quantiles": [
+        -0.19456540781532225,
+        0.014285656418987065,
+        0.10815087225356956
+      ],
+      "all outages": {
+        "cases": 43942,
+        "unstable_after": 730,
+        "methods": {
+          "reuse": {
+            "cleared": 0.983910609439716,
+            "unstable_cleared": 28,
+            "wrong": 33
+          },
+          "two": {
+            "cleared": 0.9833871922079104,
+            "unstable_cleared": 0,
+            "wrong": 0
+          },
+          "three": {
+            "cleared": 0.9833871922079104,
+            "unstable_cleared": 0,
+            "wrong": 0
+          },
+          "lib3": {
+            "cleared": 0.9833871922079104,
+            "unstable_cleared": 0,
+            "wrong": 0
+          },
+          "lib5": {
+            "cleared": 0.9833644349369624,
+            "unstable_cleared": 0,
+            "wrong": 1
+          },
+          "exact": {
+            "cleared": 0.9833871922079104,
+            "unstable_cleared": 0,
+            "wrong": 0
+          }
+        }
+      }
+    },
+    "converter without PLL": {
+      "cases": 3632,
+      "stable_intact": 3005,
+      "outages": {
+        "parallel path out": {
+          "cases": 2926,
+          "unstable_after": 372,
+          "u_move_quantiles": [
+            0.004795826881476117,
+            0.058776369217844654,
+            0.11806564630817235,
+            0.2726176073960388
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 0.0049952819436572815,
+              "near_boundary_error_p95": 1.4079765703083287,
+              "near_boundary_error_p99": 4.326329347858641,
+              "cleared": 0.8954203691045797,
+              "unstable_cleared": 66,
+              "stable_flagged": 0
+            },
+            "two": {
+              "near_boundary_error_median": 0.0024423964598477843,
+              "near_boundary_error_p95": 0.1981578877902369,
+              "near_boundary_error_p99": 0.5261161869810858,
+              "cleared": 0.8749145591250854,
+              "unstable_cleared": 7,
+              "stable_flagged": 1
+            },
+            "three": {
+              "near_boundary_error_median": 0.0014334755844546132,
+              "near_boundary_error_p95": 0.05864959714156872,
+              "near_boundary_error_p99": 0.19873885164889657,
+              "cleared": 0.8735475051264525,
+              "unstable_cleared": 2,
+              "stable_flagged": 0
+            },
+            "lib3": {
+              "near_boundary_error_median": 0.015880880785297036,
+              "near_boundary_error_p95": 0.7902883482782,
+              "near_boundary_error_p99": 1.9039011660004956,
+              "cleared": 0.8773069036226931,
+              "unstable_cleared": 22,
+              "stable_flagged": 9
+            },
+            "lib5": {
+              "near_boundary_error_median": 0.005264966369309398,
+              "near_boundary_error_p95": 0.2358315766245632,
+              "near_boundary_error_p99": 0.81140700543895,
+              "cleared": 0.8766233766233766,
+              "unstable_cleared": 12,
+              "stable_flagged": 1
+            },
+            "exact": {
+              "near_boundary_error_median": 9.0987439804735e-11,
+              "near_boundary_error_p95": 5.121538322327971e-08,
+              "near_boundary_error_p99": 1.369776667248207e-06,
+              "cleared": 0.872863978127136,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          },
+          "error_p95_by_move": {
+            "reuse": [
+              0.14520390375176528,
+              0.8209206603999529,
+              2.0477825448046976,
+              4.283766517270023,
+              8.080240555726185,
+              null
+            ],
+            "two": [
+              0.08091407602735533,
+              0.20338251588887069,
+              0.30848417637490566,
+              0.2482159007192041,
+              0.7819367873837952,
+              null
+            ],
+            "three": [
+              0.042786675862347315,
+              0.05752305754285555,
+              0.06488185078621808,
+              0.0705590061365679,
+              0.2375687364316602,
+              null
+            ],
+            "lib3": [
+              0.658154234862253,
+              0.726281214981827,
+              0.808503260367093,
+              0.7855908705402322,
+              0.9731994592069709,
+              null
+            ],
+            "lib5": [
+              0.25636170775872175,
+              0.1844424177945206,
+              0.18618676846432974,
+              0.27163620013782475,
+              0.20242662781051546,
+              null
+            ],
+            "exact": [
+              9.523964847879532e-08,
+              3.718853207601567e-08,
+              2.262032889888122e-08,
+              1.452183284733619e-08,
+              4.079284716684834e-08,
+              null
+            ]
+          },
+          "move_edges": [
+            0.0,
+            0.01,
+            0.02,
+            0.05,
+            0.1,
+            0.2,
+            1.0
+          ]
+        },
+        "one of two parallel circuits out": {
+          "cases": 2985,
+          "unstable_after": 150,
+          "u_move_quantiles": [
+            0.0020419248974313797,
+            0.0233151849892329,
+            0.062350456892534246,
+            0.16661076023303434
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 0.0005027222251983154,
+              "near_boundary_error_p95": 0.6570432302952203,
+              "near_boundary_error_p99": 2.271490413395582,
+              "cleared": 0.9631490787269682,
+              "unstable_cleared": 40,
+              "stable_flagged": 0
+            },
+            "two": {
+              "near_boundary_error_median": 0.0009522545763770429,
+              "near_boundary_error_p95": 0.13422434305488032,
+              "near_boundary_error_p99": 0.3165852797958793,
+              "cleared": 0.9487437185929648,
+              "unstable_cleared": 1,
+              "stable_flagged": 4
+            },
+            "three": {
+              "near_boundary_error_median": 0.0008124604619761232,
+              "near_boundary_error_p95": 0.0542916565051195,
+              "near_boundary_error_p99": 0.17034132019977663,
+              "cleared": 0.9490787269681742,
+              "unstable_cleared": 0,
+              "stable_flagged": 2
+            },
+            "lib3": {
+              "near_boundary_error_median": 0.0035344760277324916,
+              "near_boundary_error_p95": 0.5899794148680974,
+              "near_boundary_error_p99": 1.2214822473974605,
+              "cleared": 0.9457286432160804,
+              "unstable_cleared": 4,
+              "stable_flagged": 16
+            },
+            "lib5": {
+              "near_boundary_error_median": 0.0015638076648389898,
+              "near_boundary_error_p95": 0.15764161420158163,
+              "near_boundary_error_p99": 0.4061053001597758,
+              "cleared": 0.9484087102177554,
+              "unstable_cleared": 2,
+              "stable_flagged": 6
+            },
+            "exact": {
+              "near_boundary_error_median": 2.0826584901101342e-10,
+              "near_boundary_error_p95": 8.648828804247395e-08,
+              "near_boundary_error_p99": 2.2243774714016216e-05,
+              "cleared": 0.949748743718593,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          }
+        },
+        "half the capacitor out": {
+          "cases": 2930,
+          "unstable_after": 173,
+          "u_move_quantiles": [
+            0.0011505189335750399,
+            0.0316623861437856,
+            0.09962651403288032,
+            0.1815167021797396
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 0.0002061985932497734,
+              "near_boundary_error_p95": 1.0129757262079704,
+              "near_boundary_error_p99": 4.0839785163341356,
+              "cleared": 0.9549488054607509,
+              "unstable_cleared": 41,
+              "stable_flagged": 0
+            },
+            "two": {
+              "near_boundary_error_median": 0.0005781606728678668,
+              "near_boundary_error_p95": 0.11998624984256698,
+              "near_boundary_error_p99": 0.3857022347650912,
+              "cleared": 0.9406143344709897,
+              "unstable_cleared": 0,
+              "stable_flagged": 1
+            },
+            "three": {
+              "near_boundary_error_median": 0.0005067408733538947,
+              "near_boundary_error_p95": 0.05339506459352483,
+              "near_boundary_error_p99": 0.1569323504049871,
+              "cleared": 0.9406143344709897,
+              "unstable_cleared": 0,
+              "stable_flagged": 1
+            },
+            "lib3": {
+              "near_boundary_error_median": 0.002241628792462258,
+              "near_boundary_error_p95": 0.5049949679853079,
+              "near_boundary_error_p99": 0.9994348248410889,
+              "cleared": 0.9378839590443686,
+              "unstable_cleared": 0,
+              "stable_flagged": 9
+            },
+            "lib5": {
+              "near_boundary_error_median": 0.0009342977183957046,
+              "near_boundary_error_p95": 0.12174018703413281,
+              "near_boundary_error_p99": 0.27975955915647277,
+              "cleared": 0.9402730375426621,
+              "unstable_cleared": 0,
+              "stable_flagged": 2
+            },
+            "exact": {
+              "near_boundary_error_median": 2.0289769864234586e-10,
+              "near_boundary_error_p95": 8.064782974770424e-08,
+              "near_boundary_error_p99": 2.7105410509875453e-06,
+              "cleared": 0.9409556313993174,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          }
+        },
+        "half the units out": {
+          "cases": 3005,
+          "unstable_after": 0,
+          "u_move_quantiles": [
+            0.01042600190535492,
+            0.07313795503414457,
+            0.1260238183086919,
+            0.2107178468281189
+          ],
+          "methods": {
+            "reuse": {
+              "near_boundary_error_median": 0.0004076428662802556,
+              "near_boundary_error_p95": 0.1455150703396882,
+              "near_boundary_error_p99": 0.9106181910632225,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "two": {
+              "near_boundary_error_median": 0.0006148776313805726,
+              "near_boundary_error_p95": 0.3769787644200578,
+              "near_boundary_error_p99": 1.4946717843405493,
+              "cleared": 0.9986688851913478,
+              "unstable_cleared": 0,
+              "stable_flagged": 4
+            },
+            "three": {
+              "near_boundary_error_median": 0.00030100417200795704,
+              "near_boundary_error_p95": 0.08942795362833253,
+              "near_boundary_error_p99": 0.33082376701903604,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib3": {
+              "near_boundary_error_median": 0.0005099018137686429,
+              "near_boundary_error_p95": 0.2633489482428888,
+              "near_boundary_error_p99": 0.939295086024292,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "lib5": {
+              "near_boundary_error_median": 0.00026400333605192117,
+              "near_boundary_error_p95": 0.06644300146738835,
+              "near_boundary_error_p99": 0.20835238503953288,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            },
+            "exact": {
+              "near_boundary_error_median": 8.134612983212719e-10,
+              "near_boundary_error_p95": 1.9312908832169756e-07,
+              "near_boundary_error_p99": 0.034653653295624684,
+              "cleared": 1.0,
+              "unstable_cleared": 0,
+              "stable_flagged": 0
+            }
+          }
+        }
+      },
+      "u_before_quantiles": [
+        0.7207940750132176,
+        0.9778614930024432,
+        0.9973567890950943
+      ],
+      "all outages": {
+        "cases": 11846,
+        "unstable_after": 695,
+        "methods": {
+          "reuse": {
+            "cleared": 0.9537396589566098,
+            "unstable_cleared": 147,
+            "wrong": 147
+          },
+          "two": {
+            "cleared": 0.941161573526929,
+            "unstable_cleared": 8,
+            "wrong": 18
+          },
+          "three": {
+            "cleared": 0.9412459902076651,
+            "unstable_cleared": 2,
+            "wrong": 5
+          },
+          "lib3": {
+            "cleared": 0.9406550734425122,
+            "unstable_cleared": 26,
+            "wrong": 60
+          },
+          "lib5": {
+            "cleared": 0.9417524902920817,
+            "unstable_cleared": 14,
+            "wrong": 23
+          },
+          "exact": {
+            "cleared": 0.9413304068884012,
+            "unstable_cleared": 0,
+            "wrong": 0
+          }
+        }
+      }
+    }
+  }
+}

@@ -184,6 +184,17 @@ Details in [docs/steps/24-noise-and-ranges.md](docs/steps/24-noise-and-ranges.md
 
 Details in [docs/steps/25-outages.md](docs/steps/25-outages.md).
 
+### A converter across outages: two or three scans, not one per outage
+
+![Unstable cases cleared, by method](docs/results/network/fig65_operating_point.png)
+
+- **At a given power the converter's admittance depends on one more number:** its reactive current if it has a phase-locked loop, its terminal voltage if it has not. A scan retaken at that number after an outage is exact.
+- **With a phase-locked loop two scans 0.1 pu apart and a straight line are enough:** no wrong verdict in 43,942 outage cases, where reusing one scan clears 28 unstable ones.
+- **Without one, three scans and a parabola clear 2 unstable cases of 695,** against 147 for one scan.
+- **The power flow after each outage supplies the one number.** Nothing else has to be recomputed on the plant side.
+
+Details in [docs/steps/26-operating-point.md](docs/steps/26-operating-point.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -230,6 +241,7 @@ uv run pytest
 | Reproduce the screen at the ends of the network ranges | `uv run scripts/network_corners.py` |
 | Reproduce scan noise and network ranges together (about 25 minutes) | `uv run scripts/noise_and_ranges.py` |
 | Reproduce the outage study (about 20 minutes) | `uv run scripts/outages.py` |
+| Reproduce the operating-point study (about 20 minutes) | `uv run scripts/operating_point.py` |
 
 ## Licence
 
