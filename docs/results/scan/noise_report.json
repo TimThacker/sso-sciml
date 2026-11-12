@@ -1,0 +1,101 @@
+{
+  "columns": [
+    "true_slow",
+    "true_sub",
+    "true_fast",
+    "slow_s16_n0",
+    "sub_s16_n0",
+    "fast_s16_n0",
+    "pairs_s16_n0",
+    "states_s16_n0",
+    "residual_s16_n0",
+    "slow_s16_n0.001",
+    "sub_s16_n0.001",
+    "fast_s16_n0.001",
+    "pairs_s16_n0.001",
+    "states_s16_n0.001",
+    "residual_s16_n0.001",
+    "slow_s16_n0.01",
+    "sub_s16_n0.01",
+    "fast_s16_n0.01",
+    "pairs_s16_n0.01",
+    "states_s16_n0.01",
+    "residual_s16_n0.01",
+    "slow_s16_n0.05",
+    "sub_s16_n0.05",
+    "fast_s16_n0.05",
+    "pairs_s16_n0.05",
+    "states_s16_n0.05",
+    "residual_s16_n0.05",
+    "slow_s4_n0.05",
+    "sub_s4_n0.05",
+    "fast_s4_n0.05",
+    "pairs_s4_n0.05",
+    "states_s4_n0.05",
+    "residual_s4_n0.05",
+    "aaa_n1e-06",
+    "aaa_n0.0001",
+    "aaa_n0.001",
+    "aaa_n0.01"
+  ],
+  "every": 4,
+  "sets": {
+    "t1_in_distribution": {
+      "cases": 3277,
+      "wall_s": 402.9271415000112
+    },
+    "t1_boundary": {
+      "cases": 1233,
+      "wall_s": 115.955372299999
+    },
+    "t1_high_compensation": {
+      "cases": 1024,
+      "wall_s": 121.87437579999096
+    },
+    "t1_low_speed": {
+      "cases": 1024,
+      "wall_s": 161.95562849999988
+    },
+    "t1_fast_current_loop": {
+      "cases": 1024,
+      "wall_s": 107.45017650000227
+    },
+    "t1_weak_parallel_path": {
+      "cases": 1024,
+      "wall_s": 76.34151870000642
+    },
+    "t1_other_machine": {
+      "cases": 1024,
+      "wall_s": 126.03348790000018
+    },
+    "pll_in_distribution": {
+      "cases": 8192,
+      "wall_s": 618.2580403000029
+    },
+    "pll_fast_pll": {
+      "cases": 1024,
+      "wall_s": 72.6124514999974
+    },
+    "pll_fast_dc_loop": {
+      "cases": 1024,
+      "wall_s": 74.83332559998962
+    },
+    "pll_very_weak": {
+      "cases": 1024,
+      "wall_s": 87.44779410000774
+    },
+    "follow_in_distribution": {
+      "cases": 2048,
+      "wall_s": 133.10566210000252
+    },
+    "follow_fast_dc_loop": {
+      "cases": 1024,
+      "wall_s": 55.10362069999974
+    },
+    "follow_very_weak": {
+      "cases": 560,
+      "wall_s": 48.56024750000506
+    }
+  },
+  "wall_s_total": 2202.5543557999918
+}

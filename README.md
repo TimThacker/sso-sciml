@@ -120,6 +120,18 @@ Details in [docs/steps/18-one-screen-two-plants.md](docs/steps/18-one-screen-two
 
 Details in [docs/steps/19-rational-fit.md](docs/steps/19-rational-fit.md).
 
+### Noisy scans: a least-squares fit and a margin for each mode
+
+![Margin against cleared share](docs/results/scan/fig52_noise_margin.png)
+
+- **The fit through the points holds only for exact scans.** Noise of one part in a million makes it flag most stable cases.
+- **A least-squares fit of the admittance, closed on the known network, tolerates noise.** In the sub-synchronous band the growth rate is uncertain by about 0.06 1/s per percent of scan error in the median.
+- **A margin sized to the scan error makes it safe.** With 1 % noise a margin of 0.5 1/s clears no unstable case and costs 4 to 8 points of cleared cases. With 5 % noise the margin has to be 5 1/s and about 40 % of cases are cleared.
+- **Accuracy matters more than density.** 126 points at 1 % decide more cases than 501 points at 5 %.
+- **Modes are sorted by frequency, so each gets its own margin.** The slow mode of the doubly-fed plant no longer sets the margin for the resonance. That slow mode is too weakly seen at the terminals to screen from a noisy scan; it has to be checked on the plant alone.
+
+Details in [docs/steps/20-noise-and-modes.md](docs/steps/20-noise-and-modes.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -159,6 +171,8 @@ uv run pytest
 | Reproduce the screens on scans of both plant types | `uv run scripts/scan_screens.py` |
 | Fit rational functions to the scans (about 30 minutes) | `uv run scripts/phase3_fit_scans.py` |
 | Reproduce the rational-fit screen | `uv run scripts/fit_screens.py` |
+| Fit noisy scans by least squares (about 37 minutes) | `uv run scripts/phase3_noise_fits.py` |
+| Reproduce the noise study | `uv run scripts/noise_screens.py` |
 
 ## Licence
 

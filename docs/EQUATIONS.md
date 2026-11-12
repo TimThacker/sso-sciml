@@ -583,3 +583,13 @@ z_d = (z+ + z−)/2       z_q = (z+ − z−)/(2j)
 **Doubly-fed plant as an admittance.** The plant of section 15 on a line of zero impedance is the plant on an ideal voltage. The capacitor voltage then enters the flux equations exactly as a change of terminal voltage does, so the columns of the state matrix for `vc_D`, `vc_Q` are `B`, those two states are dropped, and `C` gives minus the line current. The state is set from the steady state of the case: stator flux, `X_f i_g` and `v_t − V_b` in place of the two loop fluxes and the capacitor voltage.
 
 **Rational fit (step 19).** `D(s) = det(I + Y(s) Z(s))` is a ratio of polynomials. From samples `D(jω_k)` the AAA algorithm builds `r(s) = Σ w_j f_j/(s − s_j) / Σ w_j/(s − s_j)` on a subset `s_j` of the scan points, adding points until `|r − D|` is below a tolerance at all of them. The roots of its numerator are the modes of the system; the largest real part is the growth rate. On noisy data the tolerance is set to the noise level.
+
+**Least-squares fit and closing on the network (step 20).** Each entry of the admittance is fitted as `Y_ij(s) = Σ_m c_ij,m φ_m(s) + d_ij` with partial fractions `φ_m` on poles shared by the four entries. The poles come from the vector-fitting iteration: solve `Σ c φ + d − Y Σ c̃ φ = Y` in the least-squares sense with errors weighted by `1/|Y|`, replace the poles by the zeros of `1 + Σ c̃ φ`, repeat. Each pole `p` then has a 2 × 2 residue `R = U S V^H`, and each singular value is one state: `dx/dt = p x + s v^H v_t`, current `u x`. A state is kept if `s / (|jω_k − p| ‖Y(jω_k)‖)` exceeds three times the noise level at some scan point `ω_k`. The kept plant `dx/dt = A x + B v_t`, `i = C x + D v_t` is closed on the network with unknowns `x`, line current `i_c`, path current `i_p`, capacitor voltage `v_c`, plant-bus voltage `v_m` and `v_t`:
+
+```n(X_E/wb) di_c/dt = v_m − (R_E + X_E J) i_c − v_c        dv_c/dt = wb (X_C i_c − J v_c)
+(X_P/wb) di_p/dt = v_m − (R_P + X_P J) i_p
+0 = i_c + i_p + C x + D v_t
+(X_t/wb) d(i_c + i_p)/dt = v_t − v_m − (R_t + X_t J)(i_c + i_p)
+```
+
+`J = [[0, −1], [1, 0]]`. The modes are the finite generalised eigenvalues of this set.

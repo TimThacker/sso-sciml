@@ -1,0 +1,3216 @@
+{
+  "margins": [
+    0.0,
+    0.2,
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0
+  ],
+  "bands": {
+    "slow": [
+      0.0,
+      2.0
+    ],
+    "sub": [
+      2.0,
+      58.0
+    ],
+    "fast": [
+      58.0,
+      2000.0
+    ]
+  },
+  "plants": {
+    "doubly-fed plant": {
+      "cases": 9630,
+      "fits": {
+        "126 points, clean": {
+          "residual_median": 2.2532907747534956e-14,
+          "states_median": 19.0,
+          "pole_pairs_share": {
+            "12": 1.0
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 9630,
+              "unstable": 285,
+              "fit_has_no_mode": 0,
+              "error_median": 2.0720924975847765e-13,
+              "error_p95": 8.652942251607917e-12,
+              "near_boundary_cases": 9630,
+              "near_boundary_error_median": 2.0720924975847765e-13,
+              "near_boundary_error_p95": 8.652942251607917e-12,
+              "near_boundary_error_p99": 9.702679271139651e-11,
+              "margins": {
+                "0": {
+                  "cleared": 0.9704049844236761,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.8625129802699896,
+                  "stable_cleared": 0.8888175494917068,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.0016614745586708203,
+                  "stable_cleared": 0.0017121455323702514,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2659,
+              "fit_has_no_mode": 0,
+              "error_median": 3.4869884757426917e-12,
+              "error_p95": 2.604988677459137e-09,
+              "near_boundary_cases": 4184,
+              "near_boundary_error_median": 4.342894099895744e-12,
+              "near_boundary_error_p95": 2.836952264773096e-09,
+              "near_boundary_error_p99": 2.320892384274218e-08,
+              "margins": {
+                "0": {
+                  "cleared": 0.723883696780893,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.6531671858774662,
+                  "stable_cleared": 0.9023095682111605,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.6429906542056075,
+                  "stable_cleared": 0.8882513269258356,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.6272066458982347,
+                  "stable_cleared": 0.8664467077894132,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.5924195223260644,
+                  "stable_cleared": 0.818390474824272,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.44953271028037384,
+                  "stable_cleared": 0.6210012910629752,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.09740394600207684,
+                  "stable_cleared": 0.13455745230239563,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "fast": {
+              "cases_with_a_mode": 9630,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 1.1723955140041653e-12,
+              "error_p95": 3.9824739062055307e-10,
+              "near_boundary_cases": 0,
+              "near_boundary_error_median": null,
+              "near_boundary_error_p95": null,
+              "near_boundary_error_p99": null,
+              "margins": {
+                "0": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9325025960539979,
+                  "stable_cleared": 0.9325025960539979,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2944,
+              "fit_has_no_mode": 0,
+              "error_median": 5.892786258954175e-13,
+              "error_p95": 7.559834536152655e-10,
+              "near_boundary_cases": 8513,
+              "near_boundary_error_median": 4.0523140398818214e-13,
+              "near_boundary_error_p95": 2.349944433488451e-10,
+              "near_boundary_error_p99": 7.477694423108069e-09,
+              "margins": {
+                "0": {
+                  "cleared": 0.6942886812045691,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.5241952232606438,
+                  "stable_cleared": 0.7550104696380496,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.0016614745586708203,
+                  "stable_cleared": 0.0023930601256356566,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            }
+          }
+        },
+        "126 points, 0.1 % noise": {
+          "residual_median": 0.0013374006439136378,
+          "states_median": 30.0,
+          "pole_pairs_share": {
+            "8": 0.09740394600207684,
+            "12": 0.9025960539979232
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 9630,
+              "unstable": 285,
+              "fit_has_no_mode": 0,
+              "error_median": 0.008566118856650234,
+              "error_p95": 0.26337807033321503,
+              "near_boundary_cases": 9630,
+              "near_boundary_error_median": 0.008566118856650234,
+              "near_boundary_error_p95": 0.26337807033321503,
+              "near_boundary_error_p99": 0.32347871188677235,
+              "margins": {
+                "0": {
+                  "cleared": 0.9697819314641745,
+                  "stable_cleared": 0.9993579454253612,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.6601246105919003,
+                  "stable_cleared": 0.6802568218298556,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.0008307372793354102,
+                  "stable_cleared": 0.0008560727661851257,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2659,
+              "fit_has_no_mode": 0,
+              "error_median": 0.006900991752970931,
+              "error_p95": 0.07266681013629417,
+              "near_boundary_cases": 4184,
+              "near_boundary_error_median": 0.006630389404249426,
+              "near_boundary_error_p95": 0.02753473886724564,
+              "near_boundary_error_p99": 0.04347665116938324,
+              "margins": {
+                "0": {
+                  "cleared": 0.7221183800623053,
+                  "stable_cleared": 0.9946922966575814,
+                  "unstable_cleared": 20
+                },
+                "0.2": {
+                  "cleared": 0.6530633437175494,
+                  "stable_cleared": 0.9021661167694736,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.6430944963655244,
+                  "stable_cleared": 0.8883947783675226,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.6269989615784008,
+                  "stable_cleared": 0.8661598049060393,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.5920041536863967,
+                  "stable_cleared": 0.817816669057524,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.44672897196261685,
+                  "stable_cleared": 0.6171281021374265,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.09595015576323987,
+                  "stable_cleared": 0.1325491321187778,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.2
+            },
+            "fast": {
+              "cases_with_a_mode": 9630,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 5.728169550141179,
+              "error_p95": 13.8628002762696,
+              "near_boundary_cases": 0,
+              "near_boundary_error_median": null,
+              "near_boundary_error_p95": null,
+              "near_boundary_error_p99": null,
+              "margins": {
+                "0": {
+                  "cleared": 0.9998961578400831,
+                  "stable_cleared": 0.9998961578400831,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9998961578400831,
+                  "stable_cleared": 0.9998961578400831,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9997923156801661,
+                  "stable_cleared": 0.9997923156801661,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9997923156801661,
+                  "stable_cleared": 0.9997923156801661,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9995846313603323,
+                  "stable_cleared": 0.9995846313603323,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.990134994807892,
+                  "stable_cleared": 0.990134994807892,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.10768431983385254,
+                  "stable_cleared": 0.10768431983385254,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2944,
+              "fit_has_no_mode": 0,
+              "error_median": 0.006853437885916743,
+              "error_p95": 0.23544175694480252,
+              "near_boundary_cases": 8513,
+              "near_boundary_error_median": 0.006636335992854264,
+              "near_boundary_error_p95": 0.2479376223421417,
+              "near_boundary_error_p99": 0.3251531122852311,
+              "margins": {
+                "0": {
+                  "cleared": 0.6920041536863967,
+                  "stable_cleared": 0.9937182171702064,
+                  "unstable_cleared": 20
+                },
+                "0.2": {
+                  "cleared": 0.40809968847352024,
+                  "stable_cleared": 0.5877953933592581,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.0008307372793354102,
+                  "stable_cleared": 0.0011965300628178283,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.2
+            }
+          }
+        },
+        "126 points, 1 % noise": {
+          "residual_median": 0.012757433582332254,
+          "states_median": 25.0,
+          "pole_pairs_share": {
+            "8": 0.3228452751817238,
+            "12": 0.6771547248182762
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 9630,
+              "unstable": 285,
+              "fit_has_no_mode": 4,
+              "error_median": 0.1074272469895224,
+              "error_p95": 7.22491167891934,
+              "near_boundary_cases": 9626,
+              "near_boundary_error_median": 0.1074272469895224,
+              "near_boundary_error_p95": 7.22491167891934,
+              "near_boundary_error_p99": 11.743736404032555,
+              "margins": {
+                "0": {
+                  "cleared": 0.9700934579439252,
+                  "stable_cleared": 0.9996789727126806,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.45794392523364486,
+                  "stable_cleared": 0.47191011235955055,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.16656282450674975,
+                  "stable_cleared": 0.17164258962011772,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.13260643821391485,
+                  "stable_cleared": 0.1366506153023007,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.11349948078920041,
+                  "stable_cleared": 0.1169609416800428,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.08016614745586709,
+                  "stable_cleared": 0.08261102193686463,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.020560747663551402,
+                  "stable_cleared": 0.02118780096308186,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2659,
+              "fit_has_no_mode": 0,
+              "error_median": 0.06257643232611125,
+              "error_p95": 0.6071303894630394,
+              "near_boundary_cases": 4184,
+              "near_boundary_error_median": 0.05852616299129211,
+              "near_boundary_error_p95": 0.24429690177935842,
+              "near_boundary_error_p99": 0.3804825990328408,
+              "margins": {
+                "0": {
+                  "cleared": 0.7183800623052959,
+                  "stable_cleared": 0.9704490030124803,
+                  "unstable_cleared": 153
+                },
+                "0.2": {
+                  "cleared": 0.6584631360332295,
+                  "stable_cleared": 0.908334528762014,
+                  "unstable_cleared": 9
+                },
+                "0.5": {
+                  "cleared": 0.6428868120456905,
+                  "stable_cleared": 0.8881078754841486,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.6271028037383177,
+                  "stable_cleared": 0.8663032563477263,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.5922118380062306,
+                  "stable_cleared": 0.818103571940898,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.4466251298026999,
+                  "stable_cleared": 0.6169846506957395,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.09158878504672897,
+                  "stable_cleared": 0.12652417156792425,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.5
+            },
+            "fast": {
+              "cases_with_a_mode": 9630,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 7.891088663175665,
+              "error_p95": 16.370797986755363,
+              "near_boundary_cases": 0,
+              "near_boundary_error_median": null,
+              "near_boundary_error_p95": null,
+              "near_boundary_error_p99": null,
+              "margins": {
+                "0": {
+                  "cleared": 0.9997923156801661,
+                  "stable_cleared": 0.9997923156801661,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9993769470404984,
+                  "stable_cleared": 0.9993769470404984,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9988577362409138,
+                  "stable_cleared": 0.9988577362409138,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.99730010384216,
+                  "stable_cleared": 0.99730010384216,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9899273104880582,
+                  "stable_cleared": 0.9899273104880582,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.8033229491173416,
+                  "stable_cleared": 0.8033229491173416,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.1256490134994808,
+                  "stable_cleared": 0.1256490134994808,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2944,
+              "fit_has_no_mode": 0,
+              "error_median": 0.06915190398903459,
+              "error_p95": 0.5157340893160594,
+              "near_boundary_cases": 8513,
+              "near_boundary_error_median": 0.07008870038019488,
+              "near_boundary_error_p95": 0.7643572964439539,
+              "near_boundary_error_p99": 4.481062043293833,
+              "margins": {
+                "0": {
+                  "cleared": 0.6884735202492211,
+                  "stable_cleared": 0.9687406521088843,
+                  "unstable_cleared": 153
+                },
+                "0.2": {
+                  "cleared": 0.2863966770508827,
+                  "stable_cleared": 0.41160634160933296,
+                  "unstable_cleared": 6
+                },
+                "0.5": {
+                  "cleared": 0.06728971962616823,
+                  "stable_cleared": 0.09691893508824409,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.044859813084112146,
+                  "stable_cleared": 0.06461262339216273,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.03063343717549325,
+                  "stable_cleared": 0.04412204606640742,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.007580477673935618,
+                  "stable_cleared": 0.010918336823212683,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0,
+                  "stable_cleared": 0.0,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.5
+            }
+          }
+        },
+        "126 points, 5 % noise": {
+          "residual_median": 0.06617458749438372,
+          "states_median": 19.0,
+          "pole_pairs_share": {
+            "8": 0.5105919003115265,
+            "12": 0.48940809968847354
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 9630,
+              "unstable": 285,
+              "fit_has_no_mode": 195,
+              "error_median": 1.2048936884502595,
+              "error_p95": 9.084782434152393,
+              "near_boundary_cases": 9435,
+              "near_boundary_error_median": 1.2048936884502595,
+              "near_boundary_error_p95": 9.084782434152393,
+              "near_boundary_error_p99": 398.0363590949282,
+              "margins": {
+                "0": {
+                  "cleared": 0.9696780893042575,
+                  "stable_cleared": 0.9981808453718566,
+                  "unstable_cleared": 10
+                },
+                "0.2": {
+                  "cleared": 0.7526479750778816,
+                  "stable_cleared": 0.7756019261637239,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.6793354101765317,
+                  "stable_cleared": 0.7000535045478866,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.5976116303219107,
+                  "stable_cleared": 0.6158373461744249,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.4234683281412253,
+                  "stable_cleared": 0.43638309256286784,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.16261682242990655,
+                  "stable_cleared": 0.16757624398073837,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.06458982346832814,
+                  "stable_cleared": 0.06655965757089352,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.2
+            },
+            "sub": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2659,
+              "fit_has_no_mode": 0,
+              "error_median": 0.612943860574854,
+              "error_p95": 3.767645549912543,
+              "near_boundary_cases": 4184,
+              "near_boundary_error_median": 0.5668530086354711,
+              "near_boundary_error_p95": 1.8106541797837084,
+              "near_boundary_error_p99": 3.9817130409102126,
+              "margins": {
+                "0": {
+                  "cleared": 0.7411214953271028,
+                  "stable_cleared": 0.9518003155931717,
+                  "unstable_cleared": 502
+                },
+                "0.2": {
+                  "cleared": 0.7256490134994807,
+                  "stable_cleared": 0.9400372973748387,
+                  "unstable_cleared": 435
+                },
+                "0.5": {
+                  "cleared": 0.697092419522326,
+                  "stable_cleared": 0.9162243580547984,
+                  "unstable_cleared": 326
+                },
+                "1": {
+                  "cleared": 0.6446521287642782,
+                  "stable_cleared": 0.8707502510400229,
+                  "unstable_cleared": 138
+                },
+                "2": {
+                  "cleared": 0.5834890965732087,
+                  "stable_cleared": 0.805049490747382,
+                  "unstable_cleared": 7
+                },
+                "5": {
+                  "cleared": 0.42274143302180683,
+                  "stable_cleared": 0.583990819107732,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.07403946002076843,
+                  "stable_cleared": 0.10228087792282313,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            },
+            "fast": {
+              "cases_with_a_mode": 9630,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 0.428653129014152,
+              "error_p95": 9.009541969261436,
+              "near_boundary_cases": 0,
+              "near_boundary_error_median": null,
+              "near_boundary_error_p95": null,
+              "near_boundary_error_p99": null,
+              "margins": {
+                "0": {
+                  "cleared": 0.9861889927310488,
+                  "stable_cleared": 0.9861889927310488,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9850467289719627,
+                  "stable_cleared": 0.9850467289719627,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9838006230529595,
+                  "stable_cleared": 0.9838006230529595,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.981723779854621,
+                  "stable_cleared": 0.981723779854621,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9754932502596054,
+                  "stable_cleared": 0.9754932502596054,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9562824506749741,
+                  "stable_cleared": 0.9562824506749741,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.8758047767393562,
+                  "stable_cleared": 0.8758047767393562,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2944,
+              "fit_has_no_mode": 0,
+              "error_median": 0.5590733796845777,
+              "error_p95": 3.817345998489082,
+              "near_boundary_cases": 8513,
+              "near_boundary_error_median": 0.5220212189913673,
+              "near_boundary_error_p95": 4.029880711708089,
+              "near_boundary_error_p99": 6.450998303454171,
+              "margins": {
+                "0": {
+                  "cleared": 0.7032191069574247,
+                  "stable_cleared": 0.9368830391863595,
+                  "unstable_cleared": 508
+                },
+                "0.2": {
+                  "cleared": 0.4932502596053998,
+                  "stable_cleared": 0.6489679928208196,
+                  "unstable_cleared": 411
+                },
+                "0.5": {
+                  "cleared": 0.405607476635514,
+                  "stable_cleared": 0.539934190846545,
+                  "unstable_cleared": 296
+                },
+                "1": {
+                  "cleared": 0.3008307372793354,
+                  "stable_cleared": 0.41594376308704756,
+                  "unstable_cleared": 116
+                },
+                "2": {
+                  "cleared": 0.16064382139148495,
+                  "stable_cleared": 0.23078073586598863,
+                  "unstable_cleared": 4
+                },
+                "5": {
+                  "cleared": 0.025752855659397715,
+                  "stable_cleared": 0.03709243194735268,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0009345794392523365,
+                  "stable_cleared": 0.0013460963206700569,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            }
+          }
+        },
+        "501 points, 5 % noise": {
+          "residual_median": 0.06596159517709985,
+          "states_median": 19.0,
+          "pole_pairs_share": {
+            "8": 0.5893042575285566,
+            "12": 0.4106957424714434
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 9630,
+              "unstable": 285,
+              "fit_has_no_mode": 340,
+              "error_median": 1.302696379085361,
+              "error_p95": 8.818300933873479,
+              "near_boundary_cases": 9290,
+              "near_boundary_error_median": 1.302696379085361,
+              "near_boundary_error_p95": 8.818300933873479,
+              "near_boundary_error_p99": 97.16206489585237,
+              "margins": {
+                "0": {
+                  "cleared": 0.9692627206645898,
+                  "stable_cleared": 0.9980738362760835,
+                  "unstable_cleared": 7
+                },
+                "0.2": {
+                  "cleared": 0.7082035306334372,
+                  "stable_cleared": 0.7298020331728197,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.6617860851505711,
+                  "stable_cleared": 0.6819689673622258,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.6048805815160956,
+                  "stable_cleared": 0.6233279828785446,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.445067497403946,
+                  "stable_cleared": 0.4586409844836811,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.18047767393561787,
+                  "stable_cleared": 0.18598180845371856,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.07372793354101766,
+                  "stable_cleared": 0.07597645799892991,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.2
+            },
+            "sub": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2659,
+              "fit_has_no_mode": 0,
+              "error_median": 0.4639506268129123,
+              "error_p95": 3.941220064501395,
+              "near_boundary_cases": 4184,
+              "near_boundary_error_median": 0.4384152892525811,
+              "near_boundary_error_p95": 1.520468565525453,
+              "near_boundary_error_p99": 4.086684894610028,
+              "margins": {
+                "0": {
+                  "cleared": 0.6880581516095535,
+                  "stable_cleared": 0.9142160378711806,
+                  "unstable_cleared": 253
+                },
+                "0.2": {
+                  "cleared": 0.671858774662513,
+                  "stable_cleared": 0.8995839908191078,
+                  "unstable_cleared": 199
+                },
+                "0.5": {
+                  "cleared": 0.647767393561786,
+                  "stable_cleared": 0.8774924687993114,
+                  "unstable_cleared": 121
+                },
+                "1": {
+                  "cleared": 0.6119418483904465,
+                  "stable_cleared": 0.8393343853105724,
+                  "unstable_cleared": 42
+                },
+                "2": {
+                  "cleared": 0.5644859813084112,
+                  "stable_cleared": 0.7798020370104719,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.4063343717549325,
+                  "stable_cleared": 0.5613254913211878,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.07798546209761163,
+                  "stable_cleared": 0.1077320327069287,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 2.0
+            },
+            "fast": {
+              "cases_with_a_mode": 9630,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 0.6572700221378787,
+              "error_p95": 18.28953693884676,
+              "near_boundary_cases": 0,
+              "near_boundary_error_median": null,
+              "near_boundary_error_p95": null,
+              "near_boundary_error_p99": null,
+              "margins": {
+                "0": {
+                  "cleared": 0.9402907580477674,
+                  "stable_cleared": 0.9402907580477674,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9361370716510904,
+                  "stable_cleared": 0.9361370716510904,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9289719626168225,
+                  "stable_cleared": 0.9289719626168225,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9171339563862928,
+                  "stable_cleared": 0.9171339563862928,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.8882658359293873,
+                  "stable_cleared": 0.8882658359293873,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.7543094496365524,
+                  "stable_cleared": 0.7543094496365524,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.5742471443406023,
+                  "stable_cleared": 0.5742471443406023,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 9630,
+              "unstable": 2944,
+              "fit_has_no_mode": 0,
+              "error_median": 0.48457348382054544,
+              "error_p95": 3.916388208065769,
+              "near_boundary_cases": 8513,
+              "near_boundary_error_median": 0.4609999846647894,
+              "near_boundary_error_p95": 4.133300849679205,
+              "near_boundary_error_p99": 6.543757839740148,
+              "margins": {
+                "0": {
+                  "cleared": 0.6273104880581516,
+                  "stable_cleared": 0.8673347292850733,
+                  "unstable_cleared": 242
+                },
+                "0.2": {
+                  "cleared": 0.3849428868120457,
+                  "stable_cleared": 0.5293149865390367,
+                  "unstable_cleared": 168
+                },
+                "0.5": {
+                  "cleared": 0.32481827622014536,
+                  "stable_cleared": 0.45213879748728686,
+                  "unstable_cleared": 105
+                },
+                "1": {
+                  "cleared": 0.25617860851505714,
+                  "stable_cleared": 0.36344600658091536,
+                  "unstable_cleared": 37
+                },
+                "2": {
+                  "cleared": 0.14080996884735203,
+                  "stable_cleared": 0.2028118456476219,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.020768431983385256,
+                  "stable_cleared": 0.029913251570445706,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0006230529595015577,
+                  "stable_cleared": 0.0008973975471133712,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 2.0
+            }
+          }
+        }
+      },
+      "interpolating_fit": {
+        "1e-06": {
+          "wrong_verdicts": 0.554932502596054,
+          "cleared": 0.13935617860851507,
+          "stable_cleared": 0.2007179180376907,
+          "unstable_cleared": 0
+        },
+        "0.0001": {
+          "wrong_verdicts": 0.5723779854620976,
+          "cleared": 0.12191069574247144,
+          "stable_cleared": 0.1755907867185163,
+          "unstable_cleared": 0
+        },
+        "0.001": {
+          "wrong_verdicts": 0.5900311526479751,
+          "cleared": 0.1063343717549325,
+          "stable_cleared": 0.15166018546215973,
+          "unstable_cleared": 10
+        },
+        "0.01": {
+          "wrong_verdicts": 0.6244029075804777,
+          "cleared": 0.08463136033229492,
+          "stable_cleared": 0.11127729584205803,
+          "unstable_cleared": 71
+        }
+      }
+    },
+    "converter with PLL": {
+      "cases": 11264,
+      "fits": {
+        "126 points, clean": {
+          "residual_median": 7.833174454635913e-15,
+          "states_median": 10.0,
+          "pole_pairs_share": {
+            "8": 0.9998224431818182,
+            "12": 0.0001775568181818182
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 11264,
+              "unstable": 7,
+              "fit_has_no_mode": 0,
+              "error_median": 7.365219545363288e-12,
+              "error_p95": 7.286441672249574e-10,
+              "near_boundary_cases": 4887,
+              "near_boundary_error_median": 7.061018436615996e-12,
+              "near_boundary_error_p95": 7.629694653843434e-10,
+              "near_boundary_error_p99": 6.298841253027389e-09,
+              "margins": {
+                "0": {
+                  "cleared": 0.9993785511363636,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9992897727272727,
+                  "stable_cleared": 0.9999111663853603,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9991122159090909,
+                  "stable_cleared": 0.9997334991560807,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9983132102272727,
+                  "stable_cleared": 0.9989339966243227,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9955610795454546,
+                  "stable_cleared": 0.9961801545704895,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5661399147727273,
+                  "stable_cleared": 0.5664919605578751,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.028675426136363636,
+                  "stable_cleared": 0.02869325752864884,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 11263,
+              "unstable": 264,
+              "fit_has_no_mode": 0,
+              "error_median": 3.2454039455842576e-12,
+              "error_p95": 1.3970126921947209e-08,
+              "near_boundary_cases": 772,
+              "near_boundary_error_median": 2.0125012767380213e-12,
+              "near_boundary_error_p95": 1.0270814276847048e-08,
+              "near_boundary_error_p99": 3.1746749348915296e-07,
+              "margins": {
+                "0": {
+                  "cleared": 0.9765625,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9757634943181818,
+                  "stable_cleared": 0.9991818181818182,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9743430397727273,
+                  "stable_cleared": 0.9977272727272727,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9707919034090909,
+                  "stable_cleared": 0.9940909090909091,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9629794034090909,
+                  "stable_cleared": 0.9860909090909091,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9192116477272727,
+                  "stable_cleared": 0.9412727272727273,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.6800426136363636,
+                  "stable_cleared": 0.6963636363636364,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "fast": {
+              "cases_with_a_mode": 11264,
+              "unstable": 1,
+              "fit_has_no_mode": 0,
+              "error_median": 3.5988989566249074e-12,
+              "error_p95": 2.2080689721093496e-08,
+              "near_boundary_cases": 52,
+              "near_boundary_error_median": 1.315059172668498e-12,
+              "near_boundary_error_p95": 2.1513564263386742e-10,
+              "near_boundary_error_p99": 3.291445873632182e-09,
+              "margins": {
+                "0": {
+                  "cleared": 0.9999112215909091,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9996448863636364,
+                  "stable_cleared": 0.9997336411258102,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9993785511363636,
+                  "stable_cleared": 0.9994672822516204,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9987571022727273,
+                  "stable_cleared": 0.9988457782118441,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9976917613636364,
+                  "stable_cleared": 0.9977803427150848,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9952947443181818,
+                  "stable_cleared": 0.9953831128473764,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9213423295454546,
+                  "stable_cleared": 0.9214241321140016,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 11264,
+              "unstable": 271,
+              "fit_has_no_mode": 0,
+              "error_median": 7.4469319599757e-12,
+              "error_p95": 9.695859393143997e-10,
+              "near_boundary_cases": 5326,
+              "near_boundary_error_median": 6.587619338915829e-12,
+              "near_boundary_error_p95": 9.894152164235948e-10,
+              "near_boundary_error_p99": 1.4493041988750122e-08,
+              "margins": {
+                "0": {
+                  "cleared": 0.9759410511363636,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9747869318181818,
+                  "stable_cleared": 0.9988174292731739,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9729225852272727,
+                  "stable_cleared": 0.9969071227144547,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9681285511363636,
+                  "stable_cleared": 0.9919949058491767,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9566761363636364,
+                  "stable_cleared": 0.9802601655599018,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5149147727272727,
+                  "stable_cleared": 0.5276084781224416,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.02166193181818182,
+                  "stable_cleared": 0.022195942872737195,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            }
+          }
+        },
+        "126 points, 0.1 % noise": {
+          "residual_median": 0.0009973202266862706,
+          "states_median": 14.0,
+          "pole_pairs_share": {
+            "4": 0.13006036931818182,
+            "8": 0.8581321022727273,
+            "12": 0.01180752840909091
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 11264,
+              "unstable": 7,
+              "fit_has_no_mode": 0,
+              "error_median": 0.07225247756815878,
+              "error_p95": 3.680294578419825,
+              "near_boundary_cases": 4887,
+              "near_boundary_error_median": 0.04377869060001993,
+              "near_boundary_error_p95": 2.313439407268133,
+              "near_boundary_error_p99": 4.235533049173741,
+              "margins": {
+                "0": {
+                  "cleared": 0.9991122159090909,
+                  "stable_cleared": 0.9997334991560807,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9800248579545454,
+                  "stable_cleared": 0.980634272008528,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9759410511363636,
+                  "stable_cleared": 0.9765479257350982,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9663529829545454,
+                  "stable_cleared": 0.966953895354002,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9460227272727273,
+                  "stable_cleared": 0.9466109976014924,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5102095170454546,
+                  "stable_cleared": 0.5105267833348139,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.030894886363636364,
+                  "stable_cleared": 0.030914097894643333,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 11263,
+              "unstable": 264,
+              "fit_has_no_mode": 0,
+              "error_median": 0.002429773868826146,
+              "error_p95": 0.22465705892462817,
+              "near_boundary_cases": 772,
+              "near_boundary_error_median": 0.002533462625997185,
+              "near_boundary_error_p95": 0.023740556973966088,
+              "near_boundary_error_p99": 0.059582416514258024,
+              "margins": {
+                "0": {
+                  "cleared": 0.9765625,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9756747159090909,
+                  "stable_cleared": 0.9990909090909091,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9740767045454546,
+                  "stable_cleared": 0.9974545454545455,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9699928977272727,
+                  "stable_cleared": 0.9932727272727273,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9601384943181818,
+                  "stable_cleared": 0.9831818181818182,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9136186079545454,
+                  "stable_cleared": 0.9355454545454546,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.6722301136363636,
+                  "stable_cleared": 0.6883636363636364,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "fast": {
+              "cases_with_a_mode": 11264,
+              "unstable": 1,
+              "fit_has_no_mode": 0,
+              "error_median": 0.001022087888939538,
+              "error_p95": 0.024123041017305277,
+              "near_boundary_cases": 52,
+              "near_boundary_error_median": 1.1921941337700304e-05,
+              "near_boundary_error_p95": 0.0003007829637390988,
+              "near_boundary_error_p99": 0.09040397672071003,
+              "margins": {
+                "0": {
+                  "cleared": 0.9999112215909091,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9995561079545454,
+                  "stable_cleared": 0.9996448548344136,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9992009943181818,
+                  "stable_cleared": 0.9992897096688271,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9981356534090909,
+                  "stable_cleared": 0.9982242741720678,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9964488636363636,
+                  "stable_cleared": 0.9965373346355323,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9929865056818182,
+                  "stable_cleared": 0.9930746692710646,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9163707386363636,
+                  "stable_cleared": 0.9164520997957916,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 11264,
+              "unstable": 271,
+              "fit_has_no_mode": 0,
+              "error_median": 0.05593574654962108,
+              "error_p95": 3.6214149630682266,
+              "near_boundary_cases": 5326,
+              "near_boundary_error_median": 0.03236616639878398,
+              "near_boundary_error_p95": 2.219032316874063,
+              "near_boundary_error_p99": 4.1808861723358755,
+              "margins": {
+                "0": {
+                  "cleared": 0.9756747159090909,
+                  "stable_cleared": 0.9997270990630401,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9556995738636364,
+                  "stable_cleared": 0.9792595287910488,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9496626420454546,
+                  "stable_cleared": 0.9730737742199581,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9353693181818182,
+                  "stable_cleared": 0.9584280906031111,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9047407670454546,
+                  "stable_cleared": 0.9270444828527244,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.45942826704545453,
+                  "stable_cleared": 0.47075411625579916,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.022727272727272728,
+                  "stable_cleared": 0.02328754662057673,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            }
+          }
+        },
+        "126 points, 1 % noise": {
+          "residual_median": 0.01118725014814776,
+          "states_median": 14.0,
+          "pole_pairs_share": {
+            "4": 0.08078835227272728,
+            "8": 0.8672762784090909,
+            "12": 0.051935369318181816
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 11264,
+              "unstable": 7,
+              "fit_has_no_mode": 4,
+              "error_median": 0.28306805629666765,
+              "error_p95": 4.5948929529892295,
+              "near_boundary_cases": 4887,
+              "near_boundary_error_median": 0.15033041542515324,
+              "near_boundary_error_p95": 2.8534918568621372,
+              "near_boundary_error_p99": 4.515820590475176,
+              "margins": {
+                "0": {
+                  "cleared": 0.9989346590909091,
+                  "stable_cleared": 0.9994669983121613,
+                  "unstable_cleared": 1
+                },
+                "0.2": {
+                  "cleared": 0.9664417613636364,
+                  "stable_cleared": 0.966953895354002,
+                  "unstable_cleared": 1
+                },
+                "0.5": {
+                  "cleared": 0.9628018465909091,
+                  "stable_cleared": 0.963311717153771,
+                  "unstable_cleared": 1
+                },
+                "1": {
+                  "cleared": 0.9536576704545454,
+                  "stable_cleared": 0.9541618548458737,
+                  "unstable_cleared": 1
+                },
+                "2": {
+                  "cleared": 0.9300426136363636,
+                  "stable_cleared": 0.930620946966332,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5092329545454546,
+                  "stable_cleared": 0.5095496135737764,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.046431107954545456,
+                  "stable_cleared": 0.04645998045660478,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 2.0
+            },
+            "sub": {
+              "cases_with_a_mode": 11263,
+              "unstable": 264,
+              "fit_has_no_mode": 0,
+              "error_median": 0.05088684469394211,
+              "error_p95": 6.16822847850303,
+              "near_boundary_cases": 772,
+              "near_boundary_error_median": 0.0611586896386036,
+              "near_boundary_error_p95": 0.49996291508632773,
+              "near_boundary_error_p99": 7.793175647826738,
+              "margins": {
+                "0": {
+                  "cleared": 0.9764737215909091,
+                  "stable_cleared": 0.9997272727272727,
+                  "unstable_cleared": 2
+                },
+                "0.2": {
+                  "cleared": 0.9755859375,
+                  "stable_cleared": 0.9989090909090909,
+                  "unstable_cleared": 1
+                },
+                "0.5": {
+                  "cleared": 0.9741654829545454,
+                  "stable_cleared": 0.9975454545454545,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9693714488636364,
+                  "stable_cleared": 0.9926363636363637,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9580078125,
+                  "stable_cleared": 0.981,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9026100852272727,
+                  "stable_cleared": 0.9242727272727272,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.6526100852272727,
+                  "stable_cleared": 0.6682727272727272,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.5
+            },
+            "fast": {
+              "cases_with_a_mode": 11264,
+              "unstable": 1,
+              "fit_has_no_mode": 0,
+              "error_median": 0.017341100638838647,
+              "error_p95": 0.43630770032314675,
+              "near_boundary_cases": 52,
+              "near_boundary_error_median": 0.00021104412595579491,
+              "near_boundary_error_p95": 0.002924816730698953,
+              "near_boundary_error_p99": 2.3265042149324566,
+              "margins": {
+                "0": {
+                  "cleared": 0.9998224431818182,
+                  "stable_cleared": 0.9999112137086034,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9994673295454546,
+                  "stable_cleared": 0.9995560685430169,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9992009943181818,
+                  "stable_cleared": 0.9992897096688271,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9984907670454546,
+                  "stable_cleared": 0.9985794193376543,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9972478693181818,
+                  "stable_cleared": 0.9973364112581018,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.994140625,
+                  "stable_cleared": 0.9942288910592204,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9165482954545454,
+                  "stable_cleared": 0.9166296723785847,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 11264,
+              "unstable": 271,
+              "fit_has_no_mode": 0,
+              "error_median": 0.22304813401530987,
+              "error_p95": 4.2487999010446655,
+              "near_boundary_cases": 5326,
+              "near_boundary_error_median": 0.13030982195411056,
+              "near_boundary_error_p95": 2.777388247458168,
+              "near_boundary_error_p99": 4.4428666842912445,
+              "margins": {
+                "0": {
+                  "cleared": 0.9753196022727273,
+                  "stable_cleared": 0.9991812971891203,
+                  "unstable_cleared": 2
+                },
+                "0.2": {
+                  "cleared": 0.9424715909090909,
+                  "stable_cleared": 0.9656144819430547,
+                  "unstable_cleared": 1
+                },
+                "0.5": {
+                  "cleared": 0.9375,
+                  "stable_cleared": 0.9606112980987901,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.923828125,
+                  "stable_cleared": 0.9466023833348495,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.8916903409090909,
+                  "stable_cleared": 0.9136723369416901,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.4600497159090909,
+                  "stable_cleared": 0.4713908851087055,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.0302734375,
+                  "stable_cleared": 0.031019739834440098,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.5
+            }
+          }
+        },
+        "126 points, 5 % noise": {
+          "residual_median": 0.060733205594667494,
+          "states_median": 12.0,
+          "pole_pairs_share": {
+            "4": 0.04856178977272727,
+            "8": 0.8481889204545454,
+            "12": 0.10324928977272728
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 11264,
+              "unstable": 7,
+              "fit_has_no_mode": 503,
+              "error_median": 1.1241789932356605,
+              "error_p95": 7.070404010196119,
+              "near_boundary_cases": 4752,
+              "near_boundary_error_median": 0.7188376359304747,
+              "near_boundary_error_p95": 4.256223658208572,
+              "near_boundary_error_p99": 15.738873175271696,
+              "margins": {
+                "0": {
+                  "cleared": 0.9990234375,
+                  "stable_cleared": 0.9995558319268011,
+                  "unstable_cleared": 1
+                },
+                "0.2": {
+                  "cleared": 0.9705255681818182,
+                  "stable_cleared": 0.9710402416274319,
+                  "unstable_cleared": 1
+                },
+                "0.5": {
+                  "cleared": 0.9636896306818182,
+                  "stable_cleared": 0.9642000533001688,
+                  "unstable_cleared": 1
+                },
+                "1": {
+                  "cleared": 0.9487748579545454,
+                  "stable_cleared": 0.9492760060406858,
+                  "unstable_cleared": 1
+                },
+                "2": {
+                  "cleared": 0.9063387784090909,
+                  "stable_cleared": 0.9069023718575109,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5237038352272727,
+                  "stable_cleared": 0.5240294927600604,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.14124644886363635,
+                  "stable_cleared": 0.14133428089188949,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 2.0
+            },
+            "sub": {
+              "cases_with_a_mode": 11263,
+              "unstable": 264,
+              "fit_has_no_mode": 0,
+              "error_median": 0.2739827776981656,
+              "error_p95": 11.492821157317,
+              "near_boundary_cases": 772,
+              "near_boundary_error_median": 0.29433284679394245,
+              "near_boundary_error_p95": 3.234289674335358,
+              "near_boundary_error_p99": 19.969149909376988,
+              "margins": {
+                "0": {
+                  "cleared": 0.9755859375,
+                  "stable_cleared": 0.9980909090909091,
+                  "unstable_cleared": 10
+                },
+                "0.2": {
+                  "cleared": 0.9741654829545454,
+                  "stable_cleared": 0.9968181818181818,
+                  "unstable_cleared": 8
+                },
+                "0.5": {
+                  "cleared": 0.9724786931818182,
+                  "stable_cleared": 0.9951818181818182,
+                  "unstable_cleared": 7
+                },
+                "1": {
+                  "cleared": 0.96875,
+                  "stable_cleared": 0.9915454545454545,
+                  "unstable_cleared": 5
+                },
+                "2": {
+                  "cleared": 0.9580965909090909,
+                  "stable_cleared": 0.980909090909091,
+                  "unstable_cleared": 2
+                },
+                "5": {
+                  "cleared": 0.896484375,
+                  "stable_cleared": 0.9179090909090909,
+                  "unstable_cleared": 1
+                },
+                "10": {
+                  "cleared": 0.6381392045454546,
+                  "stable_cleared": 0.6534545454545454,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 10.0
+            },
+            "fast": {
+              "cases_with_a_mode": 11264,
+              "unstable": 1,
+              "fit_has_no_mode": 0,
+              "error_median": 0.07945657341317514,
+              "error_p95": 2.019366839842253,
+              "near_boundary_cases": 52,
+              "near_boundary_error_median": 0.0011341933976656837,
+              "near_boundary_error_p95": 0.01297256647116429,
+              "near_boundary_error_p99": 6.207199784369201,
+              "margins": {
+                "0": {
+                  "cleared": 0.9997336647727273,
+                  "stable_cleared": 0.9998224274172068,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9994673295454546,
+                  "stable_cleared": 0.9995560685430169,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9990234375,
+                  "stable_cleared": 0.999112137086034,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9982244318181818,
+                  "stable_cleared": 0.9983130604634645,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.99609375,
+                  "stable_cleared": 0.9961821894699459,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9907670454545454,
+                  "stable_cleared": 0.9908550119861493,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9133522727272727,
+                  "stable_cleared": 0.9134333658883068,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 11264,
+              "unstable": 271,
+              "fit_has_no_mode": 0,
+              "error_median": 0.9654179208709694,
+              "error_p95": 6.638331220829786,
+              "near_boundary_cases": 5326,
+              "near_boundary_error_median": 0.6316896573161261,
+              "near_boundary_error_p95": 4.48182100462883,
+              "near_boundary_error_p99": 12.736939123174647,
+              "margins": {
+                "0": {
+                  "cleared": 0.9745205965909091,
+                  "stable_cleared": 0.9976348585463477,
+                  "unstable_cleared": 10
+                },
+                "0.2": {
+                  "cleared": 0.9451349431818182,
+                  "stable_cleared": 0.9677067224597471,
+                  "unstable_cleared": 8
+                },
+                "0.5": {
+                  "cleared": 0.9363458806818182,
+                  "stable_cleared": 0.9587919585190576,
+                  "unstable_cleared": 7
+                },
+                "1": {
+                  "cleared": 0.9177024147727273,
+                  "stable_cleared": 0.939870826889839,
+                  "unstable_cleared": 5
+                },
+                "2": {
+                  "cleared": 0.8664772727272727,
+                  "stable_cleared": 0.8876557809515147,
+                  "unstable_cleared": 2
+                },
+                "5": {
+                  "cleared": 0.46244673295454547,
+                  "stable_cleared": 0.4738469935413445,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.08327414772727272,
+                  "stable_cleared": 0.08532702628945693,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            }
+          }
+        },
+        "501 points, 5 % noise": {
+          "residual_median": 0.06461882773186484,
+          "states_median": 12.0,
+          "pole_pairs_share": {
+            "4": 0.03391335227272727,
+            "8": 0.6285511363636364,
+            "12": 0.33753551136363635
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 11264,
+              "unstable": 7,
+              "fit_has_no_mode": 456,
+              "error_median": 1.1120989936757433,
+              "error_p95": 7.0767484223775785,
+              "near_boundary_cases": 4769,
+              "near_boundary_error_median": 0.7135899659663743,
+              "near_boundary_error_p95": 4.1829102458737655,
+              "near_boundary_error_p99": 42.215367322229724,
+              "margins": {
+                "0": {
+                  "cleared": 0.9992897727272727,
+                  "stable_cleared": 0.9998223327707204,
+                  "unstable_cleared": 1
+                },
+                "0.2": {
+                  "cleared": 0.9886363636363636,
+                  "stable_cleared": 0.9891622990139469,
+                  "unstable_cleared": 1
+                },
+                "0.5": {
+                  "cleared": 0.9809126420454546,
+                  "stable_cleared": 0.981433774540286,
+                  "unstable_cleared": 1
+                },
+                "1": {
+                  "cleared": 0.9641335227272727,
+                  "stable_cleared": 0.9646442213733677,
+                  "unstable_cleared": 1
+                },
+                "2": {
+                  "cleared": 0.9164595170454546,
+                  "stable_cleared": 0.9170294039264457,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5241477272727273,
+                  "stable_cleared": 0.5244736608332593,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.1424893465909091,
+                  "stable_cleared": 0.1425779514968464,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 2.0
+            },
+            "sub": {
+              "cases_with_a_mode": 11263,
+              "unstable": 264,
+              "fit_has_no_mode": 1,
+              "error_median": 0.28487826472767974,
+              "error_p95": 12.728342488802527,
+              "near_boundary_cases": 772,
+              "near_boundary_error_median": 0.30056017908560395,
+              "near_boundary_error_p95": 2.961264566971812,
+              "near_boundary_error_p99": 21.47792000994735,
+              "margins": {
+                "0": {
+                  "cleared": 0.9755859375,
+                  "stable_cleared": 0.9979090909090909,
+                  "unstable_cleared": 12
+                },
+                "0.2": {
+                  "cleared": 0.9743430397727273,
+                  "stable_cleared": 0.9969090909090909,
+                  "unstable_cleared": 9
+                },
+                "0.5": {
+                  "cleared": 0.9718572443181818,
+                  "stable_cleared": 0.9946363636363637,
+                  "unstable_cleared": 6
+                },
+                "1": {
+                  "cleared": 0.9671519886363636,
+                  "stable_cleared": 0.989909090909091,
+                  "unstable_cleared": 5
+                },
+                "2": {
+                  "cleared": 0.9552556818181818,
+                  "stable_cleared": 0.978,
+                  "unstable_cleared": 2
+                },
+                "5": {
+                  "cleared": 0.8840553977272727,
+                  "stable_cleared": 0.9052727272727272,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.6124822443181818,
+                  "stable_cleared": 0.6271818181818182,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            },
+            "fast": {
+              "cases_with_a_mode": 11264,
+              "unstable": 1,
+              "fit_has_no_mode": 0,
+              "error_median": 0.08202735534985983,
+              "error_p95": 1.4460460944659412,
+              "near_boundary_cases": 52,
+              "near_boundary_error_median": 0.0011011115992330955,
+              "near_boundary_error_p95": 0.011304342836438424,
+              "near_boundary_error_p99": 2.2981287310924454,
+              "margins": {
+                "0": {
+                  "cleared": 0.9999112215909091,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9996448863636364,
+                  "stable_cleared": 0.9997336411258102,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9992897727272727,
+                  "stable_cleared": 0.9993784959602238,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9986683238636364,
+                  "stable_cleared": 0.9987569919204475,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9974254261363636,
+                  "stable_cleared": 0.997513983840895,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9946732954545454,
+                  "stable_cleared": 0.9947616088076001,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9196555397727273,
+                  "stable_cleared": 0.919737192577466,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 11264,
+              "unstable": 271,
+              "fit_has_no_mode": 0,
+              "error_median": 0.9557253767673362,
+              "error_p95": 6.355887401176628,
+              "near_boundary_cases": 5326,
+              "near_boundary_error_median": 0.6295649342864933,
+              "near_boundary_error_p95": 4.171923357429337,
+              "near_boundary_error_p99": 13.882599569468072,
+              "margins": {
+                "0": {
+                  "cleared": 0.9748757102272727,
+                  "stable_cleared": 0.997816792504321,
+                  "unstable_cleared": 12
+                },
+                "0.2": {
+                  "cleared": 0.9628018465909091,
+                  "stable_cleared": 0.9857181842990994,
+                  "unstable_cleared": 9
+                },
+                "0.5": {
+                  "cleared": 0.9527698863636364,
+                  "stable_cleared": 0.9757118166105704,
+                  "unstable_cleared": 6
+                },
+                "1": {
+                  "cleared": 0.9313742897727273,
+                  "stable_cleared": 0.9538797416537796,
+                  "unstable_cleared": 5
+                },
+                "2": {
+                  "cleared": 0.8754438920454546,
+                  "stable_cleared": 0.896843445829164,
+                  "unstable_cleared": 2
+                },
+                "5": {
+                  "cleared": 0.4630681818181818,
+                  "stable_cleared": 0.4744837623942509,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.08345170454545454,
+                  "stable_cleared": 0.08550896024743018,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            }
+          }
+        }
+      },
+      "interpolating_fit": {
+        "1e-06": {
+          "wrong_verdicts": 0.9382102272727273,
+          "cleared": 0.03773082386363636,
+          "stable_cleared": 0.038660966069316835,
+          "unstable_cleared": 0
+        },
+        "0.0001": {
+          "wrong_verdicts": 0.9507279829545454,
+          "cleared": 0.02521306818181818,
+          "stable_cleared": 0.025834622032202312,
+          "unstable_cleared": 0
+        },
+        "0.001": {
+          "wrong_verdicts": 0.9551669034090909,
+          "cleared": 0.020774147727272728,
+          "stable_cleared": 0.021286273082870916,
+          "unstable_cleared": 0
+        },
+        "0.01": {
+          "wrong_verdicts": 0.9658203125,
+          "cleared": 0.010298295454545454,
+          "stable_cleared": 0.010461202583462203,
+          "unstable_cleared": 1
+        }
+      }
+    },
+    "converter without PLL": {
+      "cases": 3632,
+      "fits": {
+        "126 points, clean": {
+          "residual_median": 2.87986487220611e-15,
+          "states_median": 8.0,
+          "pole_pairs_share": {
+            "4": 1.0
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 3632,
+              "unstable": 354,
+              "fit_has_no_mode": 0,
+              "error_median": 1.0644818360106e-12,
+              "error_p95": 5.3180926329332573e-11,
+              "near_boundary_cases": 1544,
+              "near_boundary_error_median": 9.65005853004186e-13,
+              "near_boundary_error_p95": 6.244165184909888e-11,
+              "near_boundary_error_p99": 2.458777359493068e-10,
+              "margins": {
+                "0": {
+                  "cleared": 0.9025330396475771,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.8992290748898678,
+                  "stable_cleared": 0.99633923123856,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.8956497797356828,
+                  "stable_cleared": 0.9923733984136669,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.8854625550660793,
+                  "stable_cleared": 0.9810860280658938,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.8774779735682819,
+                  "stable_cleared": 0.9722391702257475,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5498348017621145,
+                  "stable_cleared": 0.6092129347162905,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.05011013215859031,
+                  "stable_cleared": 0.05552165954850519,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 3625,
+              "unstable": 273,
+              "fit_has_no_mode": 0,
+              "error_median": 1.2754242106893798e-12,
+              "error_p95": 5.666365154866054e-11,
+              "near_boundary_cases": 597,
+              "near_boundary_error_median": 5.639932965095795e-13,
+              "near_boundary_error_p95": 4.1333247935426386e-11,
+              "near_boundary_error_p99": 2.4492319283808394e-10,
+              "margins": {
+                "0": {
+                  "cleared": 0.9248348017621145,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9212555066079295,
+                  "stable_cleared": 0.9961298005358737,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9154735682819384,
+                  "stable_cleared": 0.9898779398630545,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9066629955947136,
+                  "stable_cleared": 0.9803512950282822,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.8860132158590308,
+                  "stable_cleared": 0.9580232211967847,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.8122246696035242,
+                  "stable_cleared": 0.8782375707055672,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.6307819383259912,
+                  "stable_cleared": 0.682048228639476,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "fast": {
+              "cases_with_a_mode": 3632,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 1.6218137943724287e-12,
+              "error_p95": 5.2004622830281707e-11,
+              "near_boundary_cases": 14,
+              "near_boundary_error_median": 4.2432724001173483e-13,
+              "near_boundary_error_p95": 3.470235210301098e-12,
+              "near_boundary_error_p99": 3.4809732873952725e-12,
+              "margins": {
+                "0": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.998898678414097,
+                  "stable_cleared": 0.998898678414097,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9980726872246696,
+                  "stable_cleared": 0.9980726872246696,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9961453744493393,
+                  "stable_cleared": 0.9961453744493393,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9622797356828194,
+                  "stable_cleared": 0.9622797356828194,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 3632,
+              "unstable": 627,
+              "fit_has_no_mode": 0,
+              "error_median": 1.177280495312516e-12,
+              "error_p95": 5.848976858402462e-11,
+              "near_boundary_cases": 1944,
+              "near_boundary_error_median": 8.146816554699399e-13,
+              "near_boundary_error_p95": 6.33519459114495e-11,
+              "near_boundary_error_p99": 2.5130264980077703e-10,
+              "margins": {
+                "0": {
+                  "cleared": 0.8273678414096917,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.8204845814977973,
+                  "stable_cleared": 0.9916805324459235,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.8111233480176211,
+                  "stable_cleared": 0.9803660565723794,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.7910242290748899,
+                  "stable_cleared": 0.9560732113144759,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.762114537444934,
+                  "stable_cleared": 0.9211314475873544,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.41629955947136565,
+                  "stable_cleared": 0.5031613976705491,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.028083700440528634,
+                  "stable_cleared": 0.03394342762063228,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            }
+          }
+        },
+        "126 points, 0.1 % noise": {
+          "residual_median": 0.0011493805020976872,
+          "states_median": 12.0,
+          "pole_pairs_share": {
+            "4": 0.0900330396475771,
+            "8": 0.6990638766519823,
+            "12": 0.21090308370044053
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 3632,
+              "unstable": 354,
+              "fit_has_no_mode": 0,
+              "error_median": 0.2211222265867936,
+              "error_p95": 5.077113558755562,
+              "near_boundary_cases": 1544,
+              "near_boundary_error_median": 0.16099907041923833,
+              "near_boundary_error_p95": 3.781549202028641,
+              "near_boundary_error_p99": 4.943839173878433,
+              "margins": {
+                "0": {
+                  "cleared": 0.9017070484581498,
+                  "stable_cleared": 0.99908480780964,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.8711453744493393,
+                  "stable_cleared": 0.9652226967663209,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.8576541850220264,
+                  "stable_cleared": 0.950274557657108,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.835352422907489,
+                  "stable_cleared": 0.9255643685173887,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.7995594713656388,
+                  "stable_cleared": 0.8859060402684564,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5,
+                  "stable_cleared": 0.5539963392312386,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.04680616740088106,
+                  "stable_cleared": 0.05186089078706528,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "sub": {
+              "cases_with_a_mode": 3625,
+              "unstable": 273,
+              "fit_has_no_mode": 0,
+              "error_median": 0.003559302032002165,
+              "error_p95": 0.06602755807487577,
+              "near_boundary_cases": 597,
+              "near_boundary_error_median": 0.0026066667730658133,
+              "near_boundary_error_p95": 0.02211118865849916,
+              "near_boundary_error_p99": 0.04606641429955366,
+              "margins": {
+                "0": {
+                  "cleared": 0.9248348017621145,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.9212555066079295,
+                  "stable_cleared": 0.9961298005358737,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.9151982378854625,
+                  "stable_cleared": 0.9895802322119679,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.9061123348017621,
+                  "stable_cleared": 0.979755879726109,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.8832599118942731,
+                  "stable_cleared": 0.9550461446859184,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.8014867841409692,
+                  "stable_cleared": 0.8666269723131884,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.6095814977973568,
+                  "stable_cleared": 0.6591247395058053,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "fast": {
+              "cases_with_a_mode": 3632,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 0.003436382429592655,
+              "error_p95": 0.05227155170944433,
+              "near_boundary_cases": 14,
+              "near_boundary_error_median": 2.8139557458617404e-05,
+              "near_boundary_error_p95": 0.0007773604272035546,
+              "near_boundary_error_p99": 0.001375040978216834,
+              "margins": {
+                "0": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.998898678414097,
+                  "stable_cleared": 0.998898678414097,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9980726872246696,
+                  "stable_cleared": 0.9980726872246696,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9961453744493393,
+                  "stable_cleared": 0.9961453744493393,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9622797356828194,
+                  "stable_cleared": 0.9622797356828194,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 3632,
+              "unstable": 627,
+              "fit_has_no_mode": 0,
+              "error_median": 0.09302213101930557,
+              "error_p95": 4.184283530546144,
+              "near_boundary_cases": 1944,
+              "near_boundary_error_median": 0.023418713154712,
+              "near_boundary_error_p95": 3.1133790122464555,
+              "near_boundary_error_p99": 4.251668047200471,
+              "margins": {
+                "0": {
+                  "cleared": 0.82681718061674,
+                  "stable_cleared": 0.9993344425956738,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 0.7943281938325991,
+                  "stable_cleared": 0.9600665557404326,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.7758810572687225,
+                  "stable_cleared": 0.9377703826955075,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.7450440528634361,
+                  "stable_cleared": 0.9004991680532446,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.6916299559471366,
+                  "stable_cleared": 0.8359400998336106,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.3716960352422907,
+                  "stable_cleared": 0.4492512479201331,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.020374449339207047,
+                  "stable_cleared": 0.024625623960066557,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            }
+          }
+        },
+        "126 points, 1 % noise": {
+          "residual_median": 0.01233615015851465,
+          "states_median": 10.0,
+          "pole_pairs_share": {
+            "4": 0.40115638766519823,
+            "8": 0.3020374449339207,
+            "12": 0.29680616740088106
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 3632,
+              "unstable": 354,
+              "fit_has_no_mode": 0,
+              "error_median": 0.3062036829241399,
+              "error_p95": 5.842711206919239,
+              "near_boundary_cases": 1544,
+              "near_boundary_error_median": 0.15695880533799755,
+              "near_boundary_error_p95": 3.816115768382955,
+              "near_boundary_error_p99": 5.609607329699573,
+              "margins": {
+                "0": {
+                  "cleared": 0.9025330396475771,
+                  "stable_cleared": 0.9996949359365467,
+                  "unstable_cleared": 1
+                },
+                "0.2": {
+                  "cleared": 0.8722466960352423,
+                  "stable_cleared": 0.9664429530201343,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.8612334801762115,
+                  "stable_cleared": 0.9542403904820013,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.8381057268722467,
+                  "stable_cleared": 0.9286150091519219,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.8166299559471366,
+                  "stable_cleared": 0.9048200122025626,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.5663546255506607,
+                  "stable_cleared": 0.62751677852349,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.10022026431718062,
+                  "stable_cleared": 0.11104331909701037,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.2
+            },
+            "sub": {
+              "cases_with_a_mode": 3625,
+              "unstable": 273,
+              "fit_has_no_mode": 0,
+              "error_median": 0.04297230623511261,
+              "error_p95": 2.775563436453054,
+              "near_boundary_cases": 597,
+              "near_boundary_error_median": 0.03557431382374876,
+              "near_boundary_error_p95": 0.2275459892928923,
+              "near_boundary_error_p99": 1.0066618081383274,
+              "margins": {
+                "0": {
+                  "cleared": 0.9251101321585903,
+                  "stable_cleared": 0.9994045846978268,
+                  "unstable_cleared": 3
+                },
+                "0.2": {
+                  "cleared": 0.9218061674008811,
+                  "stable_cleared": 0.9964275081869604,
+                  "unstable_cleared": 1
+                },
+                "0.5": {
+                  "cleared": 0.9151982378854625,
+                  "stable_cleared": 0.9892825245608812,
+                  "unstable_cleared": 1
+                },
+                "1": {
+                  "cleared": 0.9069383259911894,
+                  "stable_cleared": 0.9803512950282822,
+                  "unstable_cleared": 1
+                },
+                "2": {
+                  "cleared": 0.8810572687224669,
+                  "stable_cleared": 0.9523667758261387,
+                  "unstable_cleared": 1
+                },
+                "5": {
+                  "cleared": 0.7926762114537445,
+                  "stable_cleared": 0.8568026198273295,
+                  "unstable_cleared": 1
+                },
+                "10": {
+                  "cleared": 0.5966409691629956,
+                  "stable_cleared": 0.6448347722536469,
+                  "unstable_cleared": 1
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": null
+            },
+            "fast": {
+              "cases_with_a_mode": 3632,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 0.038988784268443766,
+              "error_p95": 0.5865139870203137,
+              "near_boundary_cases": 14,
+              "near_boundary_error_median": 0.00036732258651228644,
+              "near_boundary_error_p95": 0.003125244190989006,
+              "near_boundary_error_p99": 0.004948580622271052,
+              "margins": {
+                "0": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.998898678414097,
+                  "stable_cleared": 0.998898678414097,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9980726872246696,
+                  "stable_cleared": 0.9980726872246696,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.9961453744493393,
+                  "stable_cleared": 0.9961453744493393,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9622797356828194,
+                  "stable_cleared": 0.9622797356828194,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 3632,
+              "unstable": 627,
+              "fit_has_no_mode": 0,
+              "error_median": 0.14436434261691655,
+              "error_p95": 4.0076146963492985,
+              "near_boundary_cases": 1944,
+              "near_boundary_error_median": 0.07605609580938033,
+              "near_boundary_error_p95": 2.217007036044514,
+              "near_boundary_error_p99": 4.375604062306266,
+              "margins": {
+                "0": {
+                  "cleared": 0.8276431718061674,
+                  "stable_cleared": 0.9996672212978369,
+                  "unstable_cleared": 2
+                },
+                "0.2": {
+                  "cleared": 0.7951541850220264,
+                  "stable_cleared": 0.9610648918469218,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 0.7783590308370044,
+                  "stable_cleared": 0.940765391014975,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.7480726872246696,
+                  "stable_cleared": 0.9041597337770383,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.7075991189427313,
+                  "stable_cleared": 0.8552412645590682,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.42676211453744495,
+                  "stable_cleared": 0.5158069883527454,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.04157488986784141,
+                  "stable_cleared": 0.050249584026622295,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.2
+            }
+          }
+        },
+        "126 points, 5 % noise": {
+          "residual_median": 0.059559453804995326,
+          "states_median": 8.0,
+          "pole_pairs_share": {
+            "4": 0.6965859030837004,
+            "8": 0.15583700440528633,
+            "12": 0.14757709251101322
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 3632,
+              "unstable": 354,
+              "fit_has_no_mode": 39,
+              "error_median": 0.5059938395153267,
+              "error_p95": 5.385385015669793,
+              "near_boundary_cases": 1536,
+              "near_boundary_error_median": 0.2839701188614243,
+              "near_boundary_error_p95": 3.5745973858602555,
+              "near_boundary_error_p99": 5.299828233714514,
+              "margins": {
+                "0": {
+                  "cleared": 0.9039096916299559,
+                  "stable_cleared": 0.9984746796827334,
+                  "unstable_cleared": 10
+                },
+                "0.2": {
+                  "cleared": 0.8827092511013216,
+                  "stable_cleared": 0.975594874923734,
+                  "unstable_cleared": 8
+                },
+                "0.5": {
+                  "cleared": 0.8719713656387665,
+                  "stable_cleared": 0.9636973764490543,
+                  "unstable_cleared": 8
+                },
+                "1": {
+                  "cleared": 0.8526982378854625,
+                  "stable_cleared": 0.9423428920073216,
+                  "unstable_cleared": 8
+                },
+                "2": {
+                  "cleared": 0.8177312775330396,
+                  "stable_cleared": 0.9035997559487492,
+                  "unstable_cleared": 8
+                },
+                "5": {
+                  "cleared": 0.5063325991189427,
+                  "stable_cleared": 0.5597925564368518,
+                  "unstable_cleared": 4
+                },
+                "10": {
+                  "cleared": 0.09609030837004405,
+                  "stable_cleared": 0.10555216595485052,
+                  "unstable_cleared": 3
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": null
+            },
+            "sub": {
+              "cases_with_a_mode": 3625,
+              "unstable": 273,
+              "fit_has_no_mode": 0,
+              "error_median": 0.2514898684510145,
+              "error_p95": 6.32534693730152,
+              "near_boundary_cases": 597,
+              "near_boundary_error_median": 0.2044165685303021,
+              "near_boundary_error_p95": 1.338549504962866,
+              "near_boundary_error_p99": 4.6844867120447695,
+              "margins": {
+                "0": {
+                  "cleared": 0.9245594713656388,
+                  "stable_cleared": 0.9952366775826139,
+                  "unstable_cleared": 15
+                },
+                "0.2": {
+                  "cleared": 0.9196035242290749,
+                  "stable_cleared": 0.9913664781184877,
+                  "unstable_cleared": 10
+                },
+                "0.5": {
+                  "cleared": 0.9143722466960352,
+                  "stable_cleared": 0.9860077403989282,
+                  "unstable_cleared": 9
+                },
+                "1": {
+                  "cleared": 0.9041850220264317,
+                  "stable_cleared": 0.9752902649598094,
+                  "unstable_cleared": 8
+                },
+                "2": {
+                  "cleared": 0.8747246696035242,
+                  "stable_cleared": 0.9449240845489729,
+                  "unstable_cleared": 3
+                },
+                "5": {
+                  "cleared": 0.7835903083700441,
+                  "stable_cleared": 0.846680559690384,
+                  "unstable_cleared": 2
+                },
+                "10": {
+                  "cleared": 0.5903083700440529,
+                  "stable_cleared": 0.6376897886275678,
+                  "unstable_cleared": 2
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": null
+            },
+            "fast": {
+              "cases_with_a_mode": 3632,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 0.1854695470213663,
+              "error_p95": 2.1338660236148814,
+              "near_boundary_cases": 14,
+              "near_boundary_error_median": 0.0015630468826158816,
+              "near_boundary_error_p95": 0.04052760582307068,
+              "near_boundary_error_p99": 0.0503251522027966,
+              "margins": {
+                "0": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.998898678414097,
+                  "stable_cleared": 0.998898678414097,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9980726872246696,
+                  "stable_cleared": 0.9980726872246696,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.996420704845815,
+                  "stable_cleared": 0.996420704845815,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.9617290748898678,
+                  "stable_cleared": 0.9617290748898678,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 3632,
+              "unstable": 627,
+              "fit_has_no_mode": 0,
+              "error_median": 0.3463410350374052,
+              "error_p95": 3.8416203326958422,
+              "near_boundary_cases": 1944,
+              "near_boundary_error_median": 0.22879384255595858,
+              "near_boundary_error_p95": 2.7264252393773485,
+              "near_boundary_error_p99": 4.151639904504262,
+              "margins": {
+                "0": {
+                  "cleared": 0.8284691629955947,
+                  "stable_cleared": 0.9960066555740432,
+                  "unstable_cleared": 16
+                },
+                "0.2": {
+                  "cleared": 0.8034140969162996,
+                  "stable_cleared": 0.9683860232945092,
+                  "unstable_cleared": 8
+                },
+                "0.5": {
+                  "cleared": 0.7888215859030837,
+                  "stable_cleared": 0.95108153078203,
+                  "unstable_cleared": 7
+                },
+                "1": {
+                  "cleared": 0.7601872246696035,
+                  "stable_cleared": 0.9168053244592346,
+                  "unstable_cleared": 6
+                },
+                "2": {
+                  "cleared": 0.7026431718061674,
+                  "stable_cleared": 0.8489184692179701,
+                  "unstable_cleared": 1
+                },
+                "5": {
+                  "cleared": 0.3645374449339207,
+                  "stable_cleared": 0.4405990016638935,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.03579295154185022,
+                  "stable_cleared": 0.04326123128119801,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            }
+          }
+        },
+        "501 points, 5 % noise": {
+          "residual_median": 0.061784017935460414,
+          "states_median": 8.0,
+          "pole_pairs_share": {
+            "4": 0.6819933920704846,
+            "8": 0.14041850220264318,
+            "12": 0.17758810572687225
+          },
+          "bands": {
+            "slow": {
+              "cases_with_a_mode": 3632,
+              "unstable": 354,
+              "fit_has_no_mode": 39,
+              "error_median": 0.5094780587942624,
+              "error_p95": 5.236628819876205,
+              "near_boundary_cases": 1537,
+              "near_boundary_error_median": 0.28411773006934204,
+              "near_boundary_error_p95": 3.461397984913378,
+              "near_boundary_error_p99": 5.170147677546276,
+              "margins": {
+                "0": {
+                  "cleared": 0.9041850220264317,
+                  "stable_cleared": 0.99908480780964,
+                  "unstable_cleared": 9
+                },
+                "0.2": {
+                  "cleared": 0.88931718061674,
+                  "stable_cleared": 0.9829164124466138,
+                  "unstable_cleared": 8
+                },
+                "0.5": {
+                  "cleared": 0.8769273127753304,
+                  "stable_cleared": 0.9691885295912142,
+                  "unstable_cleared": 8
+                },
+                "1": {
+                  "cleared": 0.8540748898678414,
+                  "stable_cleared": 0.9438682123245882,
+                  "unstable_cleared": 8
+                },
+                "2": {
+                  "cleared": 0.8196585903083701,
+                  "stable_cleared": 0.9060402684563759,
+                  "unstable_cleared": 7
+                },
+                "5": {
+                  "cleared": 0.5082599118942731,
+                  "stable_cleared": 0.561928004881025,
+                  "unstable_cleared": 4
+                },
+                "10": {
+                  "cleared": 0.09829295154185022,
+                  "stable_cleared": 0.10799267846247712,
+                  "unstable_cleared": 3
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": null
+            },
+            "sub": {
+              "cases_with_a_mode": 3625,
+              "unstable": 273,
+              "fit_has_no_mode": 0,
+              "error_median": 0.2694736853403299,
+              "error_p95": 7.210024263620467,
+              "near_boundary_cases": 597,
+              "near_boundary_error_median": 0.2086066185008728,
+              "near_boundary_error_p95": 1.4448189651568077,
+              "near_boundary_error_p99": 4.079872300885484,
+              "margins": {
+                "0": {
+                  "cleared": 0.924284140969163,
+                  "stable_cleared": 0.9940458469782674,
+                  "unstable_cleared": 18
+                },
+                "0.2": {
+                  "cleared": 0.9209801762114538,
+                  "stable_cleared": 0.9916641857695743,
+                  "unstable_cleared": 14
+                },
+                "0.5": {
+                  "cleared": 0.913546255506608,
+                  "stable_cleared": 0.9842214944924085,
+                  "unstable_cleared": 12
+                },
+                "1": {
+                  "cleared": 0.9008810572687225,
+                  "stable_cleared": 0.9720154807978565,
+                  "unstable_cleared": 7
+                },
+                "2": {
+                  "cleared": 0.8730726872246696,
+                  "stable_cleared": 0.9422447156891932,
+                  "unstable_cleared": 6
+                },
+                "5": {
+                  "cleared": 0.7811123348017621,
+                  "stable_cleared": 0.8437034831795177,
+                  "unstable_cleared": 3
+                },
+                "10": {
+                  "cleared": 0.586453744493392,
+                  "stable_cleared": 0.6332241738612683,
+                  "unstable_cleared": 3
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": null
+            },
+            "fast": {
+              "cases_with_a_mode": 3632,
+              "unstable": 0,
+              "fit_has_no_mode": 0,
+              "error_median": 0.19008272277493887,
+              "error_p95": 2.2468235221797643,
+              "near_boundary_cases": 14,
+              "near_boundary_error_median": 0.002703847050362085,
+              "near_boundary_error_p95": 0.04402090928334037,
+              "near_boundary_error_p99": 0.04930274655316937,
+              "margins": {
+                "0": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.2": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "0.5": {
+                  "cleared": 1.0,
+                  "stable_cleared": 1.0,
+                  "unstable_cleared": 0
+                },
+                "1": {
+                  "cleared": 0.998898678414097,
+                  "stable_cleared": 0.998898678414097,
+                  "unstable_cleared": 0
+                },
+                "2": {
+                  "cleared": 0.9980726872246696,
+                  "stable_cleared": 0.9980726872246696,
+                  "unstable_cleared": 0
+                },
+                "5": {
+                  "cleared": 0.996420704845815,
+                  "stable_cleared": 0.996420704845815,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.961453744493392,
+                  "stable_cleared": 0.961453744493392,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 0.0
+            },
+            "all": {
+              "cases_with_a_mode": 3632,
+              "unstable": 627,
+              "fit_has_no_mode": 0,
+              "error_median": 0.35763868837946955,
+              "error_p95": 3.811083570087095,
+              "near_boundary_cases": 1944,
+              "near_boundary_error_median": 0.2287678683412091,
+              "near_boundary_error_p95": 2.7441369169519683,
+              "near_boundary_error_p99": 4.211147237941479,
+              "margins": {
+                "0": {
+                  "cleared": 0.8284691629955947,
+                  "stable_cleared": 0.9956738768718802,
+                  "unstable_cleared": 17
+                },
+                "0.2": {
+                  "cleared": 0.8111233480176211,
+                  "stable_cleared": 0.9767054908485857,
+                  "unstable_cleared": 11
+                },
+                "0.5": {
+                  "cleared": 0.7918502202643172,
+                  "stable_cleared": 0.9540765391014975,
+                  "unstable_cleared": 9
+                },
+                "1": {
+                  "cleared": 0.7582599118942731,
+                  "stable_cleared": 0.9151414309484193,
+                  "unstable_cleared": 4
+                },
+                "2": {
+                  "cleared": 0.7029185022026432,
+                  "stable_cleared": 0.848585690515807,
+                  "unstable_cleared": 3
+                },
+                "5": {
+                  "cleared": 0.3667400881057269,
+                  "stable_cleared": 0.443261231281198,
+                  "unstable_cleared": 0
+                },
+                "10": {
+                  "cleared": 0.037995594713656385,
+                  "stable_cleared": 0.045923460898502494,
+                  "unstable_cleared": 0
+                }
+              },
+              "smallest_margin_with_no_unstable_cleared": 5.0
+            }
+          }
+        }
+      },
+      "interpolating_fit": {
+        "1e-06": {
+          "wrong_verdicts": 0.7863436123348018,
+          "cleared": 0.04102422907488987,
+          "stable_cleared": 0.049584026622296176,
+          "unstable_cleared": 0
+        },
+        "0.0001": {
+          "wrong_verdicts": 0.7979074889867841,
+          "cleared": 0.02946035242290749,
+          "stable_cleared": 0.035607321131447586,
+          "unstable_cleared": 0
+        },
+        "0.001": {
+          "wrong_verdicts": 0.8023127753303965,
+          "cleared": 0.025055066079295155,
+          "stable_cleared": 0.0302828618968386,
+          "unstable_cleared": 0
+        },
+        "0.01": {
+          "wrong_verdicts": 0.8078193832599119,
+          "cleared": 0.019548458149779735,
+          "stable_cleared": 0.023627287853577372,
+          "unstable_cleared": 0
+        }
+      }
+    }
+  }
+}

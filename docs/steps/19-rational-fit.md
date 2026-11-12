@@ -99,6 +99,8 @@ Cases in the range, 251 points, no margin. Share cleared, then unstable cases cl
 
 ## Disagreements
 
+Note added in step 20: the fit of this step holds only for scans exact to rounding. With noise of one part in a million it gives the wrong verdict in 55 % to 94 % of cases, all of them stable cases flagged. The statement below that a scan from a simulation model can be made clean enough is withdrawn. See `20-noise-and-modes.md` for a least-squares fit that tolerates noise.
+
 1. **At 101 points the fit is wrong in 2 cases of 98,635** (both doubly-fed, both flagged though stable) and at 51 points in 7,169. Below about four points per term the fit is not determined.
 2. **The fit on noisy scans is worse than no fit.** Expected of a function made to pass through its points. A least-squares fit of fixed order is the usual answer.
 3. **A least-squares fit was tried and not adopted.** Vector fitting of the four admittance entries with common poles, then the roots of the determinant with the exact network impedance, on 150 doubly-fed cases with 5 % noise. The fit matched the scan to the noise level, but the growth rate of the slow mode was not resolved and unstable cases were cleared. The trial is not in the repository and no number from it is quoted.
