@@ -11,6 +11,7 @@ Before building a dataset of trajectories and training models on it: how much of
 - `src/sso_sciml/solver/modal.py`: `linear_response`, the response from the modes with no time stepping.
 - `src/sso_sciml/data/t1.py`: `operating_point(θ)`, the model, steady state and parameters of one case.
 - `scripts/phase3_linear_vs_time_domain.py`: the comparison, its results file and two figures.
+- `tests/test_modal.py`: 3 tests. The modal response matches the matrix exponential and RK4 on the full model for a small offset.
 
 ## Commands
 
@@ -45,7 +46,7 @@ Median difference over the first 0.1 s:
 
 - **The oscillation is the sum of the modes up to very large amplitude.** After a 0.2 pu offset the time-domain run and the modal response differ by 0.44 % for stable cases. No stable case parts from the modal response at any offset up to 0.2 pu, and 98.9 % do not at 0.5 pu.
 - **A growing oscillation parts from it only near 1 pu.** Of the trajectories that part, the capacitor voltage oscillation has reached 1.14 pu at the median when they do, and 0.55 pu for the lowest tenth. No plant would still be connected at that size.
-- **What the modes miss is second order and sits in the DC link and grid-side converter.** The states that differ most at 0.2 pu are the DC-voltage integrator, the grid-side current integrators and the DC voltage. They hardly respond in the linear model, so a small drift driven by the square of the oscillation is large by comparison. It doubles when the offset doubles.
+- **What the modes miss is second order and sits in the DC link and grid-side converter.** The states that differ most at 0.2 pu are the DC-voltage integrator, the grid-side current integrators, the outer power integrator and the DC voltage. They hardly respond in the linear model, so a small drift driven by the square of the oscillation is large by comparison. It doubles when the offset doubles.
 
 ![Where they part](../results/phase3/fig39_linear_departure.png)
 

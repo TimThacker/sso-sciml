@@ -74,6 +74,10 @@ Deterministic screens were lined up by the data they need and scored on how many
 
 Details in [docs/steps/14-screening-ladder.md](docs/steps/14-screening-ladder.md).
 
+- **The waveform needs no time-domain run either.** For a capacitor-voltage disturbance of 0.2 pu the oscillation computed from the eigenvalues differs from the time-domain run by 0.44 %. A growing oscillation departs from it only when it has reached about 1 pu. What a time-domain run adds is the effect of converter limits, which the model does not yet have.
+
+Details in [docs/steps/15-linear-vs-time-domain.md](docs/steps/15-linear-vs-time-domain.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
