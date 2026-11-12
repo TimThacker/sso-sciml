@@ -67,6 +67,10 @@ class Controls:
     w_rated: float = 1.2  # rotor speed at which the speed-cubed curve gives 1 pu power
     ff: float = 1.0  # terminal-voltage feed-forward gain of the grid-side converter (0 or 1)
     t_ff: float = 0.002  # feed-forward filter, s
+    # Rotor-side converter voltage limit, pu. The default is far above any command and so
+    # means no limit. It is finite because an infinite value gives 0 * inf = NaN in the
+    # automatic derivative of the limiter.
+    vr_max: float = 1e6
 
     def gains(self, data: IGData) -> dict:
         kp, ki = gains_from_bandwidth(data, self.rsc_hz)
@@ -92,6 +96,7 @@ class Controls:
             "k_opt": 1.0 / self.w_rated**3,
             "ff": self.ff,
             "t_ff": self.t_ff,
+            "vr_max": self.vr_max,
         }
 
 
@@ -196,12 +201,14 @@ class DFIGFull:
         ird_ref = p["out_kp"] * (p_ref - x[..., 13]) + p["out_ki"] * x[..., 15]
         irq_ref = -(p["out_kp"] * (p["q_ref"] - x[..., 14]) + p["out_ki"] * x[..., 16])
         irc_d, irc_q = _unrot(ir_d, ir_q, cos, sin)
-        vr_d, vr_q = _rot(
-            p["kp"] * (ird_ref - irc_d) + p["ki"] * x[..., 11],
-            p["kp"] * (irq_ref - irc_q) + p["ki"] * x[..., 12],
-            cos,
-            sin,
-        )
+        # Controller command, then the converter's voltage limit: the command keeps its
+        # direction and its magnitude is held at vr_max. Below the limit the factor is
+        # exactly one.
+        cmd_d = p["kp"] * (ird_ref - irc_d) + p["ki"] * x[..., 11]
+        cmd_q = p["kp"] * (irq_ref - irc_q) + p["ki"] * x[..., 12]
+        size = torch.sqrt(cmd_d * cmd_d + cmd_q * cmd_q)
+        keep = torch.clamp(p["vr_max"] / torch.clamp(size, min=1e-12), max=1.0)
+        vr_d, vr_q = _rot(keep * cmd_d, keep * cmd_q, cos, sin)
 
         # Grid-side converter: DC voltage loop sets the d-axis current, q-axis reference zero.
         igd_ref = -(p["dc_kp"] * (p["vdc_ref"] - x[..., 19]) + p["dc_ki"] * x[..., 20])
@@ -255,6 +262,7 @@ class DFIGFull:
             dim=-1,
         )  # fmt: skip
         return {"deriv": deriv, "vt": (vt_d, vt_q), "vr": (vr_d, vr_q), "vg": (vg_d, vg_q),
+                "vr_command": (cmd_d, cmd_q),
                 "p_t": p_t, "q_t": q_t, "t_e": t_e, "p_rsc": p_rsc, "p_gsc": p_gsc}  # fmt: skip
 
     def rhs(self, x: torch.Tensor, p: dict) -> torch.Tensor:

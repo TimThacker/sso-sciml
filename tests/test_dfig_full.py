@@ -130,3 +130,30 @@ def test_batched_rk4_on_gpu_matches_cpu(model):
         _, tr = rk4(model.rhs, xs, ps, 0.02, 1e-4, save_every=200)
         out[dev] = tr[-1].cpu()
     assert (out["cpu"] - out["cuda"]).abs().max() < 1e-11
+
+
+# ------------------------------------------------------------------ converter limit
+def test_voltage_limit_above_the_command_changes_nothing(model):
+    x0, p = model.equilibrium(0.5 * model.data.x_e, w_r=0.8)
+    x = x0 + 1e-3
+    size = float(torch.hypot(*model.outputs(x, p)["vr_command"]))
+    loose = {**p, "vr_max": torch.tensor(2.0 * size, dtype=torch.float64)}
+    assert torch.equal(model.rhs(x, p), model.rhs(x, loose))
+    a = jacobian(model.rhs, x0, p)
+    assert torch.isfinite(a).all()
+    assert torch.equal(a, jacobian(model.rhs, x0, loose))
+
+
+def test_voltage_limit_holds_the_magnitude_and_keeps_the_direction(model):
+    x0, p = model.equilibrium(0.5 * model.data.x_e, w_r=0.8)
+    free = model.outputs(x0, p)
+    size = float(torch.hypot(*free["vr"]))
+    tight = {**p, "vr_max": torch.tensor(0.5 * size, dtype=torch.float64)}
+    held = model.outputs(x0, tight)
+    assert float(torch.hypot(*held["vr"])) == pytest.approx(0.5 * size, rel=1e-12)
+    assert float(held["vr"][0] / held["vr"][1]) == pytest.approx(
+        float(free["vr"][0] / free["vr"][1]), rel=1e-9
+    )
+    # The command itself is not limited, and the steady state is no longer one.
+    assert torch.equal(held["vr_command"][0], free["vr_command"][0])
+    assert model.rhs(x0, tight).abs().max() > 1e-3

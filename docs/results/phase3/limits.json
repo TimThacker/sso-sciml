@@ -1,0 +1,62 @@
+{
+  "unstable_cases": 96,
+  "stable_cases": 32,
+  "vr_max_pu": 0.4,
+  "dc_band_pu": 0.2,
+  "offset_pu": 0.01,
+  "window_s": 2.0,
+  "command_at_steady_state": {
+    "min": 0.0024355939294867807,
+    "median": 0.11225241249713025,
+    "max": 0.20772367275895945
+  },
+  "stable_cases_reaching_any_limit": 0,
+  "limits": {
+    "rotor voltage": {
+      "reached_in_the_run": 51,
+      "reached_from_the_modes": 49,
+      "both": 49,
+      "median_time_s": 1.061,
+      "error_median_s": 0.052999999999999936,
+      "error_median_abs_s": 0.05700000000000005,
+      "error_p95_abs_s": 0.14459999999999998,
+      "error_relative_median": 0.058823529411764594
+    },
+    "DC voltage": {
+      "reached_in_the_run": 56,
+      "reached_from_the_modes": 50,
+      "both": 50,
+      "median_time_s": 1.025,
+      "error_median_s": 0.0774999999999999,
+      "error_median_abs_s": 0.0774999999999999,
+      "error_p95_abs_s": 0.2823999999999998,
+      "error_relative_median": 0.08611365123164659
+    },
+    "first of the two": {
+      "reached_in_the_run": 56,
+      "reached_from_the_modes": 51,
+      "both": 51,
+      "median_time_s": 1.025,
+      "error_median_s": 0.06600000000000006,
+      "error_median_abs_s": 0.06600000000000006,
+      "error_p95_abs_s": 0.17600000000000005,
+      "error_relative_median": 0.07738452309538092
+    }
+  },
+  "dc_voltage_first_share": 0.9642857142857143,
+  "dc_leads_rotor_voltage_by_median_s": 0.06000000000000005,
+  "hand_estimate_of_dc_time": {
+    "cases": 50,
+    "error_median_abs_s": 0.07600425700535132,
+    "error_relative_median": 0.0880009955779463
+  },
+  "after_the_first_limit": {
+    "speed_runs_away_or_run_fails": 47,
+    "of": 56
+  },
+  "cost": {
+    "rk4_batch_s": 100.98827640000673,
+    "modal_all_cases_s": 0.4460146000055829
+  },
+  "wall_s": 105.05135480000172
+}

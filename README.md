@@ -78,6 +78,10 @@ Details in [docs/steps/14-screening-ladder.md](docs/steps/14-screening-ladder.md
 
 Details in [docs/steps/15-linear-vs-time-domain.md](docs/steps/15-linear-vs-time-domain.md).
 
+- **The first limit a growing oscillation meets is the DC link, and the eigenvalues say roughly when.** With the rotor-side converter voltage limited to 0.4 pu, the DC-link voltage leaves a 0.2 pu band first in 96 % of cases. The time to that point follows from the modes to within 8 %, erring late. After it the model loses control; it has no chopper, crowbar or trip logic, so what follows is not to be trusted.
+
+Details in [docs/steps/16-converter-limit.md](docs/steps/16-converter-limit.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
