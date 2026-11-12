@@ -56,7 +56,9 @@ The first learned models predict that growth rate from the 12 parameters. A mult
 
 Learning the correction has a price. Give the hand calculation a random error of 1 1/s and the correcting model is off by 0.85 1/s, while a model that takes the hand calculation as an input learns to distrust it and stays at 0.11 1/s. Details in [docs/steps/10-t1-feature-studies.md](docs/steps/10-t1-feature-studies.md).
 
-Error bars calibrated on held-out cases cover 90 % inside the training range and between 36 and 94 % outside it. Used as a screen, they send about 1 % of cases to the full solver and cut the unstable cases called stable from 2.0 % to 0.15 %. In batches the plain network is about 8,000 times faster than the solver. Details in [docs/steps/11-t1-uncertainty.md](docs/steps/11-t1-uncertainty.md).
+Error bars calibrated on held-out cases cover 90 % inside the training range and between 36 and 94 % outside it. Used as a screen, they send about 1 % of cases to the full solver and cut the unstable cases called stable from 2.0 % to 0.15 %. In batches the plain network is about 7,500 times faster than the solver. Details in [docs/steps/11-t1-uncertainty.md](docs/steps/11-t1-uncertainty.md).
+
+A network trained on the equations alone, with no solver data, was tried on one case of the induction generator. Over a 0.5 s window it settles onto the steady state, which satisfies the equations as well as the true response does. Scaling each state and marching through time in windows of 0.05 s fix that: 4 % error after 365 s of training, against 4.7 s for the solver. Details in [docs/steps/12-forward-pinn.md](docs/steps/12-forward-pinn.md).
 
 ## Setup
 

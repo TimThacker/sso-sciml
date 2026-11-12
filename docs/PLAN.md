@@ -267,7 +267,7 @@ Status: the T1 dataset is done (`docs/steps/08-t1-dataset.md`): 131,072 in-distr
 
 ### Phase 4: T1 with arms N, F and R (2 weeks)
 
-1. Training harness: one config per run, seeded, local MLflow store, results tables in `docs/results/`.
+1. Training harness: one config per run, seeded, results in `docs/results/` as JSON with plots of training, performance and metrics (decided 2026-11-11 in place of an MLflow store).
 2. Baselines: gradient-boosted trees and Gaussian process, with and without physics features.
 3. MLP and deep ensemble under arms N, F and R, at four data budgets.
 4. Feature ablation: which mechanism quantity carries the gain.
@@ -277,7 +277,7 @@ Status: the T1 dataset is done (`docs/steps/08-t1-dataset.md`): 131,072 in-distr
 
 Exit check: results table for every model, arm, budget and split; verdicts on hypotheses 1 and 2.
 
-Status: gradient-boosted trees and a multilayer perceptron are trained under arms N, F and R at four budgets and three seeds, and scored on every split (`docs/steps/09-t1-arms.md`). Arm R is the best perceptron from 10,000 cases up and on every extrapolation set. Feature ablation, corruption and validity studies are done (`docs/steps/10-t1-feature-studies.md`): the impedance root alone carries the gain of arm F; arm R passes any error of its baseline that is not a function of the inputs straight into the prediction, and arm F learns to discount one. Uncertainty, the Gaussian process, trend consistency and timing are done (`docs/steps/11-t1-uncertainty.md`): ensemble spread is too narrow by a factor of 2 to 4; conformal intervals hold at 90 % in distribution and at 36 to 94 % on the extrapolation sets; flagging the 1 % of cases whose interval contains zero cuts missed unstable cases from 2.0 % to 0.15 % for arm N. Arms F and R are limited by the 1.7 ms hand calculation, 6 times faster than the solver; arm N is about 8,000 times faster in batches. Not done: the MLflow store (results are JSON files in `docs/results/`), and the trend in rotor speed.
+Status: gradient-boosted trees and a multilayer perceptron are trained under arms N, F and R at four budgets and three seeds, and scored on every split (`docs/steps/09-t1-arms.md`). Arm R is the best perceptron from 10,000 cases up and on every extrapolation set. Feature ablation, corruption and validity studies are done (`docs/steps/10-t1-feature-studies.md`): the impedance root alone carries the gain of arm F; arm R passes any error of its baseline that is not a function of the inputs straight into the prediction, and arm F learns to discount one. Uncertainty, the Gaussian process, trend consistency and timing are done (`docs/steps/11-t1-uncertainty.md`): ensemble spread is too narrow by a factor of 2 to 4; conformal intervals hold at 90 % in distribution and at 36 to 94 % on the extrapolation sets; flagging the 1 % of cases whose interval contains zero cuts missed unstable cases from 2.0 % to 0.15 % for arm N. Arms F and R are limited by the 1.7 ms hand calculation, 6 times faster than the solver; arm N is about 7,500 times faster in batches. Training curves, parity plots, a grid of every metric and reliability diagrams are drawn by the same scripts. Not done: the trend in rotor speed.
 
 ### Phase 5: PINNs (3 weeks)
 
@@ -288,6 +288,8 @@ Status: gradient-boosted trees and a multilayer perceptron are trained under arm
 5. Cost accounting: GPU-hours to reach a given error, against a data-trained network including the cost of generating its data.
 
 Exit check: for each of the four items, either a model that meets a stated error or a documented failure with the evidence for its cause.
+
+Status: item 1 is done for System B1 (`docs/steps/12-forward-pinn.md`), not yet for System A. A single network over 0.5 s settles onto the steady state whatever inputs, activations or causal weighting it has. Scaling each state and marching in windows of 0.05 s are what make it work: 4 % error after 365 s on the GPU, against 4.7 s for RK4.
 
 ### Phase 6: The loss-against-feature comparison (2 weeks)
 
@@ -394,7 +396,7 @@ sso-sciml/
 └── tests/
 ```
 
-`physics/` and `solver/` exist. The rest are added by the phase that needs them, as are dependencies (`xgboost`, `gpytorch`, `botorch`, `torchdiffeq`, `mlflow`, `zarr`, `fastapi`, `pydantic`, `hypothesis`).
+`physics/` and `solver/` exist. The rest are added by the phase that needs them, as are dependencies (`xgboost`, `gpytorch`, `botorch`, `torchdiffeq`, `zarr`, `fastapi`, `pydantic`, `hypothesis`).
 
 ## 9. Where a learned model will not beat the physics
 
