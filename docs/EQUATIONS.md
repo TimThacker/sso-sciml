@@ -531,3 +531,49 @@ Integration is by the trapezoidal rule:
 ```
 
 A mode at frequency `f` in the rotating frame appears at `f0 − f` in a phase quantity.
+
+## 19. Generic converter on a network (System C)
+
+No machine. A voltage-source converter behind a filter reactor `R_f + jX_f` meets the network of section 17 at its terminal. Current `i` is positive out of the converter. `R_s = R_f + R_t`, `X_s = X_f + X_t`.
+
+Network, with `i = i_l + i_p` (line and parallel path):
+
+```
+(X_s/wb) di/dt + (X_E/wb) di_l/dt = v_g − v_b − (R_s + jX_s) i − (R_E + jX_E) i_l − v_c
+(X_s/wb) di/dt + (X_P/wb) di_p/dt = v_g − v_b − (R_s + jX_s) i − (R_P + jX_P) i_p
+(1/wb) dv_c/dt = X_C i_l − j v_c
+v_t = v_g − (R_f + jX_f) i − (X_f/wb) di/dt
+```
+
+Controls, in the control frame (lower case, turned by the angle `θ`):
+
+```
+u      = −[Kp_dc (v_dc,ref − v_dc) + Ki_dc x_dc]          dx_dc/dt = v_dc,ref − v_dc
+C_dc v_dc dv_dc/dt = P_src − Re(v_g i*)
+i_ref  = u + j i_q,ref                    with a phase-locked loop
+i_ref  = u v_f                            without one: the current follows the voltage
+v_g    = k_ff v_f + Kp (i_ref − i) + Ki x                 dx/dt = i_ref − i
+dθ/dt  = Kp_pll v_t,q + Ki_pll x_pll                      dx_pll/dt = v_t,q
+T_f dv_f/dt = v_t − v_f                   (− j wb T_f v_f without a phase-locked loop)
+```
+
+`P_src` is constant: positive for a source, negative for a load. With a phase-locked loop `i_q,ref` is the constant that holds `|v_t|` at 1 pu in steady state. Without one `θ = 0` and the filter acts on the 60 Hz waveform, so its equation carries the rotation term.
+
+**Admittance.** The converter alone, driven by `v_t`, has 10 states (8 without a phase-locked loop). With `A`, `B` its Jacobians with respect to state and `v_t`, and `C` picking the current:
+
+```
+Y(s) = −C (sI − A)^-1 B                   current into the converter per terminal voltage
+```
+
+**Network impedance.** With `z(σ) = R_t + σX_t + (R_E + σX_E + X_C/σ) ∥ (R_P + σX_P)`:
+
+```
+z± = z(s/wb ± j)        Z(s) = [[z_d, −z_q], [z_q, z_d]]
+z_d = (z+ + z−)/2       z_q = (z+ − z−)/(2j)
+```
+
+**Whole system.** `det(I + Y(s) Z(s)) = 0` at every mode. The number of unstable modes is the number of unstable poles of `Y` and `Z` apart, less the number of anticlockwise turns of `det(I + Y(jω) Z(jω))` about zero as `ω` runs from −∞ to ∞.
+
+**Passivity.** `Y` is passive at `ω` if the smallest eigenvalue of `(Y + Y^H)/2` is not negative. `Z` of this network is passive at every frequency. If at every frequency either `Y` is passive or the largest singular value of `Y Z` is below 1, no eigenvalue of `Y Z` reaches the real axis at or to the left of −1, and the system is stable.
+
+**Positive-sequence part.** `m_p = (m_dd + m_qq)/2 + j (m_qd − m_dq)/2` of a 2 × 2 matrix. It leaves out the coupling to the mirror frequency.
