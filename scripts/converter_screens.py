@@ -193,14 +193,12 @@ def main() -> None:
     fig, ax = plt.subplots(figsize=(10.5, 4.6), facecolor=report.SURFACE)
     f = curves["f"]
     for name, colour in zip(GROUPS, report.SERIES, strict=False):
-        for side in (f < 0, f > 0):
-            ax.plot(np.abs(f[side]), curves[name][side], color=colour, lw=1.8,
-                    ls="-" if side[-1] else "--", label=name if side[-1] else None)  # fmt: skip
+        # The index is the same at +f and -f, so one side is drawn.
+        ax.plot(f[f > 0], curves[name][f > 0], color=colour, lw=1.8, label=name)
     ax.axhline(0, color=report.INK, lw=0.8)
     ax.set_xscale("log")
     ax.set_ylim(-1.5, 1.5)
-    ax.set_xlabel("Frequency in the synchronous frame (Hz). Solid: above 60 Hz in the phases. "
-                  "Dashed: below")  # fmt: skip
+    ax.set_xlabel("Frequency in the synchronous frame (Hz): 60 Hz plus or minus this in the phases")
     ax.set_ylabel("Smallest conductance (pu)")
     ax.legend(frameon=False, fontsize=9, labelcolor=report.LABEL)
     report.style(ax)
@@ -268,7 +266,7 @@ def main() -> None:
                     f"{r['outside']['unstable_cleared']} unstable", va="center", fontsize=8,
                     color=report.LABEL)  # fmt: skip
         ax.set_yticks(range(len(rows)), [n for n, _ in rows], fontsize=8)
-        ax.set_xlim(0, 1.3)
+        ax.set_xlim(0, 1.6)
         ax.set_xlabel("Share of test cases cleared")
         ax.set_title(label, loc="left", fontsize=10)
         report.style(ax)

@@ -72,6 +72,7 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 | Voltage feed-forward on the grid-side converter | Done (step 04) |
 | Time step; trapezoidal against RK4 | Done on System B2 (step 06): RK4 within 0.01 1/s up to 2 ms, trapezoidal up to 1 ms, in the rotating frame. Trapezoidal in phase coordinates: up to 0.2 ms (step 07). Order study on System A |
 | Dropping stator and network transients | Done on the linearised model (step 06): the sub-synchronous mode disappears; all 28 unstable cases in 54 are reported stable; slow modes kept within 0.41 1/s in stable cases |
+| Generic converter (System C): state matrix against admittance and impedance scans | Done (step 17): the Nyquist count from the scans agrees with the eigenvalues in all 60,124 cases; the scan determinant vanishes at the modes (a test). No comparison with a published case or a second time-domain implementation yet |
 | Aggregation of unequal units into one machine | **Open.** Equal units scaled together is done (units online) |
 | Saturation, limits, switching | **Open**, out of scope for now |
 

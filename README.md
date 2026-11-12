@@ -82,6 +82,19 @@ Details in [docs/steps/15-linear-vs-time-domain.md](docs/steps/15-linear-vs-time
 
 Details in [docs/steps/16-converter-limit.md](docs/steps/16-converter-limit.md).
 
+### Any converter, source or load
+
+![Screens for a generic converter](docs/results/converter/fig44_converter_ladder.png)
+
+The same question was put to a plant with no machine: one converter model that can be a source or a load (wind, solar, storage, drive, UPS, power supply), with a phase-locked loop or without one.
+
+- **The rule found for the doubly-fed plant does not carry over; the method does.** A current loop alone cannot feed an oscillation here. The negative conductance comes from whichever loop holds power constant: the phase-locked loop for a source, the DC voltage loop for a load. Slowing the PLL tenfold cures 81 % of unstable sources and 23 % of unstable loads.
+- **One screen clears no unstable case in 60,124, with nothing fitted to data.** A case is cleared if the loop gain of converter admittance and network impedance is below 1 at every frequency where the converter's conductance is negative. It clears 76 % of cases with a phase-locked loop and 61 % without. It needs a 2 × 2 admittance scan of the converter, which a black-box model can supply, and the network's R, X and C.
+- **A Nyquist count on the same scans is exact,** if the scan is taken at the operating point from a power-flow solution.
+- **Positive-sequence scans alone miss 40 % of unstable cases, and the short-circuit ratio alone clears nothing safely.**
+
+Details in [docs/steps/17-generic-converter.md](docs/steps/17-generic-converter.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -115,6 +128,8 @@ uv run pytest
 | Reproduce the assumption studies | `uv run scripts/phase2_assumptions.py` |
 | Reproduce the phase-coordinate cross-check | `uv run scripts/phase2_abc.py` |
 | Generate the T1 dataset (about 7 minutes) | `uv run scripts/phase3_generate_t1.py` |
+| Generate the converter dataset C1 (about 7 minutes) | `uv run scripts/phase3_generate_c1.py` |
+| Reproduce the converter screens | `uv run scripts/converter_screens.py` |
 
 ## Licence
 

@@ -1,0 +1,464 @@
+{
+  "groups": {
+    "PLL, source": {
+      "unstable": 736,
+      "cases": 16384,
+      "share_unstable": 0.044921875,
+      "PLL ten times slower": 0.813858695652174,
+      "DC voltage loop ten times slower": 0.35190217391304346,
+      "no voltage feed-forward": 0.16032608695652173,
+      "mode_hz_quartiles": [
+        6.567430526965643,
+        25.75353271207967,
+        33.82795032271927
+      ],
+      "passive_everywhere": 0.0,
+      "not_passive_up_to_hz_median": 20.269620848263724
+    },
+    "PLL, load": {
+      "unstable": 1106,
+      "cases": 16384,
+      "share_unstable": 0.0675048828125,
+      "PLL ten times slower": 0.22875226039783003,
+      "DC voltage loop ten times slower": 0.7567811934900542,
+      "no voltage feed-forward": 0.10849909584086799,
+      "mode_hz_quartiles": [
+        2.9107759054345985,
+        5.580630561504893,
+        19.500359081292054
+      ],
+      "passive_everywhere": 0.0,
+      "not_passive_up_to_hz_median": 20.51867473095522
+    },
+    "no PLL, load": {
+      "unstable": 1013,
+      "cases": 8024,
+      "share_unstable": 0.12624626121635094,
+      "PLL ten times slower": 0.0,
+      "DC voltage loop ten times slower": 0.5380059230009872,
+      "no voltage feed-forward": 0.004935834155972359,
+      "mode_hz_quartiles": [
+        1.2772393394170847,
+        1.8139634261237079,
+        2.7621353543024005
+      ],
+      "passive_everywhere": 0.0,
+      "not_passive_up_to_hz_median": 11.699840534140463
+    }
+  },
+  "ladder": {
+    "pll": {
+      "loop gain where not passive, below 1": {
+        "test": {
+          "cleared": 0.7628928898382668,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.4814453125,
+          "unstable_cleared": 0,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "positive-sequence scan, reactance crossing": {
+        "test": {
+          "cleared": 0.8419285932255112,
+          "unstable_cleared": 74,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.8265787760416666,
+          "unstable_cleared": 1133,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "positive-sequence scan, Nyquist count": {
+        "test": {
+          "cleared": 0.9600244125724748,
+          "unstable_cleared": 73,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.8982747395833334,
+          "unstable_cleared": 1037,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "2 x 2 scan at zero reactive current, Nyquist count": {
+        "test": {
+          "cleared": 0.9478181263350626,
+          "unstable_cleared": 11,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.8338216145833334,
+          "unstable_cleared": 112,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "2 x 2 scan at the operating point, Nyquist count": {
+        "test": {
+          "cleared": 0.9450717119316447,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.82763671875,
+          "unstable_cleared": 0,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "short-circuit ratio": {
+        "threshold": 0.12527395724850873,
+        "test": {
+          "cleared": 0.0012206286237412267,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.0008138020833333334,
+          "unstable_cleared": 0,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "power over short-circuit ratio": {
+        "threshold": 0.0008850388966378857,
+        "test": {
+          "cleared": 0.00366188587122368,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.002685546875,
+          "unstable_cleared": 3,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "negative conductance over short-circuit ratio": {
+        "threshold": 0.18516107451177205,
+        "test": {
+          "cleared": 0.32590784253890753,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.20930989583333334,
+          "unstable_cleared": 2,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "loop gain where not passive, margin set on data": {
+        "threshold": 1.1031890092912615,
+        "test": {
+          "cleared": 0.7903570338724443,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.5211588541666666,
+          "unstable_cleared": 1,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "positive-sequence scan, reactance crossing, margin set on data": {
+        "threshold": -527.1164222652945,
+        "test": {
+          "cleared": 0.07079646017699115,
+          "unstable_cleared": 0,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.045491536458333336,
+          "unstable_cleared": 0,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "trees on the 12 parameters": {
+        "threshold": -6.182573457807319,
+        "test": {
+          "cleared": 0.2691486115349405,
+          "unstable_cleared": 1,
+          "unstable": 180,
+          "cases": 3277
+        },
+        "outside": {
+          "cleared": 0.19246419270833334,
+          "unstable_cleared": 43,
+          "unstable": 2118,
+          "cases": 12288
+        }
+      },
+      "_importance": {
+        "p": 0.4784858837500163,
+        "scr": 0.6243547465795224,
+        "k": 0.21921574329325821,
+        "xr": 0.0732783071538949,
+        "par_ratio": 0.054027449597241574,
+        "cc_hz": 0.3960327071723475,
+        "pll_hz": 0.2921843555552227,
+        "dc_hz": 0.31769365327559296,
+        "ff": 0.08227160980239516,
+        "t_ff": 0.025946023202596025,
+        "x_f": 0.37448356659708315,
+        "c_dc": -0.0031960127888097213
+      },
+      "_exact_check": {
+        "cleared": 0.9450717119316447,
+        "missed_unstable": 0.0,
+        "false_alarm": 0.0
+      }
+    },
+    "follow": {
+      "loop gain where not passive, below 1": {
+        "test": {
+          "cleared": 0.6144278606965174,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.30068143100511074,
+          "unstable_cleared": 0,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "positive-sequence scan, reactance crossing": {
+        "test": {
+          "cleared": 0.9838308457711443,
+          "unstable_cleared": 81,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.9515900056785918,
+          "unstable_cleared": 2032,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "positive-sequence scan, Nyquist count": {
+        "test": {
+          "cleared": 0.9776119402985075,
+          "unstable_cleared": 77,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.8862862010221465,
+          "unstable_cleared": 1595,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "2 x 2 scan at zero reactive current, Nyquist count": {
+        "test": {
+          "cleared": 0.8830845771144279,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.6692220329358319,
+          "unstable_cleared": 0,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "2 x 2 scan at the operating point, Nyquist count": {
+        "test": {
+          "cleared": 0.8830845771144279,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.6692220329358319,
+          "unstable_cleared": 0,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "short-circuit ratio": {
+        "threshold": 0.1251897880033538,
+        "test": {
+          "cleared": 0.0012437810945273632,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.0005678591709256105,
+          "unstable_cleared": 0,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "power over short-circuit ratio": {
+        "threshold": 0.017071803353679336,
+        "test": {
+          "cleared": 0.006218905472636816,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.0019875070982396364,
+          "unstable_cleared": 0,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "negative conductance over short-circuit ratio": {
+        "threshold": 0.31010711858975964,
+        "test": {
+          "cleared": 0.43159203980099503,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.2338160136286201,
+          "unstable_cleared": 40,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "loop gain where not passive, margin set on data": {
+        "threshold": 1.2382115836637366,
+        "test": {
+          "cleared": 0.677860696517413,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.38401476433844406,
+          "unstable_cleared": 8,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "positive-sequence scan, reactance crossing, margin set on data": {
+        "threshold": -96.23712124145784,
+        "test": {
+          "cleared": 0.10820895522388059,
+          "unstable_cleared": 0,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.09653605905735378,
+          "unstable_cleared": 31,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "trees on the 12 parameters": {
+        "threshold": -3.178185009962877,
+        "test": {
+          "cleared": 0.7574626865671642,
+          "unstable_cleared": 5,
+          "unstable": 94,
+          "cases": 804
+        },
+        "outside": {
+          "cleared": 0.5892958546280522,
+          "unstable_cleared": 484,
+          "unstable": 2330,
+          "cases": 7044
+        }
+      },
+      "_importance": {
+        "p": 0.4025465844839122,
+        "scr": 0.6841081807625153,
+        "k": 0.2500757552145317,
+        "xr": 0.01025335092788211,
+        "par_ratio": 0.03380768371290366,
+        "cc_hz": 0.6372179191902723,
+        "pll_hz": -0.0018008972447884242,
+        "dc_hz": 0.2899128124481206,
+        "ff": 0.07849959827538973,
+        "t_ff": 0.027563345563202037,
+        "x_f": 0.26112227527845056,
+        "c_dc": 0.0007412154925579006
+      },
+      "_exact_check": {
+        "cleared": 0.8830845771144279,
+        "missed_unstable": 0.0,
+        "false_alarm": 0.0
+      }
+    }
+  },
+  "sets": {
+    "pll_in_distribution": {
+      "rows": 32768,
+      "solved": 32768,
+      "unstable": 0.05621337890625,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    },
+    "pll_fast_pll": {
+      "rows": 4096,
+      "solved": 4096,
+      "unstable": 0.08642578125,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    },
+    "pll_fast_dc_loop": {
+      "rows": 4096,
+      "solved": 4096,
+      "unstable": 0.1826171875,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    },
+    "pll_very_weak": {
+      "rows": 4096,
+      "solved": 4096,
+      "unstable": 0.248046875,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    },
+    "follow_in_distribution": {
+      "rows": 8192,
+      "solved": 8024,
+      "unstable": 0.12624626121635094,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    },
+    "follow_fast_dc_loop": {
+      "rows": 4096,
+      "solved": 4015,
+      "unstable": 0.28368617683686176,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    },
+    "follow_very_weak": {
+      "rows": 4096,
+      "solved": 3029,
+      "unstable": 0.39319907560250905,
+      "count_agrees_with_modes": 1.0,
+      "unstable_cleared_by_loop_gain_below_1": 0
+    }
+  }
+}

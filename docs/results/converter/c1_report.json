@@ -1,0 +1,106 @@
+{
+  "version": "c1-v1",
+  "spec_hash": "f6183cdda88ef1f6",
+  "sets": {
+    "pll_in_distribution": {
+      "rows": 32768,
+      "no_steady_state": 0,
+      "unstable": 0.05621337890625,
+      "within_1_of_boundary": 0.02911376953125,
+      "sigma_max": 46.21420780570879,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 215.50264979999338
+    },
+    "pll_fast_pll": {
+      "rows": 4096,
+      "no_steady_state": 0,
+      "unstable": 0.08642578125,
+      "within_1_of_boundary": 0.0234375,
+      "sigma_max": 148.17748107235636,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 32.88665570000012
+    },
+    "pll_fast_dc_loop": {
+      "rows": 4096,
+      "no_steady_state": 0,
+      "unstable": 0.1826171875,
+      "within_1_of_boundary": 0.02001953125,
+      "sigma_max": 176.3964829238788,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 33.309373800002504
+    },
+    "pll_very_weak": {
+      "rows": 4096,
+      "no_steady_state": 0,
+      "unstable": 0.248046875,
+      "within_1_of_boundary": 0.06396484375,
+      "sigma_max": 88.35311284347496,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 32.9300271999964
+    },
+    "follow_in_distribution": {
+      "rows": 8192,
+      "no_steady_state": 168,
+      "unstable": 0.12624626121635094,
+      "within_1_of_boundary": 0.07153539381854436,
+      "sigma_max": 48.33437163367243,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 51.217221200000495
+    },
+    "follow_fast_dc_loop": {
+      "rows": 4096,
+      "no_steady_state": 81,
+      "unstable": 0.28368617683686176,
+      "within_1_of_boundary": 0.028144458281444584,
+      "sigma_max": 117.04936322601084,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 36.65195989998756
+    },
+    "follow_very_weak": {
+      "rows": 4096,
+      "no_steady_state": 1067,
+      "unstable": 0.39319907560250905,
+      "within_1_of_boundary": 0.11521954440409377,
+      "sigma_max": 55.41372158502977,
+      "converter_alone_unstable": 0.0,
+      "wall_s": 24.838321000002907
+    }
+  },
+  "regenerated_rows_max_abs_diff": 0.0,
+  "wall_s_total": 435.26099499998963,
+  "columns": {
+    "theta": [
+      "p",
+      "scr",
+      "k",
+      "xr",
+      "par_ratio",
+      "cc_hz",
+      "pll_hz",
+      "dc_hz",
+      "ff",
+      "t_ff",
+      "x_f",
+      "c_dc"
+    ],
+    "out": [
+      "solved",
+      "sigma",
+      "f",
+      "v_t",
+      "iq",
+      "poles",
+      "count",
+      "count_pos",
+      "count_rated",
+      "small_gain",
+      "f_passive",
+      "g_min",
+      "scan_sigma",
+      "scan_f",
+      "sigma_slow_pll",
+      "sigma_slow_dc",
+      "sigma_no_ff"
+    ]
+  }
+}
