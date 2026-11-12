@@ -1,6 +1,6 @@
 {
-  "version": "t1-v1",
-  "spec_hash": "1631495cc13431fc",
+  "version": "t1-v2",
+  "spec_hash": "bb4ab735373a3947",
   "splits": {
     "in_distribution": {
       "rows": 131072,
@@ -15,7 +15,11 @@
       "circuit_mean_abs_error": 1.406925658994008,
       "hand_sign_agreement": 0.9366717840982547,
       "circuit_sign_agreement": 0.9366818842921784,
-      "wall_s": 218.16957710000133
+      "impedance_mean_abs_error": 1.2724084702712832,
+      "impedance_sign_agreement": 0.9520662922720059,
+      "impedance_mean_error_unstable": 2.392516838461191,
+      "no_resonance_unstable": 0.0004056415376934598,
+      "wall_s": 223.30330179999874
     },
     "high_compensation": {
       "rows": 4096,
@@ -30,7 +34,11 @@
       "circuit_mean_abs_error": 2.1097939094172107,
       "hand_sign_agreement": 0.8899344168805247,
       "circuit_sign_agreement": 0.8902195608782435,
-      "wall_s": 13.684809800004587
+      "impedance_mean_abs_error": 2.0104977782362794,
+      "impedance_sign_agreement": 0.90087890625,
+      "impedance_mean_error_unstable": 2.019301549321537,
+      "no_resonance_unstable": 0.05602716468590832,
+      "wall_s": 15.137493899994297
     },
     "low_speed": {
       "rows": 4096,
@@ -45,7 +53,11 @@
       "circuit_mean_abs_error": 3.1552641772889856,
       "hand_sign_agreement": 0.8211570247933885,
       "circuit_sign_agreement": 0.8214876033057851,
-      "wall_s": 13.94773150000401
+      "impedance_mean_abs_error": 2.812655125815824,
+      "impedance_sign_agreement": 0.85986328125,
+      "impedance_mean_error_unstable": 3.8367375922615814,
+      "no_resonance_unstable": 0.035480859010270774,
+      "wall_s": 14.644670399997267
     },
     "fast_current_loop": {
       "rows": 4096,
@@ -60,7 +72,11 @@
       "circuit_mean_abs_error": 2.2719830690088356,
       "hand_sign_agreement": 0.9056665574844416,
       "circuit_sign_agreement": 0.9046839174582378,
-      "wall_s": 14.552805700004683
+      "impedance_mean_abs_error": 1.9022178655466524,
+      "impedance_sign_agreement": 0.9257631257631258,
+      "impedance_mean_error_unstable": 2.178941062923875,
+      "no_resonance_unstable": 0.012476007677543186,
+      "wall_s": 13.686671100003878
     },
     "weak_parallel_path": {
       "rows": 4096,
@@ -75,7 +91,11 @@
       "circuit_mean_abs_error": 1.951571374218106,
       "hand_sign_agreement": 0.9059369655509406,
       "circuit_sign_agreement": 0.9059369655509406,
-      "wall_s": 14.321175199998834
+      "impedance_mean_abs_error": 1.9796168089835815,
+      "impedance_sign_agreement": 0.9059369655509406,
+      "impedance_mean_error_unstable": 2.9653361845885167,
+      "no_resonance_unstable": 0.0,
+      "wall_s": 13.662694899998314
     },
     "other_machine": {
       "rows": 4096,
@@ -90,7 +110,11 @@
       "circuit_mean_abs_error": 1.4542062651169496,
       "hand_sign_agreement": 0.9288702928870293,
       "circuit_sign_agreement": 0.9291921467653685,
-      "wall_s": 14.606942799997341
+      "impedance_mean_abs_error": 1.2564000035476883,
+      "impedance_sign_agreement": 0.9462759462759462,
+      "impedance_mean_error_unstable": 2.443205905417408,
+      "no_resonance_unstable": 0.0,
+      "wall_s": 13.963606099998287
     },
     "boundary": {
       "rows": 4931,
@@ -105,8 +129,12 @@
       "circuit_mean_abs_error": 1.986377273350962,
       "hand_sign_agreement": 0.49949114593934457,
       "circuit_sign_agreement": 0.49949114593934457,
+      "impedance_mean_abs_error": 1.9822723684077983,
+      "impedance_sign_agreement": 0.4996958020685459,
+      "impedance_mean_error_unstable": 1.9624622507656022,
+      "no_resonance_unstable": 0.4444444444444444,
       "candidates": 16384,
-      "wall_s": 112.45658750000439
+      "wall_s": 108.6114860000016
     }
   },
   "regenerated_rows_bit_identical": true,
@@ -116,6 +144,6 @@
     "validation": 13107,
     "test": 13108
   },
-  "wall_s_total": 407.62652819999494,
-  "cases_per_second": 523.8882960433108
+  "wall_s_total": 409.1317949000004,
+  "cases_per_second": 514.7853396458838
 }

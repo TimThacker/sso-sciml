@@ -26,14 +26,14 @@ from dataclasses import dataclass, replace
 import numpy as np
 from scipy.stats import qmc
 
-from ..physics import slip
+from ..physics import circuit, slip
 from ..physics.dfig import gains_from_bandwidth
 from ..physics.dfig_full import Controls
 from ..physics.dfig_meshed import DFIGMeshed
 from ..physics.induction import IGData
 from ..solver.linearize import jacobian, modes
 
-VERSION = "t1-v1"
+VERSION = "t1-v2"
 SEED = 20261111
 XR_PLANT = 15.0  # X/R of the plant-side impedance
 
@@ -90,6 +90,8 @@ SOLVER_COLUMNS = ("sigma_sso", "f_sso", "sigma_max", "f_max", "solved")
 MECHANISM_COLUMNS = (
     "has_resonance", "f_er", "slip_res", "r_machine", "r_net", "sigma_hand", "sigma_circuit",
     "f_circuit",
+    "sigma_impedance",
+    "f_impedance",
 )  # fmt: skip
 
 
@@ -146,6 +148,26 @@ def mechanism(theta: np.ndarray) -> np.ndarray:
             s, data.r_s, data.x_ls, data.x_m, data.r_r, data.x_lr, th["w_r"], kp, ki
         )
 
+    # Impedance model of step 05: all roots of the loop impedance as polynomials. Unlike
+    # the resonance search below it has an answer in every case. Of the modes between 2
+    # and 58 Hz in the rotating frame, the least damped is taken.
+    z_poly = circuit.parallel(
+        circuit.branch(net["r_e"], net["x_e"], net["x_c"]), circuit.branch(net["r_p"], net["x_p"])
+    ) + circuit.branch(net["r_t"], net["x_t"])
+    lam = circuit.modes(
+        circuit.dfig_impedance(
+            data.r_s, data.x_ls, data.x_m, data.r_r, data.x_lr, th["w_r"], kp, ki
+        )
+        + z_poly
+    )
+    f_lam = np.abs(lam.imag) / (2 * np.pi)
+    band = np.where((f_lam > 2.0) & (f_lam < 58.0))[0]
+    if band.size:
+        top = band[np.argmax(lam.real[band])]
+        imp = [float(lam.real[top]), float(f_lam[top])]
+    else:
+        imp = [0.0, 0.0]
+
     try:
         # Stay clear of synchronous frequency, where integral action adds crossings.
         r = slip.analyse_loop(
@@ -153,9 +175,10 @@ def mechanism(theta: np.ndarray) -> np.ndarray:
             w_max=min(th["w_r"], 1.0) - 0.05,
         )  # fmt: skip
     except ValueError:
-        return np.zeros(len(MECHANISM_COLUMNS))
+        return np.array([0.0] * 8 + imp)
     return np.array(
         [1.0, r.f_er, r.slip, r.r_machine, r.r_net, r.sigma_hand, r.sigma_circuit, r.f_circuit]
+        + imp
     )
 
 

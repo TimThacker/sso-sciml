@@ -1,10 +1,10 @@
 """Phase 3: generate the T1 dataset and its report.
 
-Writes data/t1-v1/*.npz and manifest.json (not committed), data/samples/t1_sample.npz
+Writes data/t1-v2/*.npz and manifest.json (not committed), data/samples/t1_sample.npz
 (committed, used by tests), docs/results/phase3/t1_report.json and two figures. Every
 number in docs/steps/08-t1-dataset.md comes from this script.
 
-Run with:  uv run scripts/phase3_generate_t1.py            # full size, about 20 minutes
+Run with:  uv run scripts/phase3_generate_t1.py            # full size, about 7 minutes
            uv run scripts/phase3_generate_t1.py --small    # 1/16 size, for a quick check
 """
 
@@ -60,6 +60,7 @@ def summarise(theta: np.ndarray, out: np.ndarray) -> dict:
     sso, top = col(out, "sigma_sso"), col(out, "sigma_max")
     other = ok & (top > 0) & (np.abs(top - sso) > 1e-9)
     hand, circ = col(out, "sigma_hand"), col(out, "sigma_circuit")
+    imp = col(out, "sigma_impedance")
     return {
         "rows": int(len(theta)),
         "solver_failures": int((~ok).sum()),
@@ -73,6 +74,10 @@ def summarise(theta: np.ndarray, out: np.ndarray) -> dict:
         "circuit_mean_abs_error": float(np.abs(circ[res] - sso[res]).mean()),
         "hand_sign_agreement": float(((hand[res] > 0) == (sso[res] > 0)).mean()),
         "circuit_sign_agreement": float(((circ[res] > 0) == (sso[res] > 0)).mean()),
+        "impedance_mean_abs_error": float(np.abs(imp[ok] - sso[ok]).mean()),
+        "impedance_sign_agreement": float(((imp[ok] > 0) == (sso[ok] > 0)).mean()),
+        "impedance_mean_error_unstable": float((imp[ok] - sso[ok])[sso[ok] > 0].mean()),
+        "no_resonance_unstable": float((sso[ok & ~res] > 0).mean()) if (ok & ~res).any() else 0.0,
     }
 
 

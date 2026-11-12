@@ -21,8 +21,8 @@ def sample():
 
 
 def test_spec_is_the_one_the_dataset_was_built_with():
-    assert t1.VERSION == "t1-v1"
-    assert t1.spec_hash() == "1631495cc13431fc"
+    assert t1.VERSION == "t1-v2"
+    assert t1.spec_hash() == "bb4ab735373a3947"
     assert len(t1.NAMES) == 12
 
 

@@ -46,7 +46,7 @@ Parameters, 12 in all:
 - Sampling: scrambled Sobol sequence with a fixed seed.
 - Units online: the network impedances are put on the base of the running machines, so fewer units see a proportionally weaker line. The plant-side reactance is not scaled.
 - Solver outputs per case: growth rate and frequency of the sub-synchronous mode, and of the least-damped mode of any kind.
-- Hand-calculation outputs per case: whether a resonance exists below rotor speed, its frequency, slip there, machine resistance, net resistance, the quick growth estimate, and the root of the equivalent circuit. The hand calculation knows the machine, the current loop and the network. It does not know the phase-locked loop, outer loops or grid-side converter.
+- Hand-calculation outputs per case: whether a resonance exists below rotor speed, its frequency, slip there, machine resistance, net resistance, the quick growth estimate, and the root of the equivalent circuit found from that resonance. Also the least-damped sub-synchronous root of the impedance model of step 05, which exists in every case. The hand calculation knows the machine, the current loop and the network. It does not know the phase-locked loop, outer loops or grid-side converter.
 
 Splits:
 
@@ -66,32 +66,34 @@ Each extrapolation set moves one parameter outside its range and keeps the other
 
 All numbers are in `docs/results/phase3/t1_report.json`.
 
-| Set | Unstable (sub-synchronous) | Circuit root: mean error (1/s) | Circuit root: sign agrees | Quick estimate: mean error (1/s) |
+| Set | Unstable (sub-synchronous) | Impedance root: mean error (1/s) | Impedance root: sign agrees | Quick estimate: mean error (1/s) |
 |---|---|---|---|---|
-| In distribution | 11.2 % | 1.41 | 93.7 % | 3.56 |
-| Boundary | 49.6 % | 1.99 | 49.9 % | 2.78 |
-| High compensation | 36.0 % | 2.11 | 89.0 % | 6.23 |
-| Low speed | 22.5 % | 3.16 | 82.1 % | 7.23 |
-| Fast current loop | 55.6 % | 2.27 | 90.5 % | 8.88 |
-| Weak parallel path | 24.8 % | 1.95 | 90.6 % | 2.46 |
-| Other machine | 13.1 % | 1.45 | 92.9 % | 3.85 |
+| In distribution | 11.2 % | 1.27 | 95.2 % | 3.56 |
+| Boundary | 49.6 % | 1.98 | 50.0 % | 2.78 |
+| High compensation | 36.0 % | 2.01 | 90.1 % | 6.23 |
+| Low speed | 22.5 % | 2.81 | 86.0 % | 7.23 |
+| Fast current loop | 55.6 % | 1.90 | 92.6 % | 8.88 |
+| Weak parallel path | 24.8 % | 1.98 | 90.6 % | 2.46 |
+| Other machine | 13.1 % | 1.26 | 94.6 % | 3.85 |
+
+The impedance root is scored on every solved case. The quick estimate is scored only where a resonance exists.
 
 ![Hand calculation against the full solver](../results/phase3/fig16_hand_vs_solver.png)
 
-- **The hand calculation carries most of the answer.** Growth rates span −18 to +32 1/s; the circuit root is off by 1.4 1/s on average and gets the sign right in 93.7 % of cases.
-- **It is no better than a coin at the boundary.** On cases within 1 1/s of the boundary it has the sign right 49.9 % of the time. That is where a screening tool earns its keep.
-- **It is biased.** For unstable cases it predicts faster growth than the full solver finds. The controls it does not model add damping on balance.
-- **The quick estimate is much worse than the circuit root away from the boundary**, as step 03 found: 3.6 against 1.4 1/s.
+- **The hand calculation carries most of the answer.** Growth rates span −18 to +32 1/s; the impedance root is off by 1.3 1/s on average and gets the sign right in 95.2 % of cases.
+- **It is no better than a coin at the boundary.** On cases within 1 1/s of the boundary it has the sign right 50.0 % of the time. That is where a screening tool earns its keep.
+- **It is biased.** For unstable cases it predicts growth 2.4 1/s faster on average than the full solver finds. The controls it does not model add damping on balance.
+- **The quick estimate is much worse than a root of the circuit away from the boundary**, as step 03 found: 3.6 against 1.4 1/s on the cases with a resonance.
 - **Solver failures:** 16 of 131,072 in distribution, and at most 3 in any extrapolation set. In each the steady state did not converge. They are kept in the files with a flag.
 - **Reproducibility:** the first 256 rows, regenerated in a single process, are bit-identical to the 8-process run.
-- **Speed:** 524 cases per second on 8 processes; 408 s for everything.
+- **Speed:** 515 cases per second on 8 processes; 409 s for everything.
 
 ![Share of unstable cases](../results/phase3/fig17_split_balance.png)
 
 ## Disagreements
 
 1. **A second, slow instability showed up.** With the outer loop sampled independently of the current loop, 16 % of a trial sample was unstable through a 0.4 to 1.8 Hz mode between the outer-loop and current-loop integrators. That is a tuning artefact: the outer loop was as fast as the inner one. The outer loop is now sampled as a fraction of the current-loop bandwidth. A residue remains: 3.4 % of in-distribution cases, and 17 % at low speed, have a weakly unstable slow mode. It is not the mechanism this project studies. The target is the sub-synchronous mode; the least-damped mode is stored as well so the slow one can be studied later. Its cause is not established.
-2. **A quarter of cases have no resonance below rotor speed** in the hand calculation (24.5 % in distribution). A strong parallel path keeps the loop reactance inductive at every frequency. The solver still finds a sub-synchronous mode in these cases. The hand-calculation columns are zero there, with a flag.
+2. **A quarter of cases have no resonance below rotor speed** in the hand calculation (24.5 % in distribution). A strong parallel path keeps the loop reactance inductive at every frequency. The solver still finds a sub-synchronous mode in these cases, unstable in 0.04 % of them. The resonance-based columns are zero there, with a flag. The first version of the dataset had only those columns, which left a model built on the hand calculation with nothing to start from in a quarter of cases. Version 2 adds the impedance root, which has no such gap.
 3. **The resonance search picked the wrong crossing** at first: with integral action the loop reactance also crosses zero just below 60 Hz. The search now stops 3 Hz below the lower of rotor speed and synchronous speed.
 4. **Fewer boundary cases than planned.** Only 30 % of candidates have a boundary inside 10 to 80 % compensation, so 16,384 candidates gave 4,931 cases.
 5. **The plan called for a short-circuit-ratio split and a different mechanism (System C).** Neither exists yet. Parallel-path strength stands in for grid strength. System C is not built.
@@ -99,7 +101,7 @@ All numbers are in `docs/results/phase3/t1_report.json`.
 
 ## Decisions
 
-- Dataset version `t1-v1`, specification hash `1631495cc13431fc`. Any change to ranges, seed or splits changes the hash, and a test fails.
+- Dataset version `t1-v2`, specification hash `bb4ab735373a3947`. Version 1 differed only in lacking the two impedance-root columns; solver outputs are unchanged. Any change to ranges, seed or splits changes the hash, and a test fails.
 - The target for T1 is the growth rate of the sub-synchronous mode, not the least-damped mode.
 - The boundary set is a test set. No model trains on it in Phase 4, so it measures how well random sampling alone resolves the boundary.
 - Input scaling for learned models is fixed by the parameter ranges, not fitted to data.

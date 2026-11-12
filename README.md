@@ -50,7 +50,7 @@ With stator and network transients dropped, as in a positive-sequence stability 
 
 A second time-domain implementation, in phase a, b, c quantities with the trapezoidal rule and no shared equations, gives the same growth rates within 0.00014 1/s and shows the oscillation at 60 Hz minus its rotating-frame frequency, as it should. Details in [docs/steps/07-phase-coordinates.md](docs/steps/07-phase-coordinates.md).
 
-The first dataset holds 131,072 cases over 12 plant, network and controller parameters, each with the full-solver growth rate and the hand calculation side by side. The hand calculation is off by 1.4 1/s on average and has the sign right in 93.7 % of cases, but only 49.9 % of the time near the stability boundary. Details in [docs/steps/08-t1-dataset.md](docs/steps/08-t1-dataset.md).
+The first dataset holds 131,072 cases over 12 plant, network and controller parameters, each with the full-solver growth rate and the hand calculation side by side. The hand calculation is off by 1.3 1/s on average and has the sign right in 95.2 % of cases, but only 50.0 % of the time near the stability boundary. Details in [docs/steps/08-t1-dataset.md](docs/steps/08-t1-dataset.md).
 
 ## Setup
 
