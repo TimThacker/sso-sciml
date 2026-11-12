@@ -14,6 +14,8 @@ whose roots are the modes of the whole system. Frequencies are in the synchronou
 
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 import torch
 
@@ -237,6 +239,56 @@ def screen_scores(y: np.ndarray, z: np.ndarray, open_loop: int, seed: int) -> np
         noisy = loop_scores(y_c * (1 + err), z_c, (30.0, 60.0))
         out += [unstable_modes(y_c * (1 + err), z_c, open_loop),
                 noisy["guard_30"], noisy["guard_60"]]  # fmt: skip
+    return np.array(out, dtype=float)
+
+
+def fit_growth(
+    y: np.ndarray, z: np.ndarray, f_hz: np.ndarray, rtol: float = 1e-9
+) -> tuple[float, float, int]:
+    """Growth rate (1/s) and frequency (Hz) of the least-damped mode from a rational fit
+    to the scan, and the number of terms the fit used.
+
+    D(s) = det(I + Y Z) is a ratio of polynomials whose roots are the modes. The AAA
+    algorithm builds that ratio from the scan points, adding terms until it reproduces
+    them to `rtol`, and its roots are read off. Unlike a test at the scan points, the
+    fit says where a resonance between two points lies. (-inf, nan) if the fit has no
+    root inside the scanned band.
+    """
+    from scipy.interpolate import AAA
+
+    with np.errstate(all="ignore"), warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        fit = AAA(2j * np.pi * f_hz, np.linalg.det(np.eye(2) + y @ z), rtol=rtol)
+        roots = fit.roots()
+    roots = roots[np.isfinite(roots) & (np.abs(roots.imag) <= 2 * np.pi * np.abs(f_hz).max())]
+    if roots.size == 0:
+        return float("-inf"), float("nan"), int(fit.support_points.size)
+    top = int(np.argmax(roots.real))
+    return (
+        float(roots.real[top]),
+        float(abs(roots.imag[top]) / (2 * np.pi)),
+        int(fit.support_points.size),
+    )
+
+
+FIT_COLUMNS = (
+    *(f"{name}_s{k}" for k in STEPS for name in ("fit", "fit_f", "fit_terms")),
+    *(f"{name}_n{round(100 * e)}" for e in NOISE for name in ("fit", "fit_terms")),
+)
+
+
+def fit_scores(y: np.ndarray, z: np.ndarray, f_hz: np.ndarray, seed: int) -> np.ndarray:
+    """Growth rate from a rational fit to thinned and to noisy scans, in the order of
+    FIT_COLUMNS. With noise the fit stops adding terms at the noise level."""
+    out: list[float] = []
+    for k in STEPS:
+        out += fit_growth(y[::k], z[::k], f_hz[::k])
+    rng = np.random.default_rng(seed + 1)
+    y_c, z_c, f_c = y[::NOISE_STEP], z[::NOISE_STEP], f_hz[::NOISE_STEP]
+    for level in NOISE:
+        err = rng.normal(size=(*y_c.shape, 2)) @ np.array([1.0, 1j]) * level / np.sqrt(2)
+        sigma, _, terms = fit_growth(y_c * (1 + err), z_c, f_c, rtol=level)
+        out += [sigma, terms]
     return np.array(out, dtype=float)
 
 

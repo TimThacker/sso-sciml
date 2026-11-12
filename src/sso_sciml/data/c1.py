@@ -202,6 +202,38 @@ def evaluate(theta: np.ndarray, follow: float) -> np.ndarray:
     return out
 
 
+def scan_pair(theta: np.ndarray, follow: float) -> tuple[np.ndarray, np.ndarray, int]:
+    """Converter admittance and network impedance of one case on `admittance.scan_grid()`,
+    and the number of unstable poles of the converter alone."""
+    model, x0, p, net = operating_point(theta, follow)
+    vt = model.terminal_voltage(x0, p)
+    v_t = complex(float(vt[0]), float(vt[1]))
+    i = complex(float(x0[0] + x0[2]), float(x0[1] + x0[3]))
+    scan = adm.ConverterScan(model, v_t, i, p)
+    return scan.admittance(_S), adm.network_impedance(net, _S), scan.unstable_poles
+
+
+def _fit(args) -> np.ndarray:
+    theta, follow = args
+    try:
+        y, z, _ = scan_pair(theta, follow)
+    except (ValueError, ZeroDivisionError, FloatingPointError):
+        return np.full(len(adm.FIT_COLUMNS), np.nan)
+    return adm.fit_scores(y, z, _GRID, case_seed(theta))
+
+
+def fits(theta: np.ndarray, family: str, processes: int = 1) -> np.ndarray:
+    """Growth rate from rational fits to the scans of every row of theta, in the order
+    of `admittance.FIT_COLUMNS`. Row order is kept."""
+    jobs = [(row, float(family == "follow")) for row in theta]
+    if processes <= 1:
+        return np.array([_fit(j) for j in jobs])
+    from multiprocessing import Pool
+
+    with Pool(processes, initializer=_init_worker) as pool:
+        return np.array(pool.map(_fit, jobs, chunksize=64))
+
+
 def _init_worker() -> None:
     import torch
 

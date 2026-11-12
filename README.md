@@ -109,6 +109,17 @@ The doubly-fed plant was then scanned the same way, as a 2 × 2 admittance again
 
 Details in [docs/steps/18-one-screen-two-plants.md](docs/steps/18-one-screen-two-plants.md).
 
+### Fewer points: a rational fit to the scan
+
+![Unstable cases cleared as the scan is thinned](docs/results/scan/fig49_fit_points.png)
+
+- **A rational function fitted to a clean scan of 251 points gives the right verdict in all 98,635 cases** and the growth rate to within 0.01 1/s in 99.9 % of them. The tests at the scan points needed 4,001 points and still erred on the boundary.
+- **The number of points is set by the order of the system (13 to 23 terms), not by how sharp its resonances are.** At 101 points the fit is wrong twice, on the safe side. At 51 it fails on the doubly-fed plant.
+- **With 5 % noise the fit is useless,** because it passes through its points. The pointwise gain margin degrades gently. Scans from a model suit the fit; noisy scans need the guarded test on a dense grid.
+- **A margin in 1/s is cheap for the converters and not for the doubly-fed plant,** whose slow mode decays at 0.2 to 0.4 1/s in every case.
+
+Details in [docs/steps/19-rational-fit.md](docs/steps/19-rational-fit.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -146,6 +157,8 @@ uv run pytest
 | Reproduce the converter screens | `uv run scripts/converter_screens.py` |
 | Scan the doubly-fed plant of dataset T1 (about 6 minutes) | `uv run scripts/phase3_scan_t1.py` |
 | Reproduce the screens on scans of both plant types | `uv run scripts/scan_screens.py` |
+| Fit rational functions to the scans (about 30 minutes) | `uv run scripts/phase3_fit_scans.py` |
+| Reproduce the rational-fit screen | `uv run scripts/fit_screens.py` |
 
 ## Licence
 

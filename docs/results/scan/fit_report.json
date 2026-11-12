@@ -1,0 +1,79 @@
+{
+  "columns": [
+    "fit_s4",
+    "fit_f_s4",
+    "fit_terms_s4",
+    "fit_s16",
+    "fit_f_s16",
+    "fit_terms_s16",
+    "fit_s40",
+    "fit_f_s40",
+    "fit_terms_s40",
+    "fit_s80",
+    "fit_f_s80",
+    "fit_terms_s80",
+    "fit_n5",
+    "fit_terms_n5",
+    "fit_n20",
+    "fit_terms_n20"
+  ],
+  "sets": {
+    "t1_in_distribution": {
+      "cases": 13105,
+      "wall_s": 279.51638329999696
+    },
+    "t1_boundary": {
+      "cases": 4931,
+      "wall_s": 85.29511490000004
+    },
+    "t1_high_compensation": {
+      "cases": 4096,
+      "wall_s": 85.13041410000005
+    },
+    "t1_low_speed": {
+      "cases": 4096,
+      "wall_s": 87.4055090000038
+    },
+    "t1_fast_current_loop": {
+      "cases": 4095,
+      "wall_s": 67.64712809999764
+    },
+    "t1_weak_parallel_path": {
+      "cases": 4093,
+      "wall_s": 60.70346740000241
+    },
+    "t1_other_machine": {
+      "cases": 4095,
+      "wall_s": 82.86530300001323
+    },
+    "c1_pll_in_distribution": {
+      "cases": 32768,
+      "wall_s": 501.3227292000083
+    },
+    "c1_pll_fast_pll": {
+      "cases": 4096,
+      "wall_s": 60.364541000002646
+    },
+    "c1_pll_fast_dc_loop": {
+      "cases": 4096,
+      "wall_s": 60.82037330001185
+    },
+    "c1_pll_very_weak": {
+      "cases": 4096,
+      "wall_s": 71.50768549999339
+    },
+    "c1_follow_in_distribution": {
+      "cases": 8192,
+      "wall_s": 147.1712797000073
+    },
+    "c1_follow_fast_dc_loop": {
+      "cases": 4096,
+      "wall_s": 67.14313449998735
+    },
+    "c1_follow_very_weak": {
+      "cases": 4096,
+      "wall_s": 62.70075329999963
+    }
+  },
+  "wall_s_total": 1719.7188842000032
+}

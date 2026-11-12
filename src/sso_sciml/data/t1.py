@@ -286,6 +286,26 @@ def scan(theta: np.ndarray) -> np.ndarray:
     return out
 
 
+def fit(theta: np.ndarray) -> np.ndarray:
+    """Growth rate from rational fits to the scans of one case, in the order of
+    `admittance.FIT_COLUMNS`. NaN without a steady state."""
+    try:
+        y, z, _ = scan_pair(theta)
+    except (ValueError, RuntimeError, np.linalg.LinAlgError):
+        return np.full(len(adm.FIT_COLUMNS), np.nan)
+    return adm.fit_scores(y, z, _GRID, case_seed(theta))
+
+
+def fits(theta: np.ndarray, processes: int = 1) -> np.ndarray:
+    """`fit` for every row of theta. Row order is kept."""
+    if processes <= 1:
+        return np.array([fit(row) for row in theta])
+    from multiprocessing import Pool
+
+    with Pool(processes, initializer=_init_worker) as pool:
+        return np.array(pool.map(fit, list(theta), chunksize=64))
+
+
 def scans(theta: np.ndarray, processes: int = 1) -> np.ndarray:
     """`scan` for every row of theta. Row order is kept."""
     if processes <= 1:

@@ -72,6 +72,21 @@ def test_screen_scores_match_their_columns_and_repeat(cases):
     assert np.array_equal(a, adm.screen_scores(y, z, poles, seed=7))
 
 
+def test_rational_fit_to_a_thin_scan_recovers_the_growth_rate(cases):
+    grid = adm.scan_grid()
+    for _, lam, y, z, _ in cases:
+        sigma, _, terms = adm.fit_growth(y[::40], z[::40], grid[::40])  # 101 points
+        assert sigma == pytest.approx(lam.real.max(), abs=1e-2)
+        assert terms < 60
+
+
+def test_fit_scores_match_their_columns_and_repeat(cases):
+    _, _, y, z, _ = cases[0]
+    a = adm.fit_scores(y, z, adm.scan_grid(), seed=7)
+    assert a.shape == (len(adm.FIT_COLUMNS),)
+    assert np.array_equal(a, adm.fit_scores(y, z, adm.scan_grid(), seed=7))
+
+
 def test_scan_row_agrees_with_the_dataset_solver():
     row = t1.scan(THETA[1])
     col = {name: j for j, name in enumerate(t1.SCAN_COLUMNS)}
