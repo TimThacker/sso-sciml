@@ -61,9 +61,18 @@ def baseline(mech: np.ndarray) -> np.ndarray:
     return np.clip(mech[:, _M["sigma_impedance"]], -40.0, 40.0)
 
 
-def inputs(arm: str, theta: np.ndarray, mech: np.ndarray) -> np.ndarray:
+def inputs(
+    arm: str, theta: np.ndarray, mech: np.ndarray, features: tuple[str, ...] | None = None
+) -> np.ndarray:
+    """Model inputs. For arm F, `features` limits the hand-calculation quantities to the
+    named columns; None means all of them."""
     x = scale_theta(theta)
-    return np.hstack([x, scale_mechanism(mech)]) if arm == "F" else x
+    if arm != "F":
+        return x
+    m = scale_mechanism(mech)
+    if features is not None:
+        m = m[:, [_M[name] for name in features]]
+    return np.hstack([x, m])
 
 
 def targets(arm: str, sigma: np.ndarray, mech: np.ndarray) -> np.ndarray:
@@ -72,6 +81,13 @@ def targets(arm: str, sigma: np.ndarray, mech: np.ndarray) -> np.ndarray:
 
 def to_sigma(arm: str, y: np.ndarray, mech: np.ndarray) -> np.ndarray:
     return y * SIGMA_SCALE + (baseline(mech) if arm == "R" else 0.0)
+
+
+def budget_subset(pool: dict, budget: int, seed: int) -> dict:
+    """`budget` rows of every array in `pool`, in a random order fixed by the seed."""
+    n = len(next(iter(pool.values())))
+    pick = np.random.default_rng(1000 + seed).permutation(n)[:budget]
+    return {k: v[pick] for k, v in pool.items()}
 
 
 class MLP(nn.Module):

@@ -74,13 +74,13 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     full = load("in_distribution")
-    train, val = take(full, full["fold"] == 0), take(full, full["fold"] == 1)
-    tests = {"in_distribution": take(full, full["fold"] == 2), "boundary": load("boundary")}
+    train = take(full, full["fold"] == 0)
+    tests ={"in_distribution": take(full, full["fold"] == 2), "boundary": load("boundary")}
     tests.update({s: load(s) for s in TESTS[2:]})
     res: dict = {
         "device": torch.cuda.get_device_name(0) if device == "cuda" else "cpu",
         "train_pool": int(train["sigma"].size),
-        "validation": int(val["sigma"].size),
+        "held_out_share_of_budget": 0.2,
         "tests": {k: int(v["sigma"].size) for k, v in tests.items()},
     }
 
@@ -97,15 +97,15 @@ def main() -> None:
     runs = []
     for budget in BUDGETS:
         for seed in SEEDS:
-            pick = np.random.default_rng(1000 + seed).permutation(train["sigma"].size)[:budget]
-            sub = take(train, np.isin(np.arange(train["sigma"].size), pick))
+            # The budget counts every label a model sees. The perceptron holds out a fifth
+            # of it to choose its checkpoint; the trees train on all of it.
+            sub = mt.budget_subset(train, budget, seed)
+            n_hold = budget // 5
             for arm in mt.ARMS:
                 x, y = (
                     mt.inputs(arm, sub["theta"], sub["mech"]),
                     mt.targets(arm, sub["sigma"], sub["mech"]),
                 )
-                xv = mt.inputs(arm, val["theta"], val["mech"])
-                yv = mt.targets(arm, val["sigma"], val["mech"])
                 for family in ("gbt", "mlp"):
                     t0 = time.perf_counter()
                     if family == "gbt":
@@ -117,7 +117,9 @@ def main() -> None:
                         def run_model(xx, model=model):
                             return model.predict(xx)
                     else:
-                        model, _ = mt.train_mlp(x, y, xv, yv, seed, device=device)
+                        model, _ = mt.train_mlp(
+                            x[n_hold:], y[n_hold:], x[:n_hold], y[:n_hold], seed, device=device
+                        )
                         fit_s = time.perf_counter() - t0
 
                         def run_model(xx, model=model):

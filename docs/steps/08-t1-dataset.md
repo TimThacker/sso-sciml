@@ -85,7 +85,7 @@ The impedance root is scored on every solved case. The quick estimate is scored 
 - **It is biased.** For unstable cases it predicts growth 2.4 1/s faster on average than the full solver finds. The controls it does not model add damping on balance.
 - **The quick estimate is much worse than a root of the circuit away from the boundary**, as step 03 found: 3.6 against 1.4 1/s on the cases with a resonance.
 - **Solver failures:** 16 of 131,072 in distribution, and at most 3 in any extrapolation set. In each the steady state did not converge. They are kept in the files with a flag.
-- **Reproducibility:** the first 256 rows, regenerated in a single process, are bit-identical to the 8-process run.
+- **Reproducibility:** the first 256 rows, regenerated in a single process, are bit-identical to the 8-process run. That holds on one machine. Between Windows and Linux the Sobol points are identical, and the five parameters sampled in log differ in the last bit because `exp` and `log` do; the test compares those to a relative 1e-13.
 - **Speed:** 515 cases per second on 8 processes; 409 s for everything.
 
 ![Share of unstable cases](../results/phase3/fig17_split_balance.png)

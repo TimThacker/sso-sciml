@@ -277,7 +277,7 @@ Status: the T1 dataset is done (`docs/steps/08-t1-dataset.md`): 131,072 in-distr
 
 Exit check: results table for every model, arm, budget and split; verdicts on hypotheses 1 and 2.
 
-Status: gradient-boosted trees and a multilayer perceptron are trained under arms N, F and R at four budgets and three seeds, and scored on every split (`docs/steps/09-t1-arms.md`). Arm R is the best perceptron from 10,000 cases up and on every extrapolation set. Open: Gaussian process, deep ensemble, feature ablation, feature corruption test, uncertainty, mechanism-consistency rate, inference time, MLflow store, and a validation subset sized to the budget.
+Status: gradient-boosted trees and a multilayer perceptron are trained under arms N, F and R at four budgets and three seeds, and scored on every split (`docs/steps/09-t1-arms.md`). Arm R is the best perceptron from 10,000 cases up and on every extrapolation set. Open: Gaussian process, deep ensemble, feature ablation, feature corruption test, uncertainty, mechanism-consistency rate, inference time, MLflow store.
 
 ### Phase 5: PINNs (3 weeks)
 
