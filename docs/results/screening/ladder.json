@@ -1,0 +1,1491 @@
+{
+  "cases": {
+    "in_distribution": 13105,
+    "boundary": 4931,
+    "high_compensation": 4096,
+    "low_speed": 4096,
+    "fast_current_loop": 4095,
+    "weak_parallel_path": 4093,
+    "other_machine": 4095
+  },
+  "unstable_share": {
+    "in_distribution": 0.10499809233117131,
+    "boundary": 0.49604542689109715,
+    "high_compensation": 0.3603515625,
+    "low_speed": 0.224609375,
+    "fast_current_loop": 0.5557997557997558,
+    "weak_parallel_path": 0.24847300268751527,
+    "other_machine": 0.13137973137973138
+  },
+  "needs": {
+    "topology": "network reactances, units online",
+    "slip": "+ rotor speed",
+    "resistance": "+ machine resistances, current-loop gains",
+    "quick": "same as resistance",
+    "impedance": "same as resistance"
+  },
+  "ladder": {
+    "topology": {
+      "zero_miss_threshold": 0.0,
+      "auc": {
+        "in_distribution": 0.8013897177935033,
+        "boundary": 0.5096005304105911,
+        "high_compensation": 0.6507589627422992,
+        "low_speed": 0.7947866471361297,
+        "fast_current_loop": 0.8811662388129208,
+        "weak_parallel_path": 0.7339746417533914,
+        "other_machine": 0.8091124574507778
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.24761541396413583,
+          "missed_unstable": 0.0007267441860465116,
+          "false_alarm": 0.7234205814647455
+        },
+        "boundary": {
+          "cleared": 0.00466436828229568,
+          "missed_unstable": 0.004088307440719542,
+          "false_alarm": 0.9947686116700202
+        },
+        "high_compensation": {
+          "cleared": 0.138671875,
+          "missed_unstable": 0.008130081300813009,
+          "false_alarm": 0.7877862595419848
+        },
+        "low_speed": {
+          "cleared": 0.245361328125,
+          "missed_unstable": 0.004347826086956522,
+          "false_alarm": 0.684823677581864
+        },
+        "fast_current_loop": {
+          "cleared": 0.2503052503052503,
+          "missed_unstable": 0.004393673110720563,
+          "false_alarm": 0.44200109950522265
+        },
+        "weak_parallel_path": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "other_machine": {
+          "cleared": 0.24713064713064714,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.7154905819510824
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "boundary": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "low_speed": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "fast_current_loop": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "weak_parallel_path": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "other_machine": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        }
+      }
+    },
+    "slip": {
+      "zero_miss_threshold": 0.0,
+      "auc": {
+        "in_distribution": 0.8274603720256094,
+        "boundary": 0.5046368151673738,
+        "high_compensation": 0.71587693167008,
+        "low_speed": 0.7924837093418026,
+        "fast_current_loop": 0.8904808741163138,
+        "weak_parallel_path": 0.7608020606772001,
+        "other_machine": 0.8358114738935635
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.24761541396413583,
+          "missed_unstable": 0.0007267441860465116,
+          "false_alarm": 0.7234205814647455
+        },
+        "boundary": {
+          "cleared": 0.00466436828229568,
+          "missed_unstable": 0.004088307440719542,
+          "false_alarm": 0.9947686116700202
+        },
+        "high_compensation": {
+          "cleared": 0.139892578125,
+          "missed_unstable": 0.01016260162601626,
+          "false_alarm": 0.7870229007633588
+        },
+        "low_speed": {
+          "cleared": 0.250244140625,
+          "missed_unstable": 0.013043478260869565,
+          "false_alarm": 0.6810453400503779
+        },
+        "fast_current_loop": {
+          "cleared": 0.2503052503052503,
+          "missed_unstable": 0.004393673110720563,
+          "false_alarm": 0.44200109950522265
+        },
+        "weak_parallel_path": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "other_machine": {
+          "cleared": 0.24713064713064714,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.7154905819510824
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "boundary": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "low_speed": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "fast_current_loop": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "weak_parallel_path": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "other_machine": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        }
+      }
+    },
+    "resistance": {
+      "zero_miss_threshold": -1000000000.0,
+      "auc": {
+        "in_distribution": 0.9936216099728956,
+        "boundary": 0.5314162982802786,
+        "high_compensation": 0.9567290386644324,
+        "low_speed": 0.9348233353411456,
+        "fast_current_loop": 0.9764032701101728,
+        "weak_parallel_path": 0.9922082081851695,
+        "other_machine": 0.9935067038866762
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.8467760396795116,
+          "missed_unstable": 0.0029069767441860465,
+          "false_alarm": 0.054224571574729305
+        },
+        "boundary": {
+          "cleared": 0.03650375177448793,
+          "missed_unstable": 0.03311529026982829,
+          "false_alarm": 0.9601609657947686
+        },
+        "high_compensation": {
+          "cleared": 0.558349609375,
+          "missed_unstable": 0.029132791327913278,
+          "false_alarm": 0.1435114503816794
+        },
+        "low_speed": {
+          "cleared": 0.652587890625,
+          "missed_unstable": 0.041304347826086954,
+          "false_alarm": 0.17034005037783376
+        },
+        "fast_current_loop": {
+          "cleared": 0.37997557997557996,
+          "missed_unstable": 0.008347978910369069,
+          "false_alarm": 0.15503023639362287
+        },
+        "weak_parallel_path": {
+          "cleared": 0.6579526020034204,
+          "missed_unstable": 0.0009832841691248771,
+          "false_alarm": 0.12483745123537061
+        },
+        "other_machine": {
+          "cleared": 0.8146520146520146,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.062131009277481025
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "boundary": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "low_speed": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "fast_current_loop": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "weak_parallel_path": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "other_machine": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        }
+      }
+    },
+    "quick": {
+      "zero_miss_threshold": -1000000000.0,
+      "auc": {
+        "in_distribution": 0.9947749577671723,
+        "boundary": 0.5312664210940212,
+        "high_compensation": 0.960984401828751,
+        "low_speed": 0.944331124739897,
+        "fast_current_loop": 0.9822969272790337,
+        "weak_parallel_path": 0.9933052924726975,
+        "other_machine": 0.9947111982968815
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.8467760396795116,
+          "missed_unstable": 0.0029069767441860465,
+          "false_alarm": 0.054224571574729305
+        },
+        "boundary": {
+          "cleared": 0.03650375177448793,
+          "missed_unstable": 0.03311529026982829,
+          "false_alarm": 0.9601609657947686
+        },
+        "high_compensation": {
+          "cleared": 0.558349609375,
+          "missed_unstable": 0.029132791327913278,
+          "false_alarm": 0.1435114503816794
+        },
+        "low_speed": {
+          "cleared": 0.652587890625,
+          "missed_unstable": 0.041304347826086954,
+          "false_alarm": 0.17034005037783376
+        },
+        "fast_current_loop": {
+          "cleared": 0.37997557997557996,
+          "missed_unstable": 0.008347978910369069,
+          "false_alarm": 0.15503023639362287
+        },
+        "weak_parallel_path": {
+          "cleared": 0.6579526020034204,
+          "missed_unstable": 0.0009832841691248771,
+          "false_alarm": 0.12483745123537061
+        },
+        "other_machine": {
+          "cleared": 0.8146520146520146,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.062131009277481025
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "boundary": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "low_speed": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "fast_current_loop": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "weak_parallel_path": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "other_machine": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        }
+      }
+    },
+    "impedance": {
+      "zero_miss_threshold": -4.473757259134667,
+      "auc": {
+        "in_distribution": 0.9962112518761884,
+        "boundary": 0.5319078822896497,
+        "high_compensation": 0.9824745547073792,
+        "low_speed": 0.9804125369619976,
+        "fast_current_loop": 0.9924730268567192,
+        "weak_parallel_path": 0.9934379527230833,
+        "other_machine": 0.9958859069450992
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.8467760396795116,
+          "missed_unstable": 0.0029069767441860465,
+          "false_alarm": 0.054224571574729305
+        },
+        "boundary": {
+          "cleared": 0.03650375177448793,
+          "missed_unstable": 0.03311529026982829,
+          "false_alarm": 0.9601609657947686
+        },
+        "high_compensation": {
+          "cleared": 0.552734375,
+          "missed_unstable": 0.016937669376693765,
+          "false_alarm": 0.14541984732824428
+        },
+        "low_speed": {
+          "cleared": 0.64013671875,
+          "missed_unstable": 0.010869565217391304,
+          "false_alarm": 0.17758186397984888
+        },
+        "fast_current_loop": {
+          "cleared": 0.3811965811965812,
+          "missed_unstable": 0.010105448154657293,
+          "false_alarm": 0.15448048378229798
+        },
+        "weak_parallel_path": {
+          "cleared": 0.6579526020034204,
+          "missed_unstable": 0.0009832841691248771,
+          "false_alarm": 0.12483745123537061
+        },
+        "other_machine": {
+          "cleared": 0.8148962148962149,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.06184987348889514
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.6351774132010682,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.2903060789496121
+        },
+        "boundary": {
+          "cleared": 0.0,
+          "missed_unstable": 0.0,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.3046875,
+          "missed_unstable": 0.0006775067750677507,
+          "false_alarm": 0.5240458015267175
+        },
+        "low_speed": {
+          "cleared": 0.4052734375,
+          "missed_unstable": 0.0010869565217391304,
+          "false_alarm": 0.4776448362720403
+        },
+        "fast_current_loop": {
+          "cleared": 0.17973137973137973,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.5953820780648708
+        },
+        "weak_parallel_path": {
+          "cleared": 0.39286586855607136,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.47724317295188556
+        },
+        "other_machine": {
+          "cleared": 0.5836385836385837,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.3280854652797301
+        }
+      }
+    }
+  },
+  "two_step": {
+    "in_distribution": {
+      "cleared": 0.6492941625333842,
+      "cleared_by_network_scan": 0.24761541396413583,
+      "missed_unstable": 0.0007267441860465116,
+      "unstable_cases": 1376,
+      "unstable_cleared": 1,
+      "stable_cleared": 0.7253815329525108
+    },
+    "boundary": {
+      "cleared": 0.00466436828229568,
+      "cleared_by_network_scan": 0.00466436828229568,
+      "missed_unstable": 0.004088307440719542,
+      "unstable_cases": 2446,
+      "unstable_cleared": 10,
+      "stable_cleared": 0.005231388329979879
+    },
+    "high_compensation": {
+      "cleared": 0.337890625,
+      "cleared_by_network_scan": 0.138671875,
+      "missed_unstable": 0.008130081300813009,
+      "unstable_cases": 1476,
+      "unstable_cleared": 12,
+      "stable_cleared": 0.5236641221374045
+    },
+    "low_speed": {
+      "cleared": 0.45458984375,
+      "cleared_by_network_scan": 0.245361328125,
+      "missed_unstable": 0.004347826086956522,
+      "unstable_cases": 920,
+      "unstable_cleared": 4,
+      "stable_cleared": 0.5850125944584383
+    },
+    "fast_current_loop": {
+      "cleared": 0.2686202686202686,
+      "cleared_by_network_scan": 0.2503052503052503,
+      "missed_unstable": 0.004393673110720563,
+      "unstable_cases": 2276,
+      "unstable_cleared": 10,
+      "stable_cleared": 0.5992303463441452
+    },
+    "weak_parallel_path": {
+      "cleared": 0.39286586855607136,
+      "cleared_by_network_scan": 0.0,
+      "missed_unstable": 0.0,
+      "unstable_cases": 1017,
+      "unstable_cleared": 0,
+      "stable_cleared": 0.5227568270481144
+    },
+    "other_machine": {
+      "cleared": 0.6031746031746031,
+      "cleared_by_network_scan": 0.24713064713064714,
+      "missed_unstable": 0.0,
+      "unstable_cases": 538,
+      "unstable_cleared": 0,
+      "stable_cleared": 0.6944053978071408
+    }
+  },
+  "pll": {
+    "by_ratio": [
+      {
+        "ratio_lo": 0.0,
+        "ratio_hi": 0.25,
+        "share": 0.21789308026133816,
+        "unstable": 1815,
+        "unstable_with_negative_root": 0,
+        "lowest_root_of_an_unstable_case": 0.1569867811148919,
+        "mean_error": 1.0663689886955507,
+        "underestimate_p999": 0.16899462576866572
+      },
+      {
+        "ratio_lo": 0.25,
+        "ratio_hi": 0.5,
+        "share": 0.3680194572941008,
+        "unstable": 4358,
+        "unstable_with_negative_root": 1,
+        "lowest_root_of_an_unstable_case": -0.11535942589074691,
+        "mean_error": 1.2930436721586873,
+        "underestimate_p999": 0.47615203206304463
+      },
+      {
+        "ratio_lo": 0.5,
+        "ratio_hi": 0.75,
+        "share": 0.21426868234059804,
+        "unstable": 2580,
+        "unstable_with_negative_root": 3,
+        "lowest_root_of_an_unstable_case": -0.27446363565467913,
+        "mean_error": 1.2492914372238528,
+        "underestimate_p999": 0.8419458477278945
+      },
+      {
+        "ratio_lo": 0.75,
+        "ratio_hi": 1.0,
+        "share": 0.10731079212170347,
+        "unstable": 1824,
+        "unstable_with_negative_root": 5,
+        "lowest_root_of_an_unstable_case": -0.3141633216269877,
+        "mean_error": 1.2581115832370517,
+        "underestimate_p999": 1.3818377793602261
+      },
+      {
+        "ratio_lo": 1.0,
+        "ratio_hi": 1.5,
+        "share": 0.06055605894415566,
+        "unstable": 1219,
+        "unstable_with_negative_root": 20,
+        "lowest_root_of_an_unstable_case": -4.473757259134667,
+        "mean_error": 1.1070156045369701,
+        "underestimate_p999": 2.9653447269105047
+      },
+      {
+        "ratio_lo": 1.5,
+        "ratio_hi": 100.0,
+        "share": 0.031951929038103864,
+        "unstable": 74,
+        "unstable_with_negative_root": 3,
+        "lowest_root_of_an_unstable_case": -0.3592360936027338,
+        "mean_error": 2.315753578811524,
+        "underestimate_p999": 2.3098884860003803
+      }
+    ],
+    "by_feed_forward": [
+      {
+        "ff_lo": 0.0,
+        "ff_hi": 0.25,
+        "mean_error": 1.96336864571818,
+        "unstable_with_negative_root": 2
+      },
+      {
+        "ff_lo": 0.25,
+        "ff_hi": 0.5,
+        "mean_error": 1.4972071550578594,
+        "unstable_with_negative_root": 2
+      },
+      {
+        "ff_lo": 0.5,
+        "ff_hi": 0.75,
+        "mean_error": 1.0155966766623206,
+        "unstable_with_negative_root": 3
+      },
+      {
+        "ff_lo": 0.75,
+        "ff_hi": 1.0,
+        "mean_error": 0.5319417197950733,
+        "unstable_with_negative_root": 25
+      }
+    ],
+    "threshold_slow_pll": -0.3141633216269877,
+    "threshold_fast_pll": -4.473757259134667,
+    "rule": {
+      "in_distribution": {
+        "slow_pll_share": 0.9074399084318963,
+        "cleared": 0.823807706982068,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 1376,
+        "stable_cleared": 0.9204535766049962
+      },
+      "boundary": {
+        "slow_pll_share": 0.8856215777732711,
+        "cleared": 0.007706347596836341,
+        "missed_unstable": 0.00776778413736713,
+        "unstable_cleared": 19,
+        "unstable_cases": 2446,
+        "stable_cleared": 0.007645875251509054
+      },
+      "high_compensation": {
+        "slow_pll_share": 0.71142578125,
+        "cleared": 0.466064453125,
+        "missed_unstable": 0.0047425474254742545,
+        "unstable_cleared": 7,
+        "unstable_cases": 1476,
+        "stable_cleared": 0.7259541984732825
+      },
+      "low_speed": {
+        "slow_pll_share": 0.94140625,
+        "cleared": 0.613525390625,
+        "missed_unstable": 0.003260869565217391,
+        "unstable_cleared": 3,
+        "unstable_cases": 920,
+        "stable_cleared": 0.7903022670025189
+      },
+      "fast_current_loop": {
+        "slow_pll_share": 0.9540903540903541,
+        "cleared": 0.358974358974359,
+        "missed_unstable": 0.004393673110720563,
+        "unstable_cleared": 10,
+        "unstable_cases": 2276,
+        "stable_cleared": 0.8026388125343595
+      },
+      "weak_parallel_path": {
+        "slow_pll_share": 0.960908868800391,
+        "cleared": 0.6408502321035915,
+        "missed_unstable": 0.0009832841691248771,
+        "unstable_cleared": 1,
+        "unstable_cases": 1017,
+        "stable_cleared": 0.852405721716515
+      },
+      "other_machine": {
+        "slow_pll_share": 0.9286935286935287,
+        "cleared": 0.7897435897435897,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 538,
+        "stable_cleared": 0.9091931402867585
+      }
+    },
+    "rounded_margins": {
+      "slow_pll": -1.0,
+      "fast_pll": -5.0
+    },
+    "rounded_rule": {
+      "in_distribution": {
+        "slow_pll_share": 0.9074399084318963,
+        "cleared": 0.7988553987027852,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 1376,
+        "stable_cleared": 0.8925739619745929
+      },
+      "boundary": {
+        "slow_pll_share": 0.8856215777732711,
+        "cleared": 0.0008111944838775097,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 2446,
+        "stable_cleared": 0.0016096579476861167
+      },
+      "high_compensation": {
+        "slow_pll_share": 0.71142578125,
+        "cleared": 0.431396484375,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 1476,
+        "stable_cleared": 0.6744274809160306
+      },
+      "low_speed": {
+        "slow_pll_share": 0.94140625,
+        "cleared": 0.58935546875,
+        "missed_unstable": 0.002173913043478261,
+        "unstable_cleared": 2,
+        "unstable_cases": 920,
+        "stable_cleared": 0.7594458438287154
+      },
+      "fast_current_loop": {
+        "slow_pll_share": 0.9540903540903541,
+        "cleared": 0.32576312576312577,
+        "missed_unstable": 0.0013181019332161687,
+        "unstable_cleared": 3,
+        "unstable_cases": 2276,
+        "stable_cleared": 0.7317207256734469
+      },
+      "weak_parallel_path": {
+        "slow_pll_share": 0.960908868800391,
+        "cleared": 0.6156853163938432,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 1017,
+        "stable_cleared": 0.8192457737321196
+      },
+      "other_machine": {
+        "slow_pll_share": 0.9286935286935287,
+        "cleared": 0.7636141636141636,
+        "missed_unstable": 0.0,
+        "unstable_cleared": 0,
+        "unstable_cases": 538,
+        "stable_cleared": 0.8791116109080686
+      }
+    }
+  },
+  "impedance_gap": {
+    "max_underestimate": 7.992767155582004,
+    "p999_underestimate": 1.2308632805039519,
+    "mean": -1.2519419310358202,
+    "max_underestimate_unstable": 7.992767155582004
+  },
+  "residual_of_impedance_root_explained": {
+    "the three controls it leaves out": 0.20581273641824838,
+    "the nine parameters it uses": 0.5514161745661034,
+    "all 12 parameters": 0.9137157117007071
+  },
+  "impedance_with_learned_correction": {
+    "zero_miss_threshold": -3.83235501357218,
+    "auc": {
+      "in_distribution": 0.9996507241046343,
+      "boundary": 0.6163448392727584,
+      "high_compensation": 0.9939202817600695,
+      "low_speed": 0.9906903679772204,
+      "fast_current_loop": 0.9980058182956509,
+      "weak_parallel_path": 0.9996192810645553,
+      "other_machine": 0.9997136386391355
+    },
+    "natural": {
+      "in_distribution": {
+        "cleared": 0.8948492941625333,
+        "missed_unstable": 0.02180232558139535,
+        "false_alarm": 0.00272828033080399
+      },
+      "boundary": {
+        "cleared": 0.4666396268505374,
+        "missed_unstable": 0.3683565004088307,
+        "false_alarm": 0.43661971830985913
+      },
+      "high_compensation": {
+        "cleared": 0.646484375,
+        "missed_unstable": 0.046747967479674794,
+        "false_alarm": 0.015648854961832062
+      },
+      "low_speed": {
+        "cleared": 0.7431640625,
+        "missed_unstable": 0.029347826086956522,
+        "false_alarm": 0.050062972292191435
+      },
+      "fast_current_loop": {
+        "cleared": 0.4424908424908425,
+        "missed_unstable": 0.017135325131810195,
+        "false_alarm": 0.025288620120945574
+      },
+      "weak_parallel_path": {
+        "cleared": 0.744197410212558,
+        "missed_unstable": 0.0058997050147492625,
+        "false_alarm": 0.011703511053315995
+      },
+      "other_machine": {
+        "cleared": 0.8673992673992674,
+        "missed_unstable": 0.011152416356877323,
+        "false_alarm": 0.003092493674444757
+      }
+    },
+    "zero_miss": {
+      "in_distribution": {
+        "cleared": 0.755055322396032,
+        "missed_unstable": 0.0,
+        "false_alarm": 0.15636456645920369
+      },
+      "boundary": {
+        "cleared": 0.00040559724193875484,
+        "missed_unstable": 0.0004088307440719542,
+        "false_alarm": 0.9995975855130784
+      },
+      "high_compensation": {
+        "cleared": 0.429931640625,
+        "missed_unstable": 0.0033875338753387536,
+        "false_alarm": 0.3297709923664122
+      },
+      "low_speed": {
+        "cleared": 0.55419921875,
+        "missed_unstable": 0.007608695652173913,
+        "false_alarm": 0.28746851385390426
+      },
+      "fast_current_loop": {
+        "cleared": 0.24517704517704517,
+        "missed_unstable": 0.0,
+        "false_alarm": 0.4480483782297966
+      },
+      "weak_parallel_path": {
+        "cleared": 0.5480087955045199,
+        "missed_unstable": 0.0,
+        "false_alarm": 0.27080624187256175
+      },
+      "other_machine": {
+        "cleared": 0.7130647130647131,
+        "missed_unstable": 0.0,
+        "false_alarm": 0.17908349732921
+      }
+    }
+  },
+  "importance": {
+    "k": 1.8396936989348631,
+    "w_r": 0.7216277362674575,
+    "rsc_hz": 2.6727463615275098,
+    "pll_hz": 0.08009550022561586,
+    "outer_ratio": 0.0037272153344891277,
+    "ff": 0.3347717021647776,
+    "x_line": 0.26799350629988256,
+    "xr_line": 2.613566519739929,
+    "x_t": 0.9908928111560523,
+    "par_ratio": 1.6386906140046742,
+    "n_online": 0.30334739755133316,
+    "r_r": 0.04498635880197682
+  },
+  "trees": {
+    "topology": {
+      "parameters": 6,
+      "zero_miss_threshold": -10.391602423296012,
+      "auc": {
+        "in_distribution": 0.8603799814413489,
+        "boundary": 0.5133940190612194,
+        "high_compensation": 0.7727842683961191,
+        "low_speed": 0.8466172927390209,
+        "fast_current_loop": 0.8986063916228909,
+        "weak_parallel_path": 0.766847212472493,
+        "other_machine": 0.8721098666120419
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.9346814193056086,
+          "missed_unstable": 0.6984011627906976,
+          "false_alarm": 0.03759911330889249
+        },
+        "boundary": {
+          "cleared": 0.8513486108294464,
+          "missed_unstable": 0.848732624693377,
+          "false_alarm": 0.1460764587525151
+        },
+        "high_compensation": {
+          "cleared": 0.773193359375,
+          "missed_unstable": 0.5948509485094851,
+          "false_alarm": 0.12633587786259542
+        },
+        "low_speed": {
+          "cleared": 0.9375,
+          "missed_unstable": 0.7847826086956522,
+          "false_alarm": 0.018261964735516372
+        },
+        "fast_current_loop": {
+          "cleared": 0.9338217338217338,
+          "missed_unstable": 0.8809314586994728,
+          "false_alarm": 0.0
+        },
+        "weak_parallel_path": {
+          "cleared": 0.8582946494014171,
+          "missed_unstable": 0.6833824975417896,
+          "false_alarm": 0.08387516254876463
+        },
+        "other_machine": {
+          "cleared": 0.9282051282051282,
+          "missed_unstable": 0.6691449814126395,
+          "false_alarm": 0.03261175147596289
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.15406333460511254,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.8278625628783357
+        },
+        "boundary": {
+          "cleared": 0.003041979314540661,
+          "missed_unstable": 0.003270645952575634,
+          "false_alarm": 0.9971830985915493
+        },
+        "high_compensation": {
+          "cleared": 0.0615234375,
+          "missed_unstable": 0.0040650406504065045,
+          "false_alarm": 0.9061068702290076
+        },
+        "low_speed": {
+          "cleared": 0.152587890625,
+          "missed_unstable": 0.003260869565217391,
+          "false_alarm": 0.8041561712846348
+        },
+        "fast_current_loop": {
+          "cleared": 0.15335775335775337,
+          "missed_unstable": 0.014938488576449912,
+          "false_alarm": 0.6734469488730072
+        },
+        "weak_parallel_path": {
+          "cleared": 0.01759100903982409,
+          "missed_unstable": 0.0009832841691248771,
+          "false_alarm": 0.9769180754226268
+        },
+        "other_machine": {
+          "cleared": 0.15164835164835164,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.8254146752881641
+        }
+      },
+      "mae": 2.5795786783904022
+    },
+    "+ rotor speed": {
+      "parameters": 7,
+      "zero_miss_threshold": -10.332817071517528,
+      "auc": {
+        "in_distribution": 0.8809310603612195,
+        "boundary": 0.5088315666690248,
+        "high_compensation": 0.8024853120668611,
+        "low_speed": 0.8605016564450771,
+        "fast_current_loop": 0.9010167524789592,
+        "weak_parallel_path": 0.7834016134043753,
+        "other_machine": 0.8905812195022539
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.9278138115223197,
+          "missed_unstable": 0.6460755813953488,
+          "false_alarm": 0.03913377099496973
+        },
+        "boundary": {
+          "cleared": 0.8223484080308254,
+          "missed_unstable": 0.821749795584628,
+          "false_alarm": 0.17706237424547283
+        },
+        "high_compensation": {
+          "cleared": 0.74365234375,
+          "missed_unstable": 0.5094850948509485,
+          "false_alarm": 0.12442748091603054
+        },
+        "low_speed": {
+          "cleared": 0.859130859375,
+          "missed_unstable": 0.5815217391304348,
+          "false_alarm": 0.060453400503778336
+        },
+        "fast_current_loop": {
+          "cleared": 0.9257631257631258,
+          "missed_unstable": 0.8664323374340949,
+          "false_alarm": 0.0
+        },
+        "weak_parallel_path": {
+          "cleared": 0.8565844124114341,
+          "missed_unstable": 0.6588003933136677,
+          "false_alarm": 0.07802340702210664
+        },
+        "other_machine": {
+          "cleared": 0.9216117216117216,
+          "missed_unstable": 0.6412639405204461,
+          "false_alarm": 0.03598538093899353
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.1618466234261732,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.8191661693238981
+        },
+        "boundary": {
+          "cleared": 0.0016223889677550193,
+          "missed_unstable": 0.0024529844644317253,
+          "false_alarm": 0.999195171026157
+        },
+        "high_compensation": {
+          "cleared": 0.064697265625,
+          "missed_unstable": 0.0033875338753387536,
+          "false_alarm": 0.9007633587786259
+        },
+        "low_speed": {
+          "cleared": 0.11669921875,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.8494962216624685
+        },
+        "fast_current_loop": {
+          "cleared": 0.16288156288156289,
+          "missed_unstable": 0.014499121265377855,
+          "false_alarm": 0.651456844420011
+        },
+        "weak_parallel_path": {
+          "cleared": 0.023210359149767896,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.9691157347204161
+        },
+        "other_machine": {
+          "cleared": 0.1658119658119658,
+          "missed_unstable": 0.0018587360594795538,
+          "false_alarm": 0.8093899353387686
+        }
+      },
+      "mae": 2.4732645967863722
+    },
+    "+ current-loop bandwidth": {
+      "parameters": 8,
+      "zero_miss_threshold": -8.102088184961525,
+      "auc": {
+        "in_distribution": 0.9950259940080937,
+        "boundary": 0.5336817306126209,
+        "high_compensation": 0.9756529406897122,
+        "low_speed": 0.9802835122111488,
+        "fast_current_loop": 0.9739456875337558,
+        "weak_parallel_path": 0.9912559313516769,
+        "other_machine": 0.992579164807234
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.8965280427317818,
+          "missed_unstable": 0.11264534883720931,
+          "false_alarm": 0.011509932645579334
+        },
+        "boundary": {
+          "cleared": 0.6012979111742041,
+          "missed_unstable": 0.5809484873262469,
+          "false_alarm": 0.378672032193159
+        },
+        "high_compensation": {
+          "cleared": 0.71484375,
+          "missed_unstable": 0.23577235772357724,
+          "false_alarm": 0.015267175572519083
+        },
+        "low_speed": {
+          "cleared": 0.818359375,
+          "missed_unstable": 0.24130434782608695,
+          "false_alarm": 0.014483627204030227
+        },
+        "fast_current_loop": {
+          "cleared": 0.5557997557997558,
+          "missed_unstable": 0.2148506151142355,
+          "false_alarm": 0.017592083562396922
+        },
+        "weak_parallel_path": {
+          "cleared": 0.791106767652089,
+          "missed_unstable": 0.18584070796460178,
+          "false_alarm": 0.008777633289986996
+        },
+        "other_machine": {
+          "cleared": 0.8930402930402931,
+          "missed_unstable": 0.21561338289962825,
+          "false_alarm": 0.004498172617374192
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.3798550171690195,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.5755818910393042
+        },
+        "boundary": {
+          "cleared": 0.0006083958629081322,
+          "missed_unstable": 0.0012264922322158627,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.202880859375,
+          "missed_unstable": 0.0020325203252032522,
+          "false_alarm": 0.683969465648855
+        },
+        "low_speed": {
+          "cleared": 0.301513671875,
+          "missed_unstable": 0.004347826086956522,
+          "false_alarm": 0.6124055415617129
+        },
+        "fast_current_loop": {
+          "cleared": 0.1076923076923077,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.7575590984057174
+        },
+        "weak_parallel_path": {
+          "cleared": 0.22990471536770096,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.6940832249674902
+        },
+        "other_machine": {
+          "cleared": 0.37313797313797314,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.5704245150407646
+        }
+      },
+      "mae": 0.6682129218059828
+    },
+    "+ rotor resistance": {
+      "parameters": 9,
+      "zero_miss_threshold": -8.791766280539012,
+      "auc": {
+        "in_distribution": 0.9949538710451337,
+        "boundary": 0.5338941251762415,
+        "high_compensation": 0.9768160801837025,
+        "low_speed": 0.980262977768043,
+        "fast_current_loop": 0.9736212948461417,
+        "weak_parallel_path": 0.9915327597295904,
+        "other_machine": 0.9926685220931971
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.8969858832506676,
+          "missed_unstable": 0.11264534883720931,
+          "false_alarm": 0.010998380083553584
+        },
+        "boundary": {
+          "cleared": 0.6041370918677753,
+          "missed_unstable": 0.5838103025347506,
+          "false_alarm": 0.3758551307847082
+        },
+        "high_compensation": {
+          "cleared": 0.719482421875,
+          "missed_unstable": 0.244579945799458,
+          "false_alarm": 0.012977099236641221
+        },
+        "low_speed": {
+          "cleared": 0.817138671875,
+          "missed_unstable": 0.2358695652173913,
+          "false_alarm": 0.014483627204030227
+        },
+        "fast_current_loop": {
+          "cleared": 0.5609279609279609,
+          "missed_unstable": 0.22495606326889278,
+          "false_alarm": 0.018691588785046728
+        },
+        "weak_parallel_path": {
+          "cleared": 0.7915954067920841,
+          "missed_unstable": 0.18387413962635202,
+          "false_alarm": 0.007477243172951885
+        },
+        "other_machine": {
+          "cleared": 0.8886446886446886,
+          "missed_unstable": 0.19516728624535315,
+          "false_alarm": 0.006466123137475401
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.320259442960702,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.6421689828629892
+        },
+        "boundary": {
+          "cleared": 0.00020279862096937742,
+          "missed_unstable": 0.0004088307440719542,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.16552734375,
+          "missed_unstable": 0.0020325203252032522,
+          "false_alarm": 0.7423664122137404
+        },
+        "low_speed": {
+          "cleared": 0.2470703125,
+          "missed_unstable": 0.003260869565217391,
+          "false_alarm": 0.6823047858942065
+        },
+        "fast_current_loop": {
+          "cleared": 0.08424908424908426,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.8103353490929082
+        },
+        "weak_parallel_path": {
+          "cleared": 0.17688736867823113,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.764629388816645
+        },
+        "other_machine": {
+          "cleared": 0.3089133089133089,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.644363227438853
+        }
+      },
+      "mae": 0.6677287811789401
+    },
+    "+ PLL, outer loop, feed-forward": {
+      "parameters": 12,
+      "zero_miss_threshold": -6.881965965394464,
+      "auc": {
+        "in_distribution": 0.9978666721523077,
+        "boundary": 0.5417433464235948,
+        "high_compensation": 0.9828784728686982,
+        "low_speed": 0.9863726590734859,
+        "fast_current_loop": 0.9768144976236968,
+        "weak_parallel_path": 0.9961036245977039,
+        "other_machine": 0.9957291397767427
+      },
+      "natural": {
+        "in_distribution": {
+          "cleared": 0.8959175887066005,
+          "missed_unstable": 0.07340116279069768,
+          "false_alarm": 0.007588029670048598
+        },
+        "boundary": {
+          "cleared": 0.596430744270939,
+          "missed_unstable": 0.5600981193785772,
+          "false_alarm": 0.36780684104627764
+        },
+        "high_compensation": {
+          "cleared": 0.7197265625,
+          "missed_unstable": 0.23170731707317074,
+          "false_alarm": 0.0053435114503816794
+        },
+        "low_speed": {
+          "cleared": 0.818115234375,
+          "missed_unstable": 0.22282608695652173,
+          "false_alarm": 0.009445843828715366
+        },
+        "fast_current_loop": {
+          "cleared": 0.5638583638583639,
+          "missed_unstable": 0.22451669595782073,
+          "false_alarm": 0.01154480483782298
+        },
+        "weak_parallel_path": {
+          "cleared": 0.7933056437820669,
+          "missed_unstable": 0.17305801376597837,
+          "false_alarm": 0.001625487646293888
+        },
+        "other_machine": {
+          "cleared": 0.8827838827838828,
+          "missed_unstable": 0.1449814126394052,
+          "false_alarm": 0.0056227157717177395
+        }
+      },
+      "zero_miss": {
+        "in_distribution": {
+          "cleared": 0.4975200305227013,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.44411288259868703
+        },
+        "boundary": {
+          "cleared": 0.00040559724193875484,
+          "missed_unstable": 0.0008176614881439084,
+          "false_alarm": 1.0
+        },
+        "high_compensation": {
+          "cleared": 0.27880859375,
+          "missed_unstable": 0.0033875338753387536,
+          "false_alarm": 0.566030534351145
+        },
+        "low_speed": {
+          "cleared": 0.389892578125,
+          "missed_unstable": 0.004347826086956522,
+          "false_alarm": 0.4984256926952141
+        },
+        "fast_current_loop": {
+          "cleared": 0.1514041514041514,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.6591533809785597
+        },
+        "weak_parallel_path": {
+          "cleared": 0.33740532616662594,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.5510403120936281
+        },
+        "other_machine": {
+          "cleared": 0.47228327228327227,
+          "missed_unstable": 0.0,
+          "false_alarm": 0.45628338487489456
+        }
+      },
+      "mae": 0.4074958475120162
+    }
+  },
+  "phasor": {
+    "cases": 3000,
+    "unstable": 311,
+    "auc": 0.6240142344839462,
+    "natural": {
+      "cleared": 0.9636666666666667,
+      "missed_unstable": 1.0,
+      "false_alarm": 0.0405355150613611
+    },
+    "phasor_unstable_share": 0.036333333333333336,
+    "same_cases": {
+      "topology": {
+        "auc": 0.7987059342635652,
+        "natural": {
+          "cleared": 0.24633333333333332,
+          "missed_unstable": 0.003215434083601286,
+          "false_alarm": 0.7255485310524359
+        }
+      },
+      "slip": {
+        "auc": 0.8275539622542236,
+        "natural": {
+          "cleared": 0.24633333333333332,
+          "missed_unstable": 0.003215434083601286,
+          "false_alarm": 0.7255485310524359
+        }
+      },
+      "resistance": {
+        "auc": 0.9902843429047005,
+        "natural": {
+          "cleared": 0.85,
+          "missed_unstable": 0.003215434083601286,
+          "false_alarm": 0.05206396429899591
+        }
+      },
+      "quick": {
+        "auc": 0.9918603719572056,
+        "natural": {
+          "cleared": 0.85,
+          "missed_unstable": 0.003215434083601286,
+          "false_alarm": 0.05206396429899591
+        }
+      },
+      "impedance": {
+        "auc": 0.9959762232460698,
+        "natural": {
+          "cleared": 0.85,
+          "missed_unstable": 0.003215434083601286,
+          "false_alarm": 0.05206396429899591
+        }
+      }
+    }
+  },
+  "topology": {
+    "k_edges": [
+      0.1,
+      0.2,
+      0.30000000000000004,
+      0.4,
+      0.5,
+      0.6,
+      0.7000000000000001,
+      0.8
+    ],
+    "par_ratio_edges": [
+      0.5,
+      0.7937005259840997,
+      1.2599210498948732,
+      2.0,
+      3.174802103936399,
+      5.039684199579493,
+      8.0
+    ],
+    "unstable_share_grid": [
+      [
+        0.0,
+        0.0,
+        0.0036101083032490976,
+        0.0,
+        0.025477707006369428,
+        0.03389830508474576,
+        0.057692307692307696
+      ],
+      [
+        0.0,
+        0.0,
+        0.0031545741324921135,
+        0.028037383177570093,
+        0.03761755485893417,
+        0.07407407407407407,
+        0.16822429906542055
+      ],
+      [
+        0.0,
+        0.006329113924050633,
+        0.029315960912052116,
+        0.04318936877076412,
+        0.09407665505226481,
+        0.14625850340136054,
+        0.27607361963190186
+      ],
+      [
+        0.0,
+        0.019543973941368076,
+        0.0661764705882353,
+        0.10725552050473186,
+        0.1901840490797546,
+        0.2297734627831715,
+        0.2958199356913183
+      ],
+      [
+        0.022508038585209004,
+        0.03426791277258567,
+        0.0696969696969697,
+        0.1526479750778816,
+        0.1930379746835443,
+        0.2852664576802508,
+        0.3883495145631068
+      ],
+      [
+        0.010309278350515464,
+        0.0749185667752443,
+        0.12462006079027356,
+        0.16,
+        0.23692307692307693,
+        0.3443223443223443,
+        0.3782051282051282
+      ]
+    ],
+    "no_resonance_share": 0.24761541396413583,
+    "no_resonance_share_without_network_resistance": 0.0,
+    "unstable_without_resonance": 0.0003081664098613251,
+    "unstable_with_resonance": 0.1394523326572008,
+    "by_resonance_frequency": [
+      {
+        "f_lo": 0.0,
+        "f_hi": 5.0,
+        "cases": 0,
+        "unstable": null
+      },
+      {
+        "f_lo": 5.0,
+        "f_hi": 10.0,
+        "cases": 2,
+        "unstable": null
+      },
+      {
+        "f_lo": 10.0,
+        "f_hi": 15.0,
+        "cases": 313,
+        "unstable": 0.003194888178913738
+      },
+      {
+        "f_lo": 15.0,
+        "f_hi": 20.0,
+        "cases": 1155,
+        "unstable": 0.011255411255411256
+      },
+      {
+        "f_lo": 20.0,
+        "f_hi": 25.0,
+        "cases": 1578,
+        "unstable": 0.049429657794676805
+      },
+      {
+        "f_lo": 25.0,
+        "f_hi": 30.0,
+        "cases": 2044,
+        "unstable": 0.10812133072407044
+      },
+      {
+        "f_lo": 30.0,
+        "f_hi": 35.0,
+        "cases": 2303,
+        "unstable": 0.18193660442900564
+      },
+      {
+        "f_lo": 35.0,
+        "f_hi": 40.0,
+        "cases": 1813,
+        "unstable": 0.2344180915609487
+      },
+      {
+        "f_lo": 40.0,
+        "f_hi": 45.0,
+        "cases": 630,
+        "unstable": 0.3380952380952381
+      },
+      {
+        "f_lo": 45.0,
+        "f_hi": 50.0,
+        "cases": 22,
+        "unstable": null
+      },
+      {
+        "f_lo": 50.0,
+        "f_hi": 55.0,
+        "cases": 0,
+        "unstable": null
+      },
+      {
+        "f_lo": 55.0,
+        "f_hi": 60.0,
+        "cases": 0,
+        "unstable": null
+      }
+    ]
+  },
+  "wall_s": 24.243485200000578
+}

@@ -291,6 +291,12 @@ Exit check: for each of the four items, either a model that meets a stated error
 
 Status: item 1 is done for System B1 (`docs/steps/12-forward-pinn.md`), not yet for System A. A single network over 0.5 s settles onto the steady state whatever inputs, activations or causal weighting it has. Scaling each state and marching in windows of 0.05 s are what make it work: 4 % error after 365 s on the GPU, against 4.7 s for RK4. Item 2 is done (`docs/steps/13-eigen-residual.md`) with a negative result: with no labels the eigen-residual finds an eigenvalue of the right matrix but not the sub-synchronous one; with 100 labels a penalty on the smallest singular value of `A − λI` cuts the error from 0.83 to 0.59 1/s at one weight and makes it worse at ten times that weight; with 1,000 labels it changes nothing. The state matrix costs 96 % of a full solve, so arm L is dropped for T1 and kept for the time-domain task only.
 
+### Standing question: the most robust deterministic screen (added 2026-11-12)
+
+Every step from 14 on also answers: what is the most robust deterministic screening approach, and how little information does it need? What does the network topology say alone, and what can a phasor-domain model give? Learned models are judged against a physics rule with a margin, on cases cleared with no unstable case among them, in and out of distribution.
+
+Status (`docs/steps/14-screening-ladder.md`): the reference screen is the root of the loop impedance with a margin of 1 1/s where the PLL is slower than the mode and 5 1/s where it is faster. It clears 79.9 % of cases in distribution with none unstable. A network frequency scan with resistance clears 24.8 % with no plant data. A phasor-domain dynamic model reports every unstable case as stable. Open: the same question for the time-domain task and for a second plant type.
+
 ### Phase 6: The loss-against-feature comparison (2 weeks)
 
 1. Arms N, F, R, L, A and F+L on T1 and T2, matched architectures, four data budgets, five seeds.

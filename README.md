@@ -62,6 +62,18 @@ A network trained on the equations alone, with no solver data, was tried on one 
 
 Putting the model's equations into the training loss did not pay for the growth-rate task. With no solver labels the network finds an eigenvalue of the right matrix, but a slow, well-damped one, not the one that matters. With 100 labels the penalty helps at one weight (0.83 to 0.59 1/s) and hurts at ten times that. And the state matrix the penalty needs costs 96 % of a full solve, so the labels might as well be computed. Details in [docs/steps/13-eigen-residual.md](docs/steps/13-eigen-residual.md).
 
+### How little information decides stability
+
+Deterministic screens were lined up by the data they need and scored on how many cases each clears without clearing an unstable one.
+
+- **A positive-sequence (phasor-domain) dynamic model is blind to the problem.** It reports every unstable case as stable. Its network data, scaled in frequency, is all the screen below needs.
+- **A frequency scan of the network, with resistance, clears a quarter of cases with no plant data.** Without resistance it clears none.
+- **The root of the loop impedance (network, machine, current loop) with a safety margin clears 80 % of cases, none of them unstable.** The margin is 1 1/s where the PLL is slower than the mode and 5 1/s where it is faster. Outside the tested range it wrongly clears 5 unstable cases of 8,673.
+- **Trees trained on 20,000 solved cases clear 50 % on the same terms.** Learned models win on average error and lose in the tail, and a screen is judged by its tail.
+- **One controller number matters most: the current-loop bandwidth.** Outer loops, rotor resistance and exact PLL tuning hardly matter.
+
+Details in [docs/steps/14-screening-ladder.md](docs/steps/14-screening-ladder.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
