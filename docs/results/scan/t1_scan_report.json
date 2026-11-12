@@ -1,0 +1,111 @@
+{
+  "version": "t1-v2",
+  "columns": [
+    "solved",
+    "sigma",
+    "f",
+    "poles",
+    "f_passive",
+    "g_min",
+    "count",
+    "count_pos",
+    "norm",
+    "radius",
+    "guard_5",
+    "guard_10",
+    "guard_20",
+    "guard_30",
+    "guard_45",
+    "guard_60",
+    "pos_guard_10",
+    "pos_guard_30",
+    "count_s4",
+    "guard_10_s4",
+    "guard_30_s4",
+    "guard_60_s4",
+    "count_s16",
+    "guard_10_s16",
+    "guard_30_s16",
+    "guard_60_s16",
+    "count_s40",
+    "guard_10_s40",
+    "guard_30_s40",
+    "guard_60_s40",
+    "count_s80",
+    "guard_10_s80",
+    "guard_30_s80",
+    "guard_60_s80",
+    "count_n5",
+    "guard_30_n5",
+    "guard_60_n5",
+    "count_n20",
+    "guard_30_n20",
+    "guard_60_n20"
+  ],
+  "sets": {
+    "in_distribution": {
+      "cases": 13105,
+      "unstable": 1854,
+      "unstable_sub_synchronous_mode": 1376,
+      "largest_growth_differs_from_dataset": 1.201594379551807e-12,
+      "plant_alone_unstable": 9,
+      "count_agrees_with_eigenvalues": 13105,
+      "wall_s": 102.93304669999634
+    },
+    "boundary": {
+      "cases": 4931,
+      "unstable": 2446,
+      "unstable_sub_synchronous_mode": 2446,
+      "largest_growth_differs_from_dataset": 3.232969447708456e-13,
+      "plant_alone_unstable": 0,
+      "count_agrees_with_eigenvalues": 4892,
+      "wall_s": 46.959091699987766
+    },
+    "high_compensation": {
+      "cases": 4096,
+      "unstable": 1593,
+      "unstable_sub_synchronous_mode": 1476,
+      "largest_growth_differs_from_dataset": 1.1217693440812582e-12,
+      "plant_alone_unstable": 1,
+      "count_agrees_with_eigenvalues": 4096,
+      "wall_s": 38.23981040000217
+    },
+    "low_speed": {
+      "cases": 4096,
+      "unstable": 1616,
+      "unstable_sub_synchronous_mode": 920,
+      "largest_growth_differs_from_dataset": 3.094746681142624e-13,
+      "plant_alone_unstable": 53,
+      "count_agrees_with_eigenvalues": 4096,
+      "wall_s": 34.838821900004405
+    },
+    "fast_current_loop": {
+      "cases": 4095,
+      "unstable": 2277,
+      "unstable_sub_synchronous_mode": 2276,
+      "largest_growth_differs_from_dataset": 4.156675004196586e-13,
+      "plant_alone_unstable": 0,
+      "count_agrees_with_eigenvalues": 4095,
+      "wall_s": 34.063758299991605
+    },
+    "weak_parallel_path": {
+      "cases": 4093,
+      "unstable": 1174,
+      "unstable_sub_synchronous_mode": 1017,
+      "largest_growth_differs_from_dataset": 1.6729950758076484e-12,
+      "plant_alone_unstable": 1,
+      "count_agrees_with_eigenvalues": 4092,
+      "wall_s": 34.23946749999595
+    },
+    "other_machine": {
+      "cases": 4095,
+      "unstable": 567,
+      "unstable_sub_synchronous_mode": 538,
+      "largest_growth_differs_from_dataset": 3.9535041906901824e-13,
+      "plant_alone_unstable": 0,
+      "count_agrees_with_eigenvalues": 4095,
+      "wall_s": 32.88790470000822
+    }
+  },
+  "wall_s_total": 324.55484640000213
+}

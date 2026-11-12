@@ -95,6 +95,20 @@ The same question was put to a plant with no machine: one converter model that c
 
 Details in [docs/steps/17-generic-converter.md](docs/steps/17-generic-converter.md).
 
+### One screen for both plant types
+
+![Tests on 2 x 2 scans](docs/results/scan/fig46_scan_screens.png)
+
+The doubly-fed plant was then scanned the same way, as a 2 × 2 admittance against the impedance of its network.
+
+- **The loop-gain test of the converter clears 0.2 % of doubly-fed cases.** Sub-synchronous resonance is a series resonance: where the reactances cancel the loop gain is near 1 in every case, stable or not, and the resistance left over decides.
+- **A gain margin with a 30° guard clears no unstable case in 98,635, with nothing fitted.** Every eigenvalue of the loop matrix within 30° of the negative real axis must be below 1 in size. It clears 36 % of doubly-fed cases, 86 % of converters with a phase-locked loop and 74 % of those without.
+- **A Nyquist count on the same scans settles the rest.** It agrees with the eigenvalues in all but 1 of 93,704 cases, and has no margin.
+- **The scan has to be fine.** A thin scan clears unstable cases. Points 2.5 % apart in frequency are enough for a guarded test; the count needs 0.6 %.
+- **The hand formula of the doubly-fed plant was blind to a second mode.** It clears 478 test cases that are unstable in a slow mode of the outer loops. The scan sees them.
+
+Details in [docs/steps/18-one-screen-two-plants.md](docs/steps/18-one-screen-two-plants.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -128,8 +142,10 @@ uv run pytest
 | Reproduce the assumption studies | `uv run scripts/phase2_assumptions.py` |
 | Reproduce the phase-coordinate cross-check | `uv run scripts/phase2_abc.py` |
 | Generate the T1 dataset (about 7 minutes) | `uv run scripts/phase3_generate_t1.py` |
-| Generate the converter dataset C1 (about 7 minutes) | `uv run scripts/phase3_generate_c1.py` |
+| Generate the converter dataset C1 (about 10 minutes) | `uv run scripts/phase3_generate_c1.py` |
 | Reproduce the converter screens | `uv run scripts/converter_screens.py` |
+| Scan the doubly-fed plant of dataset T1 (about 6 minutes) | `uv run scripts/phase3_scan_t1.py` |
+| Reproduce the screens on scans of both plant types | `uv run scripts/scan_screens.py` |
 
 ## Licence
 

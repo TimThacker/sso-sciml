@@ -130,6 +130,8 @@ Rise in error when one parameter is shuffled, 1/s: current-loop bandwidth 2.67, 
 
 ## Disagreements
 
+Note added in step 18: every figure here is for the sub-synchronous mode. Scored on any mode of the full model, the reference rule clears 478 unstable cases of the test fold. All are unstable in a slow mode of the outer loops, 0.4 to 0.7 Hz, which the impedance formula does not contain. See `18-one-screen-two-plants.md`.
+
 1. **The plan expected learned surrogates to be the screen.** On the measure that matters for a screen, cases cleared with none missed, the physics rule with a margin is ahead of trees trained on 20,000 solved cases. The learned models are better on average error and worse in the tail.
 2. **The resistance and quick-estimate screens cannot be given a zero-miss margin.** They have no value where no resonance is found, and a few such cases are unstable.
 3. **The rule by PLL speed was found by looking at the training cases the impedance root gets wrong.** Its form has a physical reading: a PLL faster than the mode follows the oscillation and feeds it back through the converter. But the threshold ratio of 1 and the margins of 1 and 5 1/s are read from this dataset. They are not derived.

@@ -22,7 +22,7 @@ from .. import admittance as adm
 from ..physics.converter import Converter, ConverterControls, active_states
 from ..physics.induction import _t
 from ..solver.linearize import jacobian
-from .t1 import Param
+from .t1 import Param, case_seed
 
 VERSION = "c1-v1"
 SEED = 20261112
@@ -75,6 +75,8 @@ COLUMNS = (
     "sigma_slow_pll",  # sigma with the PLL ten times slower
     "sigma_slow_dc",  # sigma with the DC voltage loop ten times slower
     "sigma_no_ff",  # sigma without voltage feed-forward
+    # Scores on the eigenvalues of the loop matrix, and coarse and noisy scans (step 18).
+    *adm.SCREEN_COLUMNS[2:],
 )
 _GRID = adm.scan_grid()
 _S = 2j * np.pi * _GRID
@@ -195,6 +197,7 @@ def evaluate(theta: np.ndarray, follow: float) -> np.ndarray:
         float(index.min()),
         scan_sigma, scan_f,
         *slowed,
+        *adm.screen_scores(y, z, scan.unstable_poles, case_seed(theta))[2:],
     ]  # fmt: skip
     return out
 

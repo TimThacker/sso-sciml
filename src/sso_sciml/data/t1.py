@@ -27,6 +27,7 @@ import numpy as np
 import torch
 from scipy.stats import qmc
 
+from .. import admittance as adm
 from ..physics import circuit, slip
 from ..physics.dfig import gains_from_bandwidth
 from ..physics.dfig_full import Controls
@@ -235,6 +236,64 @@ def solve(theta: np.ndarray) -> np.ndarray:
     j = int(cand[np.argmax(md.participation[4:6].sum(axis=0)[cand])])
     top = int(np.argmax(md.sigma))
     return np.array([md.sigma[j], abs(md.freq_hz[j]), md.sigma[top], abs(md.freq_hz[top]), 1.0])
+
+
+SCAN_COLUMNS = ("solved", "sigma", "f", "poles", "f_passive", "g_min", *adm.SCREEN_COLUMNS)
+_GRID = adm.scan_grid()
+_S = 2j * np.pi * _GRID
+
+
+def case_seed(theta: np.ndarray) -> int:
+    """A seed fixed by the parameters of a case, for the noise added to its scan."""
+    return int.from_bytes(hashlib.sha256(np.ascontiguousarray(theta).tobytes()).digest()[:8], "big")
+
+
+def network(theta: np.ndarray) -> dict:
+    """Network impedances of one case, with the keys `admittance.network_impedance` uses."""
+    th = dict(zip(NAMES, map(float, theta), strict=True))
+    return _network(th, replace(IGData(), r_r=th["r_r"]))
+
+
+def scan_pair(theta: np.ndarray) -> tuple[np.ndarray, np.ndarray, int]:
+    """Plant admittance and network impedance of one case on `admittance.scan_grid()`,
+    and the number of unstable poles of the plant alone."""
+    model, x0, p = operating_point(theta)
+    plant = adm.DFIGScan(model, x0, p)
+    return plant.admittance(_S), adm.network_impedance(network(theta), _S), plant.unstable_poles
+
+
+def scan(theta: np.ndarray) -> np.ndarray:
+    """One case as a 2 x 2 admittance scan of the plant against the impedance of its
+    network, in the order of SCAN_COLUMNS. `sigma` and `f` are the largest growth rate
+    of any mode of the full model (1/s) and its frequency (Hz, synchronous frame)."""
+    out = np.full(len(SCAN_COLUMNS), np.nan)
+    out[0] = 0.0
+    try:
+        model, x0, p = operating_point(theta)
+    except (ValueError, RuntimeError, np.linalg.LinAlgError):
+        return out
+    lam = np.linalg.eigvals(jacobian(model.rhs, x0, p).numpy())
+    top = int(np.argmax(lam.real))
+    plant = adm.DFIGScan(model, x0, p)
+    y, z = plant.admittance(_S), adm.network_impedance(network(theta), _S)
+    index = adm.passivity_index(y)
+    bad = index < 0
+    out[:] = [
+        1.0, lam.real[top], abs(lam.imag[top]) / (2 * np.pi), plant.unstable_poles,
+        float(np.abs(_GRID[bad]).max()) if bad.any() else 0.0, float(index.min()),
+        *adm.screen_scores(y, z, plant.unstable_poles, case_seed(theta)),
+    ]  # fmt: skip
+    return out
+
+
+def scans(theta: np.ndarray, processes: int = 1) -> np.ndarray:
+    """`scan` for every row of theta. Row order is kept."""
+    if processes <= 1:
+        return np.array([scan(row) for row in theta])
+    from multiprocessing import Pool
+
+    with Pool(processes, initializer=_init_worker) as pool:
+        return np.array(pool.map(scan, list(theta), chunksize=64))
 
 
 def evaluate(theta: np.ndarray) -> np.ndarray:

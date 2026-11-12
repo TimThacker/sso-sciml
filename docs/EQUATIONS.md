@@ -577,3 +577,7 @@ z_d = (z+ + z−)/2       z_q = (z+ − z−)/(2j)
 **Passivity.** `Y` is passive at `ω` if the smallest eigenvalue of `(Y + Y^H)/2` is not negative. `Z` of this network is passive at every frequency. If at every frequency either `Y` is passive or the largest singular value of `Y Z` is below 1, no eigenvalue of `Y Z` reaches the real axis at or to the left of −1, and the system is stable.
 
 **Positive-sequence part.** `m_p = (m_dd + m_qq)/2 + j (m_qd − m_dq)/2` of a 2 × 2 matrix. It leaves out the coupling to the mirror frequency.
+
+**Loop eigenvalues (step 18).** Let `λ_k(ω)` be the eigenvalues of `Y(jω) Z(jω)`. If plant and network are each stable alone, the system is stable if no `λ_k` is real and at or below −1 at any frequency. Three sufficient tests follow. Small gain: `|λ_k| < 1` wherever `Y` is not passive (implied by the singular-value test above). Gain margin with a guard `φ`: `|λ_k| < 1` wherever `|arg(−λ_k)| < φ`. With `φ = 0` and a continuous scan this is the condition itself; a finite guard covers the gaps between scan points.
+
+**Doubly-fed plant as an admittance.** The plant of section 15 on a line of zero impedance is the plant on an ideal voltage. The capacitor voltage then enters the flux equations exactly as a change of terminal voltage does, so the columns of the state matrix for `vc_D`, `vc_Q` are `B`, those two states are dropped, and `C` gives minus the line current. The state is set from the steady state of the case: stator flux, `X_f i_g` and `v_t − V_b` in place of the two loop fluxes and the capacitor voltage.
