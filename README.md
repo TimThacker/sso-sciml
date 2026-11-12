@@ -132,6 +132,17 @@ Details in [docs/steps/19-rational-fit.md](docs/steps/19-rational-fit.md).
 
 Details in [docs/steps/20-noise-and-modes.md](docs/steps/20-noise-and-modes.md).
 
+### The slow mode, and what the phasor-domain model is for
+
+![Reduced models against the full model](docs/results/slow/fig55_slow_models.png)
+
+- **The doubly-fed plant has a slow mode near 0.5 Hz in every case,** made of the rotor current controller integrators, the outer loops and rotor speed. It is unstable in 3.6 % of test cases: slow current loop (below about 8 Hz), fast outer loops, high rotor speed. The series capacitor plays no part.
+- **The phasor-domain model reproduces it to 0.006 1/s.** The same model sees none of the 1,376 cases unstable in the sub-synchronous band. It is exact below 2 Hz and blind above.
+- **The plant alone on an ideal voltage misses 96 % of the unstable cases.** The network's 60 Hz reactance is what tips the mode.
+- **Two models with no scan cover both bands.** The hand formula for the resonance and the phasor-domain model for the slow mode together clear 75.6 % of test cases and no unstable one.
+
+Details in [docs/steps/21-slow-mode.md](docs/steps/21-slow-mode.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -173,6 +184,7 @@ uv run pytest
 | Reproduce the rational-fit screen | `uv run scripts/fit_screens.py` |
 | Fit noisy scans by least squares (about 37 minutes) | `uv run scripts/phase3_noise_fits.py` |
 | Reproduce the noise study | `uv run scripts/noise_screens.py` |
+| Reproduce the slow-mode study (about 10 minutes) | `uv run scripts/slow_mode.py` |
 
 ## Licence
 

@@ -1,0 +1,609 @@
+{
+  "in range": {
+    "cases": 13105,
+    "slow_unstable": 478,
+    "sub_synchronous_unstable": 1376,
+    "fast_unstable": 0,
+    "both_unstable": 0,
+    "slow_growth_quartiles": [
+      -0.3024117331578191,
+      -0.26562452324702895,
+      -0.2268971916733803
+    ],
+    "slow_hz_quartiles_when_unstable": [
+      0.4452974578871428,
+      0.5433927521080633,
+      0.6597125958710092
+    ],
+    "models": {
+      "phasor": {
+        "error_median": 1.3275805510082339e-05,
+        "error_p99": 0.005288901235458956,
+        "error_max": 0.03516895142053622,
+        "near_boundary_error_p99": 0.005288901235458956,
+        "unstable": 478,
+        "unstable_called_stable": 4,
+        "stable_called_unstable": 0
+      },
+      "loops": {
+        "error_median": 7.144533770209183e-06,
+        "error_p99": 0.19380109617779934,
+        "error_max": 0.4300996304439516,
+        "near_boundary_error_p99": 0.19380109617779934,
+        "unstable": 478,
+        "unstable_called_stable": 129,
+        "stable_called_unstable": 0
+      },
+      "held": {
+        "error_median": 2.0015593641981257,
+        "error_p99": 10.795203128368307,
+        "error_max": 15.263216306828157,
+        "near_boundary_error_p99": 10.795203128368307,
+        "unstable": 478,
+        "unstable_called_stable": 20,
+        "stable_called_unstable": 484
+      },
+      "alone": {
+        "error_median": 0.00037865849279172803,
+        "error_p99": 0.6286930325616642,
+        "error_max": 0.972835632425181,
+        "near_boundary_error_p99": 0.6286930325616642,
+        "unstable": 478,
+        "unstable_called_stable": 469,
+        "stable_called_unstable": 0
+      }
+    },
+    "phasor_on_the_sub_synchronous_band": {
+      "unstable": 1376,
+      "unstable_called_stable": 1376
+    },
+    "participation_when_unstable": {
+      "rotor current controller integrators": 0.4868134963779425,
+      "outer-loop integrators": 0.22820730936010106,
+      "rotor speed": 0.17923645158978152,
+      "power filters": 0.01698216880989983,
+      "rotor flux": 0.06819736481719284,
+      "phase-locked loop": 0.0033257589194192723,
+      "stator, network and capacitor": 0.003198210956026159,
+      "grid-side converter and DC link": 0.014039239169636755
+    },
+    "cured_by": {
+      "outer loops at half speed": 0.7594142259414226,
+      "rotor current loop twice as fast": 0.7928870292887029
+    },
+    "no_scan_screen": {
+      "step 14 rule alone": {
+        "cleared": 0.7988553987027852,
+        "unstable_cleared": 478,
+        "unstable": 1854
+      },
+      "phasor-domain model alone": {
+        "cleared": 0.9638305990080122,
+        "unstable_cleared": 1380,
+        "unstable": 1854
+      },
+      "both": {
+        "cleared": 0.7626859977107974,
+        "unstable_cleared": 4,
+        "unstable": 1854
+      },
+      "both, phasor margin 0.05 1/s": {
+        "cleared": 0.7559710034338039,
+        "unstable_cleared": 0,
+        "unstable": 1854
+      }
+    },
+    "unstable_share_by": {
+      "rsc_hz": [
+        {
+          "lo": 2.0,
+          "hi": 2.805701104013348,
+          "cases": 1656,
+          "unstable": 0.13103864734299517
+        },
+        {
+          "lo": 2.805701104013348,
+          "hi": 3.9359793425308607,
+          "cases": 1676,
+          "unstable": 0.09069212410501193
+        },
+        {
+          "lo": 3.9359793425308607,
+          "hi": 5.521590793356283,
+          "cases": 1652,
+          "unstable": 0.05569007263922518
+        },
+        {
+          "lo": 5.521590793356283,
+          "hi": 7.745966692414831,
+          "cases": 1640,
+          "unstable": 0.010365853658536586
+        },
+        {
+          "lo": 7.745966692414831,
+          "hi": 10.86643365027946,
+          "cases": 1687,
+          "unstable": 0.0
+        },
+        {
+          "lo": 10.86643365027946,
+          "hi": 15.243982444638439,
+          "cases": 1644,
+          "unstable": 0.0
+        },
+        {
+          "lo": 15.243982444638439,
+          "hi": 21.385029187241084,
+          "cases": 1581,
+          "unstable": 0.0
+        },
+        {
+          "lo": 21.385029187241084,
+          "hi": 30.0,
+          "cases": 1569,
+          "unstable": 0.0
+        }
+      ],
+      "w_r": [
+        {
+          "lo": 0.8,
+          "hi": 0.8500000000000001,
+          "cases": 1655,
+          "unstable": 0.025377643504531724
+        },
+        {
+          "lo": 0.8500000000000001,
+          "hi": 0.9,
+          "cases": 1582,
+          "unstable": 0.0012642225031605564
+        },
+        {
+          "lo": 0.9,
+          "hi": 0.95,
+          "cases": 1641,
+          "unstable": 0.0
+        },
+        {
+          "lo": 0.95,
+          "hi": 1.0,
+          "cases": 1669,
+          "unstable": 0.0
+        },
+        {
+          "lo": 1.0,
+          "hi": 1.05,
+          "cases": 1711,
+          "unstable": 0.0
+        },
+        {
+          "lo": 1.05,
+          "hi": 1.1,
+          "cases": 1636,
+          "unstable": 0.0018337408312958435
+        },
+        {
+          "lo": 1.1,
+          "hi": 1.15,
+          "cases": 1594,
+          "unstable": 0.053952321204516936
+        },
+        {
+          "lo": 1.15,
+          "hi": 1.2,
+          "cases": 1617,
+          "unstable": 0.21335807050092764
+        }
+      ],
+      "outer_ratio": [
+        {
+          "lo": 0.03,
+          "hi": 0.039229814580354905,
+          "cases": 2198,
+          "unstable": 0.005914467697907188
+        },
+        {
+          "lo": 0.039229814580354905,
+          "hi": 0.05129927840030091,
+          "cases": 2198,
+          "unstable": 0.010464058234758872
+        },
+        {
+          "lo": 0.05129927840030091,
+          "hi": 0.06708203932499368,
+          "cases": 2150,
+          "unstable": 0.021395348837209303
+        },
+        {
+          "lo": 0.06708203932499368,
+          "hi": 0.08772053214638599,
+          "cases": 2169,
+          "unstable": 0.03550023052097741
+        },
+        {
+          "lo": 0.08772053214638599,
+          "hi": 0.1147086736997595,
+          "cases": 2212,
+          "unstable": 0.06057866184448463
+        },
+        {
+          "lo": 0.1147086736997595,
+          "hi": 0.15,
+          "cases": 2178,
+          "unstable": 0.08494031221303948
+        }
+      ],
+      "r_r": [
+        {
+          "lo": 0.004,
+          "hi": 0.004666666666666667,
+          "cases": 2181,
+          "unstable": 0.0651077487391105
+        },
+        {
+          "lo": 0.004666666666666667,
+          "hi": 0.005333333333333333,
+          "cases": 2150,
+          "unstable": 0.04883720930232558
+        },
+        {
+          "lo": 0.005333333333333333,
+          "hi": 0.006,
+          "cases": 2162,
+          "unstable": 0.043478260869565216
+        },
+        {
+          "lo": 0.006,
+          "hi": 0.006666666666666666,
+          "cases": 2197,
+          "unstable": 0.02275830678197542
+        },
+        {
+          "lo": 0.006666666666666666,
+          "hi": 0.007333333333333333,
+          "cases": 2245,
+          "unstable": 0.025835189309576838
+        },
+        {
+          "lo": 0.007333333333333333,
+          "hi": 0.008,
+          "cases": 2170,
+          "unstable": 0.013364055299539171
+        }
+      ],
+      "x_t": [
+        {
+          "lo": 0.05,
+          "hi": 0.08333333333333334,
+          "cases": 2109,
+          "unstable": 0.024656235182550973
+        },
+        {
+          "lo": 0.08333333333333334,
+          "hi": 0.11666666666666667,
+          "cases": 2227,
+          "unstable": 0.027391109115401886
+        },
+        {
+          "lo": 0.11666666666666667,
+          "hi": 0.15000000000000002,
+          "cases": 2201,
+          "unstable": 0.03498409813721036
+        },
+        {
+          "lo": 0.15000000000000002,
+          "hi": 0.18333333333333335,
+          "cases": 2189,
+          "unstable": 0.041571493832800364
+        },
+        {
+          "lo": 0.18333333333333335,
+          "hi": 0.21666666666666667,
+          "cases": 2147,
+          "unstable": 0.04564508616674429
+        },
+        {
+          "lo": 0.21666666666666667,
+          "hi": 0.25,
+          "cases": 2232,
+          "unstable": 0.04435483870967742
+        }
+      ],
+      "k": [
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "cases": 1780,
+          "unstable": 0.038202247191011236
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.30000000000000004,
+          "cases": 1933,
+          "unstable": 0.03931712364200724
+        },
+        {
+          "lo": 0.30000000000000004,
+          "hi": 0.4,
+          "cases": 1832,
+          "unstable": 0.03329694323144105
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "cases": 1909,
+          "unstable": 0.03981141959140912
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "cases": 1887,
+          "unstable": 0.034976152623211444
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7000000000000001,
+          "cases": 1873,
+          "unstable": 0.036305392418579815
+        },
+        {
+          "lo": 0.7000000000000001,
+          "hi": 0.8,
+          "cases": 1891,
+          "unstable": 0.033315705975674244
+        }
+      ]
+    },
+    "unstable_share_grid_speed_by_rsc": [
+      [
+        0.07906976744186046,
+        0.07623318385650224,
+        0.03553299492385787,
+        0.0044444444444444444,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.005263157894736842,
+        0.00558659217877095,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.010869565217391304,
+        0.004651162790697674,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.26666666666666666,
+        0.12315270935960591,
+        0.02252252252252252,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.6604651162790698,
+        0.526829268292683,
+        0.38164251207729466,
+        0.07804878048780488,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "outside": {
+    "cases": 20475,
+    "slow_unstable": 1038,
+    "sub_synchronous_unstable": 6229,
+    "fast_unstable": 0,
+    "both_unstable": 40,
+    "slow_growth_quartiles": [
+      -0.288794829708383,
+      -0.24931778334973798,
+      -0.20846893039685443
+    ],
+    "slow_hz_quartiles_when_unstable": [
+      0.39973374248721516,
+      0.525025516021262,
+      0.6636120106228374
+    ],
+    "models": {
+      "phasor": {
+        "error_median": 1.0324960913965509e-05,
+        "error_p99": 0.006848383887748787,
+        "error_max": 0.12514137991773377,
+        "near_boundary_error_p99": 0.006848383887748787,
+        "unstable": 1038,
+        "unstable_called_stable": 1,
+        "stable_called_unstable": 2
+      },
+      "loops": {
+        "error_median": 5.046817190934583e-06,
+        "error_p99": 0.13319424632327143,
+        "error_max": 0.4202594689699821,
+        "near_boundary_error_p99": 0.13319424632327143,
+        "unstable": 1038,
+        "unstable_called_stable": 136,
+        "stable_called_unstable": 0
+      },
+      "held": {
+        "error_median": 2.7828257078604106,
+        "error_p99": 14.202028951918685,
+        "error_max": 18.016746984220845,
+        "near_boundary_error_p99": 14.202028951918685,
+        "unstable": 1038,
+        "unstable_called_stable": 9,
+        "stable_called_unstable": 1316
+      },
+      "alone": {
+        "error_median": 0.0001708523494901304,
+        "error_p99": 0.5673403782782499,
+        "error_max": 1.0793110068630345,
+        "near_boundary_error_p99": 0.5673403782782499,
+        "unstable": 1038,
+        "unstable_called_stable": 983,
+        "stable_called_unstable": 0
+      }
+    },
+    "phasor_on_the_sub_synchronous_band": {
+      "unstable": 6229,
+      "unstable_called_stable": 6227
+    },
+    "participation_when_unstable": {
+      "rotor current controller integrators": 0.502955347300424,
+      "outer-loop integrators": 0.2568470627345714,
+      "rotor speed": 0.15790575752342187,
+      "power filters": 0.018372943894156467,
+      "rotor flux": 0.042422528266946834,
+      "phase-locked loop": 0.003002370003233085,
+      "stator, network and capacitor": 0.0027087051118373294,
+      "grid-side converter and DC link": 0.015785285165408995
+    },
+    "cured_by": {
+      "outer loops at half speed": 0.8352601156069365,
+      "rotor current loop twice as fast": 0.6454720616570327
+    },
+    "no_scan_screen": {
+      "step 14 rule alone": {
+        "cleared": 0.5451526251526252,
+        "unstable_cleared": 882,
+        "unstable": 7227
+      },
+      "phasor-domain model alone": {
+        "cleared": 0.9492551892551893,
+        "unstable_cleared": 6190,
+        "unstable": 7227
+      },
+      "both": {
+        "cleared": 0.5022222222222222,
+        "unstable_cleared": 5,
+        "unstable": 7227
+      },
+      "both, phasor margin 0.05 1/s": {
+        "cleared": 0.4963125763125763,
+        "unstable_cleared": 4,
+        "unstable": 7227
+      }
+    }
+  },
+  "by set": {
+    "in_distribution": {
+      "cases": 13105,
+      "slow_unstable": 478
+    },
+    "boundary": {
+      "cases": 4931,
+      "slow_unstable": 0
+    },
+    "high_compensation": {
+      "cases": 4096,
+      "slow_unstable": 117
+    },
+    "low_speed": {
+      "cases": 4096,
+      "slow_unstable": 735
+    },
+    "fast_current_loop": {
+      "cases": 4095,
+      "slow_unstable": 0
+    },
+    "weak_parallel_path": {
+      "cases": 4093,
+      "slow_unstable": 157
+    },
+    "other_machine": {
+      "cases": 4095,
+      "slow_unstable": 29
+    }
+  },
+  "all cases": {
+    "cases": 38511,
+    "slow_unstable": 1516,
+    "largest_rsc_hz_of_an_unstable_case": 10.726559616774253,
+    "smallest_rotor_speed_of_an_unstable_case": 0.7000462660565971,
+    "unstable_share_with_rsc_above_10_hz": 0.00010093363613424174,
+    "models": {
+      "phasor": {
+        "error_median": 1.0921519470130647e-05,
+        "error_p99": 0.005817053195538043,
+        "error_max": 0.12514137991773377,
+        "near_boundary_error_p99": 0.005817053195538043,
+        "unstable": 1516,
+        "unstable_called_stable": 5,
+        "stable_called_unstable": 2
+      },
+      "loops": {
+        "error_median": 4.7622241365341544e-06,
+        "error_p99": 0.1541306001499102,
+        "error_max": 0.4300996304439516,
+        "near_boundary_error_p99": 0.1541306001499102,
+        "unstable": 1516,
+        "unstable_called_stable": 265,
+        "stable_called_unstable": 0
+      },
+      "held": {
+        "error_median": 2.791593338415775,
+        "error_p99": 13.452222370109382,
+        "error_max": 18.016746984220845,
+        "near_boundary_error_p99": 13.452222370109382,
+        "unstable": 1516,
+        "unstable_called_stable": 29,
+        "stable_called_unstable": 1840
+      },
+      "alone": {
+        "error_median": 0.00019743675318745213,
+        "error_p99": 0.5715707511424051,
+        "error_max": 1.0793110068630345,
+        "near_boundary_error_p99": 0.5715707511424051,
+        "unstable": 1516,
+        "unstable_called_stable": 1452,
+        "stable_called_unstable": 0
+      }
+    }
+  }
+}

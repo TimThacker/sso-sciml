@@ -108,6 +108,8 @@ With 5 % noise the gain margin with a 30° guard cleared 36 %, 88 % and 74 % of 
 
 ## Disagreements
 
+Note added in step 21: the decision below to check slow modes on the plant alone was wrong. On an ideal voltage the slow mode of the doubly-fed plant decays in 96 % of the cases where it is unstable on its network. The phasor-domain model reproduces it to 0.006 1/s. See `21-slow-mode.md`.
+
 1. **Step 19 called the interpolating fit the reference screen for scans from a model.** It fails at a noise of 10⁻⁶. Withdrawn above. A note is added to step 19.
 2. **The first version of the fit put false modes just left of the axis below 2 Hz.** Surplus poles fitted to noise were kept because a pole close to the axis looks large at its own frequency. Judging each state by its share at the scan points, not at its own frequency, removed them. With the first rule a margin of 0.5 1/s cleared almost nothing in the slow band of the converters; with the second it clears 96 % at 1 % noise on the converter with a phase-locked loop.
 3. **A few unstable cases are cleared whatever the margin.** With 5 % noise 1 or 2 unstable sub-synchronous cases of the converters are still cleared at a margin of 5 1/s. The fit has no mode near the true one. The all-modes screen catches them through another band in this dataset, which is luck, not design.
