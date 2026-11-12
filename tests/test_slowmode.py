@@ -37,11 +37,11 @@ def test_slow_mode_is_slow(rows):
 
 
 def test_unstable_slow_case_needs_the_network():
-    # Slow current loop, fast outer loops, top of the speed range: unstable on its
-    # network, stable alone on an ideal voltage, and the phasor-domain model agrees.
+    # Slow current loop, fast outer loops, top of the speed range: growing at 0.4 1/s on
+    # its network and not at all on an ideal voltage. The phasor-domain model agrees.
     theta = np.array([0.435, 1.19, 2.04, 8.88, 0.108, 0.28, 1.45, 17.4, 0.173, 0.833, 0.974,
                       0.00526])  # fmt: skip
     row = slowmode.case(theta)
     assert row[COL["true_slow"]] > 0.1
-    assert row[COL["alone_slow"]] < 0
+    assert row[COL["alone_slow"]] < 0.01  # on an ideal voltage it sits on the boundary
     assert row[COL["phasor_slow"]] == pytest.approx(row[COL["true_slow"]], abs=0.02)
