@@ -9,7 +9,7 @@ Train models that predict the growth rate of the sub-synchronous mode from plant
 ## What was done
 
 - `src/sso_sciml/models/t1.py`: input scaling, the three arms, a multilayer perceptron with its training loop, and the metrics.
-- `scripts/phase4_t1_arms.py`: trains every combination, scores it on every test set, writes the results file and two figures.
+- `scripts/phase4_t1_arms.py`: trains every combination, scores it on every test set, writes the results file and six figures: error against budget and by test set, training curves, predicted against true, the error profile, and every metric against budget.
 - `tests/test_models_t1.py`: 10 tests on scaling, the arm definitions, the metrics and seeded training, run on the committed sample on the CPU.
 - The dataset was first extended to version 2 (step 08) so that the hand calculation has an answer in every case. See disagreement 1.
 
@@ -86,7 +86,37 @@ Perceptron on each test set at 100,000 cases: mean absolute error in 1/s, with t
 - **Arm R is the best perceptron on every extrapolation set at 100,000 cases**, by a factor of 1.4 to 3 over arm N. Arm F sits between them, and close to arm N at high compensation and low speed.
 - **The boundary set stays hard.** Its cases sit within 1 1/s of zero growth, so a small error flips the sign. The best model, arm R at 100,000 cases, is off by 0.06 1/s and still calls 21.7 % of unstable cases stable. The hand calculation misses few only because it calls 96 % of the stable cases unstable.
 - **The hand calculation is the safer screen on its own terms**: it misses 0.3 % of unstable cases in distribution, fewer than any trained model here. It pays with false alarms on 5.4 % of stable cases against 0.08 to 0.20 % for the perceptrons at 100,000 cases.
-- **Cost:** about 9 s per perceptron on the GPU and under 2 s per tree model on the CPU; 320 s and 36 s for all 36 runs of each.
+- **Cost:** about 9 s per perceptron on the GPU and under 2 s per tree model on the CPU; 322 s and 36 s for all 36 runs of each.
+
+### Training
+
+![Training curves](../results/phase4/fig27_t1_training.png)
+
+Held-out error is on the fifth of the budget the perceptron does not train on. The trees' curve is on the test fold and is a diagnostic only.
+
+- **At 100 cases the perceptron memorises.** Training loss falls from about 1e-2 to below 1e-7 while held-out error stops improving after 1,400 to 1,800 steps (0.82 1/s for arm N). The checkpoint rule keeps the weights from that point.
+- **At 10,000 and 100,000 cases held-out error is still falling at the last step**: for arm N at 100,000 cases, 0.171 1/s at step 2,000, 0.117 at 3,000 and 0.105 at 4,000. The learning rate reaches its floor at step 4,000, so this does not show that a longer schedule would go lower, but it has not been ruled out. The flat stretch between 10,000 and 100,000 cases in the table above may be the schedule and not the data.
+- **The trees are also unfinished at the large budgets**: at 100,000 cases the test error of arm N goes from 0.46 1/s at 100 iterations to 0.30 at 600 and is still falling. At 100 cases more iterations make arm F worse on all three seeds.
+- **Arm R has the highest training loss at 100,000 cases and the lowest held-out error.** Its target is the correction, which is smaller and noisier than the growth rate, so the loss values of different arms are not comparable.
+
+### Performance
+
+![Predicted against true](../results/phase4/fig28_t1_parity.png)
+
+- **The hand calculation is biased toward growth**, a band above the diagonal that widens as growth rate rises. Every trained arm removes it.
+- **Arm R at 1,000 cases scatters for strongly damped cases**, below about −10 1/s, where the hand calculation itself scatters. At 100,000 cases most of that is gone.
+
+![Error profile](../results/phase4/fig30_t1_error_profile.png)
+
+- **Arm R is the best arm over most of the range and the worst below about −11 1/s**, at 100,000 cases. Those cases are far from the boundary and matter least to a screen, but the mean error hides them.
+- **Error rises with growth rate for every arm.** Unstable cases are a ninth of the training data.
+
+### Metrics
+
+![Every metric](../results/phase4/fig29_t1_metrics.png)
+
+- **The 95th percentile of error** at 100,000 cases is 0.31, 0.29 and 0.24 1/s for arms N, F and R, against 3.80 for the hand calculation.
+- **The order of the arms depends on the metric.** On mean error at 1,000 cases the three perceptron arms are level. On error near the boundary and on missed unstable cases arm R is ahead from 1,000 cases up.
 
 ## Hypotheses
 
@@ -103,7 +133,9 @@ Hypothesis 5 said the arms converge in distribution with abundant data. Arms N a
 2. **Checkpoint selection first used more labels than the small budgets.** The perceptron chose its checkpoint on the full validation fold of 13,106 cases at every budget, which at 100 and 1,000 cases is more labelled data than the training set. The run was repeated with the held-out cases taken from inside the budget. Arm N at 100 cases had looked better than it is, and the gain from the hand calculation at that budget smaller than it is. The numbers above are from the repeat.
 3. **The perceptron beats the trees in every arm and budget.** Expected for a smooth target on 12 inputs; noted because the plan lists trees as the baseline to beat.
 4. **Arm F for trees at 100 cases misses fewer unstable cases (3.0 %) than at 1,000 (5.1 %).** At 100 cases it has not moved far from the hand calculation, which errs toward unstable: its false-alarm rate is 7.2 % against 0.8 % at 1,000.
-5. **Parts of plan phase 4 are not done:** Gaussian process baseline, deep ensemble, feature ablation, feature corruption test, uncertainty estimates, the mechanism-consistency rate, inference time, and the MLflow store. Results go to a JSON file instead.
+5. **The rest of plan phase 4 is in steps 10 and 11.** There is no MLflow store: results go to a JSON file and the figures below.
+
+6. **Neither model is trained to convergence at 100,000 cases** (see Training). The comparison between arms is at equal training effort, which is what the plan asks for, but the absolute errors at the large budgets are upper bounds.
 
 ## Decisions
 

@@ -25,6 +25,7 @@ import numpy as np
 import torch
 from sklearn.ensemble import HistGradientBoostingRegressor
 
+from sso_sciml import report
 from sso_sciml.data import t1 as data
 from sso_sciml.models import t1 as mt
 
@@ -95,6 +96,7 @@ def main() -> None:
 
     # ---------------- learned models
     runs = []
+    kept: dict = {}  # in-distribution test predictions of the first seed, for the figures
     for budget in BUDGETS:
         for seed in SEEDS:
             # The budget counts every label a model sees. The perceptron holds out a fifth
@@ -116,11 +118,28 @@ def main() -> None:
 
                         def run_model(xx, model=model):
                             return model.predict(xx)
+
+                        # Test error after each 25 boosting iterations. A diagnostic: the
+                        # test fold plays no part in fitting.
+                        d = tests["in_distribution"]
+                        staged = model.staged_predict(mt.inputs(arm, d["theta"], d["mech"]))
+                        curve = {"iteration": [], "test_mae": []}
+                        for it, pred in enumerate(staged, start=1):
+                            if it % 25 == 0 or it == model.n_iter_:
+                                err = np.abs(mt.to_sigma(arm, pred, d["mech"]) - d["sigma"])
+                                curve["iteration"].append(it)
+                                curve["test_mae"].append(float(err.mean()))
                     else:
-                        model, _ = mt.train_mlp(
+                        model, info = mt.train_mlp(
                             x[n_hold:], y[n_hold:], x[:n_hold], y[:n_hold], seed, device=device
                         )
                         fit_s = time.perf_counter() - t0
+                        step, loss, held = zip(*info["history"], strict=True)
+                        curve = {
+                            "step": list(step),
+                            "train_loss": list(loss),
+                            "held_out_mae": [v * mt.SIGMA_SCALE for v in held],  # 1/s
+                        }
 
                         def run_model(xx, model=model):
                             return mt.predict(model, xx, device)
@@ -128,9 +147,12 @@ def main() -> None:
                     scores = {}
                     for name, d in tests.items():
                         pred = run_model(mt.inputs(arm, d["theta"], d["mech"]))
-                        scores[name] = mt.metrics(d["sigma"], mt.to_sigma(arm, pred, d["mech"]))
+                        sigma = mt.to_sigma(arm, pred, d["mech"])
+                        scores[name] = mt.metrics(d["sigma"], sigma)
+                        if name == "in_distribution" and seed == SEEDS[0]:
+                            kept[(family, arm, budget)] = sigma
                     runs.append({"family": family, "arm": arm, "budget": budget, "seed": seed,
-                                 "fit_s": fit_s, "scores": scores})  # fmt: skip
+                                 "fit_s": fit_s, "scores": scores, "curve": curve})  # fmt: skip
                     print(family, arm, budget, seed, f"{fit_s:.1f}s",
                           f"mae {scores['in_distribution']['mae']:.3f}",
                           f"missed {scores['in_distribution']['missed_unstable']:.3f}")  # fmt: skip
@@ -148,7 +170,13 @@ def main() -> None:
                 for name in tests:
                     entry[name] = {
                         m: mean_sd([r["scores"][name][m] for r in sel])
-                        for m in ("mae", "mae_near_boundary", "missed_unstable", "false_alarm")
+                        for m in (
+                            "mae",
+                            "p95",
+                            "mae_near_boundary",
+                            "missed_unstable",
+                            "false_alarm",
+                        )  # fmt: skip
                     }
                 summary[f"{family}/{arm}/{budget}"] = entry
     res["summary"] = summary
@@ -198,6 +226,123 @@ def main() -> None:
                  fontsize=11, color=INK)  # fmt: skip
     fig.tight_layout()
     fig.savefig(OUT / "fig19_t1_splits.png", dpi=160)
+    plt.close(fig)
+
+    # ---------------- figure: training curves
+    def pick(family, arm, budget):
+        return [r["curve"] for r in runs
+                if (r["family"], r["arm"], r["budget"]) == (family, arm, budget)]  # fmt: skip
+
+    fig, axes = plt.subplots(3, len(BUDGETS), figsize=(13.0, 8.4), sharex="row", sharey="row",
+                             facecolor=SURFACE)  # fmt: skip
+    rows = (("mlp", "step", "train_loss", "Perceptron\ntraining loss (scaled)"),
+            ("mlp", "step", "held_out_mae", "Perceptron\nheld-out error (1/s)"),
+            ("gbt", "iteration", "test_mae", "Trees\ntest error (1/s)"))  # fmt: skip
+    for i, (family, xkey, ykey, ylabel) in enumerate(rows):
+        for j, budget in enumerate(BUDGETS):
+            ax = axes[i, j]
+            for arm in mt.ARMS:
+                got = pick(family, arm, budget)
+                if len({len(c[xkey]) for c in got}) == 1:
+                    report.curves(ax, [(np.array(c[xkey]), np.array(c[ykey])) for c in got],
+                                  COLOUR[arm], ARM_NAME[arm])  # fmt: skip
+                else:  # early stopping ended the seeds at different iterations
+                    for k, c in enumerate(got):
+                        ax.plot(c[xkey], c[ykey], color=COLOUR[arm], lw=1.2,
+                                label=ARM_NAME[arm] if k == 0 else None)  # fmt: skip
+            ax.set_yscale("log")
+            style(ax)
+            if i == 0:
+                ax.set_title(f"{budget:,} labelled cases", loc="left", fontsize=10)
+            if j == 0:
+                ax.set_ylabel(ylabel)
+        axes[i, 0].set_xlabel("Training step" if family == "mlp" else "Boosting iteration")
+    axes[0, -1].legend(frameon=False, fontsize=9, labelcolor=LABEL)
+    report.title(fig, "Training curves: thin lines are seeds, thick lines their mean")
+    fig.tight_layout()
+    fig.savefig(OUT / "fig27_t1_training.png", dpi=160)
+    plt.close(fig)
+
+    # ---------------- figure: predicted against true
+    test = tests["in_distribution"]
+    lim = (-20.0, 35.0)
+    fig, axes = plt.subplots(2, 4, figsize=(13.0, 6.9), facecolor=SURFACE)
+    for i, budget in enumerate((1000, 100000)):
+        report.parity(axes[i, 0], test["sigma"], mt.baseline(test["mech"]), lim)
+        axes[i, 0].set_title("Hand calculation alone", loc="left", fontsize=10)
+        axes[i, 0].set_ylabel(f"Predicted growth rate (1/s), {budget:,} cases")
+        for j, arm in enumerate(mt.ARMS, start=1):
+            report.parity(axes[i, j], test["sigma"], kept[("mlp", arm, budget)], lim)
+            axes[i, j].set_title(f"Arm {ARM_NAME[arm]}", loc="left", fontsize=10)
+    for ax in axes[1]:
+        ax.set_xlabel("Growth rate from the full solver (1/s)")
+    report.title(fig, "Perceptron predictions against the solver, in-distribution test fold "
+                 "(darker: more cases)")  # fmt: skip
+    fig.tight_layout()
+    fig.savefig(OUT / "fig28_t1_parity.png", dpi=160)
+    plt.close(fig)
+
+    # ---------------- figure: every metric against data budget
+    shown = (("mae", "Mean absolute error (1/s)", True),
+             ("p95", "95th percentile of error (1/s)", True),
+             ("mae_near_boundary", "Mean error within 2 1/s of the boundary", True),
+             ("missed_unstable", "Unstable cases called stable", False),
+             ("false_alarm", "Stable cases called unstable", False))  # fmt: skip
+    fig, axes = plt.subplots(2, len(shown), figsize=(16.0, 6.6), sharex=True, sharey="col",
+                             facecolor=SURFACE)  # fmt: skip
+    for i, (family, fname) in enumerate((("mlp", "Perceptron"), ("gbt", "Trees"))):
+        for j, (key, label, _) in enumerate(shown):
+            ax = axes[i, j]
+            for arm in mt.ARMS:
+                v = [summary[f"{family}/{arm}/{b}"]["in_distribution"][key] for b in BUDGETS]
+                mean, sd = np.array([a["mean"] for a in v]), np.array([a["sd"] for a in v])
+                ax.fill_between(BUDGETS, np.maximum(mean - sd, 1e-5), mean + sd, color=COLOUR[arm],
+                                alpha=0.18, lw=0)  # fmt: skip
+                ax.plot(BUDGETS, mean, color=COLOUR[arm], lw=2, marker="o", ms=5,
+                        label=ARM_NAME[arm])  # fmt: skip
+            ax.axhline(hand["impedance_root"]["in_distribution"][key], color=MUTED, lw=1.0, ls="--",
+                       label="hand calculation alone")  # fmt: skip
+            ax.set_xscale("log")
+            ax.set_yscale("log")
+            style(ax)
+            if i == 0:
+                ax.set_title(label, loc="left", fontsize=10)
+            else:
+                ax.set_xlabel("Labelled cases")
+        axes[i, 0].set_ylabel(fname)
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, frameon=False, fontsize=9, labelcolor=LABEL, loc="lower center",
+               ncol=4)  # fmt: skip
+    report.title(fig, "Every metric on the in-distribution test fold (band: one standard "
+                 "deviation over three seeds)")  # fmt: skip
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.savefig(OUT / "fig29_t1_metrics.png", dpi=160)
+    plt.close(fig)
+
+    # ---------------- figure: where the error is
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 4.4), facecolor=SURFACE)
+    errors = {"hand calculation alone": mt.baseline(test["mech"]) - test["sigma"]}
+    colours = {"hand calculation alone": MUTED}
+    for arm in mt.ARMS:
+        errors[ARM_NAME[arm]] = kept[("mlp", arm, 100000)] - test["sigma"]
+        colours[ARM_NAME[arm]] = COLOUR[arm]
+    report.error_cdf(axes[0], errors, colours)
+    axes[0].set_xlim(1e-3, 20)
+    axes[0].set_xlabel("Absolute error in growth rate (1/s)")
+    axes[0].set_ylabel("Share of test cases with a smaller error")
+    axes[0].legend(frameon=False, fontsize=9, labelcolor=LABEL, loc="upper left")
+    edges = np.linspace(-16.0, 24.0, 21)
+    for name, err in errors.items():
+        report.binned_error(axes[1], test["sigma"], err, edges, colours[name], name)
+    axes[1].axvline(0, color=INK, lw=0.8, ls="--")
+    axes[1].set_yscale("log")
+    axes[1].set_xlabel("Growth rate from the full solver (1/s)")
+    axes[1].set_ylabel("Mean absolute error (1/s)")
+    style(axes[1])
+    report.title(fig, "Perceptron at 100,000 cases: distribution of the error, and error "
+                 "against the true growth rate")  # fmt: skip
+    fig.tight_layout()
+    fig.savefig(OUT / "fig30_t1_error_profile.png", dpi=160)
     plt.close(fig)
 
     print(json.dumps({"hand": {k: v["in_distribution"] for k, v in hand.items()}}, indent=1))

@@ -58,6 +58,15 @@ Share of cases inside the 90 % interval, perceptron at 100,000 cases. The extrap
 
 ![Spread against error](../results/phase4/fig23_t1_spread.png)
 
+The same check at every level from 10 to 95 %, on the in-distribution test fold:
+
+![Reliability](../results/phase4/fig31_t1_reliability.png)
+
+- **Both conformal forms are within 5 points of the target at every level.**
+- **The ensemble spread is too narrow at every level**: its 50 % interval holds 24 % of cases for arm N.
+- **Dropout is too wide at every level for arm N**: its 50 % interval holds 79 %.
+- **The Gaussian process is right at 90 % and too wide in the middle**: at 1,000 cases its 50 % interval holds 61 to 69 % of cases. Its errors are more peaked than the normal distribution its error bar assumes, so the agreement at 90 % does not carry to other levels.
+
 ### The ensemble as a model
 
 Mean absolute error in distribution, 1/s: single perceptron against the mean of five.
@@ -123,19 +132,19 @@ Time per case on this machine. The solver and hand calculation run one case at a
 
 | Method | Time per case |
 |---|---|
-| Full solver (steady state and eigenvalues) | 10.8 ms |
+| Full solver (steady state and eigenvalues) | 10.2 ms |
 | Hand calculation (all ten quantities) | 1.7 ms |
-| Perceptron, one case at a time, CPU | 0.18 ms |
-| Perceptron, one case at a time, GPU | 0.56 ms |
-| Perceptron, 13,105 cases at once, CPU | 1.6 µs |
+| Perceptron, one case at a time, CPU | 0.20 ms |
+| Perceptron, one case at a time, GPU | 0.67 ms |
+| Perceptron, 13,105 cases at once, CPU | 1.4 µs |
 | Perceptron, 13,105 cases at once, GPU | 1.3 µs |
-| Trees, 13,105 cases at once, CPU | 3.8 µs |
+| Trees, 13,105 cases at once, CPU | 3.5 µs |
 
-- **In batches the perceptron is about 8,000 times faster than the solver**, and the GPU adds nothing over the CPU at this model size. The GPU figure moved between 0.8 and 1.3 µs across two runs.
-- **One case at a time the gain is 60 times on the CPU**, and the GPU is slower than the CPU.
-- **Arms F and R need the hand calculation first**, at 1.7 ms per case. That is a thousand times the cost of the network and leaves them 6 times faster than the solver, not 8,000. Only arm N gets the full speed.
+- **In batches the perceptron is about 7,500 times faster than the solver**, and the GPU adds nothing over the CPU at this model size. These timings move by 10 to 40 % from run to run.
+- **One case at a time the gain is 50 times on the CPU**, and the GPU is slower than the CPU.
+- **Arms F and R need the hand calculation first**, at 1.7 ms per case. That is a thousand times the cost of the network and leaves them 6 times faster than the solver, not 7,500. Only arm N gets the full speed.
 - An ensemble of five costs five times the single model.
-- The whole script takes 836 s.
+- The whole script takes 838 s.
 
 ## Disagreements
 
@@ -145,7 +154,7 @@ Time per case on this machine. The solver and hand calculation run one case at a
 4. **The Gaussian process is worse under arm R than under arm N at 1,000 cases** (0.268 against 0.197 1/s), the reverse of the perceptron at large budgets. Not investigated.
 5. **Calibration uses 1,000 labelled cases beyond the training budget.** At a budget of 1,000 that doubles the labels used.
 6. **The mechanism check of the plan was a sign test against net resistance.** That belongs to the induction machine of step 02. For this system the check is the trend in compensation. The trend in rotor speed was not run.
-7. **No MLflow store.** Results go to one JSON file per script, committed with the figures. MLflow is not a dependency of the project.
+7. **No MLflow store.** Results go to one JSON file per script, committed with figures of training, performance and metrics drawn by `src/sso_sciml/report.py`.
 
 8. **The hand calculation dominates the cost of arms F and R.** The plan treated it as free. The impedance root alone needs one polynomial root-finding and would be cheaper than the full set of ten quantities timed here; that was not timed separately.
 

@@ -28,11 +28,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+from scipy.stats import norm
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import ConstantKernel, Matern, WhiteKernel
 
+from sso_sciml import report
 from sso_sciml.data import t1 as data
 from sso_sciml.models import t1 as mt
 
@@ -47,6 +49,8 @@ BUDGETS = (1000, 100000)
 GP_BUDGETS = (100, 1000)
 SEEDS = (0, 1, 2)
 Z90 = 1.6448536269514722
+LEVELS = np.array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95])
+Z_LEVELS = norm.ppf(0.5 + LEVELS / 2)
 N_CAL = 1000
 N_TREND, K_GRID = 256, np.linspace(0.10, 0.80, 8)
 
@@ -103,6 +107,7 @@ def main() -> None:
     # ---------------- deep ensemble, dropout and conformal intervals
     nets: dict = {}
     keep: dict = {}
+    reliability: dict = {"levels": LEVELS.tolist()}
     for budget in BUDGETS:
         sub = mt.budget_subset(train, budget, 0)
         h = budget // 5
@@ -156,6 +161,24 @@ def main() -> None:
                 }
                 if name == "in_distribution":
                     keep[(arm, budget)] = (sd, err)
+                    d_err = np.abs(d_mean - d["sigma"])
+                    reliability[f"mlp/{arm}/{budget}"] = {
+                        "Ensemble spread": [float((err <= z * sd).mean()) for z in Z_LEVELS],
+                        "Dropout": [float((d_err <= z * d_sd).mean()) for z in Z_LEVELS],
+                        "Conformal, one width": [
+                            float((err <= mt.conformal_quantile(c_err, lv)).mean()) for lv in LEVELS
+                        ],
+                        "Conformal, scaled by spread": [
+                            float(
+                                (
+                                    err
+                                    <= mt.conformal_quantile(c_err / (c_sd + 1e-6), lv)
+                                    * (sd + 1e-6)
+                                ).mean()
+                            )
+                            for lv in LEVELS
+                        ],
+                    }
             nets[(arm, budget)] = (ensemble, models)
             res[f"mlp/{arm}/{budget}"] = entry
             e = entry["in_distribution"]
@@ -185,6 +208,11 @@ def main() -> None:
                     mean, sd = gp.predict(mt.inputs(arm, d["theta"], d["mech"]), return_std=True)
                     mean, sd = mt.to_sigma(arm, mean, d["mech"]), sd * mt.SIGMA_SCALE
                     rows[name].append({**mt.metrics(d["sigma"], mean), **gaussian(d, mean, sd)})
+                    if name == "in_distribution" and seed == SEEDS[0]:
+                        g_err = np.abs(mean - d["sigma"])
+                        reliability[f"gp/{arm}/{budget}"] = [
+                            float((g_err <= z * sd).mean()) for z in Z_LEVELS
+                        ]
             entry = {"fit_s": mean_sd(fit_s)}
             for name, rr in rows.items():
                 # `missed_unstable` here is the interval screen; the point screen is not kept.
@@ -263,6 +291,7 @@ def main() -> None:
     timing["gbt_batch_s_per_case"] = (time.perf_counter() - t0) / 5 / len(x_all)
     res["timing"] = timing
     print("timing", {k: f"{v:.2e}" for k, v in timing.items()})
+    res["reliability"] = reliability
     res["wall_s"] = time.perf_counter() - t_start
     (OUT / "t1_uncertainty.json").write_text(json.dumps(res, indent=2))
 
@@ -316,6 +345,29 @@ def main() -> None:
                  fontsize=11, color=INK)  # fmt: skip
     fig.tight_layout()
     fig.savefig(OUT / "fig23_t1_spread.png", dpi=160)
+    plt.close(fig)
+
+    # ---------------- figure: reliability at every level, not only 90 %
+    method_colour = {label: colour for _, label, colour in methods}
+    fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.8), facecolor=SURFACE)
+    for ax, arm in zip(axes[:2], ("N", "R"), strict=True):
+        report.reliability(ax, LEVELS, reliability[f"mlp/{arm}/100000"], method_colour)
+        ax.set_title(f"Perceptron, arm {ARM_NAME[arm]}, 100,000 cases", loc="left", fontsize=10)
+    report.reliability(
+        axes[2],
+        LEVELS,
+        {ARM_NAME[arm]: reliability[f"gp/{arm}/1000"] for arm in mt.ARMS},
+        {ARM_NAME[arm]: COLOUR[arm] for arm in mt.ARMS},
+    )
+    axes[2].set_title("Gaussian process posterior, 1,000 cases", loc="left", fontsize=10)
+    for ax in axes:
+        ax.set_xlabel("Share of cases the interval is built to hold")
+        ax.legend(frameon=False, fontsize=8, labelcolor=LABEL, loc="upper left")
+    axes[0].set_ylabel("Share of test cases inside it")
+    report.title(fig, "Reliability of each error bar on the in-distribution test fold "
+                 "(dashed: perfect)")  # fmt: skip
+    fig.tight_layout()
+    fig.savefig(OUT / "fig31_t1_reliability.png", dpi=160)
     plt.close(fig)
     print(f"done in {res['wall_s']:.0f} s")
 
