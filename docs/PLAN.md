@@ -263,6 +263,8 @@ Planned sizes: about 200,000 cases for T1, about 30,000 trajectories for T2.
 
 Exit check: datasets regenerate bit-for-bit; splits committed; dataset report written.
 
+Status: the T1 dataset is done (`docs/steps/08-t1-dataset.md`): 131,072 in-distribution cases over 12 parameters, a boundary set of 4,931 and five extrapolation sets of 4,096, bit-identical on regeneration. Ranges and splits live in `src/sso_sciml/data/t1.py`, not in a separate config file. The T2 trajectory dataset is not built yet. No short-circuit-ratio split and no System C.
+
 ### Phase 4: T1 with arms N, F and R (2 weeks)
 
 1. Training harness: one config per run, seeded, local MLflow store, results tables in `docs/results/`.

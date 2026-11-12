@@ -1,0 +1,245 @@
+"""Task T1 dataset: parameters to mechanism quantities and stability of System B2.
+
+One case is a point in a 12-dimensional parameter space. For each case this module
+returns
+
+    - solver outputs: growth rate and frequency of the sub-synchronous mode and of the
+      least-damped mode, from the full-control model on the meshed network (25 states),
+    - mechanism quantities from the hand calculation: resonance frequency, slip at
+      resonance, machine and net resistance, the quick growth-rate estimate, and the
+      root of the equivalent circuit.
+
+The hand calculation knows the machine, the rotor current loop and the network. It does
+not know the phase-locked loop, the outer loops or the grid-side converter. The gap
+between the two is what a learned model has to supply.
+
+Ranges, sampling and splits are fixed by `SPEC` and `SPLITS`. Changing either changes
+`VERSION`.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from dataclasses import dataclass, replace
+
+import numpy as np
+from scipy.stats import qmc
+
+from ..physics import slip
+from ..physics.dfig import gains_from_bandwidth
+from ..physics.dfig_full import Controls
+from ..physics.dfig_meshed import DFIGMeshed
+from ..physics.induction import IGData
+from ..solver.linearize import jacobian, modes
+
+VERSION = "t1-v1"
+SEED = 20261111
+XR_PLANT = 15.0  # X/R of the plant-side impedance
+
+
+@dataclass(frozen=True)
+class Param:
+    name: str
+    low: float
+    high: float
+    log: bool
+    meaning: str
+    source: str
+
+
+SPEC: tuple[Param, ...] = (
+    Param("k", 0.10, 0.80, False, "series compensation as a fraction of line reactance",
+          "practical installations run from about 20 to 75 %"),
+    Param("w_r", 0.80, 1.20, False, "rotor speed, pu",
+          "operating range of a doubly-fed machine, about +/-30 % slip, less a margin"),
+    Param("rsc_hz", 2.0, 30.0, True, "rotor current loop bandwidth, Hz",
+          "step 05: stability limit lies between 3 and 32 Hz across networks"),
+    Param("pll_hz", 5.0, 30.0, True, "phase-locked loop natural frequency, Hz",
+          "representative; step 04 swept 1 to 60 Hz"),
+    Param("outer_ratio", 0.03, 0.15, True, "outer power loop crossover over current loop bandwidth",
+          "cascade tuning; sampled independently the two loops interact below 2 Hz"),
+    Param("ff", 0.0, 1.0, False, "terminal-voltage feed-forward gain of the grid-side converter",
+          "step 04: off and on bracket practice"),
+    Param("x_line", 0.5, 1.5, False, "line reactance as a multiple of the reference 0.392 pu",
+          "line length; representative"),
+    Param("xr_line", 10.0, 30.0, True, "line X/R",
+          "reference line is 23.3; step 05 varied resistance 0.5 to 8 times"),
+    Param("x_t", 0.05, 0.25, False, "plant-side series reactance, pu on the plant base",
+          "transformers and collector; representative (A27)"),
+    Param("par_ratio", 0.5, 8.0, True, "parallel path impedance as a multiple of the line's",
+          "step 05 varied 0.25 to 32"),
+    Param("n_online", 0.3, 1.0, False, "fraction of units online",
+          "step 05: worst case between 35 and 65 %"),
+    Param("r_r", 0.004, 0.008, False, "rotor resistance, pu",
+          "around the reference 0.00549 (A12)"),
+)  # fmt: skip
+NAMES = tuple(p.name for p in SPEC)
+
+# Extrapolation tests: one parameter leaves its training range, the others stay inside.
+SPLITS: dict[str, dict[str, tuple[float, float]]] = {
+    "in_distribution": {},
+    "high_compensation": {"k": (0.80, 0.95)},
+    "low_speed": {"w_r": (0.70, 0.80)},
+    "fast_current_loop": {"rsc_hz": (30.0, 60.0)},
+    "weak_parallel_path": {"par_ratio": (8.0, 64.0)},
+    "other_machine": {"r_r": (0.008, 0.012)},
+}
+
+SOLVER_COLUMNS = ("sigma_sso", "f_sso", "sigma_max", "f_max", "solved")
+MECHANISM_COLUMNS = (
+    "has_resonance", "f_er", "slip_res", "r_machine", "r_net", "sigma_hand", "sigma_circuit",
+    "f_circuit",
+)  # fmt: skip
+
+
+def spec_hash() -> str:
+    blob = json.dumps(
+        {"version": VERSION, "seed": SEED, "spec": [vars(p) for p in SPEC], "splits": SPLITS},
+        sort_keys=True,
+    )
+    return hashlib.sha256(blob.encode()).hexdigest()[:16]
+
+
+def sample(n: int, split: str = "in_distribution", stream: int = 0) -> np.ndarray:
+    """Scrambled Sobol points scaled to the ranges of a split. Shape (n, 12).
+
+    The same (n, split, stream) always returns the same array.
+    """
+    seed = SEED + 1000 * list(SPLITS).index(split) + stream
+    unit = qmc.Sobol(d=len(SPEC), scramble=True, seed=seed).random(n)
+    out = np.empty_like(unit)
+    for j, par in enumerate(SPEC):
+        lo, hi = SPLITS[split].get(par.name, (par.low, par.high))
+        if par.log:
+            out[:, j] = np.exp(np.log(lo) + unit[:, j] * (np.log(hi) - np.log(lo)))
+        else:
+            out[:, j] = lo + unit[:, j] * (hi - lo)
+    return out
+
+
+def _network(th: dict, base: IGData) -> dict:
+    """Network impedances on the base of the machines that are running."""
+    x_e = th["n_online"] * th["x_line"] * base.x_e
+    r_e = x_e / th["xr_line"]
+    return {
+        "x_e": x_e, "r_e": r_e, "x_c": th["k"] * x_e,
+        "x_p": th["par_ratio"] * x_e, "r_p": th["par_ratio"] * r_e,
+        "x_t": th["x_t"], "r_t": th["x_t"] / XR_PLANT,
+    }  # fmt: skip
+
+
+def mechanism(theta: np.ndarray) -> np.ndarray:
+    """Hand-calculation quantities for one case, in the order of MECHANISM_COLUMNS."""
+    th = dict(zip(NAMES, map(float, theta), strict=True))
+    data = replace(IGData(), r_r=th["r_r"])
+    net = _network(th, data)
+    kp, ki = gains_from_bandwidth(data, th["rsc_hz"])
+
+    def z_network(s: complex) -> complex:
+        z_c = net["r_e"] + s * net["x_e"] + net["x_c"] / s
+        z_p = net["r_p"] + s * net["x_p"]
+        return net["r_t"] + s * net["x_t"] + z_c * z_p / (z_c + z_p)
+
+    def z_machine(s: complex) -> complex:
+        return slip.dfig_impedance(
+            s, data.r_s, data.x_ls, data.x_m, data.r_r, data.x_lr, th["w_r"], kp, ki
+        )
+
+    try:
+        # Stay clear of synchronous frequency, where integral action adds crossings.
+        r = slip.analyse_loop(
+            z_machine, 0.0, 0.0, 0.0, w_r=th["w_r"], z_network=z_network,
+            w_max=min(th["w_r"], 1.0) - 0.05,
+        )  # fmt: skip
+    except ValueError:
+        return np.zeros(len(MECHANISM_COLUMNS))
+    return np.array(
+        [1.0, r.f_er, r.slip, r.r_machine, r.r_net, r.sigma_hand, r.sigma_circuit, r.f_circuit]
+    )
+
+
+def solve(theta: np.ndarray) -> np.ndarray:
+    """Full-solver outputs for one case, in the order of SOLVER_COLUMNS."""
+    th = dict(zip(NAMES, map(float, theta), strict=True))
+    data = replace(IGData(), r_r=th["r_r"])
+    net = _network(th, data)
+    ctl = Controls(rsc_hz=th["rsc_hz"], pll_hz=th["pll_hz"], ff=th["ff"],
+                   outer_hz=th["outer_ratio"] * th["rsc_hz"])  # fmt: skip
+    model = DFIGMeshed(data=data, controls=ctl)
+    try:
+        x0, p = model.equilibrium(net.pop("x_c"), w_r=th["w_r"], **net)
+        if float(model.rhs(x0, p).abs().max()) > 1e-8:
+            raise ValueError("steady state not found")
+        md = modes(jacobian(model.rhs, x0, p))
+    except (ValueError, RuntimeError, np.linalg.LinAlgError):
+        return np.array([np.nan, np.nan, np.nan, np.nan, 0.0])
+    cand = np.where((md.freq_hz > 2.0) & (md.freq_hz < 58.0))[0]
+    j = int(cand[np.argmax(md.participation[4:6].sum(axis=0)[cand])])
+    top = int(np.argmax(md.sigma))
+    return np.array([md.sigma[j], abs(md.freq_hz[j]), md.sigma[top], abs(md.freq_hz[top]), 1.0])
+
+
+def evaluate(theta: np.ndarray) -> np.ndarray:
+    """Solver outputs followed by mechanism quantities for one case."""
+    return np.concatenate([solve(theta), mechanism(theta)])
+
+
+def _init_worker() -> None:
+    import torch
+
+    torch.set_num_threads(1)
+
+
+def generate(theta: np.ndarray, processes: int = 1) -> np.ndarray:
+    """Evaluate every row of theta. Row order is kept, so the result does not depend on
+    the number of processes."""
+    if processes <= 1:
+        return np.array([evaluate(row) for row in theta])
+    from multiprocessing import Pool
+
+    with Pool(processes, initializer=_init_worker) as pool:
+        return np.array(pool.map(evaluate, list(theta), chunksize=64))
+
+
+def _bisect(theta: np.ndarray, steps: int = 6) -> np.ndarray:
+    """Move one case along compensation to the stability boundary of the sub-synchronous
+    mode, if there is one inside the training range. Returns the case, or NaN."""
+    k_col = NAMES.index("k")
+    lo, hi = theta.copy(), theta.copy()
+    lo[k_col], hi[k_col] = SPEC[k_col].low, SPEC[k_col].high
+    s_lo, s_hi = solve(lo)[0], solve(hi)[0]
+    if not (np.isfinite(s_lo) and np.isfinite(s_hi)) or s_lo * s_hi > 0:
+        return np.full_like(theta, np.nan)
+    for _ in range(steps):
+        mid = 0.5 * (lo + hi)
+        s_mid = solve(mid)[0]
+        if not np.isfinite(s_mid):
+            return np.full_like(theta, np.nan)
+        if s_mid * s_lo > 0:
+            lo, s_lo = mid, s_mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
+def boundary_cases(theta: np.ndarray, processes: int = 1) -> np.ndarray:
+    """Cases moved to within 0.6 points of compensation of the boundary. Rows without a
+    boundary in range are dropped."""
+    if processes <= 1:
+        out = np.array([_bisect(row) for row in theta])
+    else:
+        from multiprocessing import Pool
+
+        with Pool(processes, initializer=_init_worker) as pool:
+            out = np.array(pool.map(_bisect, list(theta), chunksize=16))
+    return out[np.isfinite(out[:, 0])]
+
+
+def folds(n: int) -> np.ndarray:
+    """0 = train, 1 = validation, 2 = test, in fixed proportions 80 / 10 / 10."""
+    order = np.random.default_rng(SEED).permutation(n)
+    fold = np.zeros(n, dtype=np.int8)
+    fold[order[int(0.8 * n) : int(0.9 * n)]] = 1
+    fold[order[int(0.9 * n) :]] = 2
+    return fold

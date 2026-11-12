@@ -113,15 +113,19 @@ def analyse_loop(
     f0: float = 60.0,
     w_r: float = 1.0,
     w_max: float | None = None,
+    z_network: Callable[[complex], complex] | None = None,
 ) -> SlipResult:
     """Slip analysis of a series R-L-C loop closed through any machine impedance z_machine(s).
 
     The resonance is searched below `w_max` (default: just below rotor speed, where slip
     is negative). Raises ValueError if the loop reactance does not cross zero there.
+    With `z_network` given, it replaces the series R-L-C and r_e, x_e, x_c are ignored.
     """
     wb = 2 * np.pi * f0
 
     def z_loop(s: complex) -> complex:
+        if z_network is not None:
+            return z_network(s) + z_machine(s)
         return r_e + s * x_e + x_c / s + z_machine(s)
 
     # The loop reactance can cross zero more than once (a controller with integral action

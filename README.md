@@ -50,6 +50,8 @@ With stator and network transients dropped, as in a positive-sequence stability 
 
 A second time-domain implementation, in phase a, b, c quantities with the trapezoidal rule and no shared equations, gives the same growth rates within 0.00014 1/s and shows the oscillation at 60 Hz minus its rotating-frame frequency, as it should. Details in [docs/steps/07-phase-coordinates.md](docs/steps/07-phase-coordinates.md).
 
+The first dataset holds 131,072 cases over 12 plant, network and controller parameters, each with the full-solver growth rate and the hand calculation side by side. The hand calculation is off by 1.4 1/s on average and has the sign right in 93.7 % of cases, but only 49.9 % of the time near the stability boundary. Details in [docs/steps/08-t1-dataset.md](docs/steps/08-t1-dataset.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -82,6 +84,7 @@ uv run pytest
 | Reproduce its time-domain confirmation | `uv run scripts/phase2_meshed.py` |
 | Reproduce the assumption studies | `uv run scripts/phase2_assumptions.py` |
 | Reproduce the phase-coordinate cross-check | `uv run scripts/phase2_abc.py` |
+| Generate the T1 dataset (about 7 minutes) | `uv run scripts/phase3_generate_t1.py` |
 
 ## Licence
 
