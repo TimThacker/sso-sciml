@@ -75,7 +75,7 @@ def main() -> None:
     device = "cuda" if torch.cuda.is_available() else "cpu"
     full = load("in_distribution")
     train = take(full, full["fold"] == 0)
-    tests ={"in_distribution": take(full, full["fold"] == 2), "boundary": load("boundary")}
+    tests = {"in_distribution": take(full, full["fold"] == 2), "boundary": load("boundary")}
     tests.update({s: load(s) for s in TESTS[2:]})
     res: dict = {
         "device": torch.cuda.get_device_name(0) if device == "cuda" else "cpu",

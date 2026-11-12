@@ -91,11 +91,13 @@ def budget_subset(pool: dict, budget: int, seed: int) -> dict:
 
 
 class MLP(nn.Module):
-    def __init__(self, n_in: int, width: int = 256, depth: int = 4):
+    def __init__(self, n_in: int, width: int = 256, depth: int = 4, dropout: float = 0.0):
         super().__init__()
         layers, last = [], n_in
         for _ in range(depth):
             layers += [nn.Linear(last, width), nn.SiLU()]
+            if dropout > 0:
+                layers.append(nn.Dropout(dropout))
             last = width
         layers.append(nn.Linear(last, 1))
         self.net = nn.Sequential(*layers)
@@ -113,6 +115,7 @@ class TrainConfig:
     width: int = 256
     depth: int = 4
     eval_every: int = 200
+    dropout: float = 0.0
 
 
 def train_mlp(
@@ -132,7 +135,7 @@ def train_mlp(
     yt = torch.as_tensor(y, dtype=torch.float32, device=dev)
     xv = torch.as_tensor(x_val, dtype=torch.float32, device=dev)
     yv = torch.as_tensor(y_val, dtype=torch.float32, device=dev)
-    model = MLP(x.shape[1], cfg.width, cfg.depth).to(dev)
+    model = MLP(x.shape[1], cfg.width, cfg.depth, cfg.dropout).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=cfg.lr, total_steps=cfg.steps)
     gen = torch.Generator(device=dev).manual_seed(seed)
@@ -146,8 +149,10 @@ def train_mlp(
         opt.step()
         sched.step()
         if step % cfg.eval_every == 0 or step == cfg.steps:
+            model.eval()
             with torch.no_grad():
                 val = float((model(xv) - yv).abs().mean())
+            model.train()
             history.append((step, float(loss.detach()), val))
             if val < best:
                 best = val
@@ -161,6 +166,43 @@ def predict(model: MLP, x: np.ndarray, device: str = "cuda") -> np.ndarray:
     model.eval()
     xt = torch.as_tensor(x, dtype=torch.float32, device=torch.device(device))
     return model(xt).double().cpu().numpy()
+
+
+@torch.no_grad()
+def predict_mc(
+    model: MLP, x: np.ndarray, passes: int = 30, seed: int = 0, device: str = "cuda"
+) -> tuple[np.ndarray, np.ndarray]:
+    """Mean and standard deviation over forward passes with dropout left on."""
+    model.train()
+    dev = torch.device(device)
+    torch.manual_seed(seed)
+    xt = torch.as_tensor(x, dtype=torch.float32, device=dev)
+    out = torch.stack([model(xt) for _ in range(passes)]).double()
+    model.eval()
+    return out.mean(0).cpu().numpy(), out.std(0).cpu().numpy()
+
+
+def conformal_quantile(scores: np.ndarray, coverage: float = 0.9) -> float:
+    """Split-conformal quantile of calibration scores: with n scores, the
+    ceil((n + 1) * coverage)-th smallest."""
+    n = scores.size
+    k = min(int(np.ceil((n + 1) * coverage)), n)
+    return float(np.sort(scores)[k - 1])
+
+
+def interval_scores(
+    sigma_true: np.ndarray, lower: np.ndarray, upper: np.ndarray
+) -> dict[str, float]:
+    """Coverage and width of an interval, and its use as a screen. A case is `flagged`
+    for the full solver when the interval contains zero. `missed_unstable` is the share
+    of unstable cases whose whole interval is below zero."""
+    unstable = sigma_true > 0
+    return {
+        "coverage": float(((sigma_true >= lower) & (sigma_true <= upper)).mean()),
+        "width": float((upper - lower).mean()),
+        "flagged": float(((lower <= 0) & (upper >= 0)).mean()),
+        "missed_unstable": float((upper[unstable] < 0).mean()) if unstable.any() else float("nan"),
+    }
 
 
 def metrics(sigma_true: np.ndarray, sigma_pred: np.ndarray) -> dict:

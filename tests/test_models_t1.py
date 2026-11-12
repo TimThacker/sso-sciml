@@ -73,6 +73,44 @@ def test_metrics_count_screening_errors():
     assert m["false_alarm"] == pytest.approx(0.5)
 
 
+def test_conformal_quantile_is_the_finite_sample_one():
+    scores = np.arange(1.0, 100.0)  # 99 scores: ceil(100 * 0.9) = 90th smallest
+    assert mt.conformal_quantile(scores, 0.9) == 90.0
+    assert mt.conformal_quantile(np.array([3.0, 1.0, 2.0]), 0.9) == 3.0
+
+
+def test_conformal_interval_covers_fresh_cases():
+    rng = np.random.default_rng(0)
+    q = mt.conformal_quantile(np.abs(rng.standard_normal(1000)), 0.9)
+    y = rng.standard_normal(20000)
+    s = mt.interval_scores(y, np.full(y.size, -q), np.full(y.size, q))
+    assert abs(s["coverage"] - 0.9) < 0.03
+    assert s["width"] == pytest.approx(2 * q)
+
+
+def test_interval_screen_flags_what_it_cannot_call():
+    true = np.array([1.0, 1.0, -1.0, -1.0])
+    lower = np.array([0.5, -3.0, -0.5, -2.0])
+    upper = np.array([2.0, -0.5, 0.5, -0.5])
+    s = mt.interval_scores(true, lower, upper)
+    assert s["coverage"] == pytest.approx(0.5)
+    assert s["flagged"] == pytest.approx(0.25)
+    assert s["missed_unstable"] == pytest.approx(0.5)
+
+
+def test_dropout_gives_a_spread_and_leaves_plain_prediction_fixed(sample):
+    x = mt.inputs("N", sample["theta"], sample["mech"])
+    y = mt.targets("N", sample["sigma"], sample["mech"])
+    cfg = mt.TrainConfig(steps=200, batch=256, width=64, depth=2, eval_every=100, dropout=0.1)
+    model, _ = mt.train_mlp(x[:800], y[:800], x[800:], y[800:], seed=0, cfg=cfg, device="cpu")
+    mean, sd = mt.predict_mc(model, x[800:], passes=20, device="cpu")
+    assert sd.min() > 0 and np.isfinite(mean).all()
+    again = mt.predict_mc(model, x[800:], passes=20, device="cpu")
+    assert np.array_equal(mean, again[0])
+    a, b = mt.predict(model, x[800:], device="cpu"), mt.predict(model, x[800:], device="cpu")
+    assert np.array_equal(a, b)
+
+
 @pytest.mark.parametrize("arm", mt.ARMS)
 def test_training_is_seeded_and_beats_the_mean(arm, sample):
     x = mt.inputs(arm, sample["theta"], sample["mech"])

@@ -56,6 +56,8 @@ The first learned models predict that growth rate from the 12 parameters. A mult
 
 Learning the correction has a price. Give the hand calculation a random error of 1 1/s and the correcting model is off by 0.85 1/s, while a model that takes the hand calculation as an input learns to distrust it and stays at 0.11 1/s. Details in [docs/steps/10-t1-feature-studies.md](docs/steps/10-t1-feature-studies.md).
 
+Error bars calibrated on held-out cases cover 90 % inside the training range and between 36 and 94 % outside it. Used as a screen, they send about 1 % of cases to the full solver and cut the unstable cases called stable from 2.0 % to 0.15 %. In batches the plain network is about 8,000 times faster than the solver. Details in [docs/steps/11-t1-uncertainty.md](docs/steps/11-t1-uncertainty.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

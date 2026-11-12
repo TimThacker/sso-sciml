@@ -120,4 +120,4 @@ The feature corruption question of the plan, whether a model inherits the error 
 
 ## Next
 
-Rest of phase 4: uncertainty (deep ensemble, MC dropout, conformal intervals), the Gaussian process baseline, the mechanism-consistency rate and inference time.
+Step 11: uncertainty (deep ensemble, MC dropout, conformal intervals), the Gaussian process baseline, the mechanism-consistency rate and inference time.
