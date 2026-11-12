@@ -69,8 +69,8 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 | Rotor speed held against free | Done: at most 0.9 points of compensation (B1), +0.5 1/s (B2) |
 | Network resistance, plant impedance, parallel path, units online | Done with the impedance model; plant impedance and parallel path confirmed in the time-domain model (step 05) |
 | Voltage feed-forward on the grid-side converter | Done (step 04) |
-| Time step; trapezoidal against RK4 | Order study done on System A only |
-| Dropping stator and network transients | **Open** |
+| Time step; trapezoidal against RK4 | Done on System B2 (step 06): RK4 within 0.01 1/s up to 2 ms, trapezoidal up to 1 ms, in the rotating frame. Order study on System A |
+| Dropping stator and network transients | Done on the linearised model (step 06): the sub-synchronous mode disappears; all 28 unstable cases in 54 are reported stable; slow modes kept within 0.41 1/s in stable cases |
 | Aggregation of unequal units into one machine | **Open.** Equal units scaled together is done (units online) |
 | Saturation, limits, switching | **Open**, out of scope for now |
 

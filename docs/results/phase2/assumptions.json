@@ -1,0 +1,923 @@
+{
+  "dropping_transients": {
+    "radial": {
+      "cases": 27,
+      "unstable_full": 21,
+      "unstable_quasi_static": 0,
+      "unstable_capacitor_algebraic": 11,
+      "missed_by_quasi_static": 21,
+      "missed_by_capacitor_algebraic": 10,
+      "capacitor_algebraic_frequency_error_hz_max": 13.500970044492188,
+      "capacitor_algebraic_frequency_error_hz_min": 8.943284863218569,
+      "largest_missed_growth": 27.956318477313168,
+      "quasi_static_modes_2_to_58_hz_max": 4,
+      "slow_mode_max_shift": 10.335552101813764,
+      "slow_mode_max_shift_stable_cases": 0.3215954428341953,
+      "rows": [
+        {
+          "w_r": 0.75,
+          "k": 0.1,
+          "sso_sigma_full": -0.988488361954019,
+          "sso_f_full_hz": 44.280256627026084,
+          "max_sigma_full": -0.19569138181666357,
+          "max_sigma_quasi_static": -0.19568470167789992,
+          "max_sigma_capacitor_algebraic": -0.19569130729649264,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.010458624946741496
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.2,
+          "sso_sigma_full": 3.4362418976194675,
+          "sso_f_full_hz": 37.834914085540795,
+          "max_sigma_full": 3.4362418976194675,
+          "max_sigma_quasi_static": -0.1956578291342116,
+          "max_sigma_capacitor_algebraic": -0.1956635382281224,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.015157072678461002
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.3,
+          "sso_sigma_full": 8.151516316085615,
+          "sso_f_full_hz": 33.04319226893908,
+          "max_sigma_full": 8.151516316085615,
+          "max_sigma_quasi_static": -0.19563446616934915,
+          "max_sigma_capacitor_algebraic": -0.19563928713174014,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.027228291464631862
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.4,
+          "sso_sigma_full": 12.976176690649712,
+          "sso_f_full_hz": 29.227830451645474,
+          "max_sigma_full": 12.976176690649712,
+          "max_sigma_quasi_static": -0.19561451718985068,
+          "max_sigma_capacitor_algebraic": -0.19561845718437243,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.04132091566719453
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.5,
+          "sso_sigma_full": 17.407214449633646,
+          "sso_f_full_hz": 26.111311538444212,
+          "max_sigma_full": 17.407214449633646,
+          "max_sigma_quasi_static": -0.1955979010657886,
+          "max_sigma_capacitor_algebraic": 4.154537038905524,
+          "f_capacitor_algebraic_hz": 39.54761054318502,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.05792062850848447
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.6,
+          "sso_sigma_full": 21.05923203702239,
+          "sso_f_full_hz": 23.493111624227833,
+          "max_sigma_full": 21.05923203702239,
+          "max_sigma_quasi_static": -0.1955845502864525,
+          "max_sigma_capacitor_algebraic": 10.476732295416213,
+          "f_capacitor_algebraic_hz": 35.76539054005816,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.07773933176420654
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.7,
+          "sso_sigma_full": 23.888749372118166,
+          "sso_f_full_hz": 21.21644108813675,
+          "max_sigma_full": 23.888749372118166,
+          "max_sigma_quasi_static": -0.19557441026969546,
+          "max_sigma_capacitor_algebraic": 17.52943807385305,
+          "f_capacitor_algebraic_hz": 32.26888816456283,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.10179857745313181
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.8,
+          "sso_sigma_full": 26.09868558881925,
+          "sso_f_full_hz": 19.179626888491924,
+          "max_sigma_full": 26.09868558881925,
+          "max_sigma_quasi_static": -0.1955674388115341,
+          "max_sigma_capacitor_algebraic": 24.606953632580222,
+          "f_capacitor_algebraic_hz": 29.114429388671336,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.1316025846104455
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.9,
+          "sso_sigma_full": 27.956318477313168,
+          "sso_f_full_hz": 17.337581205821717,
+          "max_sigma_full": 27.956318477313168,
+          "max_sigma_quasi_static": -0.19556360566484865,
+          "max_sigma_capacitor_algebraic": 31.02175261252264,
+          "f_capacitor_algebraic_hz": 26.280866069040286,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.16945509711278406
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.1,
+          "sso_sigma_full": -3.3325023203079667,
+          "sso_f_full_hz": 44.263937546945414,
+          "max_sigma_full": -0.2617993554151215,
+          "max_sigma_quasi_static": -0.2617828028901323,
+          "max_sigma_capacitor_algebraic": -0.26179908882186775,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.2928289459604212
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.2,
+          "sso_sigma_full": -0.7566021158965874,
+          "sso_f_full_hz": 37.709022480792264,
+          "max_sigma_full": -0.2615895563901224,
+          "max_sigma_quasi_static": -0.26157541399076134,
+          "max_sigma_capacitor_algebraic": -0.2615890386348388,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.3215954428341953
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.3,
+          "sso_sigma_full": 1.9893523211591315,
+          "sso_f_full_hz": 32.69729000616631,
+          "max_sigma_full": 1.9893523211591315,
+          "max_sigma_quasi_static": -0.2614039733157896,
+          "max_sigma_capacitor_algebraic": -0.2614150776944714,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.3550592741715225
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.4,
+          "sso_sigma_full": 5.051129707100031,
+          "sso_f_full_hz": 28.506082896627387,
+          "max_sigma_full": 5.051129707100031,
+          "max_sigma_quasi_static": -0.26126348249116493,
+          "max_sigma_capacitor_algebraic": -0.2612721781447925,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.39966146574382405
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.5,
+          "sso_sigma_full": 8.52487053276986,
+          "sso_f_full_hz": 24.866998579579942,
+          "max_sigma_full": 8.52487053276986,
+          "max_sigma_quasi_static": -0.2611501562499377,
+          "max_sigma_capacitor_algebraic": -0.2611565304413711,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.47370958051750356
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.6,
+          "sso_sigma_full": 12.482813021988818,
+          "sso_f_full_hz": 21.65964825429918,
+          "max_sigma_full": 12.482813021988818,
+          "max_sigma_quasi_static": -0.26106113395530683,
+          "max_sigma_capacitor_algebraic": 1.0949920064351168,
+          "f_capacitor_algebraic_hz": 35.16061829879137,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.6523224994477582
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.7,
+          "sso_sigma_full": 16.93280525538196,
+          "sso_f_full_hz": 18.835725504303586,
+          "max_sigma_full": 16.93280525538196,
+          "max_sigma_quasi_static": -0.2609942813804192,
+          "max_sigma_capacitor_algebraic": 6.13784215758295,
+          "f_capacitor_algebraic_hz": 31.125078673322317,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 1.959895527842053
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.8,
+          "sso_sigma_full": 21.734482242465546,
+          "sso_f_full_hz": 16.38531757045929,
+          "max_sigma_full": 21.734482242465546,
+          "max_sigma_quasi_static": -0.26094805420494066,
+          "max_sigma_capacitor_algebraic": 12.37012798571216,
+          "f_capacitor_algebraic_hz": 27.232702933629,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 4.86496225519225
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.9,
+          "sso_sigma_full": 26.54628905084845,
+          "sso_f_full_hz": 14.30225126533412,
+          "max_sigma_full": 26.54628905084845,
+          "max_sigma_quasi_static": -0.2609214054188115,
+          "max_sigma_capacitor_algebraic": 19.806238800600944,
+          "f_capacitor_algebraic_hz": 23.587207959105044,
+          "quasi_static_modes_2_to_58_hz": 3,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 10.335552101813764
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.1,
+          "sso_sigma_full": -4.518381409634316,
+          "sso_f_full_hz": 44.251361596933435,
+          "max_sigma_full": -0.3174779769138019,
+          "max_sigma_quasi_static": -0.31745370837064374,
+          "max_sigma_capacitor_algebraic": -0.31747718543132686,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.012937558526039616
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.2,
+          "sso_sigma_full": -2.7382133505303017,
+          "sso_f_full_hz": 37.66496761415382,
+          "max_sigma_full": -0.31617001774502534,
+          "max_sigma_quasi_static": -0.31615174073996655,
+          "max_sigma_capacitor_algebraic": -0.316168625405181,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.011741282083833404
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.3,
+          "sso_sigma_full": -0.8393985343524761,
+          "sso_f_full_hz": 32.610364296812236,
+          "max_sigma_full": -0.3152777546751404,
+          "max_sigma_quasi_static": -0.31526433523700237,
+          "max_sigma_capacitor_algebraic": -0.3152758609972672,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.03296466532712438
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.4,
+          "sso_sigma_full": 1.2486160359330825,
+          "sso_f_full_hz": 28.356980720372462,
+          "max_sigma_full": 1.2486160359330825,
+          "max_sigma_quasi_static": -0.3146345324278025,
+          "max_sigma_capacitor_algebraic": -0.3146414498296091,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.06785604143101567
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.5,
+          "sso_sigma_full": 3.5613542899029405,
+          "sso_f_full_hz": 24.620976821507394,
+          "max_sigma_full": 3.5613542899029405,
+          "max_sigma_quasi_static": -0.3141787346468797,
+          "max_sigma_capacitor_algebraic": -0.31418152410207717,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.11448572674516583
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.6,
+          "sso_sigma_full": 6.144562351644868,
+          "sso_f_full_hz": 21.24980977439899,
+          "max_sigma_full": 6.144562351644868,
+          "max_sigma_quasi_static": -0.31384861660288543,
+          "max_sigma_capacitor_algebraic": -0.31384759012570224,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.17663836525264914
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.7,
+          "sso_sigma_full": 9.176647096145526,
+          "sso_f_full_hz": 18.138293230084727,
+          "max_sigma_full": 9.176647096145526,
+          "max_sigma_quasi_static": -0.313614801244232,
+          "max_sigma_capacitor_algebraic": -0.027490720228875887,
+          "f_capacitor_algebraic_hz": 30.805629864349704,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.2594748864487203
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.8,
+          "sso_sigma_full": 13.240747456668831,
+          "sso_f_full_hz": 15.238908960918335,
+          "max_sigma_full": 13.240747456668831,
+          "max_sigma_quasi_static": -0.31345906652180155,
+          "max_sigma_capacitor_algebraic": 4.498705361237107,
+          "f_capacitor_algebraic_hz": 26.676714408321715,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.3697050823199124
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.9,
+          "sso_sigma_full": 18.878524153972624,
+          "sso_f_full_hz": 12.688749220507813,
+          "max_sigma_full": 18.878524153972624,
+          "max_sigma_quasi_static": -0.3133703575591984,
+          "max_sigma_capacitor_algebraic": 10.24024348102596,
+          "f_capacitor_algebraic_hz": 22.61820641573723,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.5150826822894536
+        }
+      ]
+    },
+    "reference": {
+      "cases": 27,
+      "unstable_full": 7,
+      "unstable_quasi_static": 0,
+      "unstable_capacitor_algebraic": 1,
+      "missed_by_quasi_static": 7,
+      "missed_by_capacitor_algebraic": 6,
+      "capacitor_algebraic_frequency_error_hz_max": 9.605596105622594,
+      "capacitor_algebraic_frequency_error_hz_min": 9.605596105622594,
+      "largest_missed_growth": 3.7210389608375607,
+      "quasi_static_modes_2_to_58_hz_max": 4,
+      "slow_mode_max_shift": 0.5722398868107645,
+      "slow_mode_max_shift_stable_cases": 0.40897997679473835,
+      "rows": [
+        {
+          "w_r": 0.75,
+          "k": 0.1,
+          "sso_sigma_full": -6.318246517391843,
+          "sso_f_full_hz": 44.31327350212777,
+          "max_sigma_full": -0.19567059968643125,
+          "max_sigma_quasi_static": -0.19566426111762433,
+          "max_sigma_capacitor_algebraic": -0.19567057915025482,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.009329810228410645
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.2,
+          "sso_sigma_full": -4.977034151686674,
+          "sso_f_full_hz": 37.80040305399918,
+          "max_sigma_full": -0.19566222935957556,
+          "max_sigma_quasi_static": -0.19565612864892715,
+          "max_sigma_capacitor_algebraic": -0.19566218371044541,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.009836437508337532
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.3,
+          "sso_sigma_full": -3.4598966803320508,
+          "sso_f_full_hz": 32.84308149002329,
+          "max_sigma_full": -0.19565290930742413,
+          "max_sigma_quasi_static": -0.195647067890868,
+          "max_sigma_capacitor_algebraic": -0.19565283275447629,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.010472948340248502
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.4,
+          "sso_sigma_full": -1.7178788565270224,
+          "sso_f_full_hz": 28.73348358435227,
+          "max_sigma_full": -0.19564246846862668,
+          "max_sigma_quasi_static": -0.19563691055279062,
+          "max_sigma_capacitor_algebraic": -0.1956423536015712,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.01159697949132649
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.5,
+          "sso_sigma_full": 0.10972103081521922,
+          "sso_f_full_hz": 25.225057952541132,
+          "max_sigma_full": 0.10972103081521922,
+          "max_sigma_quasi_static": -0.19562544508063048,
+          "max_sigma_capacitor_algebraic": -0.19563052933237762,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.018254090160542254
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.6,
+          "sso_sigma_full": 1.615518859301016,
+          "sso_f_full_hz": 22.187011077590316,
+          "max_sigma_full": 1.615518859301016,
+          "max_sigma_quasi_static": -0.19561240179126016,
+          "max_sigma_capacitor_algebraic": -0.1956170836475364,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.02715159867722291
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.7,
+          "sso_sigma_full": 2.340297398620539,
+          "sso_f_full_hz": 19.47597561485345,
+          "max_sigma_full": 2.340297398620539,
+          "max_sigma_quasi_static": -0.19559743140959635,
+          "max_sigma_capacitor_algebraic": -0.1956016590341315,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.039173378056341225
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.8,
+          "sso_sigma_full": 2.286918666734774,
+          "sso_f_full_hz": 16.90539227120036,
+          "max_sigma_full": 2.286918666734774,
+          "max_sigma_quasi_static": -0.19558007329934932,
+          "max_sigma_capacitor_algebraic": -0.1955837844992498,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.0557798839263275
+        },
+        {
+          "w_r": 0.75,
+          "k": 0.9,
+          "sso_sigma_full": 2.5895679032090477,
+          "sso_f_full_hz": 14.324219993145247,
+          "max_sigma_full": 2.5895679032090477,
+          "max_sigma_quasi_static": -0.19555970706522077,
+          "max_sigma_capacitor_algebraic": 1.5124246920252877,
+          "f_capacitor_algebraic_hz": 23.92981609876784,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.07943436492054946
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.1,
+          "sso_sigma_full": -7.024392910818477,
+          "sso_f_full_hz": 44.31018565278274,
+          "max_sigma_full": -0.261675360754842,
+          "max_sigma_quasi_static": -0.2616597086453817,
+          "max_sigma_capacitor_algebraic": -0.2616752884628149,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.2976587815428468
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.2,
+          "sso_sigma_full": -6.262272642498608,
+          "sso_f_full_hz": 37.77002731972859,
+          "max_sigma_full": -0.2616143086790295,
+          "max_sigma_quasi_static": -0.2615993537730324,
+          "max_sigma_capacitor_algebraic": -0.26161414932094135,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.30077275448058854
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.3,
+          "sso_sigma_full": -5.445122488906449,
+          "sso_f_full_hz": 32.75742950886821,
+          "max_sigma_full": -0.2615488560281692,
+          "max_sigma_quasi_static": -0.2615346477654532,
+          "max_sigma_capacitor_algebraic": -0.26154859117323387,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.3051793687489216
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.4,
+          "sso_sigma_full": -4.524884604841475,
+          "sso_f_full_hz": 28.537486088605338,
+          "max_sigma_full": -0.2614785605341338,
+          "max_sigma_quasi_static": -0.2614651528248481,
+          "max_sigma_capacitor_algebraic": -0.2614781669348288,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.3120210029399431
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.5,
+          "sso_sigma_full": -3.460438373276091,
+          "sso_f_full_hz": 24.827139350653578,
+          "max_sigma_full": -0.2614029374758081,
+          "max_sigma_quasi_static": -0.2613903888485815,
+          "max_sigma_capacitor_algebraic": -0.26140238543934396,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.322806981518886
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.6,
+          "sso_sigma_full": -2.19923771515149,
+          "sso_f_full_hz": 21.483176695200758,
+          "max_sigma_full": -0.26132146483241797,
+          "max_sigma_quasi_static": -0.2613098383142753,
+          "max_sigma_capacitor_algebraic": -0.26132071588567457,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.33943978748121545
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.7,
+          "sso_sigma_full": -0.6660145474833143,
+          "sso_f_full_hz": 18.424192045395735,
+          "max_sigma_full": -0.2612335981415193,
+          "max_sigma_quasi_static": -0.26122296060872147,
+          "max_sigma_capacitor_algebraic": -0.26123260160046297,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.40897997679473835
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.8,
+          "sso_sigma_full": 1.2522978004020153,
+          "sso_f_full_hz": 15.604942696967502,
+          "max_sigma_full": 1.2522978004020153,
+          "max_sigma_quasi_static": -0.26112922477155,
+          "max_sigma_capacitor_algebraic": -0.26113749205174036,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.4953022175529581
+        },
+        {
+          "w_r": 1.0,
+          "k": 0.9,
+          "sso_sigma_full": 3.7210389608375607,
+          "sso_f_full_hz": 13.013377272638465,
+          "max_sigma_full": 3.7210389608375607,
+          "max_sigma_quasi_static": -0.2610281784033966,
+          "max_sigma_capacitor_algebraic": -0.2610349108262284,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 9,
+          "slow_mode_max_shift": 0.5722398868107645
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.1,
+          "sso_sigma_full": -7.378967320228314,
+          "sso_f_full_hz": 44.307274330892454,
+          "max_sigma_full": -0.3167405698702083,
+          "max_sigma_quasi_static": -0.31671853299511893,
+          "max_sigma_capacitor_algebraic": -0.316740367220145,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.022193423438363474
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.2,
+          "sso_sigma_full": -6.854634513009513,
+          "sso_f_full_hz": 37.758819795315574,
+          "max_sigma_full": -0.3163774005805959,
+          "max_sigma_quasi_static": -0.31635706655820117,
+          "max_sigma_capacitor_algebraic": -0.31637696700214524,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.016853659826792176
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.3,
+          "sso_sigma_full": -6.294834914858349,
+          "sso_f_full_hz": 32.73616114929084,
+          "max_sigma_full": -0.31601458946127825,
+          "max_sigma_quasi_static": -0.31599598477364893,
+          "max_sigma_capacitor_algebraic": -0.3160138904658269,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.011176774675283295
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.4,
+          "sso_sigma_full": -5.678209390566117,
+          "sso_f_full_hz": 28.50338935664228,
+          "max_sigma_full": -0.31565245298389316,
+          "max_sigma_quasi_static": -0.31563560452219613,
+          "max_sigma_capacitor_algebraic": -0.3156514459786422,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.010872921704919492
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.5,
+          "sso_sigma_full": -4.994572068391005,
+          "sso_f_full_hz": 24.77578282004351,
+          "max_sigma_full": -0.31529146533470354,
+          "max_sigma_quasi_static": -0.31527639941219315,
+          "max_sigma_capacitor_algebraic": -0.31529009695740373,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.01698544337814534
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.6,
+          "sso_sigma_full": -4.242839728957049,
+          "sso_f_full_hz": 21.40581724652367,
+          "max_sigma_full": -0.3149323321424411,
+          "max_sigma_quasi_static": -0.3149190727965306,
+          "max_sigma_capacitor_algebraic": -0.3149305344156462,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.037661895313382016
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.7,
+          "sso_sigma_full": -3.430412515723745,
+          "sso_f_full_hz": 18.29840989009078,
+          "max_sigma_full": -0.3145761071017033,
+          "max_sigma_quasi_static": -0.31456467316726705,
+          "max_sigma_capacitor_algebraic": -0.3145737917219579,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.06890784006717235
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.8,
+          "sso_sigma_full": -2.507246641154648,
+          "sso_f_full_hz": 15.369648954476562,
+          "max_sigma_full": -0.3142243833064701,
+          "max_sigma_quasi_static": -0.3142147832995624,
+          "max_sigma_capacitor_algebraic": -0.3142214328719686,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.11757762412433169
+        },
+        {
+          "w_r": 1.2,
+          "k": 0.9,
+          "sso_sigma_full": -1.0797015157790533,
+          "sso_f_full_hz": 12.532897182668085,
+          "max_sigma_full": -0.31387962133163455,
+          "max_sigma_quasi_static": -0.3138718442711688,
+          "max_sigma_capacitor_algebraic": -0.31387587530667466,
+          "f_capacitor_algebraic_hz": 0.0,
+          "quasi_static_modes_2_to_58_hz": 4,
+          "n_slow_modes": 7,
+          "slow_mode_max_shift": 0.19750724497996963
+        }
+      ]
+    }
+  },
+  "example_case": {
+    "k": 0.6,
+    "w_r": 0.75,
+    "sso_sigma": 1.615518859301016,
+    "sso_f_hz": 22.187011077590316,
+    "states_full": 25,
+    "states_quasi_static": 17,
+    "max_sigma_quasi_static": -0.19561240179126016,
+    "fastest_full_rate": 657.9834688547717,
+    "fastest_quasi_static_rate": 434.6478901968739
+  },
+  "time_step": {
+    "case": {
+      "k": 0.6,
+      "w_r": 0.75,
+      "sigma": 1.615518859301016
+    },
+    "rows": [
+      {
+        "dt_s": 2e-05,
+        "rk4": {
+          "sigma_error": -8.487210934049472e-12,
+          "f_error_hz": -1.1150317923281877e-11,
+          "largest_amplification": 1.0000323108991718,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -3.1394074251345216e-06,
+          "f_error_hz": -1.4366777569337114e-05,
+          "largest_amplification": 1.0000323108363816,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 5e-05,
+        "rk4": {
+          "sigma_error": -1.7669599117198231e-10,
+          "f_error_hz": -4.35654003728713e-10,
+          "largest_amplification": 1.0000807792054205,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -1.9621161210459093e-05,
+          "f_error_hz": -8.97918106472832e-05,
+          "largest_amplification": 1.000080778224292,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 0.0001,
+        "rk4": {
+          "sigma_error": -3.048807650785079e-09,
+          "f_error_hz": -6.967342875331998e-09,
+          "largest_amplification": 1.000161564935834,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -7.84817792391923e-05,
+          "f_error_hz": -0.0003591593977999208,
+          "largest_amplification": 1.0001615570866929,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 0.0002,
+        "rk4": {
+          "sigma_error": -5.692428106662817e-08,
+          "f_error_hz": -1.1136412368584934e-07,
+          "largest_amplification": 1.0003231559641175,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -0.00031388138077392824,
+          "f_error_hz": -0.0014365120905672306,
+          "largest_amplification": 1.0003230931789455,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 0.0005,
+        "rk4": {
+          "sigma_error": -3.1732354224267567e-06,
+          "f_error_hz": -4.33326241646462e-06,
+          "largest_amplification": 1.000808084167257,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -0.001959759975299624,
+          "f_error_hz": -0.00897271447552005,
+          "largest_amplification": 1.0008071050838228,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 0.001,
+        "rk4": {
+          "sigma_error": -7.591244024718335e-05,
+          "f_error_hz": -6.869000632565203e-05,
+          "largest_amplification": 1.001616748477727,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -0.007810620146669667,
+          "f_error_hz": -0.035812744891009635,
+          "largest_amplification": 1.0016090012949046,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 0.002,
+        "rk4": {
+          "sigma_error": -0.0020029057958483865,
+          "f_error_hz": -0.0010671748445383108,
+          "largest_amplification": 1.0032322443799053,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -0.030795887965431756,
+          "f_error_hz": -0.1420171647476528,
+          "largest_amplification": 1.0031744739470556,
+          "spurious_instability": false
+        }
+      },
+      {
+        "dt_s": 0.003,
+        "rk4": {
+          "sigma_error": -0.013972739126389966,
+          "f_error_hz": -0.005167329237025768,
+          "largest_amplification": 1.0048161991431226,
+          "spurious_instability": false
+        },
+        "trapezoidal": {
+          "sigma_error": -0.06767836760773771,
+          "f_error_hz": -0.31503568937108695,
+          "largest_amplification": 1.0046543193278088,
+          "spurious_instability": false
+        }
+      }
+    ],
+    "rk4_largest_stable_dt_s": 0.004014611833262734,
+    "limiting_eigenvalue_rate": 657.9834688547717,
+    "rk4_largest_dt_within_0p01": 0.002,
+    "trapezoidal_largest_dt_within_0p01": 0.001,
+    "rk4_runs": [
+      {
+        "dt_s": 0.0001,
+        "sigma_from_run": 1.6155190587719748,
+        "sigma_predicted": 1.6155188562522083
+      },
+      {
+        "dt_s": 0.0005,
+        "sigma_from_run": 1.6155158884867902,
+        "sigma_predicted": 1.6155156860655935
+      },
+      {
+        "dt_s": 0.001,
+        "sigma_from_run": 1.6154431467946266,
+        "sigma_predicted": 1.6154429468607687
+      }
+    ]
+  },
+  "gpu_throughput": {
+    "device": "NVIDIA GeForce RTX 3070",
+    "dt_s": 0.0001,
+    "rows": [
+      {
+        "batch": 1024,
+        "wall_s_per_simulated_s": 275.7564919999277,
+        "trajectory_seconds_per_wall_second": 3.713421187560903,
+        "finite": true
+      },
+      {
+        "batch": 8192,
+        "wall_s_per_simulated_s": 290.5360899999505,
+        "trajectory_seconds_per_wall_second": 28.19615284284096,
+        "finite": true
+      },
+      {
+        "batch": 32768,
+        "wall_s_per_simulated_s": 290.95359799990547,
+        "trajectory_seconds_per_wall_second": 112.62276949058608,
+        "finite": true
+      }
+    ]
+  }
+}

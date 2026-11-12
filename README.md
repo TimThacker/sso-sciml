@@ -46,6 +46,8 @@ Adding the phase-locked loop, outer loops, grid-side converter and free rotor sp
 
 A second formulation, loop impedance as polynomials with no state vector, reproduces the state-space modes to 2e-8. Varying the network with it shows that the radial connection studied so far is the worst case. Plant transformers and one parallel path as strong as the line raise the largest stable current-loop bandwidth at rated speed from 3.5 to 19.2 Hz. A partly loaded plant is worse than a full one. The time-domain model with full controls confirms the network results (20.3 Hz on that network). Details in [docs/steps/05-network-and-impedance.md](docs/steps/05-network-and-impedance.md).
 
+With stator and network transients dropped, as in a positive-sequence stability tool, the sub-synchronous mode does not exist in the model: of 54 cases, 28 are unstable and all 28 are reported stable, with growth rates up to 28 1/s missed. Keeping the inductances dynamic but fixing the capacitor at its 60 Hz reactance gives a mode 9 to 14 Hz off. Details in [docs/steps/06-assumption-studies.md](docs/steps/06-assumption-studies.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -76,6 +78,7 @@ uv run pytest
 | Reproduce the full-control study | `uv run scripts/phase2_dfig_full.py` |
 | Reproduce the network study | `uv run scripts/phase2_network.py` |
 | Reproduce its time-domain confirmation | `uv run scripts/phase2_meshed.py` |
+| Reproduce the assumption studies | `uv run scripts/phase2_assumptions.py` |
 
 ## Licence
 

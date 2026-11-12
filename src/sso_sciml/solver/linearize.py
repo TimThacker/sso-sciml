@@ -50,3 +50,16 @@ def modes(a: torch.Tensor | np.ndarray) -> Modes:
     part = np.abs(vl.conj() * vr)
     part = part / part.sum(axis=0, keepdims=True)
     return Modes(lam, vr, part)
+
+
+def quasi_static(a: torch.Tensor | np.ndarray, fast: list[int]) -> tuple[np.ndarray, list[int]]:
+    """State matrix with the `fast` states made algebraic (their derivatives set to zero).
+
+    Returns the reduced matrix and the indices of the states it keeps, in order. This is
+    the linear form of dropping stator and network transients.
+    """
+    a_np = a.detach().cpu().numpy() if isinstance(a, torch.Tensor) else np.asarray(a)
+    slow = [k for k in range(a_np.shape[0]) if k not in set(fast)]
+    a_ss, a_sf = a_np[np.ix_(slow, slow)], a_np[np.ix_(slow, fast)]
+    a_fs, a_ff = a_np[np.ix_(fast, slow)], a_np[np.ix_(fast, fast)]
+    return a_ss - a_sf @ np.linalg.solve(a_ff, a_fs), slow

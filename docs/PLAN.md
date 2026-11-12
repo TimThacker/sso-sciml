@@ -241,7 +241,7 @@ Finding that shaped the plan: on System A the generator always sees negative sli
    3. Published eigenvalue trends for the doubly-fed machine against compensation and wind speed.
    4. Independent formulation: an open-source electromagnetic-transient tool if one fits without heavy adaptation, otherwise a second implementation in the abc frame with trapezoidal companion models. An impedance scan of the linearised model is run here as one more cross-check of the stability boundary.
    5. Recorded events: digitised waveforms from published reports, compared on frequency and growth rate only.
-5. Assumption studies: time step; trapezoidal against RK4; aggregation of N turbines into one machine; and the effect of dropping stator transients, which is what positive-sequence tools do.
+5. Assumption studies: time step; trapezoidal against RK4; aggregation of N turbines into one machine; and the effect of dropping stator transients, which is what positive-sequence tools do. Time step and dropped transients done (`docs/steps/06-assumption-studies.md`): without network transients the sub-synchronous mode does not exist and every unstable case is reported stable; RK4 at 0.5 ms is accurate to 3e-6 1/s.
 6. `docs/VALIDATION.md` (started in step 05; lists what is done and what is open on every rung).
 
 Exit check: hand calculation and solver agree on the System B1 self-excitation boundary within 2 % of compensation level (met: 0.9 points); energy balance closes within 5 %, at the real frequency for a sustained oscillation and at the complex frequency otherwise (met: 1.4 % and 2.1 %); published System B2 trends reproduced; every larger disagreement has a written cause or is listed as open.
