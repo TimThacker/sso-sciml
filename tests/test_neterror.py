@@ -45,6 +45,16 @@ def test_a_wrong_network_moves_the_resonance_more_than_the_slow_mode():
     assert sub > 10 * slow
 
 
+def test_worst_end_is_at_least_the_one_unfavourable_end():
+    cc = {name: j for j, name in enumerate(neterror.CORNER_COLUMNS)}
+    row = neterror.corner_case(("t1", THETA[2]))
+    assert row.shape == (len(neterror.CORNER_COLUMNS),)
+    for bound in neterror.BOUNDS:
+        # The one unfavourable end is among the 32, so the worst of them is at least it.
+        worst = row[cc[f"corners_sub_b{bound:g}"]]
+        assert worst >= row[cc[f"known_sub_b{bound:g}"]] - 1e-9
+
+
 def test_converter_case_has_no_hand_formula_columns():
     row = neterror.case(("pll", c1.sample(2)[1]))
     assert np.isfinite(row[COL["true_sub"]]) or np.isfinite(row[COL["true_slow"]])

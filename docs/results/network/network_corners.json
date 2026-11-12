@@ -1,0 +1,515 @@
+{
+  "bounds": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "margins": [
+    0.0,
+    0.5,
+    1.0,
+    2.0,
+    5.0,
+    10.0
+  ],
+  "plants": {
+    "doubly-fed plant": {
+      "cases": 9630,
+      "band": "sub",
+      "unstable": 2659,
+      "stable_share": 0.723883696780893,
+      "bounds": {
+        "0.05": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.726895119418484,
+              "stable_cleared": 0.9553866016353464,
+              "unstable_cleared": 340
+            },
+            "0.5": {
+              "cleared": 0.6607476635514019,
+              "stable_cleared": 0.9005881509109167,
+              "unstable_cleared": 85
+            },
+            "1": {
+              "cleared": 0.6299065420560748,
+              "stable_cleared": 0.8677377707645962,
+              "unstable_cleared": 17
+            },
+            "2": {
+              "cleared": 0.592938733125649,
+              "stable_cleared": 0.8189642805910199,
+              "unstable_cleared": 1
+            },
+            "5": {
+              "cleared": 0.4480789200415369,
+              "stable_cleared": 0.6189929708793573,
+              "unstable_cleared": 0
+            },
+            "10": {
+              "cleared": 0.09688473520249222,
+              "stable_cleared": 0.1338401950939607,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.6102803738317757,
+            "stable_cleared": 0.8430641227944341,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.6467278303360006,
+            1.0606644523473001,
+            1.7378687127630128,
+            3.2245922007886407
+          ],
+          "truth_above_the_worst_end": 1,
+          "the one unfavourable end": {
+            "cleared": 0.6102803738317757,
+            "stable_cleared": 0.8430641227944341,
+            "unstable_cleared": 0
+          },
+          "unfavourable_end_is_the_worst_end": 0.5722741433021807,
+          "truth_above_the_unfavourable_end": 1205,
+          "step 14 rule as given": {
+            "cleared": 0.5521287642782969,
+            "stable_cleared": 0.7625878640080332,
+            "unstable_cleared": 1
+          },
+          "step 14 rule at the unfavourable end": {
+            "cleared": 0.5048805815160955,
+            "stable_cleared": 0.6973174580404533,
+            "unstable_cleared": 1
+          },
+          "margin_as_safe_as_all_ends": 5.0
+        },
+        "0.1": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.7266874350986501,
+              "stable_cleared": 0.947496772342562,
+              "unstable_cleared": 393
+            },
+            "0.5": {
+              "cleared": 0.681723779854621,
+              "stable_cleared": 0.9122077176875628,
+              "unstable_cleared": 206
+            },
+            "1": {
+              "cleared": 0.6424714434060228,
+              "stable_cleared": 0.8756276000573806,
+              "unstable_cleared": 83
+            },
+            "2": {
+              "cleared": 0.5931464174454829,
+              "stable_cleared": 0.8169559604074021,
+              "unstable_cleared": 17
+            },
+            "5": {
+              "cleared": 0.44880581516095536,
+              "stable_cleared": 0.6197102280877923,
+              "unstable_cleared": 2
+            },
+            "10": {
+              "cleared": 0.09636552440290758,
+              "stable_cleared": 0.13312293788552576,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.5643821391484943,
+            "stable_cleared": 0.779658585568785,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            1.2746518404931342,
+            2.153406797010078,
+            3.6709477186521315,
+            6.689054350823534
+          ],
+          "truth_above_the_worst_end": 2,
+          "the one unfavourable end": {
+            "cleared": 0.564797507788162,
+            "stable_cleared": 0.7802323913355329,
+            "unstable_cleared": 0
+          },
+          "unfavourable_end_is_the_worst_end": 0.6067497403946002,
+          "truth_above_the_unfavourable_end": 1053,
+          "step 14 rule as given": {
+            "cleared": 0.5520249221183801,
+            "stable_cleared": 0.7612968010328504,
+            "unstable_cleared": 9
+          },
+          "step 14 rule at the unfavourable end": {
+            "cleared": 0.4561786085150571,
+            "stable_cleared": 0.6296083775641945,
+            "unstable_cleared": 4
+          },
+          "margin_as_safe_as_all_ends": 10.0
+        },
+        "0.2": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.7177570093457943,
+              "stable_cleared": 0.9256921532061397,
+              "unstable_cleared": 459
+            },
+            "0.5": {
+              "cleared": 0.6903426791277258,
+              "stable_cleared": 0.9070434657868311,
+              "unstable_cleared": 325
+            },
+            "1": {
+              "cleared": 0.659190031152648,
+              "stable_cleared": 0.8792138860995553,
+              "unstable_cleared": 219
+            },
+            "2": {
+              "cleared": 0.6040498442367601,
+              "stable_cleared": 0.8226940180748816,
+              "unstable_cleared": 82
+            },
+            "5": {
+              "cleared": 0.44693665628245066,
+              "stable_cleared": 0.6168411992540525,
+              "unstable_cleared": 4
+            },
+            "10": {
+              "cleared": 0.09553478712357218,
+              "stable_cleared": 0.13197532635202983,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.47414330218068534,
+            "stable_cleared": 0.6549992827427915,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            2.468236746133542,
+            4.483523630947904,
+            7.975170962149029,
+            13.883786271400075
+          ],
+          "truth_above_the_worst_end": 4,
+          "the one unfavourable end": {
+            "cleared": 0.4769470404984424,
+            "stable_cleared": 0.6578683115765314,
+            "unstable_cleared": 7
+          },
+          "unfavourable_end_is_the_worst_end": 0.6586708203530633,
+          "truth_above_the_unfavourable_end": 847,
+          "step 14 rule as given": {
+            "cleared": 0.5593977154724818,
+            "stable_cleared": 0.7661741500502081,
+            "unstable_cleared": 46
+          },
+          "step 14 rule at the unfavourable end": {
+            "cleared": 0.3791277258566978,
+            "stable_cleared": 0.5223066991823268,
+            "unstable_cleared": 10
+          },
+          "margin_as_safe_as_all_ends": 10.0
+        }
+      }
+    },
+    "converter with PLL": {
+      "cases": 11264,
+      "band": "all",
+      "unstable": 271,
+      "stable_share": 0.9759410511363636,
+      "bounds": {
+        "0.05": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.9754083806818182,
+              "stable_cleared": 0.9987264622941872,
+              "unstable_cleared": 8
+            },
+            "0.5": {
+              "cleared": 0.9724786931818182,
+              "stable_cleared": 0.9964522878195216,
+              "unstable_cleared": 0
+            },
+            "1": {
+              "cleared": 0.9679509943181818,
+              "stable_cleared": 0.9918129718912035,
+              "unstable_cleared": 0
+            },
+            "2": {
+              "cleared": 0.9565873579545454,
+              "stable_cleared": 0.9801691985809151,
+              "unstable_cleared": 0
+            },
+            "5": {
+              "cleared": 0.5145596590909091,
+              "stable_cleared": 0.527244610206495,
+              "unstable_cleared": 0
+            },
+            "10": {
+              "cleared": 0.02166193181818182,
+              "stable_cleared": 0.022195942872737195,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.9707919034090909,
+            "stable_cleared": 0.9947239152187756,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.003479109936826541,
+            0.009258067418759008,
+            0.028515376819781224,
+            0.591902024812699
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 0.5
+        },
+        "0.1": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.9755859375,
+              "stable_cleared": 0.9981806604202674,
+              "unstable_cleared": 16
+            },
+            "0.5": {
+              "cleared": 0.9723899147727273,
+              "stable_cleared": 0.9956335850086419,
+              "unstable_cleared": 8
+            },
+            "1": {
+              "cleared": 0.9682173295454546,
+              "stable_cleared": 0.9919039388701901,
+              "unstable_cleared": 2
+            },
+            "2": {
+              "cleared": 0.9556995738636364,
+              "stable_cleared": 0.9791685618120622,
+              "unstable_cleared": 1
+            },
+            "5": {
+              "cleared": 0.5145596590909091,
+              "stable_cleared": 0.5271536432275085,
+              "unstable_cleared": 1
+            },
+            "10": {
+              "cleared": 0.022105823863636364,
+              "stable_cleared": 0.022650777767670334,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.96484375,
+            "stable_cleared": 0.9886291276266715,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.007021989189355038,
+            0.0188401336238595,
+            0.061397004060742555,
+            1.2521372383408345
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 10.0
+        },
+        "0.2": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.9762961647727273,
+              "stable_cleared": 0.9974529245883744,
+              "unstable_cleared": 32
+            },
+            "0.5": {
+              "cleared": 0.9725674715909091,
+              "stable_cleared": 0.9948148821977623,
+              "unstable_cleared": 19
+            },
+            "1": {
+              "cleared": 0.9691051136363636,
+              "stable_cleared": 0.9917220049122168,
+              "unstable_cleared": 14
+            },
+            "2": {
+              "cleared": 0.9557883522727273,
+              "stable_cleared": 0.978986627854089,
+              "unstable_cleared": 4
+            },
+            "5": {
+              "cleared": 0.5138494318181818,
+              "stable_cleared": 0.5264259073956153,
+              "unstable_cleared": 1
+            },
+            "10": {
+              "cleared": 0.02166193181818182,
+              "stable_cleared": 0.022195942872737195,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.9541903409090909,
+            "stable_cleared": 0.9777130901482761,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.014440839450441056,
+            0.03934597143179852,
+            0.14477385777404628,
+            2.5518562015503963
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 10.0
+        }
+      }
+    },
+    "converter without PLL": {
+      "cases": 3632,
+      "band": "all",
+      "unstable": 627,
+      "stable_share": 0.8273678414096917,
+      "bounds": {
+        "0.05": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.8320484581497798,
+              "stable_cleared": 0.9956738768718802,
+              "unstable_cleared": 30
+            },
+            "0.5": {
+              "cleared": 0.8138766519823789,
+              "stable_cleared": 0.9806988352745424,
+              "unstable_cleared": 9
+            },
+            "1": {
+              "cleared": 0.7932268722466961,
+              "stable_cleared": 0.9577371048252912,
+              "unstable_cleared": 3
+            },
+            "2": {
+              "cleared": 0.7599118942731278,
+              "stable_cleared": 0.9178036605657238,
+              "unstable_cleared": 2
+            },
+            "5": {
+              "cleared": 0.4154735682819383,
+              "stable_cleared": 0.5021630615640599,
+              "unstable_cleared": 0
+            },
+            "10": {
+              "cleared": 0.028634361233480177,
+              "stable_cleared": 0.034608985024958405,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.7968061674008811,
+            "stable_cleared": 0.9630615640599002,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.0021569102186597133,
+            0.028400986293581898,
+            0.5006682376397857,
+            2.8005186469804344
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 5.0
+        },
+        "0.1": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.8301211453744494,
+              "stable_cleared": 0.9916805324459235,
+              "unstable_cleared": 35
+            },
+            "0.5": {
+              "cleared": 0.8149779735682819,
+              "stable_cleared": 0.9797004991680532,
+              "unstable_cleared": 16
+            },
+            "1": {
+              "cleared": 0.7935022026431718,
+              "stable_cleared": 0.9557404326123128,
+              "unstable_cleared": 10
+            },
+            "2": {
+              "cleared": 0.760737885462555,
+              "stable_cleared": 0.9181364392678869,
+              "unstable_cleared": 4
+            },
+            "5": {
+              "cleared": 0.41437224669603523,
+              "stable_cleared": 0.5004991680532446,
+              "unstable_cleared": 1
+            },
+            "10": {
+              "cleared": 0.027808370044052864,
+              "stable_cleared": 0.03361064891846922,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.7654185022026432,
+            "stable_cleared": 0.9251247920133111,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.00435557976717682,
+            0.06704752762077781,
+            1.0524786161988513,
+            5.759738736497775
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 10.0
+        },
+        "0.2": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.8298458149779736,
+              "stable_cleared": 0.9816971713810316,
+              "unstable_cleared": 64
+            },
+            "0.5": {
+              "cleared": 0.8119493392070485,
+              "stable_cleared": 0.9683860232945092,
+              "unstable_cleared": 39
+            },
+            "1": {
+              "cleared": 0.7935022026431718,
+              "stable_cleared": 0.9500831946755408,
+              "unstable_cleared": 27
+            },
+            "2": {
+              "cleared": 0.7582599118942731,
+              "stable_cleared": 0.9108153078202995,
+              "unstable_cleared": 17
+            },
+            "5": {
+              "cleared": 0.4138215859030837,
+              "stable_cleared": 0.49850249584026624,
+              "unstable_cleared": 5
+            },
+            "10": {
+              "cleared": 0.028083700440528634,
+              "stable_cleared": 0.03394342762063228,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.7109030837004405,
+            "stable_cleared": 0.8592346089850249,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.010170236279300915,
+            0.2525710048323988,
+            2.3254349187303145,
+            11.168463303431837
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 10.0
+        }
+      }
+    }
+  }
+}

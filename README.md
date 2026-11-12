@@ -154,6 +154,17 @@ Details in [docs/steps/21-slow-mode.md](docs/steps/21-slow-mode.md).
 
 Details in [docs/steps/22-network-error.md](docs/steps/22-network-error.md).
 
+### Uncertain network data: the ends of the ranges, not a wider margin
+
+![Margin against the ends of the ranges](docs/results/network/fig60_network_corners.png)
+
+- **If each network number is known to within a bound, run the screen at the ends of the ranges.** Five quantities give 32 ends; the largest growth rate among them decides, with no margin.
+- **It clears no unstable case** on any plant type with the network known to within 5 %, 10 % or 20 %.
+- **It clears far more than a margin of the same safety.** Within 10 %: 56 % of doubly-fed cases, 97 % and 77 % of converters, against 10 %, 2 % and 3 % for the 10 1/s margin that is as safe.
+- **A margin is one number for every case; the ends give each case its own.** Most converter cases hardly depend on the network and a few depend on it strongly.
+
+Details in [docs/steps/23-network-corners.md](docs/steps/23-network-corners.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -197,6 +208,7 @@ uv run pytest
 | Reproduce the noise study | `uv run scripts/noise_screens.py` |
 | Reproduce the slow-mode study (about 10 minutes) | `uv run scripts/slow_mode.py` |
 | Reproduce the network-error study (about 25 minutes) | `uv run scripts/network_error.py` |
+| Reproduce the screen at the ends of the network ranges | `uv run scripts/network_corners.py` |
 
 ## Licence
 
