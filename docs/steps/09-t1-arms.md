@@ -113,4 +113,4 @@ Hypothesis 5 said the arms converge in distribution with abundant data. Arms N a
 
 ## Next
 
-Rest of phase 4: the feature ablation, the feature corruption test, cases split by the validity of the hand calculation, and uncertainty estimates.
+Step 10: the feature ablation, the feature corruption test, cases split by the validity of the hand calculation, and uncertainty estimates.

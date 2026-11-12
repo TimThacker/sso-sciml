@@ -33,6 +33,25 @@ def test_arm_f_adds_one_input_per_mechanism_column(sample):
     assert np.isfinite(x).all() and np.abs(x).max() < 10.0
 
 
+def test_arm_f_can_take_a_subset_of_the_mechanism_columns(sample):
+    n = len(data.NAMES)
+    x_all = mt.inputs("F", sample["theta"], sample["mech"])
+    x = mt.inputs("F", sample["theta"], sample["mech"], ("sigma_impedance", "f_impedance"))
+    assert x.shape[1] == n + 2
+    j = data.MECHANISM_COLUMNS.index("sigma_impedance")
+    assert np.array_equal(x[:, n], x_all[:, n + j])
+
+
+def test_budget_subset_is_seeded_and_has_no_repeats(sample):
+    a = mt.budget_subset(sample, 100, seed=0)
+    b = mt.budget_subset(sample, 100, seed=0)
+    c = mt.budget_subset(sample, 100, seed=1)
+    assert np.array_equal(a["theta"], b["theta"])
+    assert not np.array_equal(a["theta"], c["theta"])
+    assert len(np.unique(a["theta"], axis=0)) == 100
+    assert a["sigma"].shape == (100,)
+
+
 @pytest.mark.parametrize("arm", mt.ARMS)
 def test_targets_invert_to_the_growth_rate(arm, sample):
     y = mt.targets(arm, sample["sigma"], sample["mech"])

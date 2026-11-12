@@ -54,6 +54,8 @@ The first dataset holds 131,072 cases over 12 plant, network and controller para
 
 The first learned models predict that growth rate from the 12 parameters. A multilayer perceptron trained on 100,000 cases is off by 0.10 1/s on held-out cases; one that learns the correction to the hand calculation instead is off by 0.08 1/s, and by 1.4 to 3 times less than the plain one on the five extrapolation sets. Cases close to the stability boundary remain hard: the best model still calls 21.7 % of the unstable ones stable. Details in [docs/steps/09-t1-arms.md](docs/steps/09-t1-arms.md).
 
+Learning the correction has a price. Give the hand calculation a random error of 1 1/s and the correcting model is off by 0.85 1/s, while a model that takes the hand calculation as an input learns to distrust it and stays at 0.11 1/s. Details in [docs/steps/10-t1-feature-studies.md](docs/steps/10-t1-feature-studies.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
