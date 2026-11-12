@@ -60,6 +60,8 @@ Error bars calibrated on held-out cases cover 90 % inside the training range and
 
 A network trained on the equations alone, with no solver data, was tried on one case of the induction generator. Over a 0.5 s window it settles onto the steady state, which satisfies the equations as well as the true response does. Scaling each state and marching through time in windows of 0.05 s fix that: 4 % error after 365 s of training, against 4.7 s for the solver. Details in [docs/steps/12-forward-pinn.md](docs/steps/12-forward-pinn.md).
 
+Putting the model's equations into the training loss did not pay for the growth-rate task. With no solver labels the network finds an eigenvalue of the right matrix, but a slow, well-damped one, not the one that matters. With 100 labels the penalty helps at one weight (0.83 to 0.59 1/s) and hurts at ten times that. And the state matrix the penalty needs costs 96 % of a full solve, so the labels might as well be computed. Details in [docs/steps/13-eigen-residual.md](docs/steps/13-eigen-residual.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

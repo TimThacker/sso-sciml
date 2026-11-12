@@ -182,8 +182,13 @@ def mechanism(theta: np.ndarray) -> np.ndarray:
     )
 
 
-def solve(theta: np.ndarray) -> np.ndarray:
-    """Full-solver outputs for one case, in the order of SOLVER_COLUMNS."""
+N_STATE = 25
+
+
+def state_matrix(theta: np.ndarray) -> np.ndarray:
+    """State matrix A(theta) of the full model at its steady state, shape (25, 25), in
+    1/s. NaN if the steady state is not found. This is the solver without its last step,
+    the eigenvalue decomposition."""
     th = dict(zip(NAMES, map(float, theta), strict=True))
     data = replace(IGData(), r_r=th["r_r"])
     net = _network(th, data)
@@ -194,8 +199,29 @@ def solve(theta: np.ndarray) -> np.ndarray:
         x0, p = model.equilibrium(net.pop("x_c"), w_r=th["w_r"], **net)
         if float(model.rhs(x0, p).abs().max()) > 1e-8:
             raise ValueError("steady state not found")
-        md = modes(jacobian(model.rhs, x0, p))
+        return jacobian(model.rhs, x0, p).numpy()
     except (ValueError, RuntimeError, np.linalg.LinAlgError):
+        return np.full((N_STATE, N_STATE), np.nan)
+
+
+def state_matrices(theta: np.ndarray, processes: int = 1) -> np.ndarray:
+    """A(theta) for every row of theta, shape (n, 25, 25). Row order is kept."""
+    if processes <= 1:
+        return np.array([state_matrix(row) for row in theta])
+    from multiprocessing import Pool
+
+    with Pool(processes, initializer=_init_worker) as pool:
+        return np.array(pool.map(state_matrix, list(theta), chunksize=64))
+
+
+def solve(theta: np.ndarray) -> np.ndarray:
+    """Full-solver outputs for one case, in the order of SOLVER_COLUMNS."""
+    a = state_matrix(theta)
+    try:
+        if not np.isfinite(a).all():
+            raise ValueError("steady state not found")
+        md = modes(a)
+    except (ValueError, np.linalg.LinAlgError):
         return np.array([np.nan, np.nan, np.nan, np.nan, 0.0])
     cand = np.where((md.freq_hz > 2.0) & (md.freq_hz < 58.0))[0]
     j = int(cand[np.argmax(md.participation[4:6].sum(axis=0)[cand])])

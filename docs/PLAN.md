@@ -289,7 +289,7 @@ Status: gradient-boosted trees and a multilayer perceptron are trained under arm
 
 Exit check: for each of the four items, either a model that meets a stated error or a documented failure with the evidence for its cause.
 
-Status: item 1 is done for System B1 (`docs/steps/12-forward-pinn.md`), not yet for System A. A single network over 0.5 s settles onto the steady state whatever inputs, activations or causal weighting it has. Scaling each state and marching in windows of 0.05 s are what make it work: 4 % error after 365 s on the GPU, against 4.7 s for RK4.
+Status: item 1 is done for System B1 (`docs/steps/12-forward-pinn.md`), not yet for System A. A single network over 0.5 s settles onto the steady state whatever inputs, activations or causal weighting it has. Scaling each state and marching in windows of 0.05 s are what make it work: 4 % error after 365 s on the GPU, against 4.7 s for RK4. Item 2 is done (`docs/steps/13-eigen-residual.md`) with a negative result: with no labels the eigen-residual finds an eigenvalue of the right matrix but not the sub-synchronous one; with 100 labels a penalty on the smallest singular value of `A − λI` cuts the error from 0.83 to 0.59 1/s at one weight and makes it worse at ten times that weight; with 1,000 labels it changes nothing. The state matrix costs 96 % of a full solve, so arm L is dropped for T1 and kept for the time-domain task only.
 
 ### Phase 6: The loss-against-feature comparison (2 weeks)
 
