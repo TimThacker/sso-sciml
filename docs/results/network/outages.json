@@ -1,0 +1,886 @@
+{
+  "outages": {
+    "parallel path out": [
+      1.0,
+      1.0,
+      1.0,
+      100.0,
+      1.0
+    ],
+    "one of two parallel circuits out": [
+      1.0,
+      1.0,
+      1.0,
+      2.0,
+      1.0
+    ],
+    "half the capacitor out": [
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0
+    ],
+    "half the units out": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ]
+  },
+  "plants": {
+    "doubly-fed plant": {
+      "cases": 38511,
+      "band": "sub",
+      "stable_intact": 28460,
+      "outages": {
+        "parallel path out": {
+          "no_steady_state_after": 0.0009486999297259311,
+          "unstable_after": 0.3186929023190443,
+          "insecure_after": 0.3196416022487702,
+          "unstable_intact_and_stable_after": 0.0007959407024176699,
+          "growth_shift_median": 2.512057059872525,
+          "growth_shift_quartiles": [
+            0.9329908736281496,
+            2.512057059872525,
+            5.591338054740774
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.000661521499448732,
+            "sub": 0.9993384785005512,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.0008550424139259841,
+            "error_p95": 0.019295040770619186,
+            "near_boundary_error_median": 0.0007256092199185993,
+            "near_boundary_error_p95": 0.01270138707057951,
+            "margins": {
+              "0": {
+                "cleared": 0.6812719606465214,
+                "insecure_cleared": 28,
+                "unstable_cleared": 3,
+                "no_steady_state_cleared": 25
+              },
+              "0.5": {
+                "cleared": 0.658608573436402,
+                "insecure_cleared": 24,
+                "unstable_cleared": 1,
+                "no_steady_state_cleared": 23
+              },
+              "1": {
+                "cleared": 0.6353829936753338,
+                "insecure_cleared": 23,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 23
+              },
+              "2": {
+                "cleared": 0.582536893886156,
+                "insecure_cleared": 21,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 21
+              },
+              "5": {
+                "cleared": 0.36879831342234715,
+                "insecure_cleared": 7,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 7
+              },
+              "10": {
+                "cleared": 0.009732958538299367,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.3196416022487702,
+            "0.5": 0.23782313997477933,
+            "1": 0.22240606965575688,
+            "2": 0.19108416243221316,
+            "5": 0.11772781877466965,
+            "10": 0.09155530281489906
+          }
+        },
+        "one of two parallel circuits out": {
+          "no_steady_state_after": 0.00017568517217146873,
+          "unstable_after": 0.1764933239634575,
+          "insecure_after": 0.17666900913562894,
+          "unstable_intact_and_stable_after": 9.949258780220874e-05,
+          "growth_shift_median": 0.9243002573369523,
+          "growth_shift_quartiles": [
+            0.3601421112522547,
+            0.9243002573369523,
+            1.8929138462021398
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.00039816842524387816,
+            "sub": 0.9996018315747561,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.00030140173815951243,
+            "error_p95": 0.006807392050179924,
+            "near_boundary_error_median": 0.0003287552426337048,
+            "near_boundary_error_p95": 0.005222960719355311,
+            "margins": {
+              "0": {
+                "cleared": 0.8235066760365425,
+                "insecure_cleared": 6,
+                "unstable_cleared": 1,
+                "no_steady_state_cleared": 5
+              },
+              "0.5": {
+                "cleared": 0.8000702740688685,
+                "insecure_cleared": 5,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 5
+              },
+              "1": {
+                "cleared": 0.7785664089950808,
+                "insecure_cleared": 5,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 5
+              },
+              "2": {
+                "cleared": 0.7270906535488405,
+                "insecure_cleared": 4,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 4
+              },
+              "5": {
+                "cleared": 0.5118060435699227,
+                "insecure_cleared": 2,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 2
+              },
+              "10": {
+                "cleared": 0.06827125790583274,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.17666900913562894,
+            "0.5": 0.07889344262295082,
+            "1": 0.06295653577626216,
+            "2": 0.03667961911268628,
+            "5": 0.005663291573708598,
+            "10": 0.0002843332385555871
+          }
+        },
+        "half the capacitor out": {
+          "no_steady_state_after": 0.0005621925509487,
+          "unstable_after": 0.0003865073787772312,
+          "insecure_after": 0.0009486999297259311,
+          "unstable_intact_and_stable_after": 0.724505024375684,
+          "growth_shift_median": -1.4243865480638669,
+          "growth_shift_quartiles": [
+            -2.9118623588513017,
+            -1.4243865480638669,
+            -0.3438273048074576
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.0,
+            "sub": 1.0,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.0010040911466733249,
+            "error_p95": 0.055340001117476806,
+            "near_boundary_error_median": 0.0010623638224283027,
+            "near_boundary_error_p95": 0.08405505917103985,
+            "margins": {
+              "0": {
+                "cleared": 0.9997891777933943,
+                "insecure_cleared": 21,
+                "unstable_cleared": 5,
+                "no_steady_state_cleared": 16
+              },
+              "0.5": {
+                "cleared": 0.9996134926212228,
+                "insecure_cleared": 18,
+                "unstable_cleared": 3,
+                "no_steady_state_cleared": 15
+              },
+              "1": {
+                "cleared": 0.9992269852424456,
+                "insecure_cleared": 14,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 14
+              },
+              "2": {
+                "cleared": 0.9980323260716796,
+                "insecure_cleared": 14,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 14
+              },
+              "5": {
+                "cleared": 0.8439212930428672,
+                "insecure_cleared": 7,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 7
+              },
+              "10": {
+                "cleared": 0.17986647926914967,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.0009486999297259311,
+            "0.5": 0.0008669609079445146,
+            "1": 0.0008474918277573751,
+            "2": 0.0006405055723984798,
+            "5": 0.0002860248269549797,
+            "10": 0.0
+          }
+        },
+        "half the units out": {
+          "no_steady_state_after": 0.0,
+          "unstable_after": 0.10200281096275475,
+          "insecure_after": 0.10200281096275475,
+          "unstable_intact_and_stable_after": 0.11750074619440852,
+          "growth_shift_median": 0.25888639013977865,
+          "growth_shift_quartiles": [
+            -0.4175624542039622,
+            0.25888639013977865,
+            0.9915936323165515
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.0,
+            "sub": 1.0,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.0016374183369980422,
+            "error_p95": 0.020453012116526233,
+            "near_boundary_error_median": 0.0024283155083922314,
+            "near_boundary_error_p95": 0.02352296323962083,
+            "margins": {
+              "0": {
+                "cleared": 0.8979971890372452,
+                "insecure_cleared": 7,
+                "unstable_cleared": 7,
+                "no_steady_state_cleared": 0
+              },
+              "0.5": {
+                "cleared": 0.8745607870695713,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "1": {
+                "cleared": 0.8482782853127196,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "2": {
+                "cleared": 0.7933591004919185,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "5": {
+                "cleared": 0.5763527758257203,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "10": {
+                "cleared": 0.1589599437807449,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.10200281096275475,
+            "0.5": 0.031565258511979825,
+            "1": 0.0205819443883934,
+            "2": 0.006789359067423887,
+            "5": 0.0,
+            "10": 0.0
+          }
+        }
+      },
+      "insecure_after_any_outage": 0.3335910049191848
+    },
+    "converter with PLL": {
+      "cases": 45056,
+      "band": "all",
+      "stable_intact": 41096,
+      "outages": {
+        "parallel path out": {
+          "no_steady_state_after": 0.00396632275647265,
+          "unstable_after": 0.12886898968269417,
+          "insecure_after": 0.13283531243916682,
+          "unstable_intact_and_stable_after": 0.039141414141414144,
+          "growth_shift_median": 0.028832034505708037,
+          "growth_shift_quartiles": [
+            0.0010386482852928758,
+            0.028832034505708037,
+            1.3703005420910133
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.10536253776435045,
+            "sub": 0.8006042296072508,
+            "fast": 0.09403323262839879
+          },
+          "one scan": {
+            "error_median": 9.904710621455592e-05,
+            "error_p95": 0.49062448034218703,
+            "near_boundary_error_median": 0.00014343666635285857,
+            "near_boundary_error_p95": 0.31541997042985526,
+            "margins": {
+              "0": {
+                "cleared": 0.871690675491532,
+                "insecure_cleared": 203,
+                "unstable_cleared": 203,
+                "no_steady_state_cleared": 0
+              },
+              "0.5": {
+                "cleared": 0.8521023943936149,
+                "insecure_cleared": 109,
+                "unstable_cleared": 109,
+                "no_steady_state_cleared": 0
+              },
+              "1": {
+                "cleared": 0.8322951138796963,
+                "insecure_cleared": 73,
+                "unstable_cleared": 73,
+                "no_steady_state_cleared": 0
+              },
+              "2": {
+                "cleared": 0.7902958925442866,
+                "insecure_cleared": 34,
+                "unstable_cleared": 34,
+                "no_steady_state_cleared": 0
+              },
+              "5": {
+                "cleared": 0.3797206540782558,
+                "insecure_cleared": 5,
+                "unstable_cleared": 5,
+                "no_steady_state_cleared": 0
+              },
+              "10": {
+                "cleared": 0.015110959704107457,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.13283531243916682,
+            "0.5": 0.1269213770073172,
+            "1": 0.12183622828784119,
+            "2": 0.11404266124936516,
+            "5": 0.10135069478184822,
+            "10": 0.11521252796420582
+          }
+        },
+        "one of two parallel circuits out": {
+          "no_steady_state_after": 2.4333268444617483e-05,
+          "unstable_after": 0.04046622542339887,
+          "insecure_after": 0.04049055869184349,
+          "unstable_intact_and_stable_after": 0.012373737373737374,
+          "growth_shift_median": 0.004384419380139004,
+          "growth_shift_quartiles": [
+            4.807244450422132e-05,
+            0.004384419380139004,
+            0.047387542110997494
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.10102224894768491,
+            "sub": 0.8508719182200842,
+            "fast": 0.04810583283223091
+          },
+          "one scan": {
+            "error_median": 1.6505099370789367e-05,
+            "error_p95": 0.05862214972960551,
+            "near_boundary_error_median": 1.8075107180770544e-05,
+            "near_boundary_error_p95": 0.09257061875097344,
+            "margins": {
+              "0": {
+                "cleared": 0.9612371033677244,
+                "insecure_cleared": 78,
+                "unstable_cleared": 78,
+                "no_steady_state_cleared": 0
+              },
+              "0.5": {
+                "cleared": 0.9504574654467588,
+                "insecure_cleared": 26,
+                "unstable_cleared": 26,
+                "no_steady_state_cleared": 0
+              },
+              "1": {
+                "cleared": 0.9396778275257933,
+                "insecure_cleared": 20,
+                "unstable_cleared": 20,
+                "no_steady_state_cleared": 0
+              },
+              "2": {
+                "cleared": 0.9160258905976251,
+                "insecure_cleared": 8,
+                "unstable_cleared": 8,
+                "no_steady_state_cleared": 0
+              },
+              "5": {
+                "cleared": 0.4705080786451236,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "10": {
+                "cleared": 0.02075627798325871,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.04049055869184349,
+            "0.5": 0.03481805234985022,
+            "1": 0.030744416873449133,
+            "2": 0.024961909598781105,
+            "5": 0.01579049655038383,
+            "10": 0.006711409395973154
+          }
+        },
+        "half the capacitor out": {
+          "no_steady_state_after": 0.0,
+          "unstable_after": 0.014356628382324314,
+          "insecure_after": 0.014356628382324314,
+          "unstable_intact_and_stable_after": 0.2957070707070707,
+          "growth_shift_median": 0.005195225645301171,
+          "growth_shift_quartiles": [
+            -0.00043494287823242495,
+            0.005195225645301171,
+            0.04250702526425054
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.16779661016949152,
+            "sub": 0.8288135593220339,
+            "fast": 0.003389830508474576
+          },
+          "one scan": {
+            "error_median": 2.5537809177578197e-05,
+            "error_p95": 0.023775431388179058,
+            "near_boundary_error_median": 2.715607335312953e-05,
+            "near_boundary_error_p95": 0.049582755884023166,
+            "margins": {
+              "0": {
+                "cleared": 0.9860570371812342,
+                "insecure_cleared": 28,
+                "unstable_cleared": 28,
+                "no_steady_state_cleared": 0
+              },
+              "0.5": {
+                "cleared": 0.9774187268833949,
+                "insecure_cleared": 7,
+                "unstable_cleared": 7,
+                "no_steady_state_cleared": 0
+              },
+              "1": {
+                "cleared": 0.9685614171695542,
+                "insecure_cleared": 4,
+                "unstable_cleared": 4,
+                "no_steady_state_cleared": 0
+              },
+              "2": {
+                "cleared": 0.9487298033871909,
+                "insecure_cleared": 1,
+                "unstable_cleared": 1,
+                "no_steady_state_cleared": 0
+              },
+              "5": {
+                "cleared": 0.496690675491532,
+                "insecure_cleared": 1,
+                "unstable_cleared": 1,
+                "no_steady_state_cleared": 0
+              },
+              "10": {
+                "cleared": 0.02116994354681721,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.014356628382324314,
+            "0.5": 0.009969061533172912,
+            "1": 0.007543424317617866,
+            "2": 0.004773996952767903,
+            "5": 0.002429307161597512,
+            "10": 0.0022371364653243847
+          }
+        },
+        "half the units out": {
+          "no_steady_state_after": 0.0,
+          "unstable_after": 9.733307377846993e-05,
+          "insecure_after": 9.733307377846993e-05,
+          "unstable_intact_and_stable_after": 0.7795454545454545,
+          "growth_shift_median": -0.03651429105446846,
+          "growth_shift_quartiles": [
+            -0.17515929506837113,
+            -0.03651429105446846,
+            0.004601255177019592
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.0,
+            "sub": 1.0,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 4.983812283443356e-05,
+            "error_p95": 0.002740325142009725,
+            "near_boundary_error_median": 3.851327491588563e-05,
+            "near_boundary_error_p95": 0.0015780189416428176,
+            "margins": {
+              "0": {
+                "cleared": 0.9999026669262215,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "0.5": {
+                "cleared": 0.9992700019466615,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "1": {
+                "cleared": 0.9986616702355461,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "2": {
+                "cleared": 0.993381350983064,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "5": {
+                "cleared": 0.5627068327817792,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              },
+              "10": {
+                "cleared": 0.0274235935370839,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 9.733307377846993e-05,
+            "0.5": 7.366301625497225e-05,
+            "1": 4.9627791563275434e-05,
+            "2": 2.5393600812595227e-05,
+            "5": 0.0,
+            "10": 0.0
+          }
+        }
+      },
+      "insecure_after_any_outage": 0.1389186295503212
+    },
+    "converter without PLL": {
+      "cases": 15068,
+      "band": "all",
+      "stable_intact": 11725,
+      "outages": {
+        "parallel path out": {
+          "no_steady_state_after": 0.04196162046908315,
+          "unstable_after": 0.13142857142857142,
+          "insecure_after": 0.1733901918976546,
+          "unstable_intact_and_stable_after": 0.05174992521687107,
+          "growth_shift_median": 0.005761636053893682,
+          "growth_shift_quartiles": [
+            -0.00017350807430593918,
+            0.005761636053893682,
+            1.3080778699988986
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.2744970798182998,
+            "sub": 0.6950032446463336,
+            "fast": 0.030499675535366644
+          },
+          "one scan": {
+            "error_median": 0.001210663465205375,
+            "error_p95": 2.1352142802064225,
+            "near_boundary_error_median": 0.005008228241315749,
+            "near_boundary_error_p95": 2.059998699298,
+            "margins": {
+              "0": {
+                "cleared": 0.8649040511727079,
+                "insecure_cleared": 465,
+                "unstable_cleared": 346,
+                "no_steady_state_cleared": 119
+              },
+              "0.5": {
+                "cleared": 0.8394029850746269,
+                "insecure_cleared": 349,
+                "unstable_cleared": 246,
+                "no_steady_state_cleared": 103
+              },
+              "1": {
+                "cleared": 0.8139872068230277,
+                "insecure_cleared": 285,
+                "unstable_cleared": 197,
+                "no_steady_state_cleared": 88
+              },
+              "2": {
+                "cleared": 0.7643496801705757,
+                "insecure_cleared": 207,
+                "unstable_cleared": 148,
+                "no_steady_state_cleared": 59
+              },
+              "5": {
+                "cleared": 0.3891684434968017,
+                "insecure_cleared": 54,
+                "unstable_cleared": 38,
+                "no_steady_state_cleared": 16
+              },
+              "10": {
+                "cleared": 0.027121535181236674,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.1733901918976546,
+            "0.5": 0.16043152949364886,
+            "1": 0.1481844946025515,
+            "2": 0.13602015113350127,
+            "5": 0.10845070422535211,
+            "10": 0.08505154639175258
+          }
+        },
+        "one of two parallel circuits out": {
+          "no_steady_state_after": 0.007334754797441364,
+          "unstable_after": 0.06874200426439232,
+          "insecure_after": 0.07607675906183368,
+          "unstable_intact_and_stable_after": 0.019742746036494167,
+          "growth_shift_median": 0.0007620745218233083,
+          "growth_shift_quartiles": [
+            -0.00024056081456214073,
+            0.0007620745218233083,
+            0.1977076799069135
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.2518610421836228,
+            "sub": 0.7481389578163772,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.00029468557286271846,
+            "error_p95": 0.9012220964781336,
+            "near_boundary_error_median": 0.0007437789527608984,
+            "near_boundary_error_p95": 1.1490429155616568,
+            "margins": {
+              "0": {
+                "cleared": 0.9436247334754797,
+                "insecure_cleared": 236,
+                "unstable_cleared": 199,
+                "no_steady_state_cleared": 37
+              },
+              "0.5": {
+                "cleared": 0.9228997867803838,
+                "insecure_cleared": 145,
+                "unstable_cleared": 120,
+                "no_steady_state_cleared": 25
+              },
+              "1": {
+                "cleared": 0.9010660980810234,
+                "insecure_cleared": 104,
+                "unstable_cleared": 86,
+                "no_steady_state_cleared": 18
+              },
+              "2": {
+                "cleared": 0.8581663113006397,
+                "insecure_cleared": 72,
+                "unstable_cleared": 60,
+                "no_steady_state_cleared": 12
+              },
+              "5": {
+                "cleared": 0.45091684434968016,
+                "insecure_cleared": 18,
+                "unstable_cleared": 16,
+                "no_steady_state_cleared": 2
+              },
+              "10": {
+                "cleared": 0.03164179104477612,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.07607675906183368,
+            "0.5": 0.06290238385244476,
+            "1": 0.05219020430011598,
+            "2": 0.04347420468327269,
+            "5": 0.02869718309859155,
+            "10": 0.02577319587628866
+          }
+        },
+        "half the capacitor out": {
+          "no_steady_state_after": 0.01560767590618337,
+          "unstable_after": 0.06609808102345416,
+          "insecure_after": 0.08170575692963752,
+          "unstable_intact_and_stable_after": 0.19952138797487287,
+          "growth_shift_median": 0.0008685772550705018,
+          "growth_shift_quartiles": [
+            -0.0014524149526220498,
+            0.0008685772550705018,
+            0.16626825338056106
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.40903225806451615,
+            "sub": 0.5909677419354838,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.0001285168491444999,
+            "error_p95": 0.8717110787176171,
+            "near_boundary_error_median": 0.0002603027262677582,
+            "near_boundary_error_p95": 1.185198455412531,
+            "margins": {
+              "0": {
+                "cleared": 0.9380810234541578,
+                "insecure_cleared": 232,
+                "unstable_cleared": 178,
+                "no_steady_state_cleared": 54
+              },
+              "0.5": {
+                "cleared": 0.9162473347547975,
+                "insecure_cleared": 145,
+                "unstable_cleared": 104,
+                "no_steady_state_cleared": 41
+              },
+              "1": {
+                "cleared": 0.8947547974413647,
+                "insecure_cleared": 108,
+                "unstable_cleared": 72,
+                "no_steady_state_cleared": 36
+              },
+              "2": {
+                "cleared": 0.8611513859275053,
+                "insecure_cleared": 70,
+                "unstable_cleared": 49,
+                "no_steady_state_cleared": 21
+              },
+              "5": {
+                "cleared": 0.4637100213219616,
+                "insecure_cleared": 9,
+                "unstable_cleared": 6,
+                "no_steady_state_cleared": 3
+              },
+              "10": {
+                "cleared": 0.03155650319829424,
+                "insecure_cleared": 1,
+                "unstable_cleared": 1,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.08170575692963752,
+            "0.5": 0.06899251783539238,
+            "1": 0.05763225979123918,
+            "2": 0.04552663494728986,
+            "5": 0.027464788732394368,
+            "10": 0.030927835051546393
+          }
+        },
+        "half the units out": {
+          "no_steady_state_after": 0.0,
+          "unstable_after": 0.0018763326226012792,
+          "insecure_after": 0.0018763326226012792,
+          "unstable_intact_and_stable_after": 0.7101405922823811,
+          "growth_shift_median": -0.004987433518402362,
+          "growth_shift_quartiles": [
+            -0.22654453563945154,
+            -0.004987433518402362,
+            0.014583746799152308
+          ],
+          "band_of_the_unstable_mode": {
+            "slow": 0.0,
+            "sub": 1.0,
+            "fast": 0.0
+          },
+          "one scan": {
+            "error_median": 0.0010815937792933994,
+            "error_p95": 0.2628749026395516,
+            "near_boundary_error_median": 0.0005744348333944771,
+            "near_boundary_error_p95": 0.24773592580391882,
+            "margins": {
+              "0": {
+                "cleared": 0.9987206823027719,
+                "insecure_cleared": 11,
+                "unstable_cleared": 11,
+                "no_steady_state_cleared": 0
+              },
+              "0.5": {
+                "cleared": 0.9983795309168444,
+                "insecure_cleared": 9,
+                "unstable_cleared": 9,
+                "no_steady_state_cleared": 0
+              },
+              "1": {
+                "cleared": 0.997185501066098,
+                "insecure_cleared": 8,
+                "unstable_cleared": 8,
+                "no_steady_state_cleared": 0
+              },
+              "2": {
+                "cleared": 0.9909594882729211,
+                "insecure_cleared": 5,
+                "unstable_cleared": 5,
+                "no_steady_state_cleared": 0
+              },
+              "5": {
+                "cleared": 0.5768869936034116,
+                "insecure_cleared": 1,
+                "unstable_cleared": 1,
+                "no_steady_state_cleared": 0
+              },
+              "10": {
+                "cleared": 0.041449893390191894,
+                "insecure_cleared": 0,
+                "unstable_cleared": 0,
+                "no_steady_state_cleared": 0
+              }
+            }
+          },
+          "insecure_after_given_margin_intact": {
+            "0": 0.0018763326226012792,
+            "0.5": 0.0018270401948842874,
+            "1": 0.001784280488892854,
+            "2": 0.0016792611251049538,
+            "5": 0.0008802816901408451,
+            "10": 0.0
+          }
+        }
+      },
+      "insecure_after_any_outage": 0.21484008528784648
+    }
+  }
+}

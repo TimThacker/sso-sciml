@@ -173,6 +173,17 @@ Details in [docs/steps/23-network-corners.md](docs/steps/23-network-corners.md).
 
 Details in [docs/steps/24-noise-and-ranges.md](docs/steps/24-noise-and-ranges.md).
 
+### One outage at a time
+
+![What each outage does](docs/results/network/fig63_outages.png)
+
+- **Losing the parallel path is the worst outage for every plant type.** A third of doubly-fed cases that are stable with it are unstable without it, and 13 % and 17 % of converters.
+- **A margin on the intact network does not cover an outage.** About one case in ten that decays at 10 1/s intact is insecure after losing the parallel path.
+- **Half the units out hurts the machine and helps a converter;** half the capacitor out does the reverse.
+- **One scan serves every outage for the doubly-fed plant** (growth rate right to 0.01 1/s) **and not for a converter,** whose admittance moves with the operating point: 203 and 465 insecure cases are cleared if the scan is reused.
+
+Details in [docs/steps/25-outages.md](docs/steps/25-outages.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -218,6 +229,7 @@ uv run pytest
 | Reproduce the network-error study (about 25 minutes) | `uv run scripts/network_error.py` |
 | Reproduce the screen at the ends of the network ranges | `uv run scripts/network_corners.py` |
 | Reproduce scan noise and network ranges together (about 25 minutes) | `uv run scripts/noise_and_ranges.py` |
+| Reproduce the outage study (about 20 minutes) | `uv run scripts/outages.py` |
 
 ## Licence
 
