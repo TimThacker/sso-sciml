@@ -28,7 +28,14 @@ def test_spec_is_the_one_the_dataset_was_built_with():
 
 def test_sampling_is_reproducible_and_inside_the_ranges(sample):
     theta = t1.sample(131072)[:1000]
-    assert np.array_equal(theta, sample["theta"])
+    # The Sobol points are exact on every platform. Parameters sampled in log pass
+    # through exp and log, whose last bit differs between the Windows and Linux builds
+    # of NumPy, so those columns are compared to rounding error only.
+    for j, par in enumerate(t1.SPEC):
+        if par.log:
+            assert np.allclose(theta[:, j], sample["theta"][:, j], rtol=1e-13, atol=0)
+        else:
+            assert np.array_equal(theta[:, j], sample["theta"][:, j])
     for j, par in enumerate(t1.SPEC):
         assert theta[:, j].min() >= par.low and theta[:, j].max() <= par.high
 
