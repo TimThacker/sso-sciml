@@ -165,6 +165,14 @@ Details in [docs/steps/22-network-error.md](docs/steps/22-network-error.md).
 
 Details in [docs/steps/23-network-corners.md](docs/steps/23-network-corners.md).
 
+### Scan noise and uncertain network data together
+
+- **The complete screen:** a 2 × 2 scan of the plant at about a hundred frequencies, a least-squares fit, and the fitted plant closed on the network at the 32 ends of the ranges of its data. The largest growth rate decides.
+- **With a scan good to 1 % and a network known to within 10 % it needs no margin** and clears no unstable case in 24,526. It clears 56 % of doubly-fed cases (72 % are stable in the band), 96.4 % of converters with a phase-locked loop (97.6 %) and 76.8 % of those without (82.7 %).
+- **Allowances do not stack.** The spread over the ends already covers 1 % of scan noise. With 5 % noise a margin of 1 1/s on top is enough.
+
+Details in [docs/steps/24-noise-and-ranges.md](docs/steps/24-noise-and-ranges.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -209,6 +217,7 @@ uv run pytest
 | Reproduce the slow-mode study (about 10 minutes) | `uv run scripts/slow_mode.py` |
 | Reproduce the network-error study (about 25 minutes) | `uv run scripts/network_error.py` |
 | Reproduce the screen at the ends of the network ranges | `uv run scripts/network_corners.py` |
+| Reproduce scan noise and network ranges together (about 25 minutes) | `uv run scripts/noise_and_ranges.py` |
 
 ## Licence
 

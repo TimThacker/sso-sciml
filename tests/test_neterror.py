@@ -55,6 +55,18 @@ def test_worst_end_is_at_least_the_one_unfavourable_end():
         assert worst >= row[cc[f"known_sub_b{bound:g}"]] - 1e-9
 
 
+def test_noisy_scan_at_the_ends_of_the_ranges():
+    bc = {name: j for j, name in enumerate(neterror.BOTH_COLUMNS)}
+    row = neterror.both_case(("t1", THETA[2]))
+    assert row.shape == (len(neterror.BOTH_COLUMNS),)
+    # With an exact network there are no ends to visit.
+    assert row[bc["corners_sub_n0.01_b0"]] == row[bc["nominal_sub_n0.01_b0"]]
+    # A clean scan on a network within 10 %: the given network is one point of the box,
+    # and for this case, far from the boundary, the ends bracket it from above.
+    assert row[bc["corners_sub_n0_b0.1"]] > row[bc["nominal_sub_n0_b0.1"]]
+    assert np.array_equal(row, neterror.both_case(("t1", THETA[2])))
+
+
 def test_converter_case_has_no_hand_formula_columns():
     row = neterror.case(("pll", c1.sample(2)[1]))
     assert np.isfinite(row[COL["true_sub"]]) or np.isfinite(row[COL["true_slow"]])

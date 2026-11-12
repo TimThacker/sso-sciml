@@ -133,11 +133,13 @@ def controls(th: dict, follow: float) -> ConverterControls:
     )  # fmt: skip
 
 
-def operating_point(theta: np.ndarray, follow: float, ctl: ConverterControls | None = None):
+def operating_point(
+    theta: np.ndarray, follow: float, ctl: ConverterControls | None = None, net: dict | None = None
+):
     """Model, steady state, parameters and network of one case. Raises ValueError if
-    there is no steady state."""
+    there is no steady state. `net` replaces the network of the case."""
     th = dict(zip(NAMES, map(float, theta), strict=True))
-    net = network(th)
+    net = network(th) if net is None else dict(net)
     model = Converter(ctl or controls(th, follow))
     x0, p = model.equilibrium(th["p"], **net)
     return model, x0, p, net

@@ -169,6 +169,61 @@ def corner_cases(kind: str, theta: np.ndarray, processes: int = 1) -> np.ndarray
         return np.array(pool.map(corner_case, jobs, chunksize=64))
 
 
+# (noise on each entry of the scan, bound on each network quantity)
+BOTH = ((0.0, 0.10), (0.01, 0.0), (0.01, 0.05), (0.01, 0.10), (0.05, 0.10))
+BOTH_COLUMNS = (
+    *(f"true_{b}" for b in BANDS),
+    *(f"{name}_n{e:g}_b{w:g}" for e, w in BOTH
+      for name in (*(f"nominal_{b}" for b in BANDS), *(f"corners_{b}" for b in BANDS))),
+)  # fmt: skip
+_GRID = adm.scan_grid()
+_HALF = _GRID >= 0
+
+
+def both_case(args: tuple[str, np.ndarray]) -> np.ndarray:
+    """One case in the order of BOTH_COLUMNS: a noisy 126-point scan of the plant,
+    fitted by least squares (step 20), closed on a network that is wrong by up to a
+    bound in each quantity, as given and at the 32 ends of the ranges (step 23)."""
+    from .scanfit import _problem, noisy
+
+    kind, theta = args
+    try:
+        lam, y, _, net = _problem(kind, theta)
+    except (ValueError, RuntimeError, ZeroDivisionError, FloatingPointError,
+            np.linalg.LinAlgError):  # fmt: skip
+        return np.full(len(BOTH_COLUMNS), np.nan)
+    rng = np.random.default_rng(t1.case_seed(theta) + 5)
+    signs = np.array(np.meshgrid(*[(-1.0, 1.0)] * len(FACTORS))).reshape(len(FACTORS), -1).T
+    f, y_half = _GRID[_HALF][::16], y[_HALF][::16]
+    out = band_growth(lam)
+    for level, bound in BOTH:
+        fit = vf.fit_admittance(f, noisy(y_half, level, rng), level)
+
+        def modes(other: dict, fit=fit) -> list[float]:
+            return band_growth(vf.closed_loop_modes(fit["a"], fit["b"], fit["c"], fit["d"], other))
+
+        width = np.log1p(bound)
+        given = perturb(net, np.exp(rng.uniform(-width, width, size=len(FACTORS))))
+        nominal = modes(given)
+        if bound == 0:
+            out += [*nominal, *nominal]
+            continue
+        worst = np.max([modes(perturb(given, np.exp(width * s))) for s in signs], axis=0)
+        out += [*nominal, *worst]
+    return np.array(out, dtype=float)
+
+
+def both_cases(kind: str, theta: np.ndarray, processes: int = 1) -> np.ndarray:
+    """`both_case` for every row of theta. Row order is kept."""
+    jobs = [(kind, row) for row in theta]
+    if processes <= 1:
+        return np.array([both_case(j) for j in jobs])
+    from multiprocessing import Pool
+
+    with Pool(processes, initializer=_init_worker) as pool:
+        return np.array(pool.map(both_case, jobs, chunksize=32))
+
+
 def _init_worker() -> None:
     import torch
 
