@@ -1,0 +1,422 @@
+{
+  "converter with PLL": {
+    "cases": 16384,
+    "solved": 16384,
+    "unstable_together": 1259,
+    "unstable_share": 0.07684326171875,
+    "unstable_share_apart": 0.05426025390625,
+    "unstable_below_58": 0.07684326171875,
+    "unstable_above_58": 0.0,
+    "slow_mode_unstable": 0.01788330078125,
+    "slow_mode_unstable_machine_alone": 0.0177001953125,
+    "machine_alone_unstable": 0.09918212890625,
+    "converter_alone_unstable": 0.01177978515625,
+    "machine_alone_no_steady_state": 0,
+    "converter_alone_no_steady_state": 0,
+    "unstable_poles_on_an_ideal_voltage": 9,
+    "frequency_of_the_unstable_mode_hz": [
+      12.874713467064293,
+      20.888801303359656,
+      25.33548656491403,
+      30.67908348484322,
+      37.525418798420766
+    ],
+    "alone against together": {
+      "machine stable alone, converter stable alone": {
+        "cases": 14625,
+        "share": 0.89263916015625,
+        "unstable_together": 32,
+        "unstable_together_share": 0.002188034188034188
+      },
+      "machine stable alone, converter not": {
+        "cases": 134,
+        "share": 0.0081787109375,
+        "unstable_together": 56,
+        "unstable_together_share": 0.417910447761194
+      },
+      "machine not, converter stable alone": {
+        "cases": 1566,
+        "share": 0.0955810546875,
+        "unstable_together": 1116,
+        "unstable_together_share": 0.7126436781609196
+      },
+      "machine not, converter not": {
+        "cases": 59,
+        "share": 0.00360107421875,
+        "unstable_together": 55,
+        "unstable_together_share": 0.9322033898305084
+      }
+    },
+    "shift of the growth rate below 58 Hz by the converter": {
+      "all": {
+        "cases": 16384,
+        "unstable_together": 0.07684326171875,
+        "machine_alone_unstable": 0.09918212890625,
+        "quantiles": [
+          -5.181380651231277,
+          -1.863252797158911,
+          -0.7534977260707689,
+          -0.19967373090995566,
+          0.7973860116406895
+        ],
+        "raised": 0.14426992437463643,
+        "machine unstable alone, stable beside the converter": 0.2793846153846154,
+        "machine stable alone, unstable beside the converter": 0.005962463581543465
+      },
+      "converter a source": {
+        "cases": 8192,
+        "unstable_together": 0.073974609375,
+        "machine_alone_unstable": 0.0975341796875,
+        "quantiles": [
+          -5.291921057029415,
+          -1.8627464222299055,
+          -0.76236224400406,
+          -0.1941764963775259,
+          0.6211604600973364
+        ],
+        "raised": 0.1440329218106996,
+        "machine unstable alone, stable beside the converter": 0.28035043804755944,
+        "machine stable alone, unstable beside the converter": 0.004193155687812796
+      },
+      "converter a load": {
+        "cases": 8192,
+        "unstable_together": 0.0797119140625,
+        "machine_alone_unstable": 0.100830078125,
+        "quantiles": [
+          -5.025764131268025,
+          -1.8634215888019128,
+          -0.7364796785166714,
+          -0.20361212843651438,
+          0.9048055276233343
+        ],
+        "raised": 0.1445020149683362,
+        "machine unstable alone, stable beside the converter": 0.2784503631961259,
+        "machine stable alone, unstable beside the converter": 0.007738256855824056
+      }
+    },
+    "shift by share of the machine": [
+      {
+        "lo": 0.2,
+        "hi": 0.4,
+        "median": -1.556048003921974,
+        "unstable_together": 0.06223686619073769,
+        "machine_alone_unstable": 0.09189090243455976
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.6,
+        "median": -0.8104262089518777,
+        "unstable_together": 0.07806487080813634,
+        "machine_alone_unstable": 0.10060472787245739
+      },
+      {
+        "lo": 0.6,
+        "hi": 0.8,
+        "median": -0.4214565017708276,
+        "unstable_together": 0.09022693997071743,
+        "machine_alone_unstable": 0.10505124450951683
+      }
+    ],
+    "shift by current-loop bandwidth of the converter": [
+      {
+        "lo_hz": 50.00425305307728,
+        "hi_hz": 107.72926541226803,
+        "median": -0.9498416946843486
+      },
+      {
+        "lo_hz": 107.72926541226803,
+        "hi_hz": 232.07143377337516,
+        "median": -0.9325362545277067
+      },
+      {
+        "lo_hz": 232.07143377337516,
+        "hi_hz": 499.94004157124687,
+        "median": -0.49031914064963167
+      }
+    ],
+    "screens": {
+      "each stable alone": {
+        "cleared": 0.89263916015625,
+        "unstable_cleared": 32,
+        "unstable_cleared_share": 0.025416997617156472,
+        "stable_flagged": 532,
+        "stable_flagged_share": 0.035173553719008266
+      },
+      "scans taken alone, set side by side": {
+        "cleared": 0.92230224609375,
+        "unstable_cleared": 3,
+        "unstable_cleared_share": 0.0023828435266084196,
+        "stable_flagged": 17,
+        "stable_flagged_share": 0.0011239669421487604
+      },
+      "reference, network as given": {
+        "cleared": 0.9205322265625,
+        "unstable_cleared": 70,
+        "unstable_cleared_share": 0.05559968228752978,
+        "stable_flagged": 113,
+        "stable_flagged_share": 0.007471074380165289
+      },
+      "reference, 32 ends": {
+        "cleared": 0.867431640625,
+        "unstable_cleared": 0,
+        "unstable_cleared_share": 0.0,
+        "stable_flagged": 913,
+        "stable_flagged_share": 0.06036363636363636
+      }
+    },
+    "screens, a transformer apart": {
+      "taken to be at one terminal": {
+        "cleared": 0.92315673828125,
+        "unstable_cleared": 79,
+        "unstable_cleared_share": 0.08886389201349831,
+        "stable_flagged": 449,
+        "stable_flagged_share": 0.02897708938367215
+      },
+      "reference, network as given": {
+        "cleared": 0.94561767578125,
+        "unstable_cleared": 61,
+        "unstable_cleared_share": 0.0686164229471316,
+        "stable_flagged": 63,
+        "stable_flagged_share": 0.004065827686350436
+      },
+      "reference, 32 ends": {
+        "cleared": 0.8992919921875,
+        "unstable_cleared": 0,
+        "unstable_cleared_share": 0.0,
+        "stable_flagged": 761,
+        "stable_flagged_share": 0.049112616973217164
+      }
+    },
+    "scans_added_error": {
+      "median": 0.035235367713083,
+      "p95": 0.3218733793026411
+    },
+    "reference_slow_band": {
+      "true slow mode unstable": 293,
+      "of those, the fit at the ends says stable": 0,
+      "stable, the fit at the ends says unstable": 77
+    },
+    "one terminal against apart": {
+      "stable at one terminal, unstable apart": 79,
+      "unstable at one terminal, stable apart": 449,
+      "shift_quantiles_near_the_boundary": [
+        -4.717287935762882,
+        -2.3965032749616633,
+        -1.2878404244501,
+        -0.27173181675699887,
+        1.259399926669942
+      ],
+      "abs_shift_median": 1.443329641768532,
+      "abs_shift_p95": 4.804413587724924,
+      "machine_voltage_one_terminal": [
+        0.9999999999999999,
+        0.9999999999999999,
+        1.0,
+        1.0,
+        1.0000000000000004
+      ],
+      "machine_voltage_apart": [
+        0.9932904901040668,
+        1.0001891592462686,
+        1.0019049697128477,
+        1.0034507104315626,
+        1.0091128679736054
+      ]
+    }
+  },
+  "converter without PLL": {
+    "cases": 16384,
+    "solved": 16383,
+    "unstable_together": 1069,
+    "unstable_share": 0.06525056460965635,
+    "unstable_share_apart": 0.051699932857230055,
+    "unstable_below_58": 0.06525056460965635,
+    "unstable_above_58": 0.0,
+    "slow_mode_unstable": 0.03528047366172252,
+    "slow_mode_unstable_machine_alone": 0.0174571201855582,
+    "machine_alone_unstable": 0.09631935542940853,
+    "converter_alone_unstable": 0.017461383478844864,
+    "machine_alone_no_steady_state": 0,
+    "converter_alone_no_steady_state": 4,
+    "unstable_poles_on_an_ideal_voltage": 9,
+    "frequency_of_the_unstable_mode_hz": [
+      2.351635453471331,
+      18.740108435268372,
+      24.35623178178203,
+      29.76131335820592,
+      37.78070386308795
+    ],
+    "alone against together": {
+      "machine stable alone, converter stable alone": {
+        "cases": 14552,
+        "share": 0.8882378074833669,
+        "unstable_together": 57,
+        "unstable_together_share": 0.0039169873556899396
+      },
+      "machine stable alone, converter not": {
+        "cases": 253,
+        "share": 0.015442837087224562,
+        "unstable_together": 108,
+        "unstable_together_share": 0.4268774703557312
+      },
+      "machine not, converter stable alone": {
+        "cases": 1541,
+        "share": 0.09406091680400415,
+        "unstable_together": 871,
+        "unstable_together_share": 0.5652173913043478
+      },
+      "machine not, converter not": {
+        "cases": 37,
+        "share": 0.0022584386254043826,
+        "unstable_together": 33,
+        "unstable_together_share": 0.8918918918918919
+      }
+    },
+    "shift of the growth rate below 58 Hz by the converter": {
+      "all": {
+        "cases": 16383,
+        "unstable_together": 0.06525056460965635,
+        "machine_alone_unstable": 0.09631935542940853,
+        "quantiles": [
+          -8.554036959096274,
+          -3.4199361842300124,
+          -1.5072038309935367,
+          -0.5733098827413572,
+          0.6364933202619545
+        ],
+        "raised": 0.08502611723737667,
+        "machine unstable alone, stable beside the converter": 0.42712294043092525,
+        "machine stable alone, unstable beside the converter": 0.011144883485309016
+      }
+    },
+    "shift by share of the machine": [
+      {
+        "lo": 0.2,
+        "hi": 0.4,
+        "median": -3.290379981919694,
+        "unstable_together": 0.04800872885979269,
+        "machine_alone_unstable": 0.08874340789234406
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.6,
+        "median": -1.6110796966979226,
+        "unstable_together": 0.06896551724137931,
+        "machine_alone_unstable": 0.10326582740375843
+      },
+      {
+        "lo": 0.6,
+        "hi": 0.8,
+        "median": -0.7847073499943051,
+        "unstable_together": 0.0790301684249491,
+        "machine_alone_unstable": 0.09698315750508976
+      }
+    ],
+    "shift by current-loop bandwidth of the converter": [
+      {
+        "lo_hz": 50.00658367885991,
+        "hi_hz": 107.73269273086214,
+        "median": -2.0163784300380394
+      },
+      {
+        "lo_hz": 107.73269273086214,
+        "hi_hz": 232.09053583735835,
+        "median": -1.5107532076248562
+      },
+      {
+        "lo_hz": 232.09053583735835,
+        "hi_hz": 499.9987690875149,
+        "median": -1.1932004313459175
+      }
+    ],
+    "screens": {
+      "each stable alone": {
+        "cleared": 0.8882378074833669,
+        "unstable_cleared": 57,
+        "unstable_cleared_share": 0.05332086061739944,
+        "stable_flagged": 819,
+        "stable_flagged_share": 0.053480475382003394
+      },
+      "scans taken alone, set side by side": {
+        "cleared": 0.9356650186168589,
+        "unstable_cleared": 33,
+        "unstable_cleared_share": 0.03086997193638915,
+        "stable_flagged": 18,
+        "stable_flagged_share": 0.001175395063340734
+      },
+      "reference, network as given": {
+        "cleared": 0.9337728132820606,
+        "unstable_cleared": 79,
+        "unstable_cleared_share": 0.07390084190832553,
+        "stable_flagged": 95,
+        "stable_flagged_share": 0.00620347394540943
+      },
+      "reference, 32 ends": {
+        "cleared": 0.8821339193065983,
+        "unstable_cleared": 0,
+        "unstable_cleared_share": 0.0,
+        "stable_flagged": 862,
+        "stable_flagged_share": 0.056288363588872924
+      }
+    },
+    "screens, a transformer apart": {
+      "taken to be at one terminal": {
+        "cleared": 0.9347494353903436,
+        "unstable_cleared": 216,
+        "unstable_cleared_share": 0.2550177095631641,
+        "stable_flagged": 438,
+        "stable_flagged_share": 0.028192584963954687
+      },
+      "reference, network as given": {
+        "cleared": 0.9482390282610023,
+        "unstable_cleared": 70,
+        "unstable_cleared_share": 0.08264462809917356,
+        "stable_flagged": 71,
+        "stable_flagged_share": 0.004570030895983522
+      },
+      "reference, 32 ends": {
+        "cleared": 0.904535188915339,
+        "unstable_cleared": 0,
+        "unstable_cleared_share": 0.0,
+        "stable_flagged": 717,
+        "stable_flagged_share": 0.046150875386199795
+      }
+    },
+    "scans_added_error": {
+      "median": 0.021758033130547916,
+      "p95": 0.7490710266416681
+    },
+    "reference_slow_band": {
+      "true slow mode unstable": 578,
+      "of those, the fit at the ends says stable": 0,
+      "stable, the fit at the ends says unstable": 182
+    },
+    "one terminal against apart": {
+      "stable at one terminal, unstable apart": 216,
+      "unstable at one terminal, stable apart": 438,
+      "shift_quantiles_near_the_boundary": [
+        -7.946765982798629,
+        -3.039950184019218,
+        -1.4407157408471192,
+        0.7270052765586485,
+        2.6616677186587996
+      ],
+      "abs_shift_median": 1.9472761854072869,
+      "abs_shift_p95": 8.008362537775637,
+      "machine_voltage_one_terminal": [
+        0.9635600085710233,
+        0.9889521477567028,
+        0.9967941514556471,
+        1.0006950257302794,
+        1.0068406995583736
+      ],
+      "machine_voltage_apart": [
+        0.9578621063179987,
+        0.9881130243851797,
+        0.996966413282864,
+        1.0007709566912903,
+        1.0047467442662237
+      ]
+    }
+  }
+}

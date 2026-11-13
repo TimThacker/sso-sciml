@@ -136,4 +136,4 @@ Unstable cases called stable, then stable cases called unstable.
 
 ## Next
 
-In the order they bear on the result: impedance between units and a doubly-fed plant beside a converter; the protection model. Still open from before: a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz; an exact delay and a distributed line above 58 Hz.
+In the order they bear on the result: impedance between units and a doubly-fed plant beside a converter (step 32, since done); the protection model. Still open from before: a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz; an exact delay and a distributed line above 58 Hz.

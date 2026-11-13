@@ -250,6 +250,16 @@ Details in [docs/steps/30-shunt-capacitance.md](docs/steps/30-shunt-capacitance.
 
 Details in [docs/steps/31-power-axis.md](docs/steps/31-power-axis.md).
 
+### A doubly-fed plant beside a converter
+
+![Alone and together](docs/results/multi/fig77_machine_beside_converter.png)
+
+- **A converter on the same bus steadies the plant's sub-synchronous mode more often than not:** in 86 % and 91 % of cases near the boundary, whether it is a source or a load. A plant unstable alone is stable beside it in 28 % and 43 % of cases.
+- **The complete screen holds for the pair.** Each unit scanned at the joint steady state, the network within 10 %, 32 ends: no unstable case cleared in 32,767 pairs.
+- **Whether the two share a terminal matters more than the neighbour's controls.** Merging two terminals that have a transformer each between them misses 9 % and 26 % of the unstable cases.
+
+Details in [docs/steps/32-machine-beside-converter.md](docs/steps/32-machine-beside-converter.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
