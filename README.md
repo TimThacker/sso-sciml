@@ -199,12 +199,24 @@ Details in [docs/steps/26-operating-point.md](docs/steps/26-operating-point.md).
 
 ![Alone against together, and the shortcuts](docs/results/multi/fig67_two_converters.png)
 
-- **Two converters that are each stable alone can be unstable together:** 276 and 57 cases of 32,768, depending on the kind of load. A unit unstable alone is cured by its neighbour in 31 % to 68 % of cases.
-- **Three shortcuts are all unsafe.** Judging each unit alone misses 33 % and 6 % of the unstable pairs. Adding scans taken alone misses 23 % and 4 %. One converter carrying the net power misses 39 % and 23 %.
+- **Two converters that are each stable alone can be unstable together:** 104 and 57 cases of 32,768, depending on the kind of load. A unit unstable alone is cured by its neighbour in 28 % to 54 % of cases.
+- **Three shortcuts are all unsafe.** Judging each unit alone misses 16 % and 6 % of the unstable pairs. Adding scans taken alone misses 5 % and 4 %. One converter carrying the net power misses 25 % and 23 %.
 - **The admittances do add, at the right operating point.** Each unit has to be scanned at its operating point in the joint power flow.
-- **A source and a load offset each other and do not cancel.** With almost no net power at the bus, 1.5 % to 2.0 % of cases are unstable.
+- **A source and a load offset each other and do not cancel.** With almost no net power at the bus, 1.4 % to 2.0 % of cases are unstable.
 
 Details in [docs/steps/27-two-converters.md](docs/steps/27-two-converters.md).
+
+### Control delay and a filter capacitor
+
+![What each addition does](docs/results/hf/fig69_delay_and_capacitor.png)
+
+- **Each alone does little; together they make a new instability at the filter resonance,** around 1 kHz. The share of unstable cases goes from 5.6 % to 29.9 % with a phase-locked loop and from 12.6 % to 40.1 % without.
+- **The converter alone is stable in every case.** The resonance needs the network, so a bench test on a stiff source does not show it.
+- **Two numbers nearly settle it:** a delay under a fifth of a period of the filter resonance (2 unstable of 13,195), or a damping resistor above a quarter per unit (1.6 % unstable).
+- **The screen still works** with a scan that reaches past the resonance: no unstable case missed in 40,792.
+- **The delay also moves the modes below 58 Hz in a tail of cases.** The earlier counts of unstable cases with a phase-locked loop are low by about a quarter.
+
+Details in [docs/steps/28-delay-and-capacitor.md](docs/steps/28-delay-and-capacitor.md).
 
 ## Setup
 
@@ -254,6 +266,7 @@ uv run pytest
 | Reproduce the outage study (about 20 minutes) | `uv run scripts/outages.py` |
 | Reproduce the operating-point study (about 20 minutes) | `uv run scripts/operating_point.py` |
 | Reproduce the source-and-load study (about 5 minutes) | `uv run scripts/two_converters.py` |
+| Reproduce the delay and filter-capacitor study (about 8 minutes) | `uv run scripts/delay_and_capacitor.py` |
 
 ## Licence
 
