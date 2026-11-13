@@ -1,0 +1,283 @@
+{
+  "power": [
+    0.1,
+    0.55,
+    1.0
+  ],
+  "plants": {
+    "converter with PLL": {
+      "cases": 11264,
+      "unstable": 997,
+      "u_quantiles": [
+        -0.3853159384149282,
+        -0.09510864623014612,
+        -0.018751393295652806,
+        0.012715711701572258,
+        0.10890470732710429
+      ],
+      "u_outside_the_scanned_range": 0.0034623579545454545,
+      "power_below_the_lowest_scan": 0.09872159090909091,
+      "methods": {
+        "rated": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.17069772123644422,
+          "near_boundary_error_p95": 10.23574362844591,
+          "near_boundary_error_p99": 38.501165770149726,
+          "unstable_cleared": 91,
+          "stable_flagged": 738,
+          "error_p95_by_power": [
+            14.088426514032307,
+            19.808487485843674,
+            15.95551613244533,
+            8.559537185845679,
+            2.413242440413241
+          ]
+        },
+        "rated, right u": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.17078189842221558,
+          "near_boundary_error_p95": 10.164716292224872,
+          "near_boundary_error_p99": 38.6061638848529,
+          "unstable_cleared": 66,
+          "stable_flagged": 765,
+          "error_p95_by_power": [
+            13.961369758400208,
+            18.93464271235675,
+            15.57272262833525,
+            8.714280939703878,
+            2.3042296657650425
+          ]
+        },
+        "right P, ref u": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.00027749949129152185,
+          "near_boundary_error_p95": 0.6336070763544849,
+          "near_boundary_error_p99": 2.3652049151759864,
+          "unstable_cleared": 56,
+          "stable_flagged": 17,
+          "error_p95_by_power": [
+            0.029816425926871365,
+            0.19569598761769513,
+            0.39481525996666217,
+            0.7916305072319619,
+            1.395011106470634
+          ]
+        },
+        "2 x 2": {
+          "scans": 4,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.00088841361979064,
+          "near_boundary_error_p95": 0.10652023960482877,
+          "near_boundary_error_p99": 0.6855461724283629,
+          "unstable_cleared": 0,
+          "stable_flagged": 9,
+          "error_p95_by_power": [
+            0.05905883172275006,
+            0.07115649988784818,
+            0.14370026442792563,
+            0.13928999090330646,
+            0.0769823456121633
+          ]
+        },
+        "3 x 3": {
+          "scans": 9,
+          "no_answer": 0,
+          "near_boundary_error_median": 5.7548894071945966e-05,
+          "near_boundary_error_p95": 0.013494381296683042,
+          "near_boundary_error_p99": 0.14888759637947555,
+          "unstable_cleared": 0,
+          "stable_flagged": 0,
+          "error_p95_by_power": [
+            0.028266901764648633,
+            0.020461598112924313,
+            0.014561494664417812,
+            0.009423639096949774,
+            0.007130395140079397
+          ]
+        },
+        "3 in power": {
+          "scans": 3,
+          "no_answer": 0,
+          "near_boundary_error_median": 5.430879728041127e-05,
+          "near_boundary_error_p95": 0.013519098613766187,
+          "near_boundary_error_p99": 0.14172961500292725,
+          "unstable_cleared": 0,
+          "stable_flagged": 0,
+          "error_p95_by_power": [
+            0.03203822270588064,
+            0.018718231688154476,
+            0.013303404376657111,
+            0.009479827789270019,
+            0.00726501608089953
+          ]
+        },
+        "exact": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 4.4920511754753534e-11,
+          "near_boundary_error_p95": 1.3475782867367056e-08,
+          "near_boundary_error_p99": 2.0591296798123043e-06,
+          "unstable_cleared": 0,
+          "stable_flagged": 0,
+          "error_p95_by_power": [
+            6.45069921922925e-08,
+            3.134170203367144e-08,
+            1.337911115228962e-08,
+            6.4150068812551795e-09,
+            6.030703980641645e-09
+          ]
+        }
+      }
+    },
+    "converter without PLL": {
+      "cases": 3770,
+      "unstable": 844,
+      "u_quantiles": [
+        0.7275630833789962,
+        0.9282047108071336,
+        0.9675379140955647,
+        0.9838000740285229,
+        0.9971718180450824
+      ],
+      "u_outside_the_scanned_range": 0.0023872679045092837,
+      "power_below_the_lowest_scan": 0.0,
+      "methods": {
+        "rated": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.8147382668952832,
+          "near_boundary_error_p95": 18.594009285190467,
+          "near_boundary_error_p99": 49.526100829084626,
+          "unstable_cleared": 69,
+          "stable_flagged": 572,
+          "error_p95_by_power": [
+            null,
+            34.584697393648895,
+            27.025513781315667,
+            13.340924475993036,
+            6.978136450446928
+          ]
+        },
+        "rated, right u": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 1.1690933440680962,
+          "near_boundary_error_p95": 26.249782164943003,
+          "near_boundary_error_p99": 56.81564242360041,
+          "unstable_cleared": 1,
+          "stable_flagged": 718,
+          "error_p95_by_power": [
+            null,
+            38.52525149301516,
+            35.761151456654886,
+            20.543901569323403,
+            5.445609116451515
+          ]
+        },
+        "right P, ref u": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.07206340342504497,
+          "near_boundary_error_p95": 4.514068202790491,
+          "near_boundary_error_p99": 9.593392302792294,
+          "unstable_cleared": 203,
+          "stable_flagged": 29,
+          "error_p95_by_power": [
+            null,
+            0.40986876567330893,
+            2.194380540146327,
+            5.552986622674594,
+            6.554495169308008
+          ]
+        },
+        "2 x 2": {
+          "scans": 4,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.09017921307650573,
+          "near_boundary_error_p95": 2.706531854342027,
+          "near_boundary_error_p99": 6.592298126275034,
+          "unstable_cleared": 49,
+          "stable_flagged": 70,
+          "error_p95_by_power": [
+            null,
+            1.1069814395433009,
+            1.757342407837395,
+            3.0515408982938848,
+            4.747751632095485
+          ]
+        },
+        "3 x 3": {
+          "scans": 9,
+          "no_answer": 0,
+          "near_boundary_error_median": 0.031584969181380096,
+          "near_boundary_error_p95": 1.2598569870004406,
+          "near_boundary_error_p99": 2.8949834014866873,
+          "unstable_cleared": 8,
+          "stable_flagged": 32,
+          "error_p95_by_power": [
+            null,
+            1.1137817439036442,
+            1.2110905056796684,
+            1.0861418063038992,
+            1.5015897141599026
+          ]
+        },
+        "3 in power": {
+          "scans": 3,
+          "no_answer": 0,
+          "near_boundary_error_median": 6.088687578115204e-05,
+          "near_boundary_error_p95": 0.02528907375847447,
+          "near_boundary_error_p99": 0.12982767457409886,
+          "unstable_cleared": 0,
+          "stable_flagged": 0,
+          "error_p95_by_power": [
+            null,
+            0.0321617424276727,
+            0.02527670405916505,
+            0.02086932921333276,
+            0.02368350530411658
+          ]
+        },
+        "exact": {
+          "scans": 1,
+          "no_answer": 0,
+          "near_boundary_error_median": 5.6195048614426923e-11,
+          "near_boundary_error_p95": 4.043245052098851e-08,
+          "near_boundary_error_p99": 7.954631426443309e-07,
+          "unstable_cleared": 0,
+          "stable_flagged": 0,
+          "error_p95_by_power": [
+            null,
+            1.3748770779642338e-07,
+            3.862282000888226e-08,
+            3.7962942789349086e-08,
+            1.777949941716981e-08
+          ]
+        }
+      }
+    }
+  },
+  "u_grid": {
+    "pll": [
+      -0.5,
+      -0.15,
+      0.2
+    ],
+    "follow": [
+      0.7,
+      0.85,
+      1.0
+    ]
+  },
+  "power_edges": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0001
+  ]
+}

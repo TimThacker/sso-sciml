@@ -126,7 +126,7 @@ Details in [docs/steps/19-rational-fit.md](docs/steps/19-rational-fit.md).
 
 - **The fit through the points holds only for exact scans.** Noise of one part in a million makes it flag most stable cases.
 - **A least-squares fit of the admittance, closed on the known network, tolerates noise.** In the sub-synchronous band the growth rate is uncertain by about 0.06 1/s per percent of scan error in the median.
-- **A margin sized to the scan error makes it safe.** With 1 % noise a margin of 0.5 1/s clears no unstable case and costs 4 to 8 points of cleared cases. With 5 % noise the margin has to be 5 1/s and about 40 % of cases are cleared.
+- **A margin sized to the scan error makes it safe.** With 1 % noise a margin of 0.5 1/s clears 1 unstable case in 4,397 and costs 4 to 8 points of cleared cases. With 5 % noise the margin has to be 5 1/s and 32 % to 42 % of cases are cleared.
 - **Accuracy matters more than density.** 126 points at 1 % decide more cases than 501 points at 5 %.
 - **Modes are sorted by frequency, so each gets its own margin.** The slow mode of the doubly-fed plant no longer sets the margin for the resonance. That slow mode is too weakly seen at the terminals to screen from a noisy scan; it has to be checked on the plant alone.
 
@@ -160,7 +160,7 @@ Details in [docs/steps/22-network-error.md](docs/steps/22-network-error.md).
 
 - **If each network number is known to within a bound, run the screen at the ends of the ranges.** Five quantities give 32 ends; the largest growth rate among them decides, with no margin.
 - **It clears no unstable case** on any plant type with the network known to within 5 %, 10 % or 20 %.
-- **It clears far more than a margin of the same safety.** Within 10 %: 56 % of doubly-fed cases, 97 % and 77 % of converters, against 10 %, 2 % and 3 % for the 10 1/s margin that is as safe.
+- **It clears far more than a margin of the same safety.** Within 10 %: 58 % of doubly-fed cases, 88 % and 70 % of converters, against 9 %, 46 % and 3 % for the margin that is as safe (10, 5 and 10 1/s).
 - **A margin is one number for every case; the ends give each case its own.** Most converter cases hardly depend on the network and a few depend on it strongly.
 
 Details in [docs/steps/23-network-corners.md](docs/steps/23-network-corners.md).
@@ -168,8 +168,8 @@ Details in [docs/steps/23-network-corners.md](docs/steps/23-network-corners.md).
 ### Scan noise and uncertain network data together
 
 - **The complete screen:** a 2 × 2 scan of the plant at about a hundred frequencies, a least-squares fit, and the fitted plant closed on the network at the 32 ends of the ranges of its data. The largest growth rate decides.
-- **With a scan good to 1 % and a network known to within 10 % it needs no margin** and clears no unstable case in 24,526. It clears 56 % of doubly-fed cases (72 % are stable in the band), 96.4 % of converters with a phase-locked loop (97.6 %) and 76.8 % of those without (82.7 %).
-- **Allowances do not stack.** The spread over the ends already covers 1 % of scan noise. With 5 % noise a margin of 1 1/s on top is enough.
+- **With a scan good to 1 % and a network known to within 10 % it needs no margin** and clears no unstable case in 24,659. It clears 58 % of doubly-fed cases (73 % are stable in the band), 87.8 % of converters with a phase-locked loop (91.1 %) and 70.6 % of those without (77.6 %).
+- **Allowances do not stack.** The spread over the ends already covers 1 % of scan noise. With 5 % noise a margin on top is needed: 1 1/s, or 5 1/s for a converter with a phase-locked loop.
 
 Details in [docs/steps/24-noise-and-ranges.md](docs/steps/24-noise-and-ranges.md).
 
@@ -189,8 +189,8 @@ Details in [docs/steps/25-outages.md](docs/steps/25-outages.md).
 ![Unstable cases cleared, by method](docs/results/network/fig65_operating_point.png)
 
 - **At a given power the converter's admittance depends on one more number:** its reactive current if it has a phase-locked loop, its terminal voltage if it has not. A scan retaken at that number after an outage is exact.
-- **With a phase-locked loop two scans 0.1 pu apart and a straight line are enough:** no wrong verdict in 43,942 outage cases, where reusing one scan clears 28 unstable ones.
-- **Without one, three scans and a parabola clear 2 unstable cases of 695,** against 147 for one scan.
+- **With a phase-locked loop two scans 0.1 pu apart and a straight line are enough:** no unstable case cleared in 41,033 outage cases and 1 stable case flagged, where reusing one scan clears 78 unstable ones.
+- **Without one, three scans and a parabola clear 1 unstable case of 753,** against 183 for one scan.
 - **The power flow after each outage supplies the one number.** Nothing else has to be recomputed on the plant side.
 
 Details in [docs/steps/26-operating-point.md](docs/steps/26-operating-point.md).
@@ -217,6 +217,27 @@ Details in [docs/steps/27-two-converters.md](docs/steps/27-two-converters.md).
 - **The delay also moves the modes below 58 Hz in a tail of cases.** The earlier counts of unstable cases with a phase-locked loop are low by about a quarter.
 
 Details in [docs/steps/28-delay-and-capacitor.md](docs/steps/28-delay-and-capacitor.md).
+
+### The converter screens with the delay in
+
+![The screens without and with the delay](docs/results/hf/fig72_restated.png)
+
+- **Every screen that was safe without a control delay is safe with it,** on 15,034 converter cases in and outside the training range.
+- **The loop-gain test that rests on passivity stops being useful:** it clears 23 % and 16 % of cases with the delay, where it cleared 68 % and 45 %. The other screens lose 2 to 5 points.
+- **The complete screen holds.** With a 1 % scan and the network within 10 % it clears 85.5 % and 69.1 % of converters with the delay and no unstable case.
+- **A stride through a Sobol dataset is a corner of it, not a sample.** Four earlier steps had taken every fourth row. They were rerun on a random quarter and their numbers here are the rerun ones.
+
+Details in [docs/steps/29-restated-with-delay.md](docs/steps/29-restated-with-delay.md).
+
+### A converter across loadings: three scans in power
+
+![Wrong verdicts by method](docs/results/network/fig75_power_axis.png)
+
+- **One scan at rated power gives the wrong verdict in 7 % of cases with a phase-locked loop and 17 % without,** in both directions and mostly at light load.
+- **The admittance is smooth in power.** Scans at 0.1, 0.55 and 1 pu and a parabola, at the reactive current or voltage of the case, give no wrong verdict in 15,034 cases.
+- **With a phase-locked loop nine scans taken once cover every operating point.** Without one the voltage axis needs scans closer than 0.1 pu or a scan at the voltage of the case.
+
+Details in [docs/steps/31-power-axis.md](docs/steps/31-power-axis.md).
 
 ## Setup
 
