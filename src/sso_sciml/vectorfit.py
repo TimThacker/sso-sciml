@@ -24,6 +24,7 @@ from scipy.linalg import eig
 from .physics.converter import WB
 
 J = np.array([[0.0, -1.0], [1.0, 0.0]])
+MODE_LIMIT = 1e7  # 1/s; see `closed_loop_modes`
 
 
 def _basis(s: np.ndarray, poles: np.ndarray) -> np.ndarray:
@@ -213,5 +214,11 @@ def closed_loop_modes(
     e[vt, ic] = e[vt, ip] = net["x_t"] / WB * eye
     f[vt, vt], f[vt, vm] = eye, -eye
     f[vt, ic] = f[vt, ip] = -(net["r_t"] * eye + net["x_t"] * J)
-    lam = eig(f, e, right=False)
-    return lam[np.isfinite(lam)]
+    # The set has algebraic equations, so some of its generalised eigenvalues are at
+    # infinity. In floating point those come back as alpha / beta with beta near zero:
+    # sometimes inf, sometimes a finite number around 1e18 with either sign. A mode of
+    # this model cannot be faster than MODE_LIMIT, and anything beyond it is dropped.
+    alpha, beta = eig(f, e, right=False, homogeneous_eigvals=True)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        lam = alpha / beta
+    return lam[np.isfinite(lam) & (np.abs(lam) < MODE_LIMIT)]

@@ -31,7 +31,7 @@ uv run pytest tests/test_multi.py
 
 All numbers are in `docs/results/multi/two_converters.json`.
 
-Every case has a steady state. 844 of 32,768 are unstable with a load that has a phase-locked loop (2.6 %) and 885 with one that has not (2.7 %).
+Every case has a steady state. 648 of 32,768 are unstable with a load that has a phase-locked loop (2.0 %) and 885 with one that has not (2.7 %).
 
 ### Alone against together
 
@@ -39,39 +39,39 @@ Every case has a steady state. 844 of 32,768 are unstable with a load that has a
 
 | What each does alone on the same network | Share of cases | Unstable together |
 |---|---|---|
-| Load with PLL: both stable | 97.2 % | 0.87 % |
-| source stable, load not | 1.5 % | 69 % |
-| source not, load stable | 1.3 % | 52 % |
-| Load without PLL: both stable | 95.6 % | 0.18 % |
-| source stable, load not | 3.1 % | 69 % |
-| source not, load stable | 1.2 % | 32 % |
+| Load with PLL: both stable | 97.5 % | 0.33 % |
+| source stable, load not | 1.4 % | 71 % |
+| source not, load stable | 1.0 % | 62 % |
+| Load without PLL: both stable | 96.1 % | 0.18 % |
+| source stable, load not | 3.0 % | 69 % |
+| source not, load stable | 0.9 % | 45 % |
 
-- **Two units that are each stable alone can be unstable together.** 276 cases with a load that has a phase-locked loop, 57 with one that has not. Each unit alone sees the whole network; together they share it, and the source has to supply the reactive current that holds the voltage for both.
-- **A unit that is unstable alone is often cured by the other.** A source unstable by itself is stable beside the load in 48 % and 68 % of cases. A load unstable by itself is stable beside the source in 31 %.
-- **For most pairs the other unit changes little.** Among pairs stable alone, the growth rate together differs from the worse of the two alone by less than 0.01 1/s in half the cases. The 5th and 95th percentiles are −0.14 and +0.05 1/s with a phase-locked loop on the load, −0.51 and +0.09 without.
+- **Two units that are each stable alone can be unstable together.** 104 cases with a load that has a phase-locked loop, 57 with one that has not. Each unit alone sees the whole network; together they share it, and the source has to supply the reactive current that holds the voltage for both.
+- **A unit that is unstable alone is often cured by the other.** A source unstable by itself is stable beside the load in 38 % and 54 % of cases. A load unstable by itself is stable beside the source in 28 % and 30 %.
+- **For most pairs the other unit changes little.** Among pairs stable alone, the growth rate together differs from the worse of the two alone by less than 0.01 1/s in half the cases. The 5th and 95th percentiles are −0.14 and +0.04 1/s with a phase-locked loop on the load, −0.51 and +0.09 without.
 
 ### The three shortcuts
 
-Unstable cases the shortcut calls stable, of 844 and 885, and stable cases it flags.
+Unstable cases the shortcut calls stable, of 648 and 885, and stable cases it flags.
 
 | Shortcut | Load with PLL | Load without PLL |
 |---|---|---|
-| Each stable alone | 276 (33 %), 362 flagged | 57 (6 %), 599 flagged |
-| Scans taken alone, added | 196 (23 %), 150 flagged | 31 (4 %), 177 flagged |
-| One converter with the net power | 330 (39 %), 850 flagged | 200 (23 %), 933 flagged |
+| Each stable alone | 104 (16 %), 260 flagged | 57 (6 %), 464 flagged |
+| Scans taken alone, added | 32 (5 %), 29 flagged | 31 (4 %), 176 flagged |
+| One converter with the net power | 159 (25 %), 813 flagged | 200 (23 %), 878 flagged |
 
 - **None of the three is safe.**
 - **Adding scans is right in principle and wrong in practice if the scans are taken alone.** The admittance of the bus is exactly the sum of the units' admittances at the operating point they have together. Scanned alone, the source is at a different reactive current: the difference has a median of 0.03 pu and a 95th percentile of 0.33 pu with a phase-locked loop on the load, 0.06 and 0.51 without. This is step 26 again: the admittance moves with the operating point.
-- **The net power of the bus is not a plant.** A single converter carrying the net power misses a quarter to two fifths of the unstable cases and flags more stable ones than any other shortcut.
+- **The net power of the bus is not a plant.** A single converter carrying the net power misses about a quarter of the unstable cases and flags more stable ones than any other shortcut.
 
 ### Net power and gross power
 
 ![Net and gross power](../results/multi/fig68_net_and_gross.png)
 
-Share unstable by the size of the net power of the bus: 1.7 %, 2.9 %, 4.7 % and 6.0 % in steps of 0.2 pu with a phase-locked loop on the load; 2.0 %, 2.8 %, 4.3 % and 6.2 % without. By the gross power, source plus load: 1.8 % to 3.4 %, and 1.9 % to 3.6 %.
+Share unstable by the size of the net power of the bus: 1.5 %, 2.1 %, 3.2 % and 4.0 % in steps of 0.2 pu with a phase-locked loop on the load; 2.0 %, 2.8 %, 4.3 % and 6.2 % without. By the gross power, source plus load: 1.5 % to 2.5 %, and 1.9 % to 3.6 %.
 
 - **Net power matters more than gross power.** At a given net power the share unstable hardly moves with the gross power. A source and a load do offset each other.
-- **They do not cancel.** With a net power below 0.1 pu, where the bus exchanges almost nothing with the network, 1.5 % and 2.0 % of cases are unstable, with a median gross power of 0.36 pu. A screen on net injection would pass all of them.
+- **They do not cancel.** With a net power below 0.1 pu, where the bus exchanges almost nothing with the network, 1.4 % and 2.0 % of cases are unstable, with a median gross power of 0.36 pu. A screen on net injection would pass all of them.
 
 ### Modes between the units
 
@@ -86,6 +86,8 @@ Two identical units at the same operating point have the modes of the one conver
 - **A second kind of mode appears with more than one unit.** The modes between units are invisible from the network side. A scan at the bus terminals would not show them; a scan of each unit would.
 
 ## Disagreements
+
+Correction made in step 28: the first version of this step counted a numerical artefact as a mode. The routine that closes a plant on the network returned, in about 0.7 % of cases, an eigenvalue at infinity as a finite number near 1e18, and this step took the largest real part without a bound. The routine is fixed and the study rerun. The family with a phase-locked loop on the load changed: 648 unstable pairs, not 844; 104 pairs stable alone and unstable together, not 276; the shortcuts miss 16 %, 5 % and 25 %, not 33 %, 23 % and 39 %. The family without one changed in the counts of stable cases flagged only. The conclusions stand. Steps 20 to 26 bounded the modes by frequency and were not affected.
 
 1. **The expectation was that source and load add their negative conductance and that gross power would rank the risk** (step 17: both show −P/V² at low frequency). It does not. Net power ranks it better. A likely reason, not tested: the two negative conductances sit on different axes and in different bands, and the reactive current that the weak-grid instability depends on follows the net flow.
 2. **The source regulates the voltage and the load does not.** That is one choice. With the load regulating, or both sharing, the reactive currents and the results would differ. Not tested.

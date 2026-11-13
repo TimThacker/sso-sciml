@@ -3,69 +3,69 @@
     "cases": 32768,
     "no_steady_state_together": 0,
     "solved": 32768,
-    "unstable_together": 844,
-    "unstable_share": 0.0257568359375,
-    "source_alone_unstable_or_none": 0.013397216796875,
-    "load_alone_unstable_or_none": 0.01519775390625,
+    "unstable_together": 648,
+    "unstable_share": 0.019775390625,
+    "source_alone_unstable_or_none": 0.0101318359375,
+    "load_alone_unstable_or_none": 0.01458740234375,
     "load_alone_no_steady_state": 0.0,
     "alone against together": {
       "source stable alone, load stable alone": {
-        "cases": 31838,
-        "share": 0.97161865234375,
-        "unstable_together": 0.00866888623657265
+        "cases": 31964,
+        "share": 0.9754638671875,
+        "unstable_together": 0.003253660367913903
       },
       "source stable alone, load not": {
-        "cases": 491,
-        "share": 0.014984130859375,
-        "unstable_together": 0.6904276985743381
+        "cases": 472,
+        "share": 0.014404296875,
+        "unstable_together": 0.7139830508474576
       },
       "source not, load stable alone": {
-        "cases": 432,
-        "share": 0.01318359375,
-        "unstable_together": 0.5185185185185185
+        "cases": 326,
+        "share": 0.00994873046875,
+        "unstable_together": 0.6196319018404908
       },
       "source not, load not": {
-        "cases": 7,
-        "share": 0.000213623046875,
-        "unstable_together": 0.7142857142857143
+        "cases": 6,
+        "share": 0.00018310546875,
+        "unstable_together": 0.8333333333333334
       }
     },
     "together_minus_the_worse_alone_quantiles": [
-      -0.13901212105556934,
-      -0.005326156561552997,
-      -0.0008798146324260347,
-      -2.8889732878178975e-05,
-      0.052762247338559914
+      -0.14323362397436232,
+      -0.005437899058457596,
+      -0.0009045767000921412,
+      -3.819978872798835e-05,
+      0.03719851156226213
     ],
     "the_other_unit_cures": {
-      "source unstable alone, stable with the load": 0.4783599088838269,
-      "load unstable alone, stable with the source": 0.3092369477911647,
+      "source unstable alone, stable with the load": 0.37650602409638556,
+      "load unstable alone, stable with the source": 0.28451882845188287,
       "load with no steady state alone, stable with the source": null
     },
     "shortcuts": {
       "each stable alone": {
-        "cleared": 0.97161865234375,
-        "unstable_cleared": 276,
-        "unstable_cleared_share": 0.32701421800947866,
-        "stable_flagged": 362
+        "cleared": 0.9754638671875,
+        "unstable_cleared": 104,
+        "unstable_cleared_share": 0.16049382716049382,
+        "stable_flagged": 260
       },
       "scans taken alone, added": {
-        "cleared": 0.97564697265625,
-        "unstable_cleared": 196,
-        "unstable_cleared_share": 0.23222748815165878,
-        "stable_flagged": 150
+        "cleared": 0.980316162109375,
+        "unstable_cleared": 32,
+        "unstable_cleared_share": 0.04938271604938271,
+        "stable_flagged": 29
       },
       "one converter with the net power": {
-        "cleared": 0.9583740234375,
-        "unstable_cleared": 330,
-        "unstable_cleared_share": 0.3909952606635071,
-        "stable_flagged": 850
+        "cleared": 0.96026611328125,
+        "unstable_cleared": 159,
+        "unstable_cleared_share": 0.24537037037037038,
+        "stable_flagged": 813
       }
     },
     "scans_added_error": {
-      "median": 0.00038066961616944894,
-      "p95": 0.12413704194954309,
-      "p99": 0.7905933539766122
+      "median": 0.00038111077371372204,
+      "p95": 0.1084021972017728,
+      "p99": 0.5843161492629215
     },
     "reactive_current_shift_of_the_source": [
       0.030837385517275294,
@@ -77,25 +77,25 @@
         "lo": 0.0,
         "hi": 0.2,
         "cases": 17194,
-        "unstable": 0.016750029079911598
+        "unstable": 0.014888914737699198
       },
       {
         "lo": 0.2,
         "hi": 0.4,
         "cases": 10231,
-        "unstable": 0.028931678232821816
+        "unstable": 0.02111230573746457
       },
       {
         "lo": 0.4,
         "hi": 0.6000000000000001,
         "cases": 4571,
-        "unstable": 0.04681688908335156
+        "unstable": 0.03172172391161671
       },
       {
         "lo": 0.6000000000000001,
         "hi": 0.8,
         "cases": 772,
-        "unstable": 0.05958549222797927
+        "unstable": 0.04015544041450777
       },
       {
         "lo": 0.8,
@@ -109,72 +109,72 @@
         "lo": 0.0,
         "hi": 0.2,
         "cases": 3056,
-        "unstable": 0.01767015706806283
+        "unstable": 0.01668848167539267
       },
       {
         "lo": 0.2,
         "hi": 0.4,
         "cases": 8266,
-        "unstable": 0.01899346721509799
+        "unstable": 0.015364142269537867
       },
       {
         "lo": 0.4,
         "hi": 0.6000000000000001,
         "cases": 10142,
-        "unstable": 0.0258331690001972
+        "unstable": 0.020114375862748966
       },
       {
         "lo": 0.6000000000000001,
         "hi": 0.8,
         "cases": 8286,
-        "unstable": 0.03222302679217958
+        "unstable": 0.02305092927830075
       },
       {
         "lo": 0.8,
         "hi": 1.0,
         "cases": 3018,
-        "unstable": 0.03445990722332671
+        "unstable": 0.02485089463220676
       }
     ],
     "net power below 0.1 pu": {
       "cases": 9442,
-      "unstable": 0.014615547553484431,
+      "unstable": 0.013874179199322177,
       "gross_power_median": 0.3602694379700499
     },
     "unstable_grid_gross_by_net": [
       [
-        0.01767015706806283,
+        0.01668848167539267,
         null,
         null,
         null,
         null
       ],
       [
-        0.015334252239834596,
-        0.02761982128350934,
+        0.013439007580978636,
+        0.019902518277822908,
         null,
         null,
         null
       ],
       [
-        0.01810436634717785,
-        0.027551020408163266,
-        0.04518664047151277,
+        0.016187433439829604,
+        0.02040816326530612,
+        0.03143418467583497,
         null,
         null
       ],
       [
-        0.017153284671532848,
-        0.02762237762237762,
-        0.052434456928838954,
-        0.05272727272727273,
+        0.014598540145985401,
+        0.02027972027972028,
+        0.033707865168539325,
+        0.038181818181818185,
         null
       ],
       [
-        0.014460511679644048,
-        0.041456016177957536,
-        0.03634361233480176,
-        0.07657657657657657,
+        0.012235817575083427,
+        0.029322548028311426,
+        0.02753303964757709,
+        0.04504504504504504,
         null
       ]
     ]
@@ -185,61 +185,61 @@
     "solved": 32768,
     "unstable_together": 885,
     "unstable_share": 0.027008056640625,
-    "source_alone_unstable_or_none": 0.012786865234375,
-    "load_alone_unstable_or_none": 0.031158447265625,
+    "source_alone_unstable_or_none": 0.008941650390625,
+    "load_alone_unstable_or_none": 0.03070068359375,
     "load_alone_no_steady_state": 0.000213623046875,
     "alone against together": {
       "source stable alone, load stable alone": {
-        "cases": 31341,
-        "share": 0.956451416015625,
-        "unstable_together": 0.0018187039341437733
+        "cases": 31476,
+        "share": 0.9605712890625,
+        "unstable_together": 0.0018109035455585209
       },
       "source stable alone, load not": {
-        "cases": 1008,
-        "share": 0.03076171875,
-        "unstable_together": 0.6865079365079365
+        "cases": 999,
+        "share": 0.030487060546875,
+        "unstable_together": 0.6946946946946947
       },
       "source not, load stable alone": {
-        "cases": 406,
-        "share": 0.01239013671875,
-        "unstable_together": 0.31773399014778325
+        "cases": 286,
+        "share": 0.00872802734375,
+        "unstable_together": 0.45104895104895104
       },
       "source not, load not": {
-        "cases": 13,
-        "share": 0.000396728515625,
-        "unstable_together": 0.5384615384615384
+        "cases": 7,
+        "share": 0.000213623046875,
+        "unstable_together": 0.7142857142857143
       }
     },
     "together_minus_the_worse_alone_quantiles": [
-      -0.5121939994271898,
-      -0.007609698416621846,
-      -0.0004992634895426562,
-      0.002333058508215302,
-      0.08593576516870005
+      -0.5139333097137403,
+      -0.0076864478123213065,
+      -0.0005037486348886677,
+      0.002341275733968917,
+      0.08607970984444735
     ],
     "the_other_unit_cures": {
-      "source unstable alone, stable with the load": 0.6754176610978521,
-      "load unstable alone, stable with the source": 0.3126232741617357,
+      "source unstable alone, stable with the load": 0.5426621160409556,
+      "load unstable alone, stable with the source": 0.3023023023023023,
       "load with no steady state alone, stable with the source": 0.7142857142857143
     },
     "shortcuts": {
       "each stable alone": {
-        "cleared": 0.956451416015625,
+        "cleared": 0.9605712890625,
         "unstable_cleared": 57,
         "unstable_cleared_share": 0.06440677966101695,
-        "stable_flagged": 599
+        "stable_flagged": 464
       },
       "scans taken alone, added": {
-        "cleared": 0.968536376953125,
+        "cleared": 0.96856689453125,
         "unstable_cleared": 31,
         "unstable_cleared_share": 0.03502824858757062,
-        "stable_flagged": 177
+        "stable_flagged": 176
       },
       "one converter with the net power": {
-        "cleared": 0.95062255859375,
+        "cleared": 0.952301025390625,
         "unstable_cleared": 200,
         "unstable_cleared_share": 0.22598870056497175,
-        "stable_flagged": 933
+        "stable_flagged": 878
       }
     },
     "scans_added_error": {
