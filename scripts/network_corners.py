@@ -1,6 +1,6 @@
 """Screening at the unfavourable end of each network range, against a wider margin.
 
-    uv run scripts/network_corners.py            # every 4th case, about 24,500 cases
+    uv run scripts/network_corners.py            # a random quarter, 24,659 cases
     uv run scripts/network_corners.py --small    # every 64th, for a quick look
     uv run scripts/network_corners.py --reuse    # numbers and figures from the saved pass
 
@@ -25,6 +25,7 @@ import numpy as np
 
 from sso_sciml import neterror, report
 from sso_sciml.data import c1, t1
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "neterror-v1"
@@ -128,7 +129,8 @@ def main() -> None:
     if not args.reuse:
         for kind in PLANTS:
             for name in sets_of(kind):
-                theta = thetas(kind, name)[:: 64 if args.small else 4]
+                theta = thetas(kind, name)
+                theta = theta[part(len(theta), 64 if args.small else 4)]
                 out = neterror.corner_cases(kind, theta, args.processes)
                 np.savez_compressed(DATA / f"corner_{kind}_{name}.npz", theta=theta, out=out)
                 print("done", kind, name, len(theta))

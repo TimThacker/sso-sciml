@@ -1,6 +1,6 @@
 """Fit noisy scans of both plant types by least squares and sort the modes by frequency.
 
-    uv run scripts/phase3_noise_fits.py            # every 4th case, about 25,000 cases
+    uv run scripts/phase3_noise_fits.py            # a random quarter, 24,659 cases
     uv run scripts/phase3_noise_fits.py --small    # every 64th, for a quick look
 
 Needs data/t1-v2/scan_<set>.npz from scripts/phase3_scan_t1.py and dataset C1. Writes
@@ -18,6 +18,7 @@ import numpy as np
 
 from sso_sciml import scanfit
 from sso_sciml.data import c1, t1
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "noise-v1"
@@ -45,7 +46,7 @@ def main() -> None:
                 theta = np.load(ROOT / "data" / c1.VERSION / f"{family}_{split}.npz")["theta"]
                 jobs.append((family, split, theta))
     for kind, name, theta in jobs:
-        theta = theta[::step]
+        theta = theta[part(len(theta), step)]
         t0 = time.perf_counter()
         out = scanfit.cases(kind, theta, args.processes)
         np.savez_compressed(DATA / f"{kind}_{name}.npz", theta=theta, out=out)

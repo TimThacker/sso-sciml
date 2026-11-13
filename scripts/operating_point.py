@@ -1,6 +1,6 @@
 """How few scans cover the operating points a converter visits after an outage.
 
-    uv run scripts/operating_point.py            # every 4th converter case, 15,000 cases
+    uv run scripts/operating_point.py            # a random quarter of the converter cases, 15,034
     uv run scripts/operating_point.py --small    # every 64th, for a quick look
     uv run scripts/operating_point.py --reuse    # numbers and figures from the saved pass
 
@@ -24,6 +24,7 @@ import numpy as np
 from sso_sciml import opscan, report
 from sso_sciml.data import c1
 from sso_sciml.outage import OUTAGES
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "opscan-v1"
@@ -124,7 +125,7 @@ def main() -> None:
         for kind in PLANTS:
             for name in sets_of(kind):
                 theta = np.load(ROOT / "data" / c1.VERSION / f"{kind}_{name}.npz")["theta"]
-                theta = theta[:: 64 if args.small else 4]
+                theta = theta[part(len(theta), 64 if args.small else 4)]
                 out = opscan.cases(kind, theta, args.processes)
                 np.savez_compressed(DATA / f"{kind}_{name}.npz", theta=theta, out=out)
                 print("done", kind, name, len(theta))

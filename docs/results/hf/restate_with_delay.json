@@ -1,0 +1,652 @@
+{
+  "noise": 0.01,
+  "bound": 0.1,
+  "plants": {
+    "converter with PLL": {
+      "in range": {
+        "cases": 8192,
+        "variants": {
+          "base": {
+            "unstable": 480,
+            "unstable_share": 0.05859375,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 8192,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.7547607421875,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.80173755186722
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.8609619140625,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.914548755186722
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.94140625,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.95654296875,
+                "unstable_cleared": 192,
+                "stable_cleared": 0.9911825726141079
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.94140625,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.9407958984375,
+                "unstable_cleared": 24,
+                "stable_cleared": 0.9962396265560166
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.91259765625,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9693983402489627
+              }
+            }
+          },
+          "delay": {
+            "unstable": 600,
+            "unstable_share": 0.0732421875,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 8192,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.248291015625,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.267913593256059
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.824462890625,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8896206533192834
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.9267578125,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.9444580078125,
+                "unstable_cleared": 203,
+                "stable_cleared": 0.9923603793466808
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.9266357421875,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.999868282402529
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.9254150390625,
+                "unstable_cleared": 33,
+                "stable_cleared": 0.994204425711275
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.8951416015625,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9658851422550052
+              }
+            }
+          }
+        },
+        "verdict": {
+          "stable_to_unstable": 127,
+          "unstable_to_stable": 7
+        },
+        "growth_shift_near_boundary": [
+          -0.005816737345061251,
+          -0.0006558310657955868,
+          0.0003770651916832346,
+          0.05727104028047786,
+          1.330547610552985
+        ],
+        "delay_ms_quartiles": [
+          0.15634989057499385,
+          0.28707802889514555,
+          0.5219327616203281
+        ]
+      },
+      "outside": {
+        "cases": 3072,
+        "variants": {
+          "base": {
+            "unstable": 517,
+            "unstable_share": 0.16829427083333334,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 3072,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.4729817708333333,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.5686888454011741
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.6715494791666666,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8074363992172211
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.8317057291666666,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.908203125,
+                "unstable_cleared": 269,
+                "stable_cleared": 0.986692759295499
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.8317057291666666,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.8291015625,
+                "unstable_cleared": 13,
+                "stable_cleared": 0.9917808219178083
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.7835286458333334,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9420743639921723
+              }
+            }
+          },
+          "delay": {
+            "unstable": 621,
+            "unstable_share": 0.2021484375,
+            "plant_alone_unstable": 1,
+            "count_agrees_with_modes": 3072,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.17154947916666666,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.2150142798857609
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.6044921875,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.7576499388004896
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.7975260416666666,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9995920032639739
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.8720703125,
+                "unstable_cleared": 285,
+                "stable_cleared": 0.9767441860465116
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.7975260416666666,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9995920032639739
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.7952473958333334,
+                "unstable_cleared": 24,
+                "stable_cleared": 0.9869441044471644
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.7470703125,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9363525091799265
+              }
+            }
+          }
+        },
+        "verdict": {
+          "stable_to_unstable": 112,
+          "unstable_to_stable": 8
+        },
+        "growth_shift_near_boundary": [
+          -0.01211204005027233,
+          -0.0007900094285424597,
+          0.0008802182190690289,
+          0.14608929685737632,
+          5.242093093568386
+        ],
+        "delay_ms_quartiles": [
+          0.15372728695172147,
+          0.281202644611211,
+          0.514625460215966
+        ]
+      },
+      "all": {
+        "cases": 11264,
+        "variants": {
+          "base": {
+            "unstable": 997,
+            "unstable_share": 0.08851207386363637,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 11264,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.6779119318181818,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.7437420862958994
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.8093039772727273,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8878932502191488
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.9114879261363636,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.943359375,
+                "unstable_cleared": 461,
+                "stable_cleared": 0.9900652576215058
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.9114879261363636,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.9103338068181818,
+                "unstable_cleared": 37,
+                "stable_cleared": 0.9951300282458362
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.8773970170454546,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9625986169280218
+              }
+            }
+          },
+          "delay": {
+            "unstable": 1221,
+            "unstable_share": 0.1083984375,
+            "plant_alone_unstable": 1,
+            "count_agrees_with_modes": 11264,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.22736150568181818,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.2550034850144379
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.7644708806818182,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8574131235686547
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.8915127840909091,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9999004281589167
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.9247159090909091,
+                "unstable_cleared": 488,
+                "stable_cleared": 0.9885492382754157
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.8914240056818182,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9998008563178333
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.8899147727272727,
+                "unstable_cleared": 57,
+                "stable_cleared": 0.992432540077666
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.8547585227272727,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9586776859504132
+              }
+            }
+          }
+        },
+        "verdict": {
+          "stable_to_unstable": 239,
+          "unstable_to_stable": 15
+        },
+        "growth_shift_near_boundary": [
+          -0.00711059309528137,
+          -0.0006870194811059438,
+          0.00046322984113800203,
+          0.07291243489784488,
+          2.0935719904046945
+        ],
+        "delay_ms_quartiles": [
+          0.15546953316335513,
+          0.28527135418380556,
+          0.5198567206559609
+        ]
+      }
+    },
+    "converter without PLL": {
+      "in range": {
+        "cases": 2012,
+        "variants": {
+          "base": {
+            "unstable": 259,
+            "unstable_share": 0.12872763419483102,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 2012,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.577037773359841,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.6622932116371933
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.7335984095427436,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8419851682829436
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.871272365805169,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.9751491053677932,
+                "unstable_cleared": 210,
+                "stable_cleared": 0.9994295493439818
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.871272365805169,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.8717693836978131,
+                "unstable_cleared": 14,
+                "stable_cleared": 0.9925841414717627
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.8265407554671969,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9486594409583571
+              }
+            }
+          },
+          "delay": {
+            "unstable": 269,
+            "unstable_share": 0.13369781312127235,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 2012,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.19284294234592445,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.22260470453241538
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.7166998011928429,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8273092369477911
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.8663021868787276,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.9676938369781312,
+                "unstable_cleared": 211,
+                "stable_cleared": 0.9959839357429718
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.8653081510934394,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9988525530694206
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.8638170974155069,
+                "unstable_cleared": 10,
+                "stable_cleared": 0.9913941480206541
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.8190854870775348,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9454962707974757
+              }
+            }
+          }
+        },
+        "verdict": {
+          "stable_to_unstable": 10,
+          "unstable_to_stable": 0
+        },
+        "growth_shift_near_boundary": [
+          -0.0035008540532865057,
+          3.0703336721948915e-05,
+          0.0037435647103691017,
+          0.0624708915902559,
+          0.4849229633838007
+        ],
+        "delay_ms_quartiles": [
+          0.15839592821728526,
+          0.28154864433008314,
+          0.516992471748922
+        ]
+      },
+      "outside": {
+        "cases": 1758,
+        "variants": {
+          "base": {
+            "unstable": 585,
+            "unstable_share": 0.33276450511945393,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 1758,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.2974971558589306,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.4458653026427962
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.4539249146757679,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.680306905370844
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.6672354948805461,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.8868031854379977,
+                "unstable_cleared": 406,
+                "stable_cleared": 0.9829497016197783
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.6672354948805461,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.676905574516496,
+                "unstable_cleared": 29,
+                "stable_cleared": 0.989769820971867
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.571103526734926,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.855924978687127
+              }
+            }
+          },
+          "delay": {
+            "unstable": 625,
+            "unstable_share": 0.35551763367463024,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 1756,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.11433447098976109,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.17740511915269197
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.4050056882821388,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.6284201235657546
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.643344709897611,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9982347749338041
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.8646188850967008,
+                "unstable_cleared": 420,
+                "stable_cleared": 0.970873786407767
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.6427758816837316,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9973521624007061
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.6484641638225256,
+                "unstable_cleared": 27,
+                "stable_cleared": 0.9823477493380406
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.5437997724687145,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.8437775816416593
+              }
+            }
+          }
+        },
+        "verdict": {
+          "stable_to_unstable": 40,
+          "unstable_to_stable": 0
+        },
+        "growth_shift_near_boundary": [
+          -0.005212625617254885,
+          -7.451083596787811e-07,
+          0.010685943944615361,
+          0.15826607378313984,
+          3.0513537475407846
+        ],
+        "delay_ms_quartiles": [
+          0.15789405918210833,
+          0.2755996737209473,
+          0.5236647502882541
+        ]
+      },
+      "all": {
+        "cases": 3770,
+        "variants": {
+          "base": {
+            "unstable": 844,
+            "unstable_share": 0.22387267904509284,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 3770,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.446684350132626,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.5755297334244702
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.6031830238726791,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.7771701982228298
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.7761273209549071,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.9339522546419098,
+                "unstable_cleared": 616,
+                "stable_cleared": 0.992822966507177
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.7761273209549071,
+                "unstable_cleared": 0,
+                "stable_cleared": 1.0
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.7809018567639258,
+                "unstable_cleared": 43,
+                "stable_cleared": 0.991455912508544
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.7074270557029178,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9114832535885168
+              }
+            }
+          },
+          "delay": {
+            "unstable": 894,
+            "unstable_share": 0.23713527851458885,
+            "plant_alone_unstable": 0,
+            "count_agrees_with_modes": 3768,
+            "screens": {
+              "loop gain below 1 where not passive (step 17)": {
+                "cleared": 0.15623342175066313,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.20479833101529904
+              },
+              "gain margin, guard 30 deg (step 18)": {
+                "cleared": 0.5713527851458886,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.7489568845618915
+              },
+              "Nyquist count, 4,001 points (step 18)": {
+                "cleared": 0.7623342175066313,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9993045897079277
+              },
+              "positive sequence only, Nyquist count": {
+                "cleared": 0.9196286472148542,
+                "unstable_cleared": 631,
+                "stable_cleared": 0.9860917941585535
+              },
+              "rational fit, 251 clean points (step 19)": {
+                "cleared": 0.7615384615384615,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9982614742698191
+              },
+              "1 % scan, network as given within 10 %": {
+                "cleared": 0.763395225464191,
+                "unstable_cleared": 37,
+                "stable_cleared": 0.9878303198887344
+              },
+              "1 % scan, 32 ends of the network ranges (step 24)": {
+                "cleared": 0.6907161803713527,
+                "unstable_cleared": 0,
+                "stable_cleared": 0.9054242002781642
+              }
+            }
+          }
+        },
+        "verdict": {
+          "stable_to_unstable": 50,
+          "unstable_to_stable": 0
+        },
+        "growth_shift_near_boundary": [
+          -0.004381943259336473,
+          2.180743763791071e-06,
+          0.005802966814469457,
+          0.08902467908196143,
+          1.3263153844847657
+        ],
+        "delay_ms_quartiles": [
+          0.15816747792029429,
+          0.2785527857342549,
+          0.51926681909482
+        ]
+      }
+    }
+  }
+}

@@ -24,6 +24,7 @@ import numpy as np
 
 from sso_sciml import hf, report
 from sso_sciml.data import c1
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "hf-v1"
@@ -150,7 +151,7 @@ def main() -> None:
     if not args.reuse:
         for kind in PLANTS:
             theta = np.load(ROOT / "data" / c1.VERSION / f"{kind}_in_distribution.npz")["theta"]
-            theta = theta[:: 16 if args.small else 1]
+            theta = theta[part(len(theta), 16 if args.small else 1)]
             np.savez_compressed(DATA / f"{kind}.npz", theta=theta,
                                 out=hf.cases(kind, theta, args.processes))  # fmt: skip
             print("done", kind, len(theta))

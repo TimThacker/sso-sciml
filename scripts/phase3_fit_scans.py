@@ -20,6 +20,7 @@ import numpy as np
 
 from sso_sciml import admittance as adm
 from sso_sciml.data import c1, t1
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs" / "results" / "scan"
@@ -36,7 +37,8 @@ def main() -> None:
 
     for name in ("in_distribution", "boundary", *list(t1.SPLITS)[1:]):
         folder = ROOT / "data" / t1.VERSION
-        rows = np.load(folder / f"scan_{name}.npz")["rows"][::step]
+        rows = np.load(folder / f"scan_{name}.npz")["rows"]
+        rows = rows[part(len(rows), step)]
         theta = np.load(folder / f"{name}.npz")["theta"][rows]
         t0 = time.perf_counter()
         out = t1.fits(theta, args.processes)
@@ -49,7 +51,7 @@ def main() -> None:
             if family == "follow" and split == "fast_pll":
                 continue
             folder = ROOT / "data" / c1.VERSION
-            rows = np.arange(len(np.load(folder / f"{family}_{split}.npz")["theta"]))[::step]
+            rows = part(len(np.load(folder / f"{family}_{split}.npz")["theta"]), step)
             theta = np.load(folder / f"{family}_{split}.npz")["theta"][rows]
             t0 = time.perf_counter()
             out = c1.fits(theta, family, args.processes)

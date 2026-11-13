@@ -1,5 +1,7 @@
 # 26: The converter's admittance as a function of its operating point
 
+> **Restated 2026-11-13 (step 29).** The first pass behind this step took every fourth row of each set, which in a Sobol sequence is a corner of the set and not a sample of it. The pass was rerun on a random quarter (`src/sso_sciml/sampling.py`) and every number below is from the rerun. What changed is listed in `29-restated-with-delay.md`.
+
 Date: 2026-11-12 · Plan phase: the standing screening question
 
 ## Goal
@@ -9,13 +11,13 @@ Step 25 found that one scan of the doubly-fed plant serves every outage, and one
 ## What was done
 
 - `src/sso_sciml/opscan.py`: the converter scanned at a chosen operating point, and the scan after an outage built from scans at other points in five ways. Each is closed on the network after the outage and compared with the modes of the full model there.
-- `scripts/operating_point.py`: the pass over every fourth converter case with the four outages of step 25, the results file and two figures.
+- `scripts/operating_point.py`: the pass over a random quarter of the converter cases with the four outages of step 25, the results file and two figures.
 - `tests/test_opscan.py`: 5 tests.
 
 ## Commands
 
 ```powershell
-uv run scripts/operating_point.py            # 14,896 converter cases, about 20 minutes
+uv run scripts/operating_point.py            # 15,034 converter cases, about 20 minutes
 uv run scripts/operating_point.py --reuse    # numbers and figures from the saved pass
 uv run pytest tests/test_opscan.py
 ```
@@ -23,7 +25,7 @@ uv run pytest tests/test_opscan.py
 ## Setup of the study
 
 - **The operating point is one number.** At a given power, the admittance of a converter with a phase-locked loop depends on its reactive current, because its terminal voltage is held at 1 pu. Without a phase-locked loop it depends on the terminal voltage, which the network sets. Call the number u.
-- **Cases:** every fourth converter case, in and outside the training range together: 11,264 with a phase-locked loop and 3,632 without. Those stable before the outage and with a steady state after it give 43,942 and 11,846 outage cases, 730 and 695 of them unstable.
+- **Cases:** a quarter of the converter cases, drawn at random, in and outside the training range together: 11,264 with a phase-locked loop and 3,770 without. Those stable before the outage and with a steady state after it give 41,033 and 11,505 outage cases, 1,902 and 753 of them unstable.
 - **Ways to build the scan after the outage:**
 
 | Name | Scans | How |
@@ -43,7 +45,7 @@ All numbers are in `docs/results/network/operating_point.json`.
 
 ### One number is enough
 
-A scan taken at the reactive current, or the voltage, that the converter has after the outage gives the growth rate there to better than 10⁻⁶ 1/s at the 95th percentile and no wrong verdict in 55,788 outage cases. So at a given power the admittance is a function of that one number and nothing else about the network.
+A scan taken at the reactive current, or the voltage, that the converter has after the outage gives the growth rate there to better than 10⁻⁶ 1/s at the 95th percentile and no wrong verdict in 52,538 outage cases. So at a given power the admittance is a function of that one number and nothing else about the network.
 
 ### How far the operating point moves
 
@@ -51,10 +53,10 @@ Change of u when the parallel path is lost: median, 95th percentile and largest.
 
 | | Median | 95th percentile | Largest |
 |---|---|---|---|
-| With a phase-locked loop (reactive current, pu) | 0.003 | 0.033 | 0.43 |
-| Without (terminal voltage, pu) | 0.005 | 0.059 | 0.27 |
+| With a phase-locked loop (reactive current, pu) | 0.006 | 0.076 | 0.56 |
+| Without (terminal voltage, pu) | 0.006 | 0.073 | 0.27 |
 
-Most outages barely move the operating point. A few move it a long way, and those are the weak cases where it matters.
+Half the outages barely move the operating point. One in twenty moves it by more than 0.07 pu.
 
 ### What each way gets
 
@@ -62,22 +64,22 @@ Most outages barely move the operating point. A few move it a long way, and thos
 
 Over the four outages: unstable cases cleared, and all wrong verdicts.
 
-| | With PLL: unstable cleared of 730 | wrong verdicts | Without PLL: unstable cleared of 695 | wrong verdicts |
+| | With PLL: unstable cleared of 1,902 | wrong verdicts | Without PLL: unstable cleared of 753 | wrong verdicts |
 |---|---|---|---|---|
-| The scan before the outage | 28 | 33 | 147 | 147 |
-| Two local scans | 0 | 0 | 8 | 18 |
-| Three local scans | 0 | 0 | 2 | 5 |
-| Library of 3 | 0 | 0 | 26 | 60 |
-| Library of 5 | 0 | 1 | 14 | 23 |
+| The scan before the outage | 78 | 87 | 183 | 194 |
+| Two local scans | 0 | 1 | 7 | 30 |
+| Three local scans | 0 | 0 | 1 | 3 |
+| Library of 3 | 2 | 2 | 29 | 79 |
+| Library of 5 | 0 | 1 | 10 | 19 |
 | A new scan after each outage | 0 | 0 | 0 | 0 |
 
-- **With a phase-locked loop two scans are enough.** A second scan 0.1 pu of reactive current away, and a straight line, clears no unstable case in 43,942 and gives no wrong verdict. Any of the other ways does as well.
-- **Without a phase-locked loop three local scans come close and do not close it.** They clear 2 unstable cases of 695, against 147 for the one scan. The library of 5 is worse than three local scans with more scans, because its points are 0.09 pu apart everywhere and the local ones are where the case is.
-- **Error of the growth rate after losing the parallel path, 95th percentile:** with a phase-locked loop 0.065 1/s for one scan, 0.002 for two and 0.0004 for three. Without one 1.4 1/s, 0.20 and 0.06.
+- **With a phase-locked loop two scans are enough.** A second scan 0.1 pu of reactive current away, and a straight line, clears no unstable case in 41,033 and flags 1 stable case. Three local scans give no wrong verdict. The library of 3 clears 2 unstable cases.
+- **Without a phase-locked loop three local scans come close and do not close it.** They clear 1 unstable case of 753, against 183 for the one scan. The library of 5 is worse than three local scans with more scans, because its points are 0.09 pu apart everywhere and the local ones are where the case is.
+- **Error of the growth rate after losing the parallel path, 95th percentile:** with a phase-locked loop 0.33 1/s for one scan, 0.004 for two and 0.0008 for three. Without one 2.0 1/s, 0.21 and 0.06.
 
 ![Error against how far the operating point moved](../results/network/fig66_error_by_move.png)
 
-- **The error follows the distance moved.** With a phase-locked loop the one scan is off by 0.02 1/s (95th percentile) when the reactive current moves by less than 0.01 pu, by 0.45 between 0.02 and 0.05, and by 4.3 between 0.1 and 0.2. The parabola stays below 0.001 throughout. Without a phase-locked loop the same three figures are 0.15, 2.0 and 8.1 for the one scan and 0.04, 0.06 and 0.24 for the parabola.
+- **The error follows the distance moved.** With a phase-locked loop the one scan is off by 0.04 1/s (95th percentile) when the reactive current moves by less than 0.01 pu, by 0.57 between 0.02 and 0.05, and by 3.0 between 0.1 and 0.2. The parabola stays below 0.002 throughout. Without a phase-locked loop the same three figures are 0.16, 2.2 and 8.5 for the one scan and 0.02, 0.07 and 0.31 for the parabola.
 
 ## What this says about screening
 
@@ -88,7 +90,7 @@ Over the four outages: unstable cases cleared, and all wrong verdicts.
 
 ## Disagreements
 
-1. **Three local scans still clear 2 unstable cases without a phase-locked loop.** In one the terminal voltage moves by 0.12 pu, outside the span of the three scans. The other moves by 0.01 pu and grows at 0.02 1/s, inside the error of the parabola there. A margin of 0.2 1/s would cover both. Not adopted, as it was not tested on its own.
+1. **Three local scans still clear 1 unstable case without a phase-locked loop,** after the loss of the parallel path. The case was not looked at on its own.
 2. **The library was expected to beat local scans, being independent of the case.** It does not at 3 or 5 points. Its spacing is set by the widest case.
 3. **Power is fixed in each case.** The admittance also depends on power (step 17: the negative conductance is the power over the voltage squared). A plant that changes its output after an outage needs scans along that axis too.
 4. **A new scan after the outage is exact near the boundary and not everywhere.** For a few well-damped modes far from the axis the growth rate read from the scan is off by a few hundredths of 1/s. No verdict is affected.

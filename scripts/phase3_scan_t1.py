@@ -18,6 +18,7 @@ from pathlib import Path
 import numpy as np
 
 from sso_sciml.data import t1
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / t1.VERSION
@@ -40,7 +41,7 @@ def main() -> None:
             keep &= z["fold"] == 2
         rows = np.where(keep)[0]
         if args.small:
-            rows = rows[::16]
+            rows = rows[part(len(rows), 16)]
         t0 = time.perf_counter()
         out = t1.scans(z["theta"][rows], args.processes)
         ok = out[:, col["solved"]] > 0

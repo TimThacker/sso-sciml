@@ -41,61 +41,61 @@
   "every": 4,
   "sets": {
     "t1_in_distribution": {
-      "cases": 3277,
-      "wall_s": 402.9271415000112
+      "cases": 3276,
+      "wall_s": 428.0511447000026
     },
     "t1_boundary": {
-      "cases": 1233,
-      "wall_s": 115.955372299999
+      "cases": 1232,
+      "wall_s": 112.86254079997889
     },
     "t1_high_compensation": {
       "cases": 1024,
-      "wall_s": 121.87437579999096
+      "wall_s": 115.47306049999315
     },
     "t1_low_speed": {
       "cases": 1024,
-      "wall_s": 161.95562849999988
+      "wall_s": 153.98550110001815
     },
     "t1_fast_current_loop": {
-      "cases": 1024,
-      "wall_s": 107.45017650000227
+      "cases": 1023,
+      "wall_s": 105.03279759999714
     },
     "t1_weak_parallel_path": {
-      "cases": 1024,
-      "wall_s": 76.34151870000642
+      "cases": 1023,
+      "wall_s": 79.80908530001761
     },
     "t1_other_machine": {
-      "cases": 1024,
-      "wall_s": 126.03348790000018
+      "cases": 1023,
+      "wall_s": 135.38938040001085
     },
     "pll_in_distribution": {
       "cases": 8192,
-      "wall_s": 618.2580403000029
+      "wall_s": 673.5142796
     },
     "pll_fast_pll": {
       "cases": 1024,
-      "wall_s": 72.6124514999974
+      "wall_s": 87.33937329999753
     },
     "pll_fast_dc_loop": {
       "cases": 1024,
-      "wall_s": 74.83332559998962
+      "wall_s": 79.89623569999821
     },
     "pll_very_weak": {
       "cases": 1024,
-      "wall_s": 87.44779410000774
+      "wall_s": 87.73724099999527
     },
     "follow_in_distribution": {
-      "cases": 2048,
-      "wall_s": 133.10566210000252
+      "cases": 2012,
+      "wall_s": 142.05201789998682
     },
     "follow_fast_dc_loop": {
-      "cases": 1024,
-      "wall_s": 55.10362069999974
+      "cases": 1005,
+      "wall_s": 68.98619879997568
     },
     "follow_very_weak": {
-      "cases": 560,
-      "wall_s": 48.56024750000506
+      "cases": 753,
+      "wall_s": 55.48642300002393
     }
   },
-  "wall_s_total": 2202.5543557999918
+  "wall_s_total": 2325.724302800023
 }

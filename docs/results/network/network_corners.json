@@ -14,200 +14,200 @@
   ],
   "plants": {
     "doubly-fed plant": {
-      "cases": 9630,
+      "cases": 9625,
       "band": "sub",
-      "unstable": 2659,
-      "stable_share": 0.723883696780893,
+      "unstable": 2556,
+      "stable_share": 0.7344415584415585,
       "bounds": {
         "0.05": {
           "nominal with a margin": {
             "0": {
-              "cleared": 0.726895119418484,
-              "stable_cleared": 0.9553866016353464,
-              "unstable_cleared": 340
+              "cleared": 0.7363116883116884,
+              "stable_cleared": 0.9565709435563728,
+              "unstable_cleared": 325
             },
             "0.5": {
-              "cleared": 0.6607476635514019,
-              "stable_cleared": 0.9005881509109167,
-              "unstable_cleared": 85
+              "cleared": 0.6713766233766234,
+              "stable_cleared": 0.9047955863629934,
+              "unstable_cleared": 66
             },
             "1": {
-              "cleared": 0.6299065420560748,
-              "stable_cleared": 0.8677377707645962,
-              "unstable_cleared": 17
+              "cleared": 0.6437402597402597,
+              "stable_cleared": 0.8755128023765738,
+              "unstable_cleared": 7
             },
             "2": {
-              "cleared": 0.592938733125649,
-              "stable_cleared": 0.8189642805910199,
+              "cleared": 0.6089350649350649,
+              "stable_cleared": 0.828971565992361,
               "unstable_cleared": 1
             },
             "5": {
-              "cleared": 0.4480789200415369,
-              "stable_cleared": 0.6189929708793573,
-              "unstable_cleared": 0
+              "cleared": 0.4567272727272727,
+              "stable_cleared": 0.6217286744942707,
+              "unstable_cleared": 1
             },
             "10": {
-              "cleared": 0.09688473520249222,
-              "stable_cleared": 0.1338401950939607,
+              "cleared": 0.09485714285714286,
+              "stable_cleared": 0.1291554675343047,
               "unstable_cleared": 0
             }
           },
           "all 32 ends": {
-            "cleared": 0.6102803738317757,
-            "stable_cleared": 0.8430641227944341,
+            "cleared": 0.6272207792207792,
+            "stable_cleared": 0.8540104682416183,
             "unstable_cleared": 0
           },
           "implied_margin_quartiles": [
-            0.6467278303360006,
-            1.0606644523473001,
-            1.7378687127630128,
-            3.2245922007886407
+            0.6501704113047881,
+            1.0428018101341614,
+            1.666129021931236,
+            3.023661086206844
           ],
-          "truth_above_the_worst_end": 1,
+          "truth_above_the_worst_end": 2,
           "the one unfavourable end": {
-            "cleared": 0.6102803738317757,
-            "stable_cleared": 0.8430641227944341,
-            "unstable_cleared": 0
+            "cleared": 0.6278441558441559,
+            "stable_cleared": 0.8545763191399066,
+            "unstable_cleared": 2
           },
-          "unfavourable_end_is_the_worst_end": 0.5722741433021807,
-          "truth_above_the_unfavourable_end": 1205,
+          "unfavourable_end_is_the_worst_end": 0.5701818181818182,
+          "truth_above_the_unfavourable_end": 1195,
           "step 14 rule as given": {
-            "cleared": 0.5521287642782969,
-            "stable_cleared": 0.7625878640080332,
+            "cleared": 0.5615584415584416,
+            "stable_cleared": 0.7644645635874947,
             "unstable_cleared": 1
           },
           "step 14 rule at the unfavourable end": {
-            "cleared": 0.5048805815160955,
-            "stable_cleared": 0.6973174580404533,
+            "cleared": 0.5092987012987013,
+            "stable_cleared": 0.6933088131277408,
             "unstable_cleared": 1
           },
-          "margin_as_safe_as_all_ends": 5.0
+          "margin_as_safe_as_all_ends": 10.0
         },
         "0.1": {
           "nominal with a margin": {
             "0": {
-              "cleared": 0.7266874350986501,
-              "stable_cleared": 0.947496772342562,
-              "unstable_cleared": 393
+              "cleared": 0.7377662337662337,
+              "stable_cleared": 0.9468100155608997,
+              "unstable_cleared": 408
             },
             "0.5": {
-              "cleared": 0.681723779854621,
-              "stable_cleared": 0.9122077176875628,
-              "unstable_cleared": 206
+              "cleared": 0.6938181818181818,
+              "stable_cleared": 0.9151223652567548,
+              "unstable_cleared": 209
             },
             "1": {
-              "cleared": 0.6424714434060228,
-              "stable_cleared": 0.8756276000573806,
+              "cleared": 0.6552727272727272,
+              "stable_cleared": 0.8804639977365964,
               "unstable_cleared": 83
             },
             "2": {
-              "cleared": 0.5931464174454829,
-              "stable_cleared": 0.8169559604074021,
-              "unstable_cleared": 17
+              "cleared": 0.6096623376623377,
+              "stable_cleared": 0.8279813269203565,
+              "unstable_cleared": 15
             },
             "5": {
-              "cleared": 0.44880581516095536,
-              "stable_cleared": 0.6197102280877923,
+              "cleared": 0.45506493506493506,
+              "stable_cleared": 0.6193238081765455,
               "unstable_cleared": 2
             },
             "10": {
-              "cleared": 0.09636552440290758,
-              "stable_cleared": 0.13312293788552576,
+              "cleared": 0.09433766233766233,
+              "stable_cleared": 0.12844815391144435,
               "unstable_cleared": 0
             }
           },
           "all 32 ends": {
-            "cleared": 0.5643821391484943,
-            "stable_cleared": 0.779658585568785,
+            "cleared": 0.5795324675324676,
+            "stable_cleared": 0.7890790776630358,
             "unstable_cleared": 0
           },
           "implied_margin_quartiles": [
-            1.2746518404931342,
-            2.153406797010078,
-            3.6709477186521315,
-            6.689054350823534
+            1.2777651619951618,
+            2.1288810174452557,
+            3.4821304638623043,
+            6.409932899368705
           ],
           "truth_above_the_worst_end": 2,
           "the one unfavourable end": {
-            "cleared": 0.564797507788162,
-            "stable_cleared": 0.7802323913355329,
-            "unstable_cleared": 0
+            "cleared": 0.5806753246753247,
+            "stable_cleared": 0.7904937049087566,
+            "unstable_cleared": 1
           },
-          "unfavourable_end_is_the_worst_end": 0.6067497403946002,
-          "truth_above_the_unfavourable_end": 1053,
+          "unfavourable_end_is_the_worst_end": 0.6070649350649351,
+          "truth_above_the_unfavourable_end": 1096,
           "step 14 rule as given": {
-            "cleared": 0.5520249221183801,
-            "stable_cleared": 0.7612968010328504,
-            "unstable_cleared": 9
+            "cleared": 0.5623896103896104,
+            "stable_cleared": 0.7643231008629227,
+            "unstable_cleared": 10
           },
           "step 14 rule at the unfavourable end": {
-            "cleared": 0.4561786085150571,
-            "stable_cleared": 0.6296083775641945,
-            "unstable_cleared": 4
+            "cleared": 0.46005194805194805,
+            "stable_cleared": 0.625972556231433,
+            "unstable_cleared": 3
           },
           "margin_as_safe_as_all_ends": 10.0
         },
         "0.2": {
           "nominal with a margin": {
             "0": {
-              "cleared": 0.7177570093457943,
-              "stable_cleared": 0.9256921532061397,
-              "unstable_cleared": 459
+              "cleared": 0.7361038961038961,
+              "stable_cleared": 0.9318149667562597,
+              "unstable_cleared": 498
             },
             "0.5": {
-              "cleared": 0.6903426791277258,
-              "stable_cleared": 0.9070434657868311,
-              "unstable_cleared": 325
+              "cleared": 0.7042077922077922,
+              "stable_cleared": 0.9101711698967322,
+              "unstable_cleared": 344
             },
             "1": {
-              "cleared": 0.659190031152648,
-              "stable_cleared": 0.8792138860995553,
-              "unstable_cleared": 219
+              "cleared": 0.6738701298701298,
+              "stable_cleared": 0.8838591031263262,
+              "unstable_cleared": 238
             },
             "2": {
-              "cleared": 0.6040498442367601,
-              "stable_cleared": 0.8226940180748816,
-              "unstable_cleared": 82
+              "cleared": 0.619012987012987,
+              "stable_cleared": 0.8319422832083746,
+              "unstable_cleared": 77
             },
             "5": {
-              "cleared": 0.44693665628245066,
-              "stable_cleared": 0.6168411992540525,
+              "cleared": 0.45516883116883117,
+              "stable_cleared": 0.6191823454519734,
               "unstable_cleared": 4
             },
             "10": {
-              "cleared": 0.09553478712357218,
-              "stable_cleared": 0.13197532635202983,
+              "cleared": 0.09381818181818181,
+              "stable_cleared": 0.12774084028858396,
               "unstable_cleared": 0
             }
           },
           "all 32 ends": {
-            "cleared": 0.47414330218068534,
-            "stable_cleared": 0.6549992827427915,
+            "cleared": 0.47355844155844157,
+            "stable_cleared": 0.644787098599519,
             "unstable_cleared": 0
           },
           "implied_margin_quartiles": [
-            2.468236746133542,
-            4.483523630947904,
-            7.975170962149029,
-            13.883786271400075
+            2.492006009331094,
+            4.4940910922230115,
+            7.721103529471397,
+            13.893798456742656
           ],
           "truth_above_the_worst_end": 4,
           "the one unfavourable end": {
-            "cleared": 0.4769470404984424,
-            "stable_cleared": 0.6578683115765314,
-            "unstable_cleared": 7
+            "cleared": 0.4776103896103896,
+            "stable_cleared": 0.6491724430612533,
+            "unstable_cleared": 8
           },
-          "unfavourable_end_is_the_worst_end": 0.6586708203530633,
-          "truth_above_the_unfavourable_end": 847,
+          "unfavourable_end_is_the_worst_end": 0.659948051948052,
+          "truth_above_the_unfavourable_end": 866,
           "step 14 rule as given": {
-            "cleared": 0.5593977154724818,
-            "stable_cleared": 0.7661741500502081,
-            "unstable_cleared": 46
+            "cleared": 0.5664415584415584,
+            "stable_cleared": 0.7640401754137784,
+            "unstable_cleared": 51
           },
           "step 14 rule at the unfavourable end": {
-            "cleared": 0.3791277258566978,
-            "stable_cleared": 0.5223066991823268,
-            "unstable_cleared": 10
+            "cleared": 0.37246753246753245,
+            "stable_cleared": 0.5065780166926015,
+            "unstable_cleared": 4
           },
           "margin_as_safe_as_all_ends": 10.0
         }
@@ -216,201 +216,52 @@
     "converter with PLL": {
       "cases": 11264,
       "band": "all",
-      "unstable": 271,
-      "stable_share": 0.9759410511363636,
+      "unstable": 997,
+      "stable_share": 0.9114879261363636,
       "bounds": {
         "0.05": {
           "nominal with a margin": {
             "0": {
-              "cleared": 0.9754083806818182,
-              "stable_cleared": 0.9987264622941872,
-              "unstable_cleared": 8
+              "cleared": 0.912109375,
+              "stable_cleared": 0.9978572124281679,
+              "unstable_cleared": 29
             },
             "0.5": {
-              "cleared": 0.9724786931818182,
-              "stable_cleared": 0.9964522878195216,
-              "unstable_cleared": 0
-            },
-            "1": {
-              "cleared": 0.9679509943181818,
-              "stable_cleared": 0.9918129718912035,
-              "unstable_cleared": 0
-            },
-            "2": {
-              "cleared": 0.9565873579545454,
-              "stable_cleared": 0.9801691985809151,
-              "unstable_cleared": 0
-            },
-            "5": {
-              "cleared": 0.5145596590909091,
-              "stable_cleared": 0.527244610206495,
-              "unstable_cleared": 0
-            },
-            "10": {
-              "cleared": 0.02166193181818182,
-              "stable_cleared": 0.022195942872737195,
-              "unstable_cleared": 0
-            }
-          },
-          "all 32 ends": {
-            "cleared": 0.9707919034090909,
-            "stable_cleared": 0.9947239152187756,
-            "unstable_cleared": 0
-          },
-          "implied_margin_quartiles": [
-            0.003479109936826541,
-            0.009258067418759008,
-            0.028515376819781224,
-            0.591902024812699
-          ],
-          "truth_above_the_worst_end": 0,
-          "margin_as_safe_as_all_ends": 0.5
-        },
-        "0.1": {
-          "nominal with a margin": {
-            "0": {
-              "cleared": 0.9755859375,
-              "stable_cleared": 0.9981806604202674,
-              "unstable_cleared": 16
-            },
-            "0.5": {
-              "cleared": 0.9723899147727273,
-              "stable_cleared": 0.9956335850086419,
+              "cleared": 0.9028764204545454,
+              "stable_cleared": 0.9897730593162559,
               "unstable_cleared": 8
             },
             "1": {
-              "cleared": 0.9682173295454546,
-              "stable_cleared": 0.9919039388701901,
-              "unstable_cleared": 2
-            },
-            "2": {
-              "cleared": 0.9556995738636364,
-              "stable_cleared": 0.9791685618120622,
-              "unstable_cleared": 1
-            },
-            "5": {
-              "cleared": 0.5145596590909091,
-              "stable_cleared": 0.5271536432275085,
-              "unstable_cleared": 1
-            },
-            "10": {
-              "cleared": 0.022105823863636364,
-              "stable_cleared": 0.022650777767670334,
-              "unstable_cleared": 0
-            }
-          },
-          "all 32 ends": {
-            "cleared": 0.96484375,
-            "stable_cleared": 0.9886291276266715,
-            "unstable_cleared": 0
-          },
-          "implied_margin_quartiles": [
-            0.007021989189355038,
-            0.0188401336238595,
-            0.061397004060742555,
-            1.2521372383408345
-          ],
-          "truth_above_the_worst_end": 0,
-          "margin_as_safe_as_all_ends": 10.0
-        },
-        "0.2": {
-          "nominal with a margin": {
-            "0": {
-              "cleared": 0.9762961647727273,
-              "stable_cleared": 0.9974529245883744,
-              "unstable_cleared": 32
-            },
-            "0.5": {
-              "cleared": 0.9725674715909091,
-              "stable_cleared": 0.9948148821977623,
-              "unstable_cleared": 19
-            },
-            "1": {
-              "cleared": 0.9691051136363636,
-              "stable_cleared": 0.9917220049122168,
-              "unstable_cleared": 14
-            },
-            "2": {
-              "cleared": 0.9557883522727273,
-              "stable_cleared": 0.978986627854089,
+              "cleared": 0.8941761363636364,
+              "stable_cleared": 0.980617512418428,
               "unstable_cleared": 4
             },
-            "5": {
-              "cleared": 0.5138494318181818,
-              "stable_cleared": 0.5264259073956153,
+            "2": {
+              "cleared": 0.8737571022727273,
+              "stable_cleared": 0.9585078406545242,
               "unstable_cleared": 1
             },
-            "10": {
-              "cleared": 0.02166193181818182,
-              "stable_cleared": 0.022195942872737195,
-              "unstable_cleared": 0
-            }
-          },
-          "all 32 ends": {
-            "cleared": 0.9541903409090909,
-            "stable_cleared": 0.9777130901482761,
-            "unstable_cleared": 0
-          },
-          "implied_margin_quartiles": [
-            0.014440839450441056,
-            0.03934597143179852,
-            0.14477385777404628,
-            2.5518562015503963
-          ],
-          "truth_above_the_worst_end": 0,
-          "margin_as_safe_as_all_ends": 10.0
-        }
-      }
-    },
-    "converter without PLL": {
-      "cases": 3632,
-      "band": "all",
-      "unstable": 627,
-      "stable_share": 0.8273678414096917,
-      "bounds": {
-        "0.05": {
-          "nominal with a margin": {
-            "0": {
-              "cleared": 0.8320484581497798,
-              "stable_cleared": 0.9956738768718802,
-              "unstable_cleared": 30
-            },
-            "0.5": {
-              "cleared": 0.8138766519823789,
-              "stable_cleared": 0.9806988352745424,
-              "unstable_cleared": 9
-            },
-            "1": {
-              "cleared": 0.7932268722466961,
-              "stable_cleared": 0.9577371048252912,
-              "unstable_cleared": 3
-            },
-            "2": {
-              "cleared": 0.7599118942731278,
-              "stable_cleared": 0.9178036605657238,
-              "unstable_cleared": 2
-            },
             "5": {
-              "cleared": 0.4154735682819383,
-              "stable_cleared": 0.5021630615640599,
+              "cleared": 0.4587180397727273,
+              "stable_cleared": 0.5032628810752897,
               "unstable_cleared": 0
             },
             "10": {
-              "cleared": 0.028634361233480177,
-              "stable_cleared": 0.034608985024958405,
+              "cleared": 0.01970880681818182,
+              "stable_cleared": 0.021622674588487385,
               "unstable_cleared": 0
             }
           },
           "all 32 ends": {
-            "cleared": 0.7968061674008811,
-            "stable_cleared": 0.9630615640599002,
+            "cleared": 0.8955078125,
+            "stable_cleared": 0.9824681016850102,
             "unstable_cleared": 0
           },
           "implied_margin_quartiles": [
-            0.0021569102186597133,
-            0.028400986293581898,
-            0.5006682376397857,
-            2.8005186469804344
+            0.0038842397075566915,
+            0.01333270505236106,
+            0.12557567710562423,
+            2.108200926770183
           ],
           "truth_above_the_worst_end": 0,
           "margin_as_safe_as_all_ends": 5.0
@@ -418,46 +269,195 @@
         "0.1": {
           "nominal with a margin": {
             "0": {
-              "cleared": 0.8301211453744494,
-              "stable_cleared": 0.9916805324459235,
-              "unstable_cleared": 35
+              "cleared": 0.9113103693181818,
+              "stable_cleared": 0.9949352293756696,
+              "unstable_cleared": 50
             },
             "0.5": {
-              "cleared": 0.8149779735682819,
-              "stable_cleared": 0.9797004991680532,
-              "unstable_cleared": 16
+              "cleared": 0.9026988636363636,
+              "stable_cleared": 0.9881172689198403,
+              "unstable_cleared": 23
             },
             "1": {
-              "cleared": 0.7935022026431718,
-              "stable_cleared": 0.9557404326123128,
-              "unstable_cleared": 10
+              "cleared": 0.8941761363636364,
+              "stable_cleared": 0.9794487191974287,
+              "unstable_cleared": 16
             },
             "2": {
-              "cleared": 0.760737885462555,
-              "stable_cleared": 0.9181364392678869,
-              "unstable_cleared": 4
+              "cleared": 0.8735795454545454,
+              "stable_cleared": 0.9579234440440245,
+              "unstable_cleared": 5
             },
             "5": {
-              "cleared": 0.41437224669603523,
-              "stable_cleared": 0.5004991680532446,
-              "unstable_cleared": 1
+              "cleared": 0.45658735795454547,
+              "stable_cleared": 0.5009252946332912,
+              "unstable_cleared": 0
             },
             "10": {
-              "cleared": 0.027808370044052864,
-              "stable_cleared": 0.03361064891846922,
+              "cleared": 0.019442471590909092,
+              "stable_cleared": 0.021330476283237556,
               "unstable_cleared": 0
             }
           },
           "all 32 ends": {
-            "cleared": 0.7654185022026432,
-            "stable_cleared": 0.9251247920133111,
+            "cleared": 0.8786399147727273,
+            "stable_cleared": 0.9639622090191877,
             "unstable_cleared": 0
           },
           "implied_margin_quartiles": [
-            0.00435557976717682,
-            0.06704752762077781,
-            1.0524786161988513,
-            5.759738736497775
+            0.007856136685007398,
+            0.028143138490053232,
+            0.34122256989767363,
+            4.188939321449974
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 5.0
+        },
+        "0.2": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.9124644886363636,
+              "stable_cleared": 0.9931820395441706,
+              "unstable_cleared": 81
+            },
+            "0.5": {
+              "cleared": 0.9029651988636364,
+              "stable_cleared": 0.9852926853024252,
+              "unstable_cleared": 55
+            },
+            "1": {
+              "cleared": 0.8941761363636364,
+              "stable_cleared": 0.9768189344501802,
+              "unstable_cleared": 43
+            },
+            "2": {
+              "cleared": 0.8741122159090909,
+              "stable_cleared": 0.9567546508230252,
+              "unstable_cleared": 23
+            },
+            "5": {
+              "cleared": 0.45738636363636365,
+              "stable_cleared": 0.5016070906788741,
+              "unstable_cleared": 2
+            },
+            "10": {
+              "cleared": 0.01935369318181818,
+              "stable_cleared": 0.02123307684815428,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.8479225852272727,
+            "stable_cleared": 0.930262004480374,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.016507593010110178,
+            0.06551981551041841,
+            1.0361495389892312,
+            8.306234266270494
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 10.0
+        }
+      }
+    },
+    "converter without PLL": {
+      "cases": 3770,
+      "band": "all",
+      "unstable": 844,
+      "stable_share": 0.7761273209549071,
+      "bounds": {
+        "0.05": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.7769230769230769,
+              "stable_cleared": 0.9931647300068353,
+              "unstable_cleared": 23
+            },
+            "0.5": {
+              "cleared": 0.7612732095490716,
+              "stable_cleared": 0.9784688995215312,
+              "unstable_cleared": 7
+            },
+            "1": {
+              "cleared": 0.7424403183023872,
+              "stable_cleared": 0.9562542720437457,
+              "unstable_cleared": 1
+            },
+            "2": {
+              "cleared": 0.709814323607427,
+              "stable_cleared": 0.9145591250854409,
+              "unstable_cleared": 0
+            },
+            "5": {
+              "cleared": 0.37347480106100794,
+              "stable_cleared": 0.48120300751879697,
+              "unstable_cleared": 0
+            },
+            "10": {
+              "cleared": 0.026259946949602122,
+              "stable_cleared": 0.03383458646616541,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.7435013262599469,
+            "stable_cleared": 0.9579630895420369,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.0029819313912199386,
+            0.04993894848816538,
+            0.7350618346247727,
+            4.224181986559192
+          ],
+          "truth_above_the_worst_end": 0,
+          "margin_as_safe_as_all_ends": 2.0
+        },
+        "0.1": {
+          "nominal with a margin": {
+            "0": {
+              "cleared": 0.7801061007957559,
+              "stable_cleared": 0.9911141490088858,
+              "unstable_cleared": 41
+            },
+            "0.5": {
+              "cleared": 0.7623342175066313,
+              "stable_cleared": 0.974025974025974,
+              "unstable_cleared": 24
+            },
+            "1": {
+              "cleared": 0.7424403183023872,
+              "stable_cleared": 0.950786056049214,
+              "unstable_cleared": 17
+            },
+            "2": {
+              "cleared": 0.7058355437665782,
+              "stable_cleared": 0.9060150375939849,
+              "unstable_cleared": 10
+            },
+            "5": {
+              "cleared": 0.3716180371352785,
+              "stable_cleared": 0.47812713602187285,
+              "unstable_cleared": 2
+            },
+            "10": {
+              "cleared": 0.026259946949602122,
+              "stable_cleared": 0.03383458646616541,
+              "unstable_cleared": 0
+            }
+          },
+          "all 32 ends": {
+            "cleared": 0.7037135278514589,
+            "stable_cleared": 0.9066985645933014,
+            "unstable_cleared": 0
+          },
+          "implied_margin_quartiles": [
+            0.007088401365364261,
+            0.17975109441262793,
+            1.6819663376466902,
+            8.507886224862904
           ],
           "truth_above_the_worst_end": 0,
           "margin_as_safe_as_all_ends": 10.0
@@ -465,46 +465,46 @@
         "0.2": {
           "nominal with a margin": {
             "0": {
-              "cleared": 0.8298458149779736,
-              "stable_cleared": 0.9816971713810316,
-              "unstable_cleared": 64
+              "cleared": 0.7724137931034483,
+              "stable_cleared": 0.9730006835269993,
+              "unstable_cleared": 65
             },
             "0.5": {
-              "cleared": 0.8119493392070485,
-              "stable_cleared": 0.9683860232945092,
-              "unstable_cleared": 39
+              "cleared": 0.7562334217506631,
+              "stable_cleared": 0.9586466165413534,
+              "unstable_cleared": 46
             },
             "1": {
-              "cleared": 0.7935022026431718,
-              "stable_cleared": 0.9500831946755408,
-              "unstable_cleared": 27
+              "cleared": 0.7376657824933687,
+              "stable_cleared": 0.9381408065618592,
+              "unstable_cleared": 36
             },
             "2": {
-              "cleared": 0.7582599118942731,
-              "stable_cleared": 0.9108153078202995,
-              "unstable_cleared": 17
+              "cleared": 0.7068965517241379,
+              "stable_cleared": 0.9019138755980861,
+              "unstable_cleared": 26
             },
             "5": {
-              "cleared": 0.4138215859030837,
-              "stable_cleared": 0.49850249584026624,
+              "cleared": 0.3729442970822281,
+              "stable_cleared": 0.47881066302118935,
               "unstable_cleared": 5
             },
             "10": {
-              "cleared": 0.028083700440528634,
-              "stable_cleared": 0.03394342762063228,
+              "cleared": 0.025198938992042442,
+              "stable_cleared": 0.032467532467532464,
               "unstable_cleared": 0
             }
           },
           "all 32 ends": {
-            "cleared": 0.7109030837004405,
-            "stable_cleared": 0.8592346089850249,
+            "cleared": 0.6450928381962865,
+            "stable_cleared": 0.8311688311688312,
             "unstable_cleared": 0
           },
           "implied_margin_quartiles": [
-            0.010170236279300915,
-            0.2525710048323988,
-            2.3254349187303145,
-            11.168463303431837
+            0.018193535321514798,
+            0.7563616052301407,
+            3.8376211662747823,
+            16.5282152529147
           ],
           "truth_above_the_worst_end": 0,
           "margin_as_safe_as_all_ends": 10.0

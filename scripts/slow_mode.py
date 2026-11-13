@@ -25,6 +25,7 @@ import numpy as np
 
 from sso_sciml import report, slowmode
 from sso_sciml.data import t1
+from sso_sciml.sampling import part as rows_of
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / t1.VERSION
@@ -146,7 +147,8 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     if not args.reuse:
         for name in SETS:
-            rows = np.load(DATA / f"scan_{name}.npz")["rows"][:: 16 if args.small else 1]
+            rows = np.load(DATA / f"scan_{name}.npz")["rows"]
+            rows = rows[rows_of(len(rows), 16 if args.small else 1)]
             theta = np.load(DATA / f"{name}.npz")["theta"][rows]
             np.savez_compressed(DATA / f"slow_{name}.npz", rows=rows,
                                 out=slowmode.cases(theta, args.processes))  # fmt: skip

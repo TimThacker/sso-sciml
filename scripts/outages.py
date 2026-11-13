@@ -24,6 +24,7 @@ import numpy as np
 
 from sso_sciml import outage, report
 from sso_sciml.data import c1, t1
+from sso_sciml.sampling import part
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "outage-v1"
@@ -139,7 +140,8 @@ def main() -> None:
     if not args.reuse:
         for kind in PLANTS:
             for name in sets_of(kind):
-                theta = thetas(kind, name)[:: 16 if args.small else 1]
+                theta = thetas(kind, name)
+                theta = theta[part(len(theta), 16 if args.small else 1)]
                 out = outage.cases(kind, theta, args.processes)
                 np.savez_compressed(DATA / f"{kind}_{name}.npz", theta=theta, out=out)
                 print("done", kind, name, len(theta))
