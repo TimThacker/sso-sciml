@@ -106,4 +106,4 @@ Cases with an unstable sub-synchronous mode, 145.
 
 ## Next
 
-Phase 6, the loss-against-feature comparison. Left open on this branch: a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz; an exact delay and a distributed line above 58 Hz; why a converter damps the plant's sub-synchronous mode and what it does to the slow mode; a crowbar in the model.
+Phase 6, the loss-against-feature comparison (steps 34 to 37). Left open on this branch: a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz; an exact delay and a distributed line above 58 Hz; why a converter damps the plant's sub-synchronous mode and what it does to the slow mode; a crowbar in the model.

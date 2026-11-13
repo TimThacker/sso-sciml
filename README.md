@@ -271,6 +271,17 @@ Details in [docs/steps/32-machine-beside-converter.md](docs/steps/32-machine-bes
 
 Details in [docs/steps/33-protection.md](docs/steps/33-protection.md).
 
+### Where the physics goes: five arms on the growth-rate task
+
+![Five arms against budget](docs/results/phase6/fig84_five_arms.png)
+
+- **As inputs, the hand calculation helps with little data:** 32 % lower error at 100 cases, 14 % at 1,000, nothing from 10,000.
+- **As the baseline it helps at both ends** and is the best arm on every test set at 100,000 cases, by 23 % to 63 %.
+- **As a penalty in training it helps only at 100 labels** and makes the model 27 % worse from 10,000. It costs five times the training time.
+- **A learned screen beats the hand calculation only inside its training range.** Outside it, the margin set inside clears unstable cases.
+
+Details in [docs/steps/34-arm-comparison.md](docs/steps/34-arm-comparison.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

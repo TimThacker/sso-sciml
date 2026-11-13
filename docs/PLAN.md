@@ -341,6 +341,8 @@ Status for protection (`docs/steps/33-protection.md`): a rotor current limit, an
 
 Exit check: one table and one figure per task that a reader can use to choose an arm for a given data budget and extrapolation need.
 
+Status: task T1 is done (`docs/steps/34-arm-comparison.md`) with arms N, F, R, L and F+L at four budgets and five seeds, every difference paired within a seed with a 95 % interval. Features (F) cut the error by 32 % at 100 cases and 14 % at 1,000 and nothing after. The baseline (R) cuts it by 22 % at 100 cases and 23 % at 100,000 and is the best arm on every test set at 100,000. The penalty (L) cuts it by 23 % at 100 labels, does nothing at 1,000 and raises it by 27 % from 10,000; it does not extrapolate better than arm N, and F+L is no better than F. As a screen with a margin set on the validation fold, arm N clears 84.1 % in distribution with no unstable case against 71.1 % for the hand calculation, and outside the distribution every screen clears unstable cases. Arm A has no form for T1. Task T2 follows in steps 35 and 36, the report in step 37.
+
 ### Phase 7: T2 operators and sequence models (2 weeks)
 
 1. Disturbances: compensation step, voltage dip, wind ramp.
