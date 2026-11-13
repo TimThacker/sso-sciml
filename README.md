@@ -210,7 +210,7 @@ Details in [docs/steps/27-two-converters.md](docs/steps/27-two-converters.md).
 
 ![What each addition does](docs/results/hf/fig69_delay_and_capacitor.png)
 
-- **Each alone does little; together they make a new instability at the filter resonance,** around 1 kHz. The share of unstable cases goes from 5.6 % to 29.9 % with a phase-locked loop and from 12.6 % to 40.1 % without.
+- **On an inductive network each alone does little; together they make a new instability at the filter resonance,** around 1 kHz. The share of unstable cases goes from 5.6 % to 29.9 % with a phase-locked loop and from 12.6 % to 40.1 % without.
 - **The converter alone is stable in every case.** The resonance needs the network, so a bench test on a stiff source does not show it.
 - **Two numbers nearly settle it:** a delay under a fifth of a period of the filter resonance (2 unstable of 13,195), or a damping resistor above a quarter per unit (1.6 % unstable).
 - **The screen still works** with a scan that reaches past the resonance: no unstable case missed in 40,792.
@@ -228,6 +228,17 @@ Details in [docs/steps/28-delay-and-capacitor.md](docs/steps/28-delay-and-capaci
 - **A stride through a Sobol dataset is a corner of it, not a sample.** Four earlier steps had taken every fourth row. They were rerun on a random quarter and their numbers here are the rerun ones.
 
 Details in [docs/steps/29-restated-with-delay.md](docs/steps/29-restated-with-delay.md).
+
+### Shunt capacitance in the network
+
+![The four variants without and with shunt capacitance](docs/results/hf/fig73_shunt_capacitance.png)
+
+- **Below 58 Hz it does not matter:** the verdict changes in under 1 % of cases.
+- **Above 58 Hz it is the case.** A converter with a control delay and no filter capacitor is unstable in 44.5 % and 49.1 % of cases on a network with shunt capacitance, at the network's parallel resonance, where it was in 7.0 % and 13.4 % on an inductive one.
+- **With a phase-locked loop no case is unstable while the delay is under a fifth of a period of that resonance.**
+- **A network model without the capacitance misses 85 % and 75 % of those unstable cases.** With the capacitance known to within 20 % and both ends evaluated, 2 of 32,550 are missed.
+
+Details in [docs/steps/30-shunt-capacitance.md](docs/steps/30-shunt-capacitance.md).
 
 ### A converter across loadings: three scans in power
 

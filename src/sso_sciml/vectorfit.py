@@ -176,6 +176,17 @@ def fit_admittance(
     }
 
 
+def balance(a: np.ndarray, b: np.ndarray, c: np.ndarray) -> tuple:
+    """The same plant with its states rescaled so that rows and columns of A are of like
+    size. The modes do not change. Without it the generalised eigenvalue problem of
+    `closed_loop_modes` loses the modes of a plant whose states differ much in scale:
+    the delay states of `hf.DelayedConverter` carry 12 / T^2, up to 1e10 (step 30)."""
+    from scipy.linalg import matrix_balance
+
+    scaled, t = matrix_balance(a, permute=False)
+    return scaled, np.linalg.solve(t, b), c @ t
+
+
 def closed_loop_modes(
     a: np.ndarray, b: np.ndarray, c: np.ndarray, d: np.ndarray, net: dict
 ) -> np.ndarray:
@@ -186,6 +197,7 @@ def closed_loop_modes(
     voltage, terminal voltage. Synchronous frame, so an inductor is
     v = (X / wb) di/dt + X J i and a capacitor is dv/dt = wb (X_c i - J v).
     """
+    a, b, c = balance(a, b, c)
     n = a.shape[0]
     cap = net["x_c"] != 0
     ic, ip = slice(n, n + 2), slice(n + 2, n + 4)

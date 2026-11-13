@@ -47,7 +47,7 @@ All numbers are in `docs/results/hf/restate_with_delay.json`.
 | In the training range, without and with | 5.9 %, 7.3 % | 12.9 %, 13.4 % |
 | Stable to unstable | 239 | 50 |
 | Unstable to stable | 15 | 0 |
-| Shift of the largest growth rate within 5 1/s of zero: median, 95th percentile (1/s) | 0.0005, 2.1 | 0.006, 1.3 |
+| Shift of the largest growth rate within 5 1/s of zero: median, 95th percentile (1/s) | below 0.0001, 2.1 | 0.001, 1.3 |
 
 - **The delay makes cases unstable and almost never cures one.** With a phase-locked loop the count of unstable cases rises by 22 %, without by 6 %.
 - **This agrees with step 28,** which found 5.6 % and 7.1 % in the range on all 32,768 cases.
@@ -101,6 +101,7 @@ With the delay the reference screen clears 89.5 % in the range and 74.7 % outsid
 4. **Why the delay destabilises a mode near 20 Hz was not analysed.** Still open from step 28.
 5. **The delay is a second-order Padé approximant** (step 28). The delays here are short against the band, so the approximant is good.
 6. **A quarter of the cases, one noise draw and one network draw per case.**
+7. **Corrected in step 30.** `closed_loop_modes` lost accuracy on a plant with a delay and now rescales the plant states. The pass was rerun: no count changed; the median shifts in the first table were 0.0005 and 0.006 1/s before.
 
 ## Decisions
 

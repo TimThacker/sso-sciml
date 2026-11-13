@@ -2,7 +2,7 @@
 
 Date: 2026-11-13 · Plan phase: the standing screening question
 
-Step 30 (a network with shunt capacitance) has not been done. This step was ready first.
+Done before step 30 (a network with shunt capacitance), which was written up after it.
 
 ## Goal
 
@@ -93,4 +93,4 @@ Error of the growth rate for modes within 5 1/s of zero (median, 95th percentile
 
 ## Next
 
-In the order they bear on the result: a network with shunt capacitance for the band above 58 Hz (step 30); impedance between units and a doubly-fed plant beside a converter. Still open from before: the protection model; a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz.
+In the order they bear on the result: a network with shunt capacitance for the band above 58 Hz (step 30, since done); impedance between units and a doubly-fed plant beside a converter. Still open from before: the protection model; a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz.

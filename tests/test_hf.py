@@ -26,6 +26,25 @@ def test_closing_on_the_network_returns_no_mode_at_infinity():
     assert worst < 1e-7
 
 
+def test_modes_with_a_delay_are_zeros_of_the_loop_determinant():
+    # The delay states carry 12 / T^2. Before the plant was balanced the generalised
+    # eigenvalue problem lost up to 0.4 1/s on the least-damped mode (step 30).
+    for theta in THETA[:8]:
+        for t_d in (5e-5, 2e-4, 1e-3):
+            plant, net = hf.solve(theta, 0.0, t_d, 0.0, 0.0)
+            lam = vf.closed_loop_modes(plant.a, plant.b, plant.c, plant.d, net)
+            top = lam[np.argmax(lam.real)]
+
+            def det(s, plant=plant, net=net):
+                s = np.atleast_1d(s)
+                y, z = plant.admittance(s), adm.network_impedance(net, s)
+                return np.linalg.det(np.eye(2) + y @ z)[0]
+
+            h = 1e-6 * (1 + abs(top))
+            step = det(top) / ((det(top + h) - det(top - h)) / (2 * h))
+            assert abs(step) < 1e-6  # one Newton step from the mode goes nowhere
+
+
 def test_delay_approximant_has_unit_gain_and_the_phase_of_a_delay():
     t = 5e-4
     a = np.array([[0.0, 1.0], [-12.0 / t**2, -6.0 / t]])

@@ -46,7 +46,7 @@ Share of cases unstable, and the part of it that is unstable above 58 Hz.
 | With capacitor | 5.6 % | 0.0 % | 12.6 % | 0.6 % |
 | With both | 29.9 % | 25.7 % | 40.1 % | 33.8 % |
 
-- **Delay alone adds 1.4 points, capacitor alone nothing.** Together they add 24 and 28 points.
+- **Delay alone adds 1.4 points, capacitor alone nothing.** Together they add 24 and 28 points. (Step 30: this is so on an inductive network. With shunt capacitance in the network a delay alone makes 44.5 % and 49.1 % unstable.)
 - **The new modes are at the filter resonance.** Their frequency has a median of 930 and 990 Hz, with 90 % between 590 and 1,440 Hz, and it is within about 10 % of the resonance of the capacitor with the filter reactor and the network reactance in half the cases. They grow fast: a median of 127 and 210 1/s.
 - **The converter alone is stable in every case, in every variant.** On an ideal voltage the capacitor is shorted and there is no resonance. The instability exists only with the network attached, which is the situation of every result since step 17.
 
@@ -75,7 +75,7 @@ Share unstable above 58 Hz, with a phase-locked loop.
 
 | | With PLL | Without PLL |
 |---|---|---|
-| Shift of the largest growth rate below 58 Hz, median (1/s) | 0.003 | 0.013 |
+| Shift of the largest growth rate below 58 Hz, median (1/s) | 0.001 | 0.005 |
 | 95th percentile (1/s) | 1.4 | 0.48 |
 | Cases whose verdict below 58 Hz changes | 517 of 32,768 | 66 of 8,024 |
 | stable to unstable | 494 | 41 |
@@ -116,6 +116,7 @@ The rational fit of step 19 on a clean 251-point scan of converter and capacitor
 5. **The delay raised the count of unstable cases below 58 Hz by a quarter.** Not expected: the delays are short against a 20 Hz mode. Which cases change, and why, was not analysed.
 6. **The rotation of the frame during the delay is taken as compensated.**
 7. **Limits are still left out (A30).**
+8. **Corrected in step 30.** `closed_loop_modes` lost accuracy on a plant with a delay, in the second or third decimal place of 1/s. It now rescales the plant states. The pass was rerun: no count changed, and the median shift below 58 Hz is 0.001 and 0.005 1/s where this entry first said 0.003 and 0.013.
 
 ## Decisions
 
