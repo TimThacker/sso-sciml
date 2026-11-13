@@ -153,4 +153,4 @@ Hypothesis 4 is about the time-domain task.
 
 ## Next
 
-Step 35: the T2 trajectory dataset. Step 36: the six arms on T2. Step 37: the Phase 6 report with a verdict on each hypothesis.
+Step 35: the T2 trajectory dataset (done). Step 36: the six arms on T2. Step 37: the Phase 6 report with a verdict on each hypothesis.
