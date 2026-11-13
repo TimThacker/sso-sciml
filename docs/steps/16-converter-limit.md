@@ -80,7 +80,7 @@ The 128 time-domain runs take 101 s in one batch on the GPU. The modal responses
 ## Decisions
 
 - The time-domain task of the plan (T2) is redefined: the target is which limit is reached first and when, not a waveform or a limit cycle. For the present model that target follows from the modes, so no trajectory dataset or learned operator is built for it.
-- Behaviour after the first limit is out of scope until protection (DC chopper, crowbar, anti-windup, trip logic) is modelled.
+- Behaviour after the first limit is out of scope until protection (DC chopper, crowbar, anti-windup, trip logic) is modelled. (Done in step 33, without the crowbar: no limit cycle, the plant trips on rotor overcurrent, and with that trip watched the DC link is no longer first.)
 
 ## Next
 

@@ -71,6 +71,13 @@ class Controls:
     # means no limit. It is finite because an infinite value gives 0 * inf = NaN in the
     # automatic derivative of the limiter.
     vr_max: float = 1e6
+    # Protection (step 33). Every default switches its element off and leaves the
+    # equations exactly as they were.
+    ir_max: float = 1e6  # limit on the size of the rotor current reference, pu
+    aw: float = 0.0  # anti-windup: 1 holds the integrators back while a limit acts
+    chop_on: float = 1e6  # DC voltage at which the chopper starts to conduct, pu
+    chop_width: float = 0.05  # it conducts fully this far above chop_on, pu
+    chop_g: float = 0.0  # chopper conductance, pu
 
     def gains(self, data: IGData) -> dict:
         kp, ki = gains_from_bandwidth(data, self.rsc_hz)
@@ -97,6 +104,11 @@ class Controls:
             "ff": self.ff,
             "t_ff": self.t_ff,
             "vr_max": self.vr_max,
+            "ir_max": self.ir_max,
+            "aw": self.aw,
+            "chop_on": self.chop_on,
+            "chop_width": self.chop_width,
+            "chop_g": self.chop_g,
         }
 
 
@@ -200,6 +212,10 @@ class DFIGFull:
         p_ref = p["k_opt"] * w_r**3
         ird_ref = p["out_kp"] * (p_ref - x[..., 13]) + p["out_ki"] * x[..., 15]
         irq_ref = -(p["out_kp"] * (p["q_ref"] - x[..., 14]) + p["out_ki"] * x[..., 16])
+        # Limit on the rotor current reference: direction kept, size held at ir_max.
+        ref_size = torch.sqrt(ird_ref * ird_ref + irq_ref * irq_ref + 1e-24)
+        ref_keep = torch.clamp(p["ir_max"] / ref_size, max=1.0)
+        ird_ref, irq_ref = ref_keep * ird_ref, ref_keep * irq_ref
         irc_d, irc_q = _unrot(ir_d, ir_q, cos, sin)
         # Controller command, then the converter's voltage limit: the command keeps its
         # direction and its magnitude is held at vr_max. Below the limit the factor is
@@ -209,6 +225,10 @@ class DFIGFull:
         size = torch.sqrt(cmd_d * cmd_d + cmd_q * cmd_q)
         keep = torch.clamp(p["vr_max"] / torch.clamp(size, min=1e-12), max=1.0)
         vr_d, vr_q = _rot(keep * cmd_d, keep * cmd_q, cos, sin)
+        # Anti-windup. The current integrators track the limited command (back
+        # calculation); the outer integrators stop in proportion to either limit.
+        back = p["aw"] * (keep - 1.0) / p["kp"]
+        hold = 1.0 - p["aw"] * (1.0 - keep * ref_keep)
 
         # Grid-side converter: DC voltage loop sets the d-axis current, q-axis reference zero.
         igd_ref = -(p["dc_kp"] * (p["vdc_ref"] - x[..., 19]) + p["dc_ki"] * x[..., 20])
@@ -238,6 +258,9 @@ class DFIGFull:
         t_e = ps_d * i_q - ps_q * i_d
         p_rsc = -(vr_d * ir_d + vr_q * ir_q)  # from the rotor into the DC link
         p_gsc = vg_d * ig_d + vg_q * ig_q  # from the DC link into the grid
+        # DC chopper: a resistor across the link, switched in over chop_width above chop_on.
+        duty = torch.clamp((x[..., 19] - p["chop_on"]) / p["chop_width"], min=0.0, max=1.0)
+        p_chop = duty * p["chop_g"] * x[..., 19] * x[..., 19]
 
         deriv = torch.stack(
             [
@@ -245,15 +268,15 @@ class DFIGFull:
                 (p["p_m"] / w_r - t_e) / (2.0 * p["h"]),
                 p["pll_kp"] * vtc_q + p["pll_ki"] * x[..., 10],
                 vtc_q,
-                ird_ref - irc_d,
-                irq_ref - irc_q,
+                ird_ref - irc_d + back * cmd_d,
+                irq_ref - irc_q + back * cmd_q,
                 (p_t - x[..., 13]) / p["t_f"],
                 (q_t - x[..., 14]) / p["t_f"],
-                p_ref - x[..., 13],
-                p["q_ref"] - x[..., 14],
+                hold * (p_ref - x[..., 13]),
+                hold * (p["q_ref"] - x[..., 14]),
                 igd_ref - igc_d,
                 0.0 - igc_q,
-                (p_rsc - p_gsc) / (p["c_dc"] * x[..., 19]),
+                (p_rsc - p_gsc - p_chop) / (p["c_dc"] * x[..., 19]),
                 p["vdc_ref"] - x[..., 19],
                 (vtc_d - x[..., 21]) / p["t_ff"],
                 (vtc_q - x[..., 22]) / p["t_ff"],
@@ -262,7 +285,8 @@ class DFIGFull:
             dim=-1,
         )  # fmt: skip
         return {"deriv": deriv, "vt": (vt_d, vt_q), "vr": (vr_d, vr_q), "vg": (vg_d, vg_q),
-                "vr_command": (cmd_d, cmd_q),
+                "vr_command": (cmd_d, cmd_q), "p_chop": p_chop,
+                "ir": (ir_d, ir_q), "il": (il_d, il_q),
                 "p_t": p_t, "q_t": q_t, "t_e": t_e, "p_rsc": p_rsc, "p_gsc": p_gsc}  # fmt: skip
 
     def rhs(self, x: torch.Tensor, p: dict) -> torch.Tensor:

@@ -260,6 +260,17 @@ Details in [docs/steps/31-power-axis.md](docs/steps/31-power-axis.md).
 
 Details in [docs/steps/32-machine-beside-converter.md](docs/steps/32-machine-beside-converter.md).
 
+### Protection: what happens after the first limit
+
+![What becomes of each case](docs/results/phase3/fig79_protection_outcomes.png)
+
+- **There is no limit cycle.** With a current limit, anti-windup and a DC chopper in the doubly-fed plant, every case with an unstable sub-synchronous mode trips on rotor overcurrent or is still growing after 5 s.
+- **Protection decides how an unstable case ends, not whether it is one.** The plant trips at the same time with and without it.
+- **The time of the trip follows from the modes** to 0.5 % to 2.1 % at the median, with no time-domain run.
+- **Stable cases stay stable** after capacitor-voltage offsets up to 0.3 pu. The small-signal verdict is the verdict.
+
+Details in [docs/steps/33-protection.md](docs/steps/33-protection.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

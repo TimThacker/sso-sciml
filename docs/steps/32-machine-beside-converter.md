@@ -123,4 +123,4 @@ Unstable cases called stable, of 1,259 and 1,069, then stable cases flagged. Bot
 
 ## Next
 
-The protection model. Still open from before: a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz; an exact delay and a distributed line above 58 Hz; why a converter damps the plant's sub-synchronous mode and what it does to the slow mode. After that the branch closes and Phase 6 starts.
+The protection model (step 33, since done). Still open from before: a fit whose order grows with the data; why a short delay destabilises a mode near 20 Hz; an exact delay and a distributed line above 58 Hz; why a converter damps the plant's sub-synchronous mode and what it does to the slow mode. After that the branch closes and Phase 6 starts.
