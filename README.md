@@ -195,6 +195,17 @@ Details in [docs/steps/25-outages.md](docs/steps/25-outages.md).
 
 Details in [docs/steps/26-operating-point.md](docs/steps/26-operating-point.md).
 
+### A source and a load on one bus
+
+![Alone against together, and the shortcuts](docs/results/multi/fig67_two_converters.png)
+
+- **Two converters that are each stable alone can be unstable together:** 276 and 57 cases of 32,768, depending on the kind of load. A unit unstable alone is cured by its neighbour in 31 % to 68 % of cases.
+- **Three shortcuts are all unsafe.** Judging each unit alone misses 33 % and 6 % of the unstable pairs. Adding scans taken alone misses 23 % and 4 %. One converter carrying the net power misses 39 % and 23 %.
+- **The admittances do add, at the right operating point.** Each unit has to be scanned at its operating point in the joint power flow.
+- **A source and a load offset each other and do not cancel.** With almost no net power at the bus, 1.5 % to 2.0 % of cases are unstable.
+
+Details in [docs/steps/27-two-converters.md](docs/steps/27-two-converters.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -242,6 +253,7 @@ uv run pytest
 | Reproduce scan noise and network ranges together (about 25 minutes) | `uv run scripts/noise_and_ranges.py` |
 | Reproduce the outage study (about 20 minutes) | `uv run scripts/outages.py` |
 | Reproduce the operating-point study (about 20 minutes) | `uv run scripts/operating_point.py` |
+| Reproduce the source-and-load study (about 5 minutes) | `uv run scripts/two_converters.py` |
 
 ## Licence
 
