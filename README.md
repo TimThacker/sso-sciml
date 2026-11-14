@@ -294,6 +294,17 @@ Details in [docs/steps/34-arm-comparison.md](docs/steps/34-arm-comparison.md).
 
 Details in [docs/steps/36-t2-arms.md](docs/steps/36-t2-arms.md). The verdicts on the plan's five hypotheses over both tasks, and a table per task for choosing an arm, are in [docs/steps/37-phase6-report.md](docs/steps/37-phase6-report.md).
 
+### Operators and sequence models on the response in time
+
+![Eleven models on every test set](docs/results/phase7/fig93_t2_models.png)
+
+- **No operator or sequence model beats a perceptron given the reduced model's response.** The Fourier neural operator is 39 % above it in distribution and the temporal convolutional network 48 %.
+- **The physics inputs matter more than the architecture:** they cut the error of every model, by 29 % to 77 %.
+- **Without them every model fails at high compensation,** with errors of 0.35 to 1.32 of the response.
+- **Only the perceptron with physics inputs stays under 10 % error** over the whole window on all three sets outside the training range.
+
+Details in [docs/steps/38-t2-operators.md](docs/steps/38-t2-operators.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

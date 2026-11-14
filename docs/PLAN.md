@@ -356,6 +356,8 @@ Phase 6 is closed by the report (`docs/steps/37-phase6-report.md`), with one tab
 
 Exit check: results table; the horizon beyond which each model should not be trusted.
 
+Status: done (`docs/steps/38-t2-operators.md`). Eleven models at 1,000 and 25,000 trajectories and five seeds. No operator or sequence model beats the perceptron with the reduced model's response as inputs (median error 0.008 in distribution): the Fourier neural operator is 39 % above it and the temporal convolutional network 48 %. The physics inputs cut the error of every architecture, by 29 % to 77 %. Without them the Fourier neural operator is the best model in distribution and every model fails at high compensation. In distribution every model but the transformer without physics stays under 10 % error to the end of the 0.3 s window; only the perceptron with physics inputs does so on all three sets outside the distribution. The largest run peaks at 493 MB. Not done: the dataset has one disturbance, not three; no case has a limit cycle (step 33); no model was rolled out past the window.
+
 ### Phase 8: T3 measurement inverse (1.5 weeks)
 
 1. Measurement model: noise, PMU filtering and frame rate (which aliases sub-synchronous modes), fault-recorder sampling.

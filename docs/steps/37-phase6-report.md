@@ -105,4 +105,4 @@ Numbers are in `docs/results/phase6/report.json`. In each table the left half is
 
 ## Next
 
-Phase 7 of the plan: operators and sequence models on T2. Arm F with long training is the baseline they have to beat.
+Phase 7 of the plan: operators and sequence models on T2. Arm F with long training is the baseline they have to beat (done, step 38).
