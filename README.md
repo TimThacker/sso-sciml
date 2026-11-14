@@ -317,6 +317,17 @@ Details in [docs/steps/38-t2-operators.md](docs/steps/38-t2-operators.md).
 
 Details in [docs/steps/39-measurement-inverse.md](docs/steps/39-measurement-inverse.md).
 
+### When to call the solver
+
+![Missed unstable cases against solver share](docs/results/phase9/fig101_tradeoff.png)
+
+- **Inside the training range the learned screen needs the solver for 0.7 % of cases** and calls no unstable case stable (0 of 1,376). The rule: trust the sign when the prediction is far from zero in units of the spread of five networks.
+- **The hand calculation as the baseline does most of that:** with no detector at all it leaves 3.0 % for the solver, against 14.8 % for a plain network.
+- **Outside the range no detector is enough.** At compensation above 80 % or speed below 0.8 pu every one lets unstable cases through. A check of the inputs against the training range is what works.
+- **The hand calculation is the best second opinion outside the range,** because it is the one signal that does not come from the training data.
+
+Details in [docs/steps/40-fallback.md](docs/steps/40-fallback.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

@@ -130,4 +130,4 @@ From 0.3 s of one phase current after a small disturbance, with only the four pa
 
 ## Next
 
-Step 40, Phase 9 of the plan: the out-of-distribution study and the fallback rule.
+Step 40, Phase 9 of the plan: the out-of-distribution study and the fallback rule (done).

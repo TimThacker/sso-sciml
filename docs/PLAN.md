@@ -378,6 +378,8 @@ Status: done on simulated records (`docs/steps/39-measurement-inverse.md`). From
 
 Exit check: a policy with a stated operating point (target: no missed unstable case on the in-distribution test set with the solver called on under 10 % of cases) and a list of directions where the model fails without warning.
 
+Status: done for task T1 (`docs/steps/40-fallback.md`). The policy: a parameter outside its training range goes to the solver; otherwise arm R as an ensemble of five answers when |prediction| / (spread + 0.025 1/s) is above 2.77, and the solver is called when it is not. On the in-distribution test fold this sends 0.72 % of cases to the solver and calls none of 1,376 unstable cases stable, so the target is met. With no detector arm R sends 3.0 % and arm N 14.8 %. Without the range check the rule fails without warning at series compensation above 80 % and rotor speed below 0.8 pu: every detector lets 4 to 20 unstable cases through. Disagreement with the hand calculation gives the fewest misses there. Not done: a physics-residual detector, and the same study on T2.
+
 ### Phase 10: Design search (1.5 weeks)
 
 Choose rotor-side current-loop gains, a damping-controller gain and filter frequency, and the number of compensation segments in service (integer), to maximise worst-case damping over a scenario set, subject to a control bandwidth floor.
