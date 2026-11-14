@@ -292,7 +292,7 @@ Details in [docs/steps/34-arm-comparison.md](docs/steps/34-arm-comparison.md).
 - **As a penalty in training it makes the model two to three times worse** from 1,000 trajectories, at any weight tried.
 - **Training length, not data, was the limit:** four times the steps cut the error by 63 % to 75 %, where 25 times the data cut nothing.
 
-Details in [docs/steps/36-t2-arms.md](docs/steps/36-t2-arms.md).
+Details in [docs/steps/36-t2-arms.md](docs/steps/36-t2-arms.md). The verdicts on the plan's five hypotheses over both tasks, and a table per task for choosing an arm, are in [docs/steps/37-phase6-report.md](docs/steps/37-phase6-report.md).
 
 ## Setup
 

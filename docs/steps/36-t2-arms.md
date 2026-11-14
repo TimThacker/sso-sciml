@@ -150,4 +150,4 @@ Verdicts for task T2. The report of step 37 sets them beside task T1.
 
 ## Next
 
-Step 37: the Phase 6 report, with a verdict on each hypothesis over both tasks, and one table and one figure per task.
+Step 37: the Phase 6 report, with a verdict on each hypothesis over both tasks, and one table and one figure per task (done).
