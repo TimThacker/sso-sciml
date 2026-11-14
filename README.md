@@ -305,6 +305,18 @@ Details in [docs/steps/36-t2-arms.md](docs/steps/36-t2-arms.md). The verdicts on
 
 Details in [docs/steps/38-t2-operators.md](docs/steps/38-t2-operators.md).
 
+### From a measured current back to the mode and the plant
+
+![The mode against noise](docs/results/phase8/fig97_mode_against_noise.png)
+
+- **On a clean fault-recorder trace, matrix pencil reads the growth rate to 0.03 1/s** from 0.3 s of current. It breaks between 20 and 10 dB of noise.
+- **A network trained on the plant's waveforms is better from 30 dB down** and gets the sign right in 96.6 % of cases at 0 dB.
+- **A phasor unit at 60 or 30 frames per second reports the mode at a folded frequency,** 8 Hz and 30 Hz from the true one. At 60 frames the growth rate survives; at 30 it does not.
+- **The current pins down the series compensation and little else.** The phase-locked loop cannot be identified once the noise passes about 20 dB.
+- **A fit through the full model reaches the theoretical bound, if a network gives it the start.** From the middle of the range it fails in over 90 % of cases.
+
+Details in [docs/steps/39-measurement-inverse.md](docs/steps/39-measurement-inverse.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

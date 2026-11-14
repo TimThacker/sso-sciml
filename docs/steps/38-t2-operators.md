@@ -157,4 +157,4 @@ In distribution, 25,000 trajectories, cases that do not trip:
 
 ## Next
 
-Step 39, Phase 8 of the plan: reading the mode and the plant parameters from a noisy measured current.
+Step 39, Phase 8 of the plan: reading the mode and the plant parameters from a noisy measured current (done).

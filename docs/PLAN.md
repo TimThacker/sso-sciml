@@ -367,6 +367,8 @@ Status: done (`docs/steps/38-t2-operators.md`). Eleven models at 1,000 and 25,00
 
 Exit check: error against signal-to-noise ratio per method; a list of parameters that cannot be identified.
 
+Status: done on simulated records (`docs/steps/39-measurement-inverse.md`). From 0.3 s of phase current, matrix pencil on a fault-recorder trace reads the growth rate to 0.03 1/s with no noise and 0.05 1/s at 40 dB, and breaks between 20 and 10 dB. A convolutional network is better from 30 dB down (0.12 1/s at 20 dB against 0.42) and gets the sign wrong in 3.4 % of cases at 0 dB against 11.6 %. Prony is 2 1/s off with no noise. A phasor unit at 120 frames per second loses a factor of two; at 60 and 30 frames per second it reports the frequency folded, 8 Hz and 30 Hz off. Of the four parameters the current pins down the series compensation at any noise level, the current loop down to about 5 dB, rotor speed to about 10 dB and the phase-locked loop only above about 20 dB. A Gauss-Newton fit through the model reaches the Cramér-Rao bound when started from the network's answer and fails in over 90 % of cases when started from the middle of the range. Not done: the repository holds no digitised event waveforms, and Phase 5 built no inverse PINN.
+
 ### Phase 9: Out-of-distribution study and fallback (2 weeks)
 
 1. Every model on every extrapolation split; error against distance outside the range, per direction.
