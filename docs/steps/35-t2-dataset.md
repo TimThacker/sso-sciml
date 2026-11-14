@@ -78,4 +78,4 @@ The error of the reduced model is relative: the root of the summed squared error
 
 ## Next
 
-Step 36: arms N, F, R, L, F+L and A on this dataset.
+Step 36: arms N, F, R, L, F+L and A on this dataset (done).

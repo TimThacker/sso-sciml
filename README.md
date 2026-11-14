@@ -282,6 +282,18 @@ Details in [docs/steps/33-protection.md](docs/steps/33-protection.md).
 
 Details in [docs/steps/34-arm-comparison.md](docs/steps/34-arm-comparison.md).
 
+### Where the physics goes: six arms on the response in time
+
+![Six arms against budget](docs/results/phase6/fig87_t2_budget.png)
+
+- **A reduced model as inputs needs almost no data:** 93 % lower error than a plain network at 100 trajectories, 76 % to 80 % after.
+- **Built into the model it is the best arm on every test set,** at 13 times the training time.
+- **As the baseline it needs 1,000 trajectories** and falls behind the plain network where the reduced model is far off.
+- **As a penalty in training it makes the model two to three times worse** from 1,000 trajectories, at any weight tried.
+- **Training length, not data, was the limit:** four times the steps cut the error by 63 % to 75 %, where 25 times the data cut nothing.
+
+Details in [docs/steps/36-t2-arms.md](docs/steps/36-t2-arms.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
