@@ -129,4 +129,4 @@ Each design was run for 1 s in the nonlinear model after a capacitor-voltage off
 
 ## Next
 
-Step 42, Phase 11 of the plan: the model registry, the screening service and the model card.
+Step 42, Phase 11 of the plan: the model registry, the screening service and the model card (done).

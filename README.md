@@ -339,6 +339,17 @@ Details in [docs/steps/40-fallback.md](docs/steps/40-fallback.md).
 
 Details in [docs/steps/41-design-search.md](docs/steps/41-design-search.md).
 
+### The screening service
+
+![What the service returns](docs/results/phase11/fig110_service_answers.png)
+
+- **`uv run scripts/serve.py` starts a service** with `POST /screen` (growth rate and frequency of the mode from 12 parameters) and `POST /simulate` (the response in time from the solver).
+- **Every answer says where it came from.** Inside the training range and far enough from the boundary it is the registered model's, in 3 ms. Otherwise it is the solver's, in 15 ms, with the reason.
+- **Every answer carries the mechanism:** the resonance frequency, the slip there, the machine's and the loop's resistance, and the hand calculation as a second opinion.
+- **The registered model sends 0.9 % of test cases to the solver and calls no unstable case stable.** Its card, with its limits, is [docs/model_cards/t1-screen.md](docs/model_cards/t1-screen.md).
+
+Details in [docs/steps/42-service.md](docs/steps/42-service.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).
@@ -388,6 +399,8 @@ uv run pytest
 | Reproduce the operating-point study (about 20 minutes) | `uv run scripts/operating_point.py` |
 | Reproduce the source-and-load study (about 5 minutes) | `uv run scripts/two_converters.py` |
 | Reproduce the delay and filter-capacitor study (about 8 minutes) | `uv run scripts/delay_and_capacitor.py` |
+| Build and register the screening model (needs the T1 dataset) | `uv run scripts/phase11_build.py` |
+| Start the screening service | `uv run scripts/serve.py` |
 
 ## Licence
 

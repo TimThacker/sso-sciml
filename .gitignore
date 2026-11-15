@@ -20,6 +20,7 @@ data/*
 !data/README.md
 !data/samples/
 runs/
+registry/
 mlruns/
 checkpoints/
 *.pt

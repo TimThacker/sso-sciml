@@ -401,6 +401,8 @@ Status: done (`docs/steps/41-design-search.md`). A damping controller was added 
 
 Exit check: fresh clone, `uv sync`, one command starts the service and the suite passes.
 
+Status: done (`docs/steps/42-service.md`). The registry keeps weights with a card: version, dataset hash, training commit, input ranges, rule, interval and metrics; loading refuses weights or a dataset specification that do not match the card. `POST /screen` answers from the registered model inside its input ranges and above the rule's level, and from the solver otherwise, and returns the mechanism quantities and the hand calculation with every answer. `POST /simulate` returns a trajectory from the solver. The registered model, `t1-screen 1.0.0`, sends 0.9 % of in-distribution test cases to the solver and calls none of 1,376 unstable cases stable. An answer from the model takes 3.2 ms and one from the solver 15 ms. `uv run scripts/serve.py` starts the service; on a fresh clone it first builds a smaller model from 16,384 generated cases, since weights and datasets are not committed. The model card is `docs/model_cards/t1-screen.md`. Tagged `v1.0.0`.
+
 ### Phase 12: Report (1 week)
 
 Cross-model comparison, validation record, failure catalogue, verdicts on the hypotheses, and what would be done differently.
