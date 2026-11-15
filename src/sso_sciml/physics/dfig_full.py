@@ -198,6 +198,11 @@ class DFIGFull:
             out.append((dl2 - p["x_e"] * di) / (p["x_f"] + p["x_e"]))
         return out[0], out[1]
 
+    def _supplementary(self, x: torch.Tensor, p: dict, irc_d, irc_q) -> tuple:
+        """A signal added to the rotor voltage command, and the derivatives of any states
+        it needs, which follow the network's extra states. None here."""
+        return 0.0, 0.0, []
+
     def _evaluate(self, x: torch.Tensor, p: dict) -> dict:
         """Everything `rhs` needs, also used for outputs."""
         wb = self.data.wb
@@ -220,8 +225,9 @@ class DFIGFull:
         # Controller command, then the converter's voltage limit: the command keeps its
         # direction and its magnitude is held at vr_max. Below the limit the factor is
         # exactly one.
-        cmd_d = p["kp"] * (ird_ref - irc_d) + p["ki"] * x[..., 11]
-        cmd_q = p["kp"] * (irq_ref - irc_q) + p["ki"] * x[..., 12]
+        add_d, add_q, d_extra = self._supplementary(x, p, irc_d, irc_q)
+        cmd_d = p["kp"] * (ird_ref - irc_d) + p["ki"] * x[..., 11] + add_d
+        cmd_q = p["kp"] * (irq_ref - irc_q) + p["ki"] * x[..., 12] + add_q
         size = torch.sqrt(cmd_d * cmd_d + cmd_q * cmd_q)
         keep = torch.clamp(p["vr_max"] / torch.clamp(size, min=1e-12), max=1.0)
         vr_d, vr_q = _rot(keep * cmd_d, keep * cmd_q, cos, sin)
@@ -281,6 +287,7 @@ class DFIGFull:
                 (vtc_d - x[..., 21]) / p["t_ff"],
                 (vtc_q - x[..., 22]) / p["t_ff"],
                 *net["extra"],
+                *d_extra,
             ],
             dim=-1,
         )  # fmt: skip

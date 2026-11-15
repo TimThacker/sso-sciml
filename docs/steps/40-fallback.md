@@ -142,4 +142,4 @@ Directions where the model fails without warning if step 1 is left out: series c
 
 ## Next
 
-Step 41, Phase 10 of the plan: the design search.
+Step 41, Phase 10 of the plan: the design search (done).

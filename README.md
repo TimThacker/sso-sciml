@@ -328,6 +328,17 @@ Details in [docs/steps/39-measurement-inverse.md](docs/steps/39-measurement-inve
 
 Details in [docs/steps/40-fallback.md](docs/steps/40-fallback.md).
 
+### Designing the damping
+
+![The design surface and the price of compensation](docs/results/phase10/fig106_surface.png)
+
+- **A damping controller that takes the current loop's gain away at the resonance is worth 3 to 11 1/s.** The best design always has the loop bandwidth at its floor and the controller at full strength: the gain is the negative resistance.
+- **Four of five capacitor segments can stay in service; the fifth cannot.** At 75 % compensation the mode's frequency spreads over 14 Hz across operating points, more than one filter covers.
+- **Bayesian optimisation on the solver finds the design in about 260 solver calls,** CMA-ES in two to three times that, random search not at all on the hard problem.
+- **A surrogate with an average error of 0.05 1/s proposed a design it called stable and the solver called unstable.** A search goes where the model is too low. The solver has to confirm.
+
+Details in [docs/steps/41-design-search.md](docs/steps/41-design-search.md).
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) and, for training, an NVIDIA GPU with a current driver. Developed on Windows 11 with an RTX 3070 (8 GB).

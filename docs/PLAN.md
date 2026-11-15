@@ -390,6 +390,8 @@ Choose rotor-side current-loop gains, a damping-controller gain and filter frequ
 
 Exit check: table of best design, solver calls and wall time per method.
 
+Status: done (`docs/steps/41-design-search.md`). A damping controller was added to the plant: a band-pass on the rotor current that removes a share of the current loop's gain around one frequency. Every optimum has the bandwidth at its 10 Hz floor and the gain at its ceiling. The controller is worth 3 to 11 1/s of worst-case damping; with it four capacitor segments (60 % compensation) can stay in service at −4.5 1/s and five cannot (+0.5 1/s), because the mode's frequency spreads over 14 Hz across the scenarios. As the plan states the problem the optimum is one segment, so a second problem with all five in service was added. On it Bayesian optimisation comes within 1 1/s of the best in 216 to 312 solver calls, CMA-ES in 408 to 1,308, and random search never in 2,880. A surrogate trained on 20,000 calls promises a stable design (−0.7 1/s) where the solver finds +2.8; the confirming solver calls catch it. The nonlinear model agrees with the eigenvalues to 0.16 1/s.
+
 ### Phase 11: Service and release (1.5 weeks)
 
 1. Model registry: version, dataset hash, training commit, metrics, valid input ranges.
