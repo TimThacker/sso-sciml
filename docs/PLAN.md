@@ -409,6 +409,23 @@ Cross-model comparison, validation record, failure catalogue, verdicts on the hy
 
 Status: done (`docs/REPORT.md`, numbers gathered by `scripts/phase12_report.py`).
 
+### Phase 13: Closing the gaps of the final report (added 2026-11-16)
+
+Section 8 of `docs/REPORT.md` lists what was not done. Each item becomes a step, in this order, with the screening summary last:
+
+| Step | Item | Exit check |
+|---|---|---|
+| 43 | Rungs 3 and 5: published eigenvalues for a doubly-fed plant; recorded events | A published case run through the model, or a record of why none could be |
+| 44 | A second implementation of the full controls | Growth rates of the full model reproduced by code that shares no equations with it |
+| 45 | Three disturbances on T2 | A dataset per disturbance and the T2 models scored on each |
+| 46 | A neural ODE with a nonlinear correction for arm A | Paired comparison with arm A and the perceptron with physics inputs |
+| 47 | A parametric PINN and an inverse PINN | Error against the data-trained models; parameters against the fit through the solver |
+| 48 | The out-of-distribution study on T2, and a physics-residual detector | The detectors of step 40 and a residual scored on T1 and T2 |
+| 49 | System C as a learned task | Arms N, F, R on the converter dataset, with the fallback rule |
+| 50 | Active learning | Labels needed for a given error, against random sampling |
+| 51 | A network of many plants with a graph network | Error against a network size not seen in training |
+| 52 | Summary of the screening approaches | One document naming the best deterministic and the best learned screen, with their operating points |
+
 ### Stretch goals
 
 - System C in full.

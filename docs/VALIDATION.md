@@ -43,7 +43,7 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 | First Benchmark Model: benchmark compensation destabilises the second torsional mode | Reproduced: +0.358 1/s. Published growth rate not compared |
 | First Benchmark Model generator and network data against the 1977 tables | **Open.** Entered from memory (A11) |
 | Doubly-fed machine: direction of trends with compensation, rotor speed and current-loop gain | Reproduced (steps 03, 04) |
-| Doubly-fed machine: eigenvalue tables and parameter sets | **Open.** Open copies of the reference paper were not retrievable. DOIs: 10.1109/TPWRD.2010.2050912, 10.1109/TEC.2011.2160995, 10.1109/TEC.2012.2211019 |
+| Doubly-fed machine: eigenvalue tables and parameter sets | **Partly met** (step 43) on the Hydro-Québec benchmark of PES GM 2026 paper 000654: frequency of the sub-synchronous mode within 1.7 Hz with no fitting; compensation boundary 12 % against "below 10 %" with one current-loop gain fitted; the gain at which it becomes stable about a third lower than the paper's. The earlier references (DOIs 10.1109/TPWRD.2010.2050912, 10.1109/TEC.2011.2160995, 10.1109/TEC.2012.2211019) were still not retrievable |
 | Induction machine data against a source | **Open** (A12) |
 
 ## Rung 4: independent formulation
@@ -61,7 +61,7 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 
 ## Rung 5: recorded events
 
-**Open.** No digitised waveform has been compared. Public recordings come without plant parameters, so only frequency and growth rate could be compared.
+**Open.** No digitised waveform has been compared. Public accounts of the 2009 south Texas event give its cause and duration (about 1.5 s to the capacitor bypass) but no frequency or growth rate from a record in a readable source (step 43).
 
 ## Assumption studies
 

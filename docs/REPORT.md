@@ -218,7 +218,7 @@ Where each thing fails, how it shows, and what catches it.
 
 ## 8. Not done
 
-- Rungs 3 and 5 of the validation ladder in part or whole: published eigenvalue tables for a doubly-fed plant, and recorded events.
+- Rungs 3 and 5 of the validation ladder in part or whole: published eigenvalue tables for a doubly-fed plant, and recorded events. Phase 13 takes these up; rung 3 is partly met (step 43), rung 5 stays open.
 - A second implementation of the full controls, or a comparison with an electromagnetic-transient tool.
 - An inverse PINN and a parametric PINN (Phase 5 built the forward form and the eigenvalue residual).
 - A neural ODE with a nonlinear correction for arm A.
