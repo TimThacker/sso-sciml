@@ -74,4 +74,4 @@ Sources searched and read: the paper above (read in full); the arXiv paper 2508.
 
 ## Next
 
-Step 44: a second implementation of the full controls, for rung 4.
+Step 44: a second implementation of the full controls, for rung 4 (done).

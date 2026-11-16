@@ -53,7 +53,8 @@ Status of each rung of the validation ladder in `docs/PLAN.md`, with the number 
 | Impedance model (polynomial roots) against state-space eigenvalues, current-loop model, radial network | all four modes within 2.3e-8 on 27 cases | step 05, `test_impedance_roots_equal_state_space_eigenvalues` |
 | Impedance model against full controls | **Open.** The impedance model has no phase-locked loop or outer loops |
 | Second time-domain implementation in phase coordinates (NumPy, trapezoidal) against the D-Q model, current-loop model | growth rates within 0.00014 1/s on four cases; trajectories within 0.094 % of the largest excursion; order 2.00 | step 07, `test_growth_rate_from_phase_current_matches_the_eigenvalue` |
-| Second time-domain implementation of the full controls, or an electromagnetic-transient tool | **Open** |
+| Second time-domain implementation of the full controls | Done (step 44): phase coordinates, different states, absolute PLL angle, no autodiff, adaptive DOP853. Trajectories within 5e-8 of the largest deviation on 12 cases, growth rates within 5e-5 1/s in 11 and 0.07 1/s in a case growing at 24 1/s, verdict the same in all 12. Radial network, no protection | step 44, `test_trajectories_agree_after_an_offset` |
+| Comparison with an electromagnetic-transient tool | **Open** |
 | Impedance model against the time-domain model on networks with plant impedance and a parallel path, added loops off | within 0.0005 1/s on four networks and three speeds | step 05, `test_controls_off_matches_the_impedance_model_on_the_meshed_network` |
 | Meshed-network model reduces to the radial model | 1e-5 1/s | step 05 |
 | Compensation step on the meshed network, growth against eigenvalue | 1.613 against 1.616 1/s | step 05 |
