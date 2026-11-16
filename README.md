@@ -6,10 +6,11 @@ The question it keeps asking: will this machine, at this operating point, on thi
 
 The project pairs a first-principles reference solver (network electromagnetic transients kept) with hand calculations of the mechanism and with several kinds of learned model: gradient-boosted trees, Gaussian processes, MLP ensembles, physics-informed networks, DeepONet, Fourier neural operators, neural ODEs and sequence models. Its central experiment compares where the physics goes: in the loss, in the input features, in the architecture, or nowhere.
 
-**Status:** Phases 0 and 1 complete; Phase 2 under way. The solver core is validated on the IEEE First Benchmark Model, the induction generator case (self-excitation boundary, energy accounting) is done, and the doubly-fed machine is modelled with its full control structure on radial and meshed networks, in two independent formulations. No learned models yet.
+**Status:** all twelve phases of the plan are closed. [docs/REPORT.md](docs/REPORT.md) is the final report: every model side by side, the validation record, a catalogue of failures, and what was not done. The solver is validated against hand calculations, a benchmark's published frequencies and independent formulations; it has not been compared with a recorded event.
 
 | Document | What it is |
 |---|---|
+| [docs/REPORT.md](docs/REPORT.md) | Final report |
 | [docs/PLAN.md](docs/PLAN.md) | Scope, physics, learning tasks, phases, exit checks, risks |
 | [docs/steps/](docs/steps/) | Step log: what was run, the numbers, what disagreed |
 | [docs/EQUATIONS.md](docs/EQUATIONS.md) | Model equations and sign conventions |
@@ -401,6 +402,7 @@ uv run pytest
 | Reproduce the delay and filter-capacitor study (about 8 minutes) | `uv run scripts/delay_and_capacitor.py` |
 | Build and register the screening model (needs the T1 dataset) | `uv run scripts/phase11_build.py` |
 | Start the screening service | `uv run scripts/serve.py` |
+| Gather the numbers of the final report | `uv run scripts/phase12_report.py` |
 
 ## Licence
 

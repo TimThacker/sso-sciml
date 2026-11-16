@@ -1,6 +1,6 @@
 # Project plan
 
-Status: Phases 0 and 1 complete (2026-11-11). Target numbers for later phases are targets, not results.
+Status: all twelve phases closed (2026-11-14). The final report is `docs/REPORT.md`; it lists what was not done. Each phase below carries a status note with its results.
 
 Revision 2 (2026-11-11). Changes from revision 1, and why:
 
@@ -406,6 +406,8 @@ Status: done (`docs/steps/42-service.md`). The registry keeps weights with a car
 ### Phase 12: Report (1 week)
 
 Cross-model comparison, validation record, failure catalogue, verdicts on the hypotheses, and what would be done differently.
+
+Status: done (`docs/REPORT.md`, numbers gathered by `scripts/phase12_report.py`).
 
 ### Stretch goals
 
