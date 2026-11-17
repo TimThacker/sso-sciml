@@ -41,6 +41,22 @@ def test_arm_a_before_training_is_the_reduced_model(cases):
     assert np.abs(out.numpy() - mt.reduced_alone(cases)).max() < 0.02
 
 
+def test_arm_an_before_training_is_arm_a(cases):
+    a_red = torch.as_tensor(cases["a_red"], dtype=torch.float32)
+    theta = torch.randn(8, 4)
+    torch.manual_seed(0)
+    lin = mt.LinearSystem(4, 32, 2)
+    torch.manual_seed(0)
+    node = mt.LinearSystem(4, 32, 2, nonlinear=True)
+    with torch.no_grad():
+        assert torch.allclose(lin(theta, a_red), node(theta, a_red))
+        node.g[-1].bias.fill_(0.3)  # a constant term is taken off: the steady state holds
+        still = node.z0.clone()
+        node.z0.zero_()
+        assert node(theta, a_red).abs().max() < 1e-6
+        node.z0.copy_(still)
+
+
 @pytest.mark.parametrize("arm", mt.ARMS)
 def test_every_arm_trains_and_starts_from_the_known_initial_state(arm, cases, pool):
     lab = {k: v[:6] for k, v in cases.items()}

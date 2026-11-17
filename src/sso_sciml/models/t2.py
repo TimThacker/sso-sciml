@@ -12,6 +12,8 @@ Six ways of using the physics, with one network size and one schedule:
     FL   L with the inputs of F
     A    a linear system whose state matrix is that of the reduced model plus a learned
          correction, with four further learned states; the initial state is exact
+    AN   A with a learned nonlinear term added to its dynamics: a neural ODE that
+         starts as arm A (step 46)
 
 L0 and FL0 are L and FL with the residual switched off: the same network and data loss.
 
@@ -33,13 +35,14 @@ from torch import nn
 from ..data import t2
 from ..physics.dfig_full import DFIGFull
 
-ARMS = ("N", "F", "R", "L0", "L", "FL0", "FL", "A")
+ARMS = ("N", "F", "R", "L0", "L", "FL0", "FL", "A", "AN")
 CHANNEL = np.array([0.05, 0.05, 0.01, 0.01, 0.001])  # size of each observed quantity, pu
 FREQS = (10.0, 20.0, 30.0, 40.0, 50.0)  # Hz, time features
 RATE = 100.0  # 1/s; the residual is divided by this
 N_LATENT = 4
 A_RATE = 0.25  # arm A trains at this share of the learning rate; at the full one it blows up
 _STATES = ("L0", "L", "FL0", "FL")
+_SYSTEMS = ("A", "AN")  # arms built on the reduced model's state matrix
 _FEATURES = ("F", "FL0", "FL")
 
 
@@ -53,6 +56,7 @@ class Config:
     depth: int = 4
     eval_every: int = 200
     weight: float = 1.0  # of the residual against the data loss
+    data: float = 1.0  # of the data loss; 0 trains on the residual alone (a parametric PINN)
 
 
 def _mlp(n_in: int, n_out: int, width: int, depth: int) -> nn.Sequential:
@@ -94,13 +98,22 @@ class LinearSystem(nn.Module):
     model does; the DC voltage is a learned combination. M starts near zero, so before
     training this is the reduced model."""
 
-    def __init__(self, n_theta: int, width: int, depth: int):
+    def __init__(self, n_theta: int, width: int, depth: int, nonlinear: bool = False):
         super().__init__()
         self.n = 8 + N_LATENT
         self.net = _mlp(n_theta, self.n * self.n + self.n, width, depth)
         with torch.no_grad():
             self.net[-1].weight.mul_(0.01)
             self.net[-1].bias.zero_()
+        # Arm AN: dz/dt = (A_red + M) z + RATE * OFFSET * (g(z / OFFSET, theta) - g(0, theta)).
+        # The last layer of g starts at zero, so the model starts as arm A, and g(0) is
+        # taken off so the steady state stays a steady state.
+        self.g = None
+        if nonlinear:
+            self.g = _mlp(self.n + n_theta, self.n, 64, 2)
+            with torch.no_grad():
+                self.g[-1].weight.zero_()
+                self.g[-1].bias.zero_()
         self.register_buffer("c_red", torch.as_tensor(t2.reduced_outputs(), dtype=torch.float32))
         z0 = torch.zeros(self.n)
         z0[t2.VC] = t2.OFFSET
@@ -112,10 +125,18 @@ class LinearSystem(nn.Module):
         b, n = theta.shape[0], self.n
         total = RATE * out[:, : n * n].reshape(b, n, n)
         total = total + nn.functional.pad(a_red, (0, N_LATENT, 0, N_LATENT))
-        step = torch.linalg.matrix_exp(total * (t2.DT * t2.EVERY))
+        h = t2.DT * t2.EVERY
+        step = torch.linalg.matrix_exp(total * h)
         z = self.z0.expand(b, n)
         zs = [z]
+        if self.g is not None:
+            g0 = self.g(torch.cat([torch.zeros_like(z), theta], dim=1))
         for _ in range(t2.N_T - 1):
+            if self.g is not None:
+                # Lie splitting: an Euler step of the nonlinear term, then the exact
+                # step of the linear part.
+                kick = self.g(torch.cat([z / t2.OFFSET, theta], dim=1)) - g0
+                z = z + h * RATE * t2.OFFSET * kick
             z = torch.einsum("bij,bj->bi", step, z)
             zs.append(z)
         zs = torch.stack(zs, dim=1)
@@ -217,15 +238,15 @@ def train(
         to_obs = to((c_obs * size[None, :]) / CHANNEL[:, None])
     else:
         y = y_obs - reduced_alone(labelled) if arm == "R" else y_obs
-        y0 = np.zeros(5, dtype=np.float32)
-        if arm != "R":
-            y0[2] = t2.OFFSET / CHANNEL[2]
+        # The value at t = 0 is the same in every case: the capacitor offset of T2, or
+        # zero for a disturbance that starts from rest (`t2_events`).
+        y0 = np.median(y[:, 0], axis=0).astype(np.float32)
     scale = np.sqrt(((y if arm != "R" else y_obs) ** 2 * m[:, :, None]).sum(axis=(1, 2))
                     / m.sum(axis=1))  # fmt: skip
     th, yt, st, y0t = to(_theta_inputs(arm, labelled)), to(y), to(scale), to(y0)
     extra = to(_extra(labelled)) if arm in _FEATURES else None
-    if arm == "A":
-        model = LinearSystem(th.shape[1], cfg.width, cfg.depth).to(dev)
+    if arm in _SYSTEMS:
+        model = LinearSystem(th.shape[1], cfg.width, cfg.depth, nonlinear=arm == "AN").to(dev)
         a_red = to(labelled["a_red"])
         mt = to(m)
     else:
@@ -252,7 +273,7 @@ def train(
                 part = {k: v[lo : lo + chunk] for k, v in d.items() if k != "p"}
                 x = to(_theta_inputs(arm, part))
                 b = x.shape[0]
-                if arm == "A":
+                if arm in _SYSTEMS:
                     out.append(model(x, to(part["a_red"])).cpu().numpy())
                     continue
                 ex = to(_extra(part)).reshape(b * t2.N_T, 4) if arm in _FEATURES else None
@@ -267,7 +288,7 @@ def train(
         model.train()
         return np.concatenate(out)
 
-    lr = cfg.lr * (A_RATE if arm == "A" else 1.0)
+    lr = cfg.lr * (A_RATE if arm in _SYSTEMS else 1.0)
     opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=cfg.weight_decay)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=lr, total_steps=cfg.steps)
     history: dict = {"step": [], "data_loss": [], "residual": [], "held_out": []}
@@ -275,7 +296,7 @@ def train(
     t0 = time.perf_counter()
     for step in range(1, cfg.steps + 1):
         res = float("nan")
-        if arm == "A":
+        if arm in _SYSTEMS:
             i = torch.randint(0, n, (min(max(cfg.batch // 64, 1), n),), device=dev, generator=gen)
             err = (model(th[i], a_red[i]) - yt[i]) * mt[i][:, :, None]
             loss = ((err**2).sum(dim=(1, 2)) / (mt[i].sum(dim=1) * st[i] ** 2)).mean()
@@ -285,6 +306,7 @@ def train(
             u = model(th[i], k / (t2.N_T - 1), extra[i, k] if extra is not None else None) + y0t
             loss = (((u - yt[i, k]) / st[i, None]) ** 2).sum(dim=1).mean()
         data_loss = float(loss.detach())
+        loss = cfg.data * loss
         if use_res:
             b = cfg.batch // 4
             i = torch.randint(0, x_eq.shape[0], (b,), device=dev, generator=gen)

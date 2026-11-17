@@ -53,4 +53,4 @@ Numbers are in `docs/results/phase13/t2_events.json`. Error is the median relati
 
 ## Next
 
-Step 46: a neural ODE with a nonlinear correction for arm A.
+Step 46: a neural ODE with a nonlinear correction for arm A (done).
