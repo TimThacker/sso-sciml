@@ -56,4 +56,4 @@ Training time: 238 s for arm A, 1,038 s for arm AN (4,000 steps).
 
 ## Next
 
-Step 47: a parametric PINN and an inverse PINN.
+Step 47: a parametric PINN and an inverse PINN (done).
