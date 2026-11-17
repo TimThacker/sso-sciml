@@ -222,6 +222,6 @@ Where each thing fails, how it shows, and what catches it.
 - A second implementation of the full controls, or a comparison with an electromagnetic-transient tool. The second implementation is done (step 44); the EMT comparison stays open.
 - An inverse PINN and a parametric PINN (Phase 5 built the forward form and the eigenvalue residual).
 - A neural ODE with a nonlinear correction for arm A.
-- Three disturbances on T2; the dataset has one.
+- Three disturbances on T2; the dataset has one. Done (step 45): with the reduced model's response as inputs, error 2.6 to 3.5 times lower in distribution and 6 to 13 times lower at high compensation for a compensation step and a voltage dip; no gain for a power ramp, which the reduced model does not see.
 - The out-of-distribution study on T2, and a physics-residual detector.
 - The stretch goals: System C in full as a learned task, a network of many plants with a graph network, active learning.
