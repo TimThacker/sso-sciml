@@ -58,4 +58,4 @@ Share of the labels within 2 1/s of the boundary: 9 % for random, 5 % to 8 % for
 
 ## Next
 
-Step 51: a network of many plants with a graph network.
+Step 51: a network of many plants with a graph network (done).
