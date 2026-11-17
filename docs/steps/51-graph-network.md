@@ -80,4 +80,4 @@ As a screen, cleared share and unstable cases cleared (mean over seeds):
 
 ## Next
 
-Step 52: the summary of the screening approaches.
+Step 52: the summary of the screening approaches (done, `docs/SCREENING.md`).

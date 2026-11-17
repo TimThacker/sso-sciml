@@ -426,6 +426,8 @@ Section 8 of `docs/REPORT.md` lists what was not done. Each item becomes a step,
 | 51 | A network of many plants with a graph network | Error against a network size not seen in training |
 | 52 | Summary of the screening approaches | One document naming the best deterministic and the best learned screen, with their operating points |
 
+Status: done (steps 43 to 52; summary in `docs/SCREENING.md`). Still open: recorded events (rung 5) and a comparison with an electromagnetic-transient tool.
+
 ### Stretch goals
 
 - System C in full.

@@ -6,7 +6,7 @@ The question it keeps asking: will this machine, at this operating point, on thi
 
 The project pairs a first-principles reference solver (network electromagnetic transients kept) with hand calculations of the mechanism and with several kinds of learned model: gradient-boosted trees, Gaussian processes, MLP ensembles, physics-informed networks, DeepONet, Fourier neural operators, neural ODEs and sequence models. Its central experiment compares where the physics goes: in the loss, in the input features, in the architecture, or nowhere.
 
-**Status:** all twelve phases of the plan are closed. [docs/REPORT.md](docs/REPORT.md) is the final report: every model side by side, the validation record, a catalogue of failures, and what was not done. The solver is validated against hand calculations, a benchmark's published frequencies and independent formulations; it has not been compared with a recorded event.
+**Status:** all thirteen phases of the plan are closed. [docs/SCREENING.md](docs/SCREENING.md) names the best deterministic and the best learned screen with their operating points. [docs/REPORT.md](docs/REPORT.md) is the final report: every model side by side, the validation record, a catalogue of failures, and what was not done. The solver is validated against hand calculations, a benchmark's published frequencies and independent formulations; it has not been compared with a recorded event.
 
 | Document | What it is |
 |---|---|

@@ -144,7 +144,7 @@ The full record is `docs/VALIDATION.md`. In short:
 | 1. Hand calculations | Done. The slip estimate matches the benchmark's locked-shaft mode within 2.6 %; the induction generator's self-excitation boundary within 0.9 points of compensation; the doubly-fed plant's largest stable gain within 1.9 % at standard tuning |
 | 2. Internal consistency | Done. Steady states to 1e-13; time-domain growth against eigenvalue to 1e-7 1/s on every system; RK4 of order 4.00; CPU against GPU to 1e-11 |
 | 3. Published results | Partly. Torsional frequencies of the First Benchmark Model within 0.005 Hz. **Open:** the benchmark's generator data against the 1977 tables, and any published eigenvalue table for a doubly-fed plant |
-| 4. Independent formulation | Done for the current-loop model: polynomial roots of the loop impedance against state-space modes to 2e-8; a second time-domain code in phase coordinates to 0.00014 1/s. Three more routes to the modes agree: the Nyquist count on scans (step 18), a rational fit (19), a fitted plant closed on the network (20). **Open:** a second implementation of the full controls, or an electromagnetic-transient tool |
+| 4. Independent formulation | Done for the current-loop model: polynomial roots of the loop impedance against state-space modes to 2e-8; a second time-domain code in phase coordinates to 0.00014 1/s. Three more routes to the modes agree: the Nyquist count on scans (step 18), a rational fit (19), a fitted plant closed on the network (20). A second implementation of the full controls in phase coordinates agrees to 5e-8 of the response (step 44). **Open:** an electromagnetic-transient tool |
 | 5. Recorded events | **Open.** No recorded waveform was compared. Step 39 ran on simulated records |
 
 What the learned models were checked against is the solver, on test folds they never saw and on sets outside the training range. The solver is checked as above. No number in this repository has been compared with a measurement on a real plant.
@@ -217,6 +217,9 @@ Where each thing fails, how it shows, and what catches it.
 8. **Drop the penalty arms sooner.** Step 13 already showed the state matrix costs 96 % of a solve. Steps 34 and 36 confirmed at length what that implied.
 
 ## 8. Not done
+
+Phase 13 (steps 43 to 52) took up every item below; the notes say what came of each. The two screening recommendations are summarised in `docs/SCREENING.md`.
+
 
 - Rungs 3 and 5 of the validation ladder in part or whole: published eigenvalue tables for a doubly-fed plant, and recorded events. Phase 13 takes these up; rung 3 is partly met (step 43), rung 5 stays open.
 - A second implementation of the full controls, or a comparison with an electromagnetic-transient tool. The second implementation is done (step 44); the EMT comparison stays open.
