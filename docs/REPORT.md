@@ -223,5 +223,5 @@ Where each thing fails, how it shows, and what catches it.
 - An inverse PINN and a parametric PINN (Phase 5 built the forward form and the eigenvalue residual). Done (step 47): the parametric PINN settles on the steady state (error 0.99); the inverse PINN does not improve on its start and loses the PLL bandwidth, where Gauss-Newton through the solver reaches the bound.
 - A neural ODE with a nonlinear correction for arm A. Done (step 46): 11 % to 34 % less error than arm A, still more than twice the error of the perceptron with physics inputs in distribution.
 - Three disturbances on T2; the dataset has one. Done (step 45): with the reduced model's response as inputs, error 2.6 to 3.5 times lower in distribution and 6 to 13 times lower at high compensation for a compensation step and a voltage dip; no gain for a power ramp, which the reduced model does not see.
-- The out-of-distribution study on T2, and a physics-residual detector.
+- The out-of-distribution study on T2, and a physics-residual detector. Done (step 48): neither residual beats the ensemble spread on T1; on T2 arm F's error grows slowly outside the range and its spread flags every response with more than 10 % error.
 - The stretch goals: System C in full as a learned task, a network of many plants with a graph network, active learning.

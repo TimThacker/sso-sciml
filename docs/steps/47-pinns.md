@@ -73,4 +73,4 @@ One inverse-PINN fit takes 462 s.
 
 ## Next
 
-Step 48: the out-of-distribution study on T2, and a physics-residual detector.
+Step 48: the out-of-distribution study on T2, and a physics-residual detector (done).
