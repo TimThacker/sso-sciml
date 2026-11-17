@@ -96,4 +96,4 @@ Detectors for arm F. Each cell: share flagged, very bad responses not flagged / 
 
 ## Next
 
-Step 49: System C as a learned task.
+Step 49: System C as a learned task (done).
