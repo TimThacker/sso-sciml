@@ -143,7 +143,7 @@ The full record is `docs/VALIDATION.md`. In short:
 |---|---|
 | 1. Hand calculations | Done. The slip estimate matches the benchmark's locked-shaft mode within 2.6 %; the induction generator's self-excitation boundary within 0.9 points of compensation; the doubly-fed plant's largest stable gain within 1.9 % at standard tuning |
 | 2. Internal consistency | Done. Steady states to 1e-13; time-domain growth against eigenvalue to 1e-7 1/s on every system; RK4 of order 4.00; CPU against GPU to 1e-11 |
-| 3. Published results | Partly. Torsional frequencies of the First Benchmark Model within 0.005 Hz. **Open:** the benchmark's generator data against the 1977 tables, and any published eigenvalue table for a doubly-fed plant |
+| 3. Published results | Partly. Torsional frequencies of the First Benchmark Model within 0.005 Hz. One published doubly-fed case (step 43), with its unstated current-loop gain fitted: frequency within 1.7 Hz, compensation boundary within 2 points, the gain boundary off by about a third. **Open:** the benchmark's generator data against the 1977 tables, and a doubly-fed case with all its gains published |
 | 4. Independent formulation | Done for the current-loop model: polynomial roots of the loop impedance against state-space modes to 2e-8; a second time-domain code in phase coordinates to 0.00014 1/s. Three more routes to the modes agree: the Nyquist count on scans (step 18), a rational fit (19), a fitted plant closed on the network (20). A second implementation of the full controls in phase coordinates agrees to 5e-8 of the response (step 44). **Open:** an electromagnetic-transient tool |
 | 5. Recorded events | **Open.** No recorded waveform was compared. Step 39 ran on simulated records |
 
