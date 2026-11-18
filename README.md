@@ -11,11 +11,52 @@ The project pairs a first-principles reference solver (network electromagnetic t
 | Document | What it is |
 |---|---|
 | [docs/REPORT.md](docs/REPORT.md) | Final report |
+| [docs/SCREENING.md](docs/SCREENING.md) | The best deterministic and the best learned screen |
 | [docs/PLAN.md](docs/PLAN.md) | Scope, physics, learning tasks, phases, exit checks, risks |
 | [docs/steps/](docs/steps/) | Step log: what was run, the numbers, what disagreed |
 | [docs/EQUATIONS.md](docs/EQUATIONS.md) | Model equations and sign conventions |
 | [docs/ASSUMPTIONS.md](docs/ASSUMPTIONS.md) | Each modelling assumption, how it was tested, and the result |
 | [docs/VALIDATION.md](docs/VALIDATION.md) | What has been checked against what, and what is still open |
+
+## Summary: the two screens
+
+A screen answers one question cheaply: can this case be cleared without a detailed study? It is judged first by the unstable cases it clears, then by the share of cases it saves. Every number below is from the step named; the full account is [docs/SCREENING.md](docs/SCREENING.md).
+
+| | Best deterministic screen | Best learned screen |
+|---|---|---|
+| What it is | The plant's 2 × 2 admittance scan, fitted by least squares and closed on the network at the 32 ends of the network data's ranges; the largest growth rate decides (step 24). For a doubly-fed plant, the phasor-domain model beside it for the band below 2 Hz (step 21) | Hand calculation plus a learned correction, an ensemble of five perceptrons, with a fallback to the solver on the ensemble spread and a range check before it (steps 40, 42) |
+| Needs | A scan good to 1 %, the network known to within 10 %, no training | The plant model and about 100,000 solver runs inside a stated range |
+| Unstable cases cleared | **0 of 24,659** (doubly-fed plant and two converter types) | **0 of 1,376** in the range |
+| Yield | Clears 57.8 % of doubly-fed cases (73.4 % are stable), 87.8 % of converters with a PLL (91.1 %) and 70.6 % without (77.6 %) | Sends 0.72 % of cases to the solver (0.9 % through the service) |
+| Cost per case | 32 closed-loop evaluations of a fitted model, after one scan | 3.2 ms through the service, against 15 ms for the solver |
+| Outside its range | Has no training range; holds with control delay, outages, several plants and shunt capacitance when each is modelled (steps 25, 27, 29, 30) | Unsafe without the range check: clears 16 of 1,476 unstable cases at high compensation and 8 of 920 at low speed |
+| Use it for | The reference screen, black-box plants, and anything outside a learned model's range | Volume inside the range of a plant whose model is known, with the solver behind it |
+
+The two screens were scored on different cases (step 24 on a random quarter of both plant types with uncertain network data, step 40 on the T1 test fold with the network exact), so the columns are not a head-to-head comparison.
+
+**Why the deterministic screen works.** Sub-synchronous resonance of a doubly-fed plant is a series resonance with a negative resistance in it. At the resonance the rotor turns faster than the stator field, so the slip is negative. The rotor resistance plus the current controller's gain, divided by that slip, is a large negative resistance. Where the reactances cancel, it is set against the network's positive resistance, and if the sum is negative the oscillation grows. So the closer the resonance to the rotor frequency, the worse (0.3 % unstable at 10 to 15 Hz, 33.8 % at 40 to 45 Hz), the current-loop bandwidth is the one controller number that matters, and network resistance matters as much as any reactance (step 14). A test on the size of the loop gain cannot see this, because the loop gain is near −1 at the resonance whether the case is stable or not: the passivity test clears 0.2 % of doubly-fed cases (step 18). The Nyquist count and the closed-loop growth rate test the sum of the impedances and see it.
+
+**How little information decides it.** The network's R, X and C, the rotor speed and the current-loop bandwidth: a hand calculation of the loop resistance at the resonance. With a margin of 1 1/s (5 1/s where the PLL is faster than the mode) it clears 79.9 % of doubly-fed cases and no unstable one in the range (step 14). A positive-sequence stability model reports every unstable resonance case as stable, but is exact for the slow control mode below 2 Hz that a terminal scan barely sees; the two together cover both bands (step 21).
+
+**Why the learned screen takes this form.** The hand calculation as the baseline beats it as inputs, and both beat no physics (0.071 against 0.090 1/s). The physics as a loss is the worst use of it, at five to eight times the cost (steps 34, 36, 47). The ensemble spread is what makes it safe in the range: with a margin alone the same model sends 3.0 % to the solver (step 40).
+
+**What Phase 13 added (steps 43 to 51).**
+
+| Step | Result |
+|---|---|
+| 43: a published doubly-fed case | With its unstated current-loop gain fitted, frequency within 1.7 Hz and the compensation boundary within 2 points; the gain boundary off by about a third |
+| 44: a second implementation of the full controls | Agrees to 5e-8 of the response |
+| 45: three disturbances on the response in time | The reduced model's response as inputs cuts the error 2.6 to 3.5 times in distribution and 6 to 13 times at high compensation; no gain for a power ramp, which the reduced model does not see |
+| 46: a neural ODE for the physics-in-architecture arm | 11 % to 34 % better than before, still more than twice the error of the perceptron with physics inputs |
+| 47: parametric and inverse PINNs | Both fail: the parametric one learns the steady state (error 0.99); the inverse one does not improve on its start |
+| 48: physics residuals as detectors | Neither beats the ensemble spread; on the response in time the spread flags every response with more than 10 % error outside the range |
+| 49: the converter as a learned screen | 20 % of cases to the solver, none missed in distribution; misses 1 unstable case on two of three outside sets; does not beat the scan screen |
+| 50: active learning | 0.89 % to the solver with 4,000 labels, against 7.2 % at random; missed 2 unstable cases in one of three repeats, so not adopted |
+| 51: several plants and a graph network | Trained on 2 to 4 buses, half the error of a plant-by-plant study up to 8 buses; not yet a screen on this mostly unstable dataset |
+
+**Recommendation.** Screen with the deterministic scan first wherever the plant is a black box, a parameter is outside a learned model's range, or the network is changing. Use the learned screen for volume inside its range, with the range check in front and the solver behind. Keep the hand calculation in every output: it is the only warning that does not come from training data, and the explanation an engineer can check.
+
+**Still open.** No number has been compared with a recorded event or with an electromagnetic-transient tool. Every number is against this project's solver on a representative plant, and the zero counts are counts on these samples, not guarantees.
 
 ## Phase 1 in one figure
 
